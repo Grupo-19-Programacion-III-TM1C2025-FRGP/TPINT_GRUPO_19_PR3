@@ -70,11 +70,14 @@
     <Content Include="AltaPaciente.aspx" />
     <Content Include="AsignacionTurno.aspx" />
     <Content Include="BajaPaciente.aspx" />
+    <Content Include="Informes de Presentes.aspx" />
+    <Content Include="Informes de Ausentes.aspx" />
     <Content Include="Layout.aspx" />
     <Content Include="ListadoPacientes.aspx" />
     <Content Include="LogIn.aspx" />
     <Content Include="ModificacionPaciente.aspx" />
     <Content Include="Web.config" />
+    <Content Include="VistaTurnos.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AltaPaciente.aspx.cs">
@@ -97,6 +100,20 @@
     </Compile>
     <Compile Include="BajaPaciente.aspx.designer.cs">
       <DependentUpon>BajaPaciente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes de Presentes.aspx.cs">
+      <DependentUpon>Informes de Presentes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes de Presentes.aspx.designer.cs">
+      <DependentUpon>Informes de Presentes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes de Ausentes.aspx.cs">
+      <DependentUpon>Informes de Ausentes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes de Ausentes.aspx.designer.cs">
+      <DependentUpon>Informes de Ausentes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Layout.aspx.cs">
       <DependentUpon>Layout.aspx</DependentUpon>
@@ -127,6 +144,13 @@
       <DependentUpon>ModificacionPaciente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VistaTurnos.aspx.cs">
+      <DependentUpon>VistaTurnos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VistaTurnos.aspx.designer.cs">
+      <DependentUpon>VistaTurnos.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
