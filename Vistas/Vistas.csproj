@@ -70,7 +70,9 @@
     <Content Include="AltaPaciente.aspx" />
     <Content Include="AsignacionTurno.aspx" />
     <Content Include="BajaPaciente.aspx" />
+    <Content Include="Layout.aspx" />
     <Content Include="ListadoPacientes.aspx" />
+    <Content Include="LogIn.aspx" />
     <Content Include="ModificacionPaciente.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -96,12 +98,26 @@
     <Compile Include="BajaPaciente.aspx.designer.cs">
       <DependentUpon>BajaPaciente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Layout.aspx.cs">
+      <DependentUpon>Layout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layout.aspx.designer.cs">
+      <DependentUpon>Layout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ListadoPacientes.aspx.cs">
       <DependentUpon>ListadoPacientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ListadoPacientes.aspx.designer.cs">
       <DependentUpon>ListadoPacientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LogIn.aspx.cs">
+      <DependentUpon>LogIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogIn.aspx.designer.cs">
+      <DependentUpon>LogIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModificacionPaciente.aspx.cs">
       <DependentUpon>ModificacionPaciente.aspx</DependentUpon>
