@@ -8,27 +8,34 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
-                <div style="text-align:center; margin-top: 50px;">
-    <asp:Label ID="lblTitulo" runat="server" Text="BIENVENIDO AL SISTEMA" Font-Size="XX-Large" Font-Bold="True"></asp:Label>
-</div>
+  <form id="form1" runat="server">
+    <!-- Encabezado con tabla -->
+    <table style="width:100%; padding: 20px; background-color: #00ffff;">
+        <tr>
+            <!-- Menú a la izquierda -->
+            <td style="text-align:left;">
+                <asp:HyperLink ID="HyperLink1" runat="server" Font-Names="Berlin Sans FB" NavigateUrl="~/link1.aspx">link1</asp:HyperLink>
+                &nbsp;&nbsp;&nbsp;
+                <asp:HyperLink ID="HyperLink2" runat="server" Font-Names="Berlin Sans FB" NavigateUrl="~/link2.aspx">link2</asp:HyperLink>
+                &nbsp;&nbsp;&nbsp;
+                <asp:HyperLink ID="HyperLink3" runat="server" Font-Names="Berlin Sans FB" NavigateUrl="~/link3.aspx">link3</asp:HyperLink>
+            </td>
 
-<br />
+            <!-- Usuario a la derecha -->
+            <td style="text-align:right;">
+                <asp:Label ID="Label1" runat="server" Font-Names="Berlin Sans FB" Text="USUARIO"></asp:Label>
+            </td>
+        </tr>
+    </table>
 
-<table align="center" style="margin-top: 20px;">
-    <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-    </tr>
-    <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-    </tr>
-    <tr>
-        <td colspan="2" style="text-align:center; padding-top: 10px;">
-            &nbsp;</td>
-    </tr>
-</table>
-    </form>
+    <!-- Contenido centrado -->
+    <div style="text-align: center; margin-top: 40px;">
+        <asp:Label ID="Label2" runat="server" Font-Names="Berlin Sans FB" Text="CONTENIDO"></asp:Label>
+    </div>
+</form>
+
+
+
+
 </body>
 </html>
