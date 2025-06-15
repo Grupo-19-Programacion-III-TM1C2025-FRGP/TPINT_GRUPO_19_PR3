@@ -11,7 +11,7 @@ namespace Vistas
 {
 
 
-    public partial class Informes_de_Ausentes
+    public partial class Informes_de_Presentes
     {
 
         /// <summary>
