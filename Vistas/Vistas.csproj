@@ -72,7 +72,8 @@
     <Content Include="BajaPaciente.aspx" />
     <Content Include="Informes de Presentes.aspx" />
     <Content Include="Informes de Ausentes.aspx" />
-    <Content Include="Layout.aspx" />
+    <Content Include="LayoutAdmin.aspx" />
+    <Content Include="LayoutMedico.aspx" />
     <Content Include="ListadoPacientes.aspx" />
     <Content Include="LogIn.aspx" />
     <Content Include="Medicos.aspx" />
@@ -116,12 +117,19 @@
     <Compile Include="Informes de Ausentes.aspx.designer.cs">
       <DependentUpon>Informes de Ausentes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Layout.aspx.cs">
-      <DependentUpon>Layout.aspx</DependentUpon>
+    <Compile Include="LayoutAdmin.aspx.cs">
+      <DependentUpon>LayoutAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Layout.aspx.designer.cs">
-      <DependentUpon>Layout.aspx</DependentUpon>
+    <Compile Include="LayoutAdmin.aspx.designer.cs">
+      <DependentUpon>LayoutAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LayoutMedico.aspx.cs">
+      <DependentUpon>LayoutMedico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LayoutMedico.aspx.designer.cs">
+      <DependentUpon>LayoutMedico.aspx</DependentUpon>
     </Compile>
     <Compile Include="ListadoPacientes.aspx.cs">
       <DependentUpon>ListadoPacientes.aspx</DependentUpon>
