@@ -149,8 +149,40 @@
     <h3>Listado de Pacientes</h3>
 
 </div>
-        <asp:GridView ID="gvPacientes" runat="server">
-        </asp:GridView>
+
+                <asp:GridView ID="gvPacientes" runat="server" AutoGenerateColumns="False" CssClass="gridview"
+                    OnRowCommand="gvPacientes_RowCommand" OnRowEditing="gvPacientes_RowEditing"
+                    OnRowDeleting="gvPacientes_RowDeleting" DataKeyNames="DNI" AllowPaging="True"
+                    PagerStyle-CssClass="pager" HeaderStyle-CssClass="header" RowStyle-CssClass="row"
+                    AlternatingRowStyle-CssClass="alt-row">
+<AlternatingRowStyle CssClass="alt-row"></AlternatingRowStyle>
+                    <Columns>
+                        <asp:BoundField DataField="DNI" HeaderText="DNI" />
+                        <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
+                        <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
+                        <asp:BoundField DataField="Sexo" HeaderText="Sexo" />
+                        <asp:BoundField DataField="Email" HeaderText="Email" />
+                        <asp:BoundField DataField="Telefono" HeaderText="Teléfono" />
+                        <asp:TemplateField HeaderText="Acciones">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="lnkEditar0" runat="server" CommandName="Edit"
+                                    CommandArgument='<%# Eval("DNI") %>' Text="Editar" CssClass="link-button" />
+                                |
+                                <asp:LinkButton ID="lnkEliminar0" runat="server" CommandName="Delete"
+                                    CommandArgument='<%# Eval("DNI") %>' Text="Eliminar" CssClass="link-button"
+                                    OnClientClick="return confirm('¿Está seguro de eliminar este paciente?');" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+
+<HeaderStyle CssClass="header"></HeaderStyle>
+
+<PagerStyle CssClass="pager"></PagerStyle>
+
+<RowStyle CssClass="row"></RowStyle>
+                </asp:GridView>
+
+                <asp:HiddenField ID="hdnFDniSeleccionado" runat="server" />
     </form>
 </body>
 </html>
