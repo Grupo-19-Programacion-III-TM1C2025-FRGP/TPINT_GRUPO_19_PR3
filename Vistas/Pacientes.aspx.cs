@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace Vistas
 {
-    public partial class BajaPaciente : System.Web.UI.Page
+    public partial class Pacientes : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
         }
     }
 }
