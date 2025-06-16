@@ -94,6 +94,7 @@
                     <td>
                         <asp:DropDownList ID="ddlEspecialidad" runat="server" Height="19px" Width="190px">
                         </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="rfvEspecialidad" runat="server" ControlToValidate="ddlEspecialidad" ErrorMessage="*"></asp:RequiredFieldValidator>
                     </td>
                     <td class="auto-style12">
                         <asp:Label ID="Label5" runat="server" Text="Horario:"></asp:Label>
@@ -102,7 +103,9 @@
                         <asp:DropDownList ID="ddlHorario" runat="server" Height="19px" Width="190px">
                         </asp:DropDownList>
                     </td>
-                    <td class="auto-style10">&nbsp;</td>
+                    <td class="auto-style10">
+                        <asp:RequiredFieldValidator ID="rfvHorario" runat="server" ControlToValidate="ddlHorario" ErrorMessage="*"></asp:RequiredFieldValidator>
+                    </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
@@ -120,6 +123,7 @@
                     <td class="auto-style6">
                         <asp:DropDownList ID="ddlMedico" runat="server" Height="19px" Width="190px">
                         </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="rfvMedico" runat="server" ControlToValidate="ddlMedico" ErrorMessage="*"></asp:RequiredFieldValidator>
                     </td>
                     <td class="auto-style13">
                         <asp:Label ID="Label6" runat="server" Text="Paciente:"></asp:Label>
@@ -128,7 +132,9 @@
                         <asp:DropDownList ID="ddlPaciente" runat="server" Height="19px" Width="190px">
                         </asp:DropDownList>
                     </td>
-                    <td class="auto-style11"></td>
+                    <td class="auto-style11">
+                        <asp:RequiredFieldValidator ID="rfvPaciente" runat="server" ControlToValidate="ddlPaciente" ErrorMessage="*"></asp:RequiredFieldValidator>
+                    </td>
                     <td class="auto-style6"></td>
                 </tr>
                 <tr>
@@ -146,6 +152,7 @@
                     <td>
                         <asp:DropDownList ID="ddlFecha" runat="server" Height="19px" Width="190px">
                         </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="rfvFecha" runat="server" ControlToValidate="ddlFecha" ErrorMessage="*"></asp:RequiredFieldValidator>
                     </td>
                     <td class="auto-style12">&nbsp;</td>
                     <td class="auto-style8">
@@ -155,12 +162,12 @@
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style3">&nbsp;</td>
+                    <td class="auto-style3"></td>
                     <td>&nbsp;</td>
-                    <td class="auto-style12">&nbsp;</td>
-                    <td class="auto-style8">&nbsp;</td>
-                    <td class="auto-style10">&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style12"></td>
+                    <td class="auto-style8"></td>
+                    <td class="auto-style10"></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td class="auto-style5"></td>

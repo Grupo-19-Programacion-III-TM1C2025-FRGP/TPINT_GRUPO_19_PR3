@@ -21,7 +21,7 @@ namespace Vistas
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm InformedeAusentes;
 
         /// <summary>
         /// Control lbl_Informe_Ausentes.
@@ -33,31 +33,49 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Label lbl_Informe_Ausentes;
 
         /// <summary>
-        /// Control ddFechaInicial.
+        /// Control ddFechaInicialA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddFechaInicial;
+        protected global::System.Web.UI.WebControls.DropDownList ddFechaInicialA;
 
         /// <summary>
-        /// Control ddFechaFinal.
+        /// Control rfvInicioA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddFechaFinal;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvInicioA;
 
         /// <summary>
-        /// Control btnCalcular.
+        /// Control ddFechaFinalA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCalcular;
+        protected global::System.Web.UI.WebControls.DropDownList ddFechaFinalA;
+
+        /// <summary>
+        /// Control rfvFinalA.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFinalA;
+
+        /// <summary>
+        /// Control btnCalcularA.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCalcularA;
 
         /// <summary>
         /// Control lblAusentes.
@@ -69,12 +87,12 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Label lblAusentes;
 
         /// <summary>
-        /// Control GridView1.
+        /// Control dvAusentes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView dvAusentes;
     }
 }

@@ -49,6 +49,54 @@
             width: 245px;
             height: 26px;
         }
+        .auto-style17 {
+            width: 236px;
+            margin-left: 40px;
+            height: 10px;
+        }
+        .auto-style18 {
+            width: 245px;
+            height: 10px;
+        }
+        .auto-style19 {
+            width: 116px;
+            height: 10px;
+        }
+        .auto-style20 {
+            width: 79px;
+            height: 10px;
+        }
+        .auto-style21 {
+            width: 97px;
+            height: 10px;
+        }
+        .auto-style22 {
+            height: 10px;
+        }
+        .auto-style23 {
+            width: 236px;
+            margin-left: 40px;
+            height: 28px;
+        }
+        .auto-style24 {
+            width: 245px;
+            height: 28px;
+        }
+        .auto-style25 {
+            width: 116px;
+            height: 28px;
+        }
+        .auto-style26 {
+            width: 79px;
+            height: 28px;
+        }
+        .auto-style27 {
+            width: 97px;
+            height: 28px;
+        }
+        .auto-style28 {
+            height: 28px;
+        }
     </style>
 </head>
 <body>
@@ -60,6 +108,8 @@
                     <td class="auto-style2">
                         <asp:Label ID="lbl_Vista_Turnos" runat="server" Font-Bold="True" Font-Size="16pt" Text="Vista de turnos"></asp:Label>
                     </td>
+                    <td class="auto-style2">
+                        &nbsp;</td>
                     <td class="auto-style7">&nbsp;</td>
                     <td class="auto-style2">&nbsp;</td>
                     <td class="auto-style3">&nbsp;</td>
@@ -69,6 +119,7 @@
                 <tr>
                     <td class="auto-style15"></td>
                     <td class="auto-style11"></td>
+                    <td class="auto-style11">&nbsp;</td>
                     <td class="auto-style10"></td>
                     <td class="auto-style11"></td>
                     <td class="auto-style12"></td>
@@ -140,40 +191,47 @@
                             </Columns>
                         </asp:GridView>
                     </td>
+                    <td class="auto-style2">
+                        &nbsp;</td>
                     <td class="auto-style7">&nbsp;</td>
                     <td class="auto-style4">&nbsp;</td>
                     <td class="auto-style3">&nbsp;</td>
                     <td class="auto-style4">&nbsp;</td>
                     <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style24"></td>
+                    <td class="auto-style23"></td>
+                    <td class="auto-style23">&nbsp;</td>
+                    <td class="auto-style25"></td>
+                    <td class="auto-style26"></td>
+                    <td class="auto-style27"></td>
+                    <td class="auto-style26"></td>
+                    <td class="auto-style28"></td>
+                </tr>
+                <tr>
+                    <td class="auto-style18">Busqueda de turno:</td>
+                    <td class="auto-style17">
+                        <asp:TextBox ID="txtPacientes" runat="server" Width="225px"></asp:TextBox>
+                    </td>
+                    <td class="auto-style17">
+                        <asp:RequiredFieldValidator ID="rfvBusqueda" runat="server" ControlToValidate="txtPacientes" ErrorMessage="El campo se encuentra vacio."></asp:RequiredFieldValidator>
+                    </td>
+                    <td class="auto-style19">
+                        <asp:Button ID="btnBuscar" runat="server" Text="Buscar" />
+                    </td>
+                    <td class="auto-style20">
+                        <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" />
+                    </td>
+                    <td class="auto-style21">
+                        </td>
+                    <td class="auto-style20">
+                        </td>
+                    <td class="auto-style22"></td>
                 </tr>
                 <tr>
                     <td class="auto-style14">&nbsp;</td>
                     <td class="auto-style2">&nbsp;</td>
-                    <td class="auto-style7">&nbsp;</td>
-                    <td class="auto-style4">&nbsp;</td>
-                    <td class="auto-style3">&nbsp;</td>
-                    <td class="auto-style4">&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style14">Busqueda de turno:</td>
-                    <td class="auto-style2">
-                        <asp:TextBox ID="txtPacientes" runat="server" Width="225px"></asp:TextBox>
-                    </td>
-                    <td class="auto-style7">
-                        <asp:Button ID="btnBuscar" runat="server" Text="Buscar" />
-                    </td>
-                    <td class="auto-style4">
-                        <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" />
-                    </td>
-                    <td class="auto-style3">
-                        &nbsp;</td>
-                    <td class="auto-style4">
-                        &nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style14">&nbsp;</td>
                     <td class="auto-style2">&nbsp;</td>
                     <td class="auto-style7">&nbsp;</td>
                     <td class="auto-style2">&nbsp;</td>
@@ -186,6 +244,8 @@
                     <td class="auto-style2">
                         <asp:TextBox ID="txtObservación" runat="server" Width="225px"></asp:TextBox>
                     </td>
+                    <td class="auto-style2">
+                        &nbsp;</td>
                     <td class="auto-style7">
                         <asp:Button ID="btnGuardar" runat="server" Text="Guardar" Width="86px" />
                     </td>
