@@ -70,7 +70,6 @@
     <Content Include="AsignacionTurno.aspx" />
     <Content Include="Informes de Presentes.aspx" />
     <Content Include="Informes de Ausentes.aspx" />
-    <Content Include="Layout.aspx" />
     <Content Include="LayoutAdmin.aspx" />
     <Content Include="LayoutMedico.aspx" />
     <Content Include="LogIn.aspx" />
@@ -87,6 +86,7 @@
     <Compile Include="AsignacionTurno.aspx.designer.cs">
       <DependentUpon>AsignacionTurno.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AuxiliarVistas.cs" />
     <Compile Include="Informes de Presentes.aspx.cs">
       <DependentUpon>Informes de Presentes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

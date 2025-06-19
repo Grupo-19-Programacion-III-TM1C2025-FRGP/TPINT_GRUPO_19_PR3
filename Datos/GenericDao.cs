@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Negocio
+namespace Datos
 {
-    public class Class1
+    public abstract class GenericDao
     {
+        public Conexion _conexion = new Conexion();
     }
 }

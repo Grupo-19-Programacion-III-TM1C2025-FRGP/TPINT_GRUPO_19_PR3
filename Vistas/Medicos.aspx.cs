@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Vistas.Clases;
 
 namespace MiProyecto
 {
@@ -15,7 +16,8 @@ namespace MiProyecto
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-
+            AuxiliarVistas.ValidarSesionAdministrador();
+            lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
         }
 
         protected void gvMedicos_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -61,6 +63,11 @@ namespace MiProyecto
         private void LimpiarFormulario()
         {
             // Lógica para limpiar formulario
+        }
+
+        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            AuxiliarVistas.CerrarSesion();
         }
     }
 
