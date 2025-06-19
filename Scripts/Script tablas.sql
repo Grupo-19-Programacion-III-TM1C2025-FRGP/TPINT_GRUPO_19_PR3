@@ -44,3 +44,29 @@ CREATE TABLE HorariosDeAtencionPorDia
 )
 GO
 
+CREATE TABLE Provincias (
+    IDProvincia INT PRIMARY KEY,
+    NombreProvincia VARCHAR(100) NOT NULL
+);
+GO
+
+CREATE TABLE Localidades (
+    IDLocalidad INT PRIMARY KEY,
+    NombreLocalidad VARCHAR(100) NOT NULL,
+    IDProvincia INT NOT NULL FOREIGN KEY REFERENCES Provincias(IDProvincia)
+);
+GO
+
+CREATE TABLE Medico (
+    LegajoMedico INT IDENTITY (1,1 )PRIMARY KEY,
+    DNI INT NOT NULL,
+    NombreMedico VARCHAR(100) NOT NULL,
+    ApellidoMedico VARCHAR(100) NOT NULL,
+    Sexo VARCHAR(10),
+    Nacionalidad VARCHAR(50),
+    FechaNacimiento DATE,
+    Localidad INT NOT NULL FOREIGN KEY REFERENCES Localidades(IDLocalidad),
+    Especialidad INT NOT NULL FOREIGN KEY REFERENCES Especialidades(CodEspecialidad_Es),
+    Email VARCHAR(100),
+    Telefono VARCHAR(20),
+);
