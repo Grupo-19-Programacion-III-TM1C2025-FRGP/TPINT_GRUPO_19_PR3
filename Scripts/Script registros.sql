@@ -1,45 +1,45 @@
 USE Clinica
 GO
 
-INSERT INTO Especialidades (CodEspecialidad_Es, NombreEspecialidad_Es)
-SELECT 1, 'Kinesiología'
-UNION SELECT 2, 'Traumatología'
-UNION SELECT 3, 'Cardiología'
-UNION SELECT 4, 'Clínica Médica'
-UNION SELECT 5, 'Pediatría'
-UNION SELECT 6, 'Dermatología'
-UNION SELECT 7, 'Ginecología'
-UNION SELECT 8, 'Neurología'
-UNION SELECT 9, 'Urología'
-UNION SELECT 10, 'Oncología'
-UNION SELECT 11, 'Psiquiatría'
-UNION SELECT 12, 'Traumatología'
-UNION SELECT 13, 'Reumatología'
-UNION SELECT 14, 'Endocrinología'
-UNION SELECT 15, 'Infectología'
-UNION SELECT 16, 'Neumonología'
-UNION SELECT 17, 'Hematología'
-UNION SELECT 18, 'Fonoaudiología'
-UNION SELECT 19, 'Nutrición'
+INSERT INTO Especialidades (NombreEspecialidad_Es)
+SELECT 'Kinesiología'
+UNION SELECT 'Traumatología'
+UNION SELECT 'Cardiología'
+UNION SELECT 'Clínica Médica'
+UNION SELECT 'Pediatría'
+UNION SELECT 'Dermatología'
+UNION SELECT 'Ginecología'
+UNION SELECT 'Neurología'
+UNION SELECT 'Urología'
+UNION SELECT 'Oncología'
+UNION SELECT 'Psiquiatría'
+UNION SELECT 'Traumatología'
+UNION SELECT 'Reumatología'
+UNION SELECT 'Endocrinología'
+UNION SELECT 'Infectología'
+UNION SELECT 'Neumonología'
+UNION SELECT 'Hematología'
+UNION SELECT 'Fonoaudiología'
+UNION SELECT 'Nutrición'
 GO
 
-INSERT INTO DiasAtencion (CodDiaAtencion_DA, NombreDia_DA)
-SELECT 1, 'Lunes'
-UNION SELECT 2, 'Martes'
-UNION SELECT 3, 'Miércoles'
-UNION SELECT 4, 'Jueves'
-UNION SELECT 5, 'Viernes'
-UNION SELECT 6, 'Sábado'
-UNION SELECT 7, 'Domingo'
+INSERT INTO DiasAtencion (NombreDia_DA)
+SELECT 'Lunes'
+UNION SELECT 'Martes'
+UNION SELECT 'Miércoles'
+UNION SELECT 'Jueves'
+UNION SELECT 'Viernes'
+UNION SELECT 'Sábado'
+UNION SELECT 'Domingo'
 GO
 
-INSERT INTO HorariosAtencion (CodHorarioAtencion_HA, HoraInicio_HA, HoraFin_HA)
-SELECT 1, '07:00', '08:00'
-UNION SELECT 2, '08:00', '09:00'
-UNION SELECT 3, '09:00', '10:00'
-UNION SELECT 4, '10:00', '11:00'
-UNION SELECT 5, '11:00', '12:00'
-UNION SELECT 6, '12:00', '13:00'
+INSERT INTO HorariosAtencion (HoraInicio_HA, HoraFin_HA)
+SELECT '07:00', '08:00'
+UNION SELECT '08:00', '09:00'
+UNION SELECT '09:00', '10:00'
+UNION SELECT '10:00', '11:00'
+UNION SELECT '11:00', '12:00'
+UNION SELECT '12:00', '13:00'
 GO
 
 INSERT INTO HorariosDeAtencionPorDia (CodDiaAtencion_HAD, CodHorarioAtencion_HAD)
@@ -80,40 +80,40 @@ UNION SELECT 5, 5
 UNION SELECT 5, 6
 GO
 
-INSERT INTO Provincias (IDProvincia, NombreProvincia) VALUES
-(1, 'Buenos Aires'),
-(2, 'Córdoba'),
-(3, 'Santa Fe'),
-(4, 'Mendoza'),
-(5, 'Tucumán'),
-(6, 'Salta'),
-(7, 'Chubut'),
-(8, 'Neuquén'),
-(9, 'Entre Ríos'),
-(10, 'Misiones');
+INSERT INTO Provincias (NombreProvincia) VALUES
+('Buenos Aires'),
+('Córdoba'),
+('Santa Fe'),
+('Mendoza'),
+('Tucumán'),
+('Salta'),
+('Chubut'),
+('Neuquén'),
+('Entre Ríos'),
+('Misiones');
 GO
 
-INSERT INTO Localidades (IDLocalidad, NombreLocalidad, IDProvincia) VALUES
-(1, 'La Plata', 1),
-(2, 'Mar del Plata', 1),
-(3, 'Villa Carlos Paz', 2),
-(4, 'Río Cuarto', 2),
-(5, 'Rosario', 3),
-(6, 'Santa Fe Capital', 3),
-(7, 'Godoy Cruz', 4),
-(8, 'San Rafael', 4),
-(9, 'San Miguel de Tucumán', 5),
-(10, 'Yerba Buena', 5),
-(11, 'Salta Capital', 6),
-(12, 'Tartagal', 6),
-(13, 'Comodoro Rivadavia', 7),
-(14, 'Puerto Madryn', 7),
-(15, 'Neuquén Capital', 8),
-(16, 'Plottier', 8),
-(17, 'Paraná', 9),
-(18, 'Concordia', 9),
-(19, 'Posadas', 10),
-(20, 'Oberá', 10);
+INSERT INTO Localidades (NombreLocalidad, IDProvincia) VALUES
+('La Plata', 1),
+('Mar del Plata', 1),
+('Villa Carlos Paz', 2),
+('Río Cuarto', 2),
+('Rosario', 3),
+('Santa Fe Capital', 3),
+('Godoy Cruz', 4),
+('San Rafael', 4),
+('San Miguel de Tucumán', 5),
+('Yerba Buena', 5),
+('Salta Capital', 6),
+('Tartagal', 6),
+('Comodoro Rivadavia', 7),
+('Puerto Madryn', 7),
+('Neuquén Capital', 8),
+('Plottier', 8),
+('Paraná', 9),
+('Concordia', 9),
+('Posadas', 10),
+('Oberá', 10);
 GO
 
 INSERT INTO Medico (DNI, NombreMedico, ApellidoMedico, Sexo, Nacionalidad, FechaNacimiento, Localidad, Especialidad, Email, Telefono) VALUES
@@ -135,4 +135,5 @@ INSERT INTO Medico (DNI, NombreMedico, ApellidoMedico, Sexo, Nacionalidad, Fecha
 ('28678901', 'Tomás', 'Moreno', 'M', 'Argentina', '1985-06-06', 16, 16, 'tomas.moreno@hospital.com', '1178912345'),
 ('28789012', 'Cecilia', 'Aguirre', 'F', 'Argentina', '1976-04-19', 17, 17, 'cecilia.aguirre@hospital.com', '1189123456'),
 ('28890123', 'Ignacio', 'Luna', 'M', 'Argentina', '1992-01-01', 18, 18, 'ignacio.luna@hospital.com', '1191234567'),
-('28901234', 'Paula', 'Domínguez', 'F', 'Argentina', '1983-03-27', 19, 19, 'paula.dominguez@hospital.com', '1102345678');
+('28901234', 'Paula', 'Domínguez', 'F', 'Argentina', '1983-03-27', 19, 18, 'paula.dominguez@hospital.com', '1102345678');
+GO
