@@ -137,3 +137,20 @@ INSERT INTO Medico (DNI, NombreMedico, ApellidoMedico, Sexo, Nacionalidad, Fecha
 ('28890123', 'Ignacio', 'Luna', 'M', 'Argentina', '1992-01-01', 18, 18, 'ignacio.luna@hospital.com', '1191234567'),
 ('28901234', 'Paula', 'Domínguez', 'F', 'Argentina', '1983-03-27', 19, 18, 'paula.dominguez@hospital.com', '1102345678');
 GO
+
+INSERT INTO Pacientes (DNI, Nombre, Apellido, Sexo, Nacionalidad, FechaNacimiento, Direccion, IDLocalidad, CorreoElectronico, Telefono) VALUES
+(30123456, 'María', 'López', 'F', 'Argentina', '1993-04-15', 'Av. Siempre Viva 123', 1, 'maria.lopez@mail.com', '1123456789'),
+(30123457, 'Juan', 'García', 'M', 'Argentina', '1989-12-01', 'Calle Falsa 456', 2, 'juan.garcia@mail.com', '1123456790'),
+(30123458, 'Ana', 'Fernández', 'F', 'Argentina', '1995-07-22', 'Mitre 1010', 3, 'ana.fernandez@mail.com', '1134567891'),
+(30123459, 'Luis', 'Martínez', 'M', 'Argentina', '1990-10-10', 'Belgrano 234', 4, 'luis.martinez@mail.com', '1145678912'),
+(30123460, 'Claudia', 'Sosa', 'F', 'Argentina', '1988-03-03', 'San Martín 456', 5, 'claudia.sosa@mail.com', '1156789123'),
+(30123461, 'Martín', 'Ramírez', 'M', 'Argentina', '1987-09-18', 'Urquiza 789', 6, 'martin.ramirez@mail.com', '1167891234'),
+(30123462, 'Patricia', 'Suárez', 'F', 'Argentina', '1992-05-25', 'Av. Rivadavia 555', 7, 'patricia.suarez@mail.com', '1178912345'),
+(30123463, 'Diego', 'Pérez', 'M', 'Argentina', '1991-06-30', 'Córdoba 321', 8, 'diego.perez@mail.com', '1189123456'),
+(30123464, 'Romina', 'Vega', 'F', 'Argentina', '1985-08-14', 'Sarmiento 654', 9, 'romina.vega@mail.com', '1191234567'),
+(30123465, 'Gonzalo', 'Navarro', 'M', 'Argentina', '1994-11-11', 'Esmeralda 789', 10, 'gonzalo.navarro@mail.com', '1102345678'),
+(30123466, 'Natalia', 'Luna', 'F', 'Argentina', '1993-02-20', 'Alsina 1234', 11, 'natalia.luna@mail.com', '1113456789'),
+(30123467, 'Esteban', 'Castro', 'M', 'Argentina', '1986-06-06', 'Pueyrredón 432', 12, 'esteban.castro@mail.com', '1124567890'),
+(30123468, 'Camila', 'Moreno', 'F', 'Argentina', '1990-09-09', '9 de Julio 876', 13, 'camila.moreno@mail.com', '1135678901'),
+(30123469, 'Federico', 'Iglesias', 'M', 'Argentina', '1983-01-15', 'Independencia 1000', 14, 'federico.iglesias@mail.com', '1146789012'),
+(30123470, 'Luciana', 'Bravo', 'F', 'Argentina', '1996-12-24', 'Avellaneda 789', 15, 'luciana.bravo@mail.com', '1157890123');
