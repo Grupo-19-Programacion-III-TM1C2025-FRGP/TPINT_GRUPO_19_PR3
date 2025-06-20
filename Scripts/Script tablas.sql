@@ -63,16 +63,21 @@ CREATE TABLE Medico (
 	DNI INT NOT NULL,
 	NombreMedico VARCHAR(100) NOT NULL,
 	ApellidoMedico VARCHAR(100) NOT NULL,
-	Sexo VARCHAR(10),
+	Sexo CHAR(1) CHECK (Sexo IN('M', 'F')),
 	Nacionalidad VARCHAR(50),
 	FechaNacimiento DATE,
 	Localidad INT NOT NULL,
 	Especialidad INT NOT NULL,
+	DiaAtencion INT NOT NULL,
+	Horario INT NOT NULL,
 	Email VARCHAR(100),
 	Telefono VARCHAR(20),
 	CONSTRAINT PK_Medico PRIMARY KEY (LegajoMedico),
 	CONSTRAINT FK_Medico_Localidad FOREIGN KEY (Localidad) REFERENCES Localidades(IDLocalidad),
-	CONSTRAINT FK_Medico_Especialidad FOREIGN KEY (Especialidad) REFERENCES Especialidades(CodEspecialidad_Es)
+	CONSTRAINT FK_Medico_Especialidad FOREIGN KEY (Especialidad) REFERENCES Especialidades(CodEspecialidad_Es),
+	CONSTRAINT FK_Medico_DiaAtencion FOREIGN KEY (DiaAtencion) REFERENCES DiasAtencion(CodDiaAtencion_DA),
+    CONSTRAINT FK_Medico_Horario FOREIGN KEY (Horario) REFERENCES HorariosAtencion(CodHorarioAtencion_HA)
+
 );
 GO
 

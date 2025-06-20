@@ -116,26 +116,26 @@ INSERT INTO Localidades (NombreLocalidad, IDProvincia) VALUES
 ('Oberá', 10);
 GO
 
-INSERT INTO Medico (DNI, NombreMedico, ApellidoMedico, Sexo, Nacionalidad, FechaNacimiento, Localidad, Especialidad, Email, Telefono) VALUES
-('27123456', 'Lucía', 'Martínez', 'F', 'Argentina', '1980-05-12', 1, 1, 'lucia.martinez@hospital.com', '1123456789'),
-('27234567', 'Julián', 'Pérez', 'M', 'Argentina', '1975-09-03', 2, 2, 'julian.perez@hospital.com', '1134567890'),
-('27345678', 'Romina', 'Gómez', 'F', 'Argentina', '1988-11-22', 3, 3, 'romina.gomez@hospital.com', '1145678901'),
-('27456789', 'Carlos', 'López', 'M', 'Argentina', '1982-01-15', 4, 4, 'carlos.lopez@hospital.com', '1156789012'),
-('27567890', 'Ana', 'Rodríguez', 'F', 'Argentina', '1990-03-30', 5, 5, 'ana.rodriguez@hospital.com', '1167890123'),
-('27678901', 'Federico', 'Torres', 'M', 'Argentina', '1985-07-19', 6, 6, 'federico.torres@hospital.com', '1178901234'),
-('27789012', 'Carla', 'Fernández', 'F', 'Argentina', '1979-12-08', 7, 7, 'carla.fernandez@hospital.com', '1189012345'),
-('27890123', 'Gustavo', 'Ramírez', 'M', 'Argentina', '1983-06-25', 8, 8, 'gustavo.ramirez@hospital.com', '1190123456'),
-('27901234', 'Verónica', 'Sánchez', 'F', 'Argentina', '1986-04-10', 9, 9, 'veronica.sanchez@hospital.com', '1101234567'),
-('28012345', 'Matías', 'Alvarez', 'M', 'Argentina', '1981-08-05', 10, 10, 'matias.alvarez@hospital.com', '1112345678'),
-('28123456', 'Laura', 'Ruiz', 'F', 'Argentina', '1984-02-12', 11, 11, 'laura.ruiz@hospital.com', '1123456790'),
-('28234567', 'Nicolás', 'Sosa', 'M', 'Argentina', '1977-07-17', 12, 12, 'nicolas.sosa@hospital.com', '1134567891'),
-('28345678', 'Vanesa', 'Mendoza', 'F', 'Argentina', '1991-10-23', 13, 13, 'vanesa.mendoza@hospital.com', '1145678912'),
-('28456789', 'Santiago', 'Ibarra', 'M', 'Argentina', '1980-12-30', 14, 14, 'santiago.ibarra@hospital.com', '1156789123'),
-('28567890', 'Belén', 'Ortiz', 'F', 'Argentina', '1987-09-11', 15, 15, 'belen.ortiz@hospital.com', '1167891234'),
-('28678901', 'Tomás', 'Moreno', 'M', 'Argentina', '1985-06-06', 16, 16, 'tomas.moreno@hospital.com', '1178912345'),
-('28789012', 'Cecilia', 'Aguirre', 'F', 'Argentina', '1976-04-19', 17, 17, 'cecilia.aguirre@hospital.com', '1189123456'),
-('28890123', 'Ignacio', 'Luna', 'M', 'Argentina', '1992-01-01', 18, 18, 'ignacio.luna@hospital.com', '1191234567'),
-('28901234', 'Paula', 'Domínguez', 'F', 'Argentina', '1983-03-27', 19, 18, 'paula.dominguez@hospital.com', '1102345678');
+INSERT INTO Medico (DNI, NombreMedico, ApellidoMedico, Sexo, Nacionalidad, FechaNacimiento, Localidad, Especialidad, DiaAtencion, Horario, Email, Telefono) VALUES
+('27123456', 'Lucía', 'Martínez', 'F', 'Argentina', '1980-05-12', 1, 1, 1, 1, 'lucia.martinez@hospital.com', '1123456789'),
+('27234567', 'Julián', 'Pérez', 'M', 'Argentina', '1975-09-03', 2, 2, 2, 2,  'julian.perez@hospital.com', '1134567890'),
+('27345678', 'Romina', 'Gómez', 'F', 'Argentina', '1988-11-22', 3, 3, 3, 3, 'romina.gomez@hospital.com', '1145678901'),
+('27456789', 'Carlos', 'López', 'M', 'Argentina', '1982-01-15', 4, 4, 4, 4, 'carlos.lopez@hospital.com', '1156789012'),
+('27567890', 'Ana', 'Rodríguez', 'F', 'Argentina', '1990-03-30', 5, 5, 5, 5, 'ana.rodriguez@hospital.com', '1167890123'),
+('27678901', 'Federico', 'Torres', 'M', 'Argentina', '1985-07-19', 6, 6, 6, 6, 'federico.torres@hospital.com', '1178901234'),
+('27789012', 'Carla', 'Fernández', 'F', 'Argentina', '1979-12-08', 7, 7, 7, 1, 'carla.fernandez@hospital.com', '1189012345'),
+('27890123', 'Gustavo', 'Ramírez', 'M', 'Argentina', '1983-06-25', 8, 8, 1, 2, 'gustavo.ramirez@hospital.com', '1190123456'),
+('27901234', 'Verónica', 'Sánchez', 'F', 'Argentina', '1986-04-10', 9, 9, 2, 3, 'veronica.sanchez@hospital.com', '1101234567'),
+('28012345', 'Matías', 'Alvarez', 'M', 'Argentina', '1981-08-05', 10, 10, 3, 4, 'matias.alvarez@hospital.com', '1112345678'),
+('28123456', 'Laura', 'Ruiz', 'F', 'Argentina', '1984-02-12', 11, 11, 4, 5, 'laura.ruiz@hospital.com', '1123456790'),
+('28234567', 'Nicolás', 'Sosa', 'M', 'Argentina', '1977-07-17', 12, 12, 5, 6, 'nicolas.sosa@hospital.com', '1134567891'),
+('28345678', 'Vanesa', 'Mendoza', 'F', 'Argentina', '1991-10-23', 13, 13, 6, 1, 'vanesa.mendoza@hospital.com', '1145678912'),
+('28456789', 'Santiago', 'Ibarra', 'M', 'Argentina', '1980-12-30', 14, 14, 7, 2, 'santiago.ibarra@hospital.com', '1156789123'),
+('28567890', 'Belén', 'Ortiz', 'F', 'Argentina', '1987-09-11', 15, 15, 1, 3, 'belen.ortiz@hospital.com', '1167891234'),
+('28678901', 'Tomás', 'Moreno', 'M', 'Argentina', '1985-06-06', 16, 16, 2, 4, 'tomas.moreno@hospital.com', '1178912345'),
+('28789012', 'Cecilia', 'Aguirre', 'F', 'Argentina', '1976-04-19', 17, 17, 3, 5, 'cecilia.aguirre@hospital.com', '1189123456'),
+('28890123', 'Ignacio', 'Luna', 'M', 'Argentina', '1992-01-01', 18, 18, 4, 6, 'ignacio.luna@hospital.com', '1191234567'),
+('28901234', 'Paula', 'Domínguez', 'F', 'Argentina', '1983-03-27', 19, 18, 5, 1, 'paula.dominguez@hospital.com', '1102345678');
 GO
 
 INSERT INTO Pacientes (DNI, Nombre, Apellido, Sexo, Nacionalidad, FechaNacimiento, Direccion, IDLocalidad, CorreoElectronico, Telefono) VALUES
@@ -154,3 +154,68 @@ INSERT INTO Pacientes (DNI, Nombre, Apellido, Sexo, Nacionalidad, FechaNacimient
 (30123468, 'Camila', 'Moreno', 'F', 'Argentina', '1990-09-09', '9 de Julio 876', 13, 'camila.moreno@mail.com', '1135678901'),
 (30123469, 'Federico', 'Iglesias', 'M', 'Argentina', '1983-01-15', 'Independencia 1000', 14, 'federico.iglesias@mail.com', '1146789012'),
 (30123470, 'Luciana', 'Bravo', 'F', 'Argentina', '1996-12-24', 'Avellaneda 789', 15, 'luciana.bravo@mail.com', '1157890123');
+GO
+
+
+CREATE PROCEDURE [dbo].[spAgregarMedico]
+(
+    @DNI INT,
+    @NombreMedico VARCHAR(100),
+    @ApellidoMedico VARCHAR(100),
+    @Sexo CHAR(1),
+    @Nacionalidad VARCHAR(50),
+    @FechaNacimiento DATE,
+    @Localidad INT,
+    @Especialidad INT,
+    @DiaAtencion INT,
+    @Horario INT,
+    @Email VARCHAR(100),
+    @Telefono VARCHAR(20)
+)
+AS
+BEGIN
+    INSERT INTO Medico (
+        DNI, NombreMedico, ApellidoMedico, Sexo, Nacionalidad, FechaNacimiento,
+        Localidad, Especialidad, DiaAtencion, Horario, Email, Telefono
+    )
+    VALUES (
+        @DNI, @NombreMedico, @ApellidoMedico, @Sexo, @Nacionalidad, @FechaNacimiento,
+        @Localidad, @Especialidad, @DiaAtencion, @Horario, @Email, @Telefono
+    )
+END
+GO
+
+CREATE PROCEDURE [dbo].[spModificarMedico]
+(
+    @DNI INT,
+    @NombreMedico VARCHAR(100),
+    @ApellidoMedico VARCHAR(100),
+    @Sexo CHAR(1),
+    @Nacionalidad VARCHAR(50),
+    @FechaNacimiento DATE,
+    @Localidad INT,
+    @Especialidad INT,
+    @DiaAtencion INT,
+    @Horario INT,
+    @Email VARCHAR(100),
+    @Telefono VARCHAR(20)
+)
+AS
+BEGIN
+    UPDATE Medico
+    SET DNI = @DNI,
+        NombreMedico = @NombreMedico,
+        ApellidoMedico = @ApellidoMedico,
+        Sexo = @Sexo,
+        Nacionalidad = @Nacionalidad,
+        FechaNacimiento = @FechaNacimiento,
+        Localidad = @Localidad,
+        Especialidad = @Especialidad,
+        DiaAtencion = @DiaAtencion,
+        Horario = @Horario,
+        Email = @Email,
+        Telefono = @Telefono
+    WHERE DNI = @DNI
+END
+
+
