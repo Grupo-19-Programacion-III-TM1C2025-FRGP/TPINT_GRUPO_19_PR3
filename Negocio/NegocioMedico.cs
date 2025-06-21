@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Datos;
+using Entidades;
+
+namespace Negocio
+{
+    public class NegocioMedico
+    {
+        public int agregarMedico(Medico medico)
+        {
+            DaoMedico dao = new DaoMedico();
+            return dao.agregarMedico(medico);
+        }
+
+        public int modificarMedico(Medico medico)
+        {
+            DaoMedico dao = new DaoMedico();
+            return dao.modificarMedico(medico);
+        }
+
+        public int traerLegajoPorDNI(int dni)
+        {
+            DaoMedico dao = new DaoMedico();
+            return dao.traerLegajoPorDNI(dni);
+        }
+
+    }
+}

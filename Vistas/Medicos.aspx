@@ -50,10 +50,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Legajo:</td>
+                            <td>DNI:</td>
                             <td>
-                                <asp:TextBox ID="txtLegajo" runat="server" Width="200px"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="rfvLegajo" runat="server" ControlToValidate="txtLegajo"
+                                <asp:TextBox ID="txtDNI" runat="server" Width="200px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="rfvDNI" runat="server" ControlToValidate="txtDNI"
                                     ErrorMessage="El legajo es obligatorio" ForeColor="Red">*
                                 </asp:RequiredFieldValidator>
                             </td>
@@ -77,6 +77,55 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>Sexo:</td>
+                            <td>
+                                <asp:TextBox ID="txtSexo" runat="server" Width="200px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="rfvSexo" runat="server"
+                                    ControlToValidate="txtSexo" ErrorMessage="El apellido es obligatorio"
+                                    ForeColor="Red">*</asp:RequiredFieldValidator>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nacionalidad:</td>
+                            <td>
+                                <asp:TextBox ID="txtNacionalidad" runat="server" Width="200px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="rfvNacionalidad" runat="server"
+                                    ControlToValidate="txtNacionalidad" ErrorMessage="El apellido es obligatorio"
+                                    ForeColor="Red">*</asp:RequiredFieldValidator>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Provincia:</td>
+                            <td>
+                                <asp:DropDownList ID="ddlProvincia" runat="server" Width="200px" OnSelectedIndexChanged="ddlProvincia_SelectedIndexChanged">
+                                </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="rfvProvincia" runat="server"
+                                    ControlToValidate="ddlProvincia" ErrorMessage="Los horarios son obligatorios"
+                                    ForeColor="Red">*
+                                </asp:RequiredFieldValidator>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Localidad:</td>
+                            <td>
+                                <asp:DropDownList ID="ddlLocalidad" runat="server" Width="200px">
+                                </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="rfvLocalidad" runat="server"
+                                    ControlToValidate="ddlLocalidad" ErrorMessage="Los horarios son obligatorios"
+                                    ForeColor="Red">*
+                                </asp:RequiredFieldValidator>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nacimiento:</td>
+                            <td>
+                                <asp:TextBox ID="txtNacimiento" runat="server" Width="200px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="rfvNacimiento" runat="server"
+                                    ControlToValidate="txtNacimiento" ErrorMessage="El apellido es obligatorio"
+                                    ForeColor="Red">*</asp:RequiredFieldValidator>
+                            </td>
+                        </tr>
+                        <tr>
                             <td>Especialidad:</td>
                             <td>
                                 <asp:DropDownList ID="ddlEspecialidad" runat="server" Width="200px">
@@ -84,6 +133,17 @@
                                 <asp:RequiredFieldValidator ID="rfvEspecialidad" runat="server"
                                     ControlToValidate="ddlEspecialidad" ErrorMessage="La especialidad es obligatoria"
                                     ForeColor="Red">*</asp:RequiredFieldValidator>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Dias de Atencion:</td>
+                            <td>
+                                <asp:DropDownList ID="ddlDiaAtencion" runat="server" Width="200px">
+                                </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="rfvDiaAtencion" runat="server"
+                                    ControlToValidate="ddlDiaAtencion" ErrorMessage="Los horarios son obligatorios"
+                                    ForeColor="Red">*
+                                </asp:RequiredFieldValidator>
                             </td>
                         </tr>
                         <tr>
@@ -142,17 +202,24 @@
 
                     <asp:GridView ID="gvMedicos" runat="server" AutoGenerateColumns="False" CssClass="gridview"
                         OnRowCommand="gvMedicos_RowCommand" OnRowEditing="gvMedicos_RowEditing"
-                        OnRowDeleting="gvMedicos_RowDeleting" DataKeyNames="Legajo" AllowPaging="True" PageSize="10"
+                        OnRowDeleting="gvMedicos_RowDeleting" DataKeyNames="Legajo" AllowPaging="True"
                         PagerStyle-CssClass="pager" HeaderStyle-CssClass="header" RowStyle-CssClass="row"
-                        AlternatingRowStyle-CssClass="alt-row">
+                        AlternatingRowStyle-CssClass="alt-row" OnSelectedIndexChanged="gvMedicos_SelectedIndexChanged">
+<AlternatingRowStyle CssClass="alt-row"></AlternatingRowStyle>
                         <Columns>
                             <asp:BoundField DataField="Legajo" HeaderText="Legajo" />
+                            <asp:BoundField DataField="DNI" HeaderText="DNI" />
                             <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                             <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
+                            <asp:BoundField DataField="Sexo" HeaderText="Sexo" />
+                            <asp:BoundField DataField="Nacionalidad" HeaderText="Nacionalidad" />
+                            <asp:BoundField DataField="Provincia" HeaderText="Provincia" />
+                            <asp:BoundField DataField="Localidad" HeaderText="Localidad" />
                             <asp:BoundField DataField="Especialidad" HeaderText="Especialidad" />
-                            <asp:BoundField DataField="Horarios" HeaderText="Horarios" />
                             <asp:BoundField DataField="Email" HeaderText="Email" />
                             <asp:BoundField DataField="Telefono" HeaderText="Teléfono" />
+                            <asp:BoundField DataField="DiaAtencion" HeaderText="Dia Atencion" />
+                            <asp:BoundField DataField="Horarios" HeaderText="Horarios" />
                             <asp:TemplateField HeaderText="Acciones">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lnkEditar" runat="server" CommandName="Edit"
@@ -164,6 +231,12 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
+
+<HeaderStyle CssClass="header"></HeaderStyle>
+
+<PagerStyle CssClass="pager"></PagerStyle>
+
+<RowStyle CssClass="row"></RowStyle>
                     </asp:GridView>
 
                     <asp:HiddenField ID="hdnLegajoSeleccionado" runat="server" />

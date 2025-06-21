@@ -41,5 +41,20 @@ namespace Datos
 
             return filasAfectadas;
         }
+
+        public int EjecutarProcedimientoAlmacenado(SqlCommand comando, string nombreSP)
+        {
+            SqlConnection conexion = ObtenerConexion();
+            comando.Connection = conexion;
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.CommandText = nombreSP;
+
+            conexion.Open();
+            int filasAfectadas = comando.ExecuteNonQuery();
+            conexion.Close();
+
+            return filasAfectadas;
+        }
+
     }
 }
