@@ -7,11 +7,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Entidades;
+using System.Runtime.Remoting.Messaging;
 
 namespace Datos
 {
-    public class DaoMedico
+    public class DaoMedico : GenericDao
     {
+        // Propiedades
+        readonly string consultaTabla = "SELECT * FROM Medicos";
+        string consultaTablaFiltrada = "select M.NombreMedico, M.LegajoMedico, M.Especialidad from Medico AS M inner join Especialidades AS E on M.Especialidad = E.CodEspecialidad_Es where M.Especialidad = ";
+        DataTable tabla;
+
+        // Métodos
         public void ArmarParametrosMedicoAgregar(ref SqlCommand comando, Medico med)
         {
             SqlParameter param;
@@ -117,7 +124,7 @@ namespace Datos
         {
             Conexion ds = new Conexion();
             string consulta = "SELECT LegajoMedico FROM Medico WHERE DNI = " + dni;
-            DataTable tabla = ds.TraerTabla(consulta, "Medico");
+            tabla = ds.TraerTabla(consulta, "Medico");
 
             if (tabla.Rows.Count > 0)
                 return Convert.ToInt32(tabla.Rows[0]["LegajoMedico"]);
@@ -125,8 +132,16 @@ namespace Datos
             return -1; // O algún valor que indique que no se encontró
         }
 
-
-
+        public DataTable traerTablaMedicos()
+        {
+            tabla = _conexion.TraerTabla(consultaTabla, "Medico");
+            return tabla;
+        }
+        public DataTable FiltrarPorEspecialidad(string codEspecialidad)
+        {
+            consultaTablaFiltrada += codEspecialidad;
+            tabla = _conexion.TraerTabla(consultaTablaFiltrada, "Medico");
+            return tabla;
+        }
     }
-
 }

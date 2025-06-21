@@ -19,6 +19,10 @@ namespace Negocio
             return dao.modificarPaciente(paciente);
         }
 
-      
+        public DataTable getTabla()
+        {
+            DaoPaciente dao = new DaoPaciente();
+            return dao.traerTablaPacientes();
+        }
     }
 }
