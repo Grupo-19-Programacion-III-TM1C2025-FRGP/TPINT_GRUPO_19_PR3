@@ -14,44 +14,40 @@
 
             .auto-style2 {}
 
-            .auto-style3 {
-                width: 96px;
+            .auto-style14 {
+                width: 7%;
             }
-
-            .auto-style5 {
-                width: 96px;
+            .auto-style15 {
+                width: 56%;
+            }
+            .auto-style16 {
+                width: 5%;
+            }
+            .auto-style17 {
+                width: 14%;
+            }
+            .auto-style20 {
+                width: 7%;
                 height: 23px;
             }
-
-            .auto-style6 {
+            .auto-style21 {
+                height: 23px;
+                width: 56%;
+            }
+            .auto-style22 {
+                width: 5%;
                 height: 23px;
             }
-
-            .auto-style8 {
-                width: 189px;
-            }
-
-            .auto-style9 {
+            .auto-style23 {
                 height: 23px;
-                width: 189px;
+                width: 14%;
             }
-
-            .auto-style10 {
-                width: 156px;
+            .auto-style26 {
+                width: 10px;
             }
-
-            .auto-style11 {
+            .auto-style27 {
                 height: 23px;
-                width: 156px;
-            }
-
-            .auto-style12 {
-                width: 76px;
-            }
-
-            .auto-style13 {
-                width: 76px;
-                height: 23px;
+                width: 10px;
             }
         </style>
     </head>
@@ -92,138 +88,136 @@
                 <div>
                     <table class="auto-style1">
                         <tr>
-                            <td class="auto-style3">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style12">&nbsp;</td>
-                            <td class="auto-style8">&nbsp;</td>
-                            <td class="auto-style10">&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td class="auto-style14">&nbsp;</td>
+                            <td class="auto-style15">&nbsp;</td>
+                            <td class="auto-style16">&nbsp;</td>
+                            <td class="auto-style17">&nbsp;</td>
+                            <td class="auto-style26">&nbsp;</td>
+                            <td class="auto-style17">&nbsp;</td>
                         </tr>
                         <tr>
-                            <td class="auto-style3">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style12">&nbsp;</td>
-                            <td class="auto-style8">&nbsp;</td>
-                            <td class="auto-style10">&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td class="auto-style14">&nbsp;</td>
+                            <td class="auto-style15">&nbsp;</td>
+                            <td class="auto-style16">&nbsp;</td>
+                            <td class="auto-style17">&nbsp;</td>
+                            <td class="auto-style26">&nbsp;</td>
+                            <td class="auto-style17">&nbsp;</td>
                         </tr>
                         <tr>
-                            <td class="auto-style3">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style12">&nbsp;</td>
-                            <td class="auto-style8">&nbsp;</td>
-                            <td class="auto-style10">&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td class="auto-style14">&nbsp;</td>
+                            <td class="auto-style15">&nbsp;</td>
+                            <td class="auto-style16">&nbsp;</td>
+                            <td class="auto-style17">&nbsp;</td>
+                            <td class="auto-style26">&nbsp;</td>
+                            <td class="auto-style17">&nbsp;</td>
                         </tr>
                         <tr>
                             <td class="auto-style2" colspan="5">
                                 <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="18pt"
                                     Text="Asignación de Turno"></asp:Label>
                             </td>
-                            <td>&nbsp;</td>
+                            <td class="auto-style17">&nbsp;</td>
                         </tr>
                         <tr>
-                            <td class="auto-style3">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style12">&nbsp;</td>
-                            <td class="auto-style8">&nbsp;</td>
-                            <td class="auto-style10">&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td class="auto-style14">&nbsp;</td>
+                            <td class="auto-style15">&nbsp;</td>
+                            <td class="auto-style16">&nbsp;</td>
+                            <td class="auto-style17">&nbsp;</td>
+                            <td class="auto-style26">&nbsp;</td>
+                            <td class="auto-style17">&nbsp;</td>
                         </tr>
                         <tr>
-                            <td class="auto-style3">
+                            <td class="auto-style14">
                                 <asp:Label ID="Label2" runat="server" Text="Especialidad:"></asp:Label>
                             </td>
-                            <td>
-                                <asp:DropDownList ID="ddlEspecialidad" runat="server" Height="19px" Width="190px">
+                            <td class="auto-style15">
+                                <asp:DropDownList ID="ddlEspecialidad" runat="server" Height="19px" Width="190px" AutoPostBack="True" OnSelectedIndexChanged="ddlEspecialidad_SelectedIndexChanged">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="rfvEspecialidad" runat="server"
                                     ControlToValidate="ddlEspecialidad" ErrorMessage="*"></asp:RequiredFieldValidator>
                             </td>
-                            <td class="auto-style12">
+                            <td class="auto-style16">
                                 <asp:Label ID="Label5" runat="server" Text="Horario:"></asp:Label>
                             </td>
-                            <td class="auto-style8">
+                            <td class="auto-style17">
                                 <asp:DropDownList ID="ddlHorario" runat="server" Height="19px" Width="190px">
                                 </asp:DropDownList>
                             </td>
-                            <td class="auto-style10">
+                            <td class="auto-style26">
                                 <asp:RequiredFieldValidator ID="rfvHorario" runat="server"
                                     ControlToValidate="ddlHorario" ErrorMessage="*"></asp:RequiredFieldValidator>
                             </td>
-                            <td>&nbsp;</td>
+                            <td class="auto-style17">&nbsp;</td>
                         </tr>
                         <tr>
-                            <td class="auto-style3">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style12">&nbsp;</td>
-                            <td class="auto-style8">&nbsp;</td>
-                            <td class="auto-style10">&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td class="auto-style14">&nbsp;</td>
+                            <td class="auto-style15">&nbsp;</td>
+                            <td class="auto-style16">&nbsp;</td>
+                            <td class="auto-style17">&nbsp;</td>
+                            <td class="auto-style26">&nbsp;</td>
+                            <td class="auto-style17">&nbsp;</td>
                         </tr>
                         <tr>
-                            <td class="auto-style5">
+                            <td class="auto-style20">
                                 <asp:Label ID="Label3" runat="server" Text="Médico:"></asp:Label>
                             </td>
-                            <td class="auto-style6">
+                            <td class="auto-style21">
                                 <asp:DropDownList ID="ddlMedico" runat="server" Height="19px" Width="190px">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="rfvMedico" runat="server" ControlToValidate="ddlMedico"
                                     ErrorMessage="*"></asp:RequiredFieldValidator>
                             </td>
-                            <td class="auto-style13">
+                            <td class="auto-style22">
                                 <asp:Label ID="Label6" runat="server" Text="Paciente:"></asp:Label>
                             </td>
-                            <td class="auto-style9">
-                                <asp:DropDownList ID="ddlPaciente" runat="server" Height="19px" Width="190px">
-                                </asp:DropDownList>
+                            <td class="auto-style23">
+                                <asp:TextBox ID="txtDNIPaciente" runat="server" TextMode="Number" Width="175px"></asp:TextBox>
                             </td>
-                            <td class="auto-style11">
+                            <td class="auto-style27">
                                 <asp:RequiredFieldValidator ID="rfvPaciente" runat="server"
-                                    ControlToValidate="ddlPaciente" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                    ControlToValidate="txtDNIPaciente" ErrorMessage="*"></asp:RequiredFieldValidator>
                             </td>
-                            <td class="auto-style6"></td>
+                            <td class="auto-style23"></td>
                         </tr>
                         <tr>
-                            <td class="auto-style3">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style12">&nbsp;</td>
-                            <td class="auto-style8">&nbsp;</td>
-                            <td class="auto-style10">&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td class="auto-style14">&nbsp;</td>
+                            <td class="auto-style15">&nbsp;</td>
+                            <td class="auto-style16">&nbsp;</td>
+                            <td class="auto-style17">&nbsp;</td>
+                            <td class="auto-style26">&nbsp;</td>
+                            <td class="auto-style17">&nbsp;</td>
                         </tr>
                         <tr>
-                            <td class="auto-style3">
+                            <td class="auto-style14">
                                 <asp:Label ID="Label4" runat="server" Text="Fecha:"></asp:Label>
                             </td>
-                            <td>
-                                <asp:DropDownList ID="ddlFecha" runat="server" Height="19px" Width="190px">
-                                </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="rfvFecha" runat="server" ControlToValidate="ddlFecha"
+                            <td class="auto-style15">
+                                <asp:TextBox ID="txtFecha" runat="server" TextMode="Date" Width="179px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="rfvFecha" runat="server" ControlToValidate="txtFecha"
                                     ErrorMessage="*"></asp:RequiredFieldValidator>
                             </td>
-                            <td class="auto-style12">&nbsp;</td>
-                            <td class="auto-style8">
+                            <td class="auto-style16">&nbsp;</td>
+                            <td class="auto-style17">
                                 <asp:Button ID="btnGuardar" runat="server" Text="Guardar Turno" />
                             </td>
-                            <td class="auto-style10">&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td class="auto-style26">&nbsp;</td>
+                            <td class="auto-style17">&nbsp;</td>
                         </tr>
                         <tr>
-                            <td class="auto-style3"></td>
-                            <td>&nbsp;</td>
-                            <td class="auto-style12"></td>
-                            <td class="auto-style8"></td>
-                            <td class="auto-style10"></td>
-                            <td></td>
+                            <td class="auto-style14"></td>
+                            <td class="auto-style15">&nbsp;</td>
+                            <td class="auto-style16"></td>
+                            <td class="auto-style17"></td>
+                            <td class="auto-style26"></td>
+                            <td class="auto-style17"></td>
                         </tr>
                         <tr>
-                            <td class="auto-style5"></td>
-                            <td class="auto-style6"></td>
-                            <td class="auto-style13"></td>
-                            <td class="auto-style9"></td>
-                            <td class="auto-style11"></td>
-                            <td class="auto-style6"></td>
+                            <td class="auto-style20"></td>
+                            <td class="auto-style21">&nbsp;</td>
+                            <td class="auto-style22"></td>
+                            <td class="auto-style23"></td>
+                            <td class="auto-style27"></td>
+                            <td class="auto-style23"></td>
                         </tr>
                     </table>
                 </div>

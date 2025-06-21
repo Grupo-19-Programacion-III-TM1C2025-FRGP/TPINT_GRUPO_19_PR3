@@ -5,8 +5,12 @@ using Entidades;
 
 namespace Datos
 {
-    public class DaoPaciente
+    public class DaoPaciente : GenericDao
     {
+        // Propiedades
+        readonly string consultaTabla = "SELECT * FROM Pacientes";
+
+        // Métodos
         public void ArmarParametrosPacienteAgregar(ref SqlCommand comando, Paciente pac)
         {
             SqlParameter param;
@@ -95,8 +99,10 @@ namespace Datos
             return con.EjecutarProcedimientoAlmacenado(comando, "spModificarPaciente");
         }
 
-
-     
-
+        public DataTable traerTablaPacientes()
+        {
+            DataTable tabla = _conexion.TraerTabla(consultaTabla, "Medicos");
+            return tabla;
+        }
     }
 }

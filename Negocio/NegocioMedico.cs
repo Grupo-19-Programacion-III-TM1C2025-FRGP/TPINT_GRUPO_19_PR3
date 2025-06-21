@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,15 @@ namespace Negocio
             DaoMedico dao = new DaoMedico();
             return dao.traerLegajoPorDNI(dni);
         }
-
+        public DataTable getTabla()
+        {
+            DaoMedico dao = new DaoMedico();
+            return dao.traerTablaMedicos();
+        }
+        public DataTable getTablaFiltrada(string codEspecialidad)
+        {
+            DaoMedico dao = new DaoMedico();
+            return dao.FiltrarPorEspecialidad(codEspecialidad);
+        }
     }
 }
