@@ -97,7 +97,7 @@
                         <tr>
                             <td>Provincia:</td>
                             <td>
-                                <asp:DropDownList ID="ddlProvincia" runat="server" Width="200px" OnSelectedIndexChanged="ddlProvincia_SelectedIndexChanged">
+                                <asp:DropDownList ID="ddlProvincia" runat="server" Width="200px" AutoPostBack="true" OnSelectedIndexChanged="ddlProvincia_SelectedIndexChanged">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="rfvProvincia" runat="server"
                                     ControlToValidate="ddlProvincia" ErrorMessage="Los horarios son obligatorios"
@@ -205,7 +205,7 @@
                         OnRowDeleting="gvMedicos_RowDeleting" DataKeyNames="Legajo" AllowPaging="True"
                         PagerStyle-CssClass="pager" HeaderStyle-CssClass="header" RowStyle-CssClass="row"
                         AlternatingRowStyle-CssClass="alt-row" OnSelectedIndexChanged="gvMedicos_SelectedIndexChanged">
-<AlternatingRowStyle CssClass="alt-row"></AlternatingRowStyle>
+                    <AlternatingRowStyle CssClass="alt-row"></AlternatingRowStyle>
                         <Columns>
                             <asp:BoundField DataField="Legajo" HeaderText="Legajo" />
                             <asp:BoundField DataField="DNI" HeaderText="DNI" />
@@ -232,11 +232,11 @@
                             </asp:TemplateField>
                         </Columns>
 
-<HeaderStyle CssClass="header"></HeaderStyle>
+                        <HeaderStyle CssClass="header"></HeaderStyle>
 
-<PagerStyle CssClass="pager"></PagerStyle>
+                        <PagerStyle CssClass="pager"></PagerStyle>
 
-<RowStyle CssClass="row"></RowStyle>
+                        <RowStyle CssClass="row"></RowStyle>
                     </asp:GridView>
 
                     <asp:HiddenField ID="hdnLegajoSeleccionado" runat="server" />

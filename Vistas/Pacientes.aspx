@@ -118,13 +118,26 @@
                                     ForeColor="Red">*</asp:RequiredFieldValidator>
                             </td>
                         </tr>
-                        <tr>
+                           <tr>
                             <td>Provincia:</td>
                             <td>
-                                <asp:TextBox ID="txtProvincia" runat="server" Width="189px"></asp:TextBox>
+                                <asp:DropDownList ID="ddlProvincia" runat="server" Width="200px" AutoPostBack="true" OnSelectedIndexChanged="ddlProvincia_SelectedIndexChanged">
+                                </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="rfvProvincia" runat="server"
-                                    ControlToValidate="txtProvincia" ErrorMessage="La provincia es obligatoria"
-                                    ForeColor="Red">*</asp:RequiredFieldValidator>
+                                    ControlToValidate="ddlProvincia" ErrorMessage="Los horarios son obligatorios"
+                                    ForeColor="Red">*
+                                </asp:RequiredFieldValidator>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Localidad:</td>
+                            <td>
+                                <asp:DropDownList ID="ddlLocalidad" runat="server" Width="200px">
+                                </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                    ControlToValidate="ddlLocalidad" ErrorMessage="Los horarios son obligatorios"
+                                    ForeColor="Red">*
+                                </asp:RequiredFieldValidator>
                             </td>
                         </tr>
                         <tr>
@@ -177,40 +190,8 @@
 
                 </div>
 
-                <asp:GridView ID="gvPacientes" runat="server" AutoGenerateColumns="False" CssClass="gridview"
-                    OnRowCommand="gvPacientes_RowCommand" OnRowEditing="gvPacientes_RowEditing"
-                    OnRowDeleting="gvPacientes_RowDeleting" DataKeyNames="DNI" AllowPaging="True"
-                    PagerStyle-CssClass="pager" HeaderStyle-CssClass="header" RowStyle-CssClass="row"
-                    AlternatingRowStyle-CssClass="alt-row">
-                    <AlternatingRowStyle CssClass="alt-row"></AlternatingRowStyle>
-                    <Columns>
-                        <asp:BoundField DataField="DNI" HeaderText="DNI" />
-                        <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
-                        <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
-                        <asp:BoundField DataField="Sexo" HeaderText="Sexo" />
-                        <asp:BoundField DataField="Email" HeaderText="Email" />
-                        <asp:BoundField DataField="Telefono" HeaderText="Teléfono" />
-                        <asp:TemplateField HeaderText="Acciones">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="lnkEditar0" runat="server" CommandName="Edit"
-                                    CommandArgument='<%# Eval("DNI") %>' Text="Editar" CssClass="link-button" />
-                                |
-                                <asp:LinkButton ID="lnkEliminar0" runat="server" CommandName="Delete"
-                                    CommandArgument='<%# Eval("DNI") %>' Text="Eliminar" CssClass="link-button"
-                                    OnClientClick="return confirm('¿Está seguro de eliminar este paciente?');" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-
-                    <HeaderStyle CssClass="header"></HeaderStyle>
-
-                    <PagerStyle CssClass="pager"></PagerStyle>
-
-                    <RowStyle CssClass="row"></RowStyle>
-                </asp:GridView>
-
-                <asp:HiddenField ID="hdnFDniSeleccionado" runat="server" />
-            </div>
+               
+          
         </form>
     </body>
 
