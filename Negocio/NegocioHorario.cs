@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Datos;
+using Entidades;
 
 namespace Negocio
 {
@@ -14,6 +15,12 @@ namespace Negocio
         {
             DaoHorarios dao = new DaoHorarios();
             return dao.getTablaHorarios();
+        }
+
+        public float SacarPorcentaje(Turno turno)
+        {
+            DaoHorarios dao = new DaoHorarios();
+            return dao.SacarPorcentajeAsistencia(turno);
         }
     }
 
