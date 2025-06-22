@@ -218,6 +218,52 @@ BEGIN
     WHERE DNI = @DNI
 END
 
+
+CREATE PROCEDURE CalcularPorcentajeEstado(
+    @FechaInicio DATE,
+    @FechaFin DATE
+)
+AS
+BEGIN
+    DECLARE @TotalTurnos INT;
+    DECLARE @Ausentes INT;
+    DECLARE @Presentes INT;
+    DECLARE @PorcentajeAusentes DECIMAL(5, 2);
+    DECLARE @PorcentajePresentes DECIMAL(5, 2);
+
+    -- Obtener el total de turnos dentro del rango de fechas
+    SELECT @TotalTurnos = COUNT(*)
+    FROM Turnos
+    WHERE FechaTurno BETWEEN @FechaInicio AND @FechaFin;
+
+    -- Contar ausentes y presentes
+    SELECT 
+        @Ausentes = COUNT(CASE WHEN EstadoAsistencia = 'Ausente' THEN 1 END),
+        @Presentes = COUNT(CASE WHEN EstadoAsistencia = 'Presente' THEN 1 END)
+    FROM Turnos
+    WHERE FechaTurno BETWEEN @FechaInicio AND @FechaFin;
+
+    -- Calcular porcentajes
+    IF @TotalTurnos > 0
+    BEGIN
+        SET @PorcentajeAusentes = (CONVERT(DECIMAL(5, 2), @Ausentes) / @TotalTurnos) * 100;
+        SET @PorcentajePresentes = (CONVERT(DECIMAL(5, 2), @Presentes) / @TotalTurnos) * 100;
+    END
+    ELSE
+    BEGIN
+        SET @PorcentajeAusentes = 0.00;
+        SET @PorcentajePresentes = 0.00;
+    END
+
+    -- Mostrar resultados
+    SELECT 
+        TotalTurnos = @TotalTurnos,
+        Ausentes = @Ausentes,
+        Presentes = @Presentes,
+        PorcentajeAusentes = @PorcentajeAusentes,
+        PorcentajePresentes = @PorcentajePresentes;
+END;
+
 IF OBJECT_ID('dbo.spAgregarPaciente', 'P') IS NOT NULL
     DROP PROCEDURE dbo.spAgregarPaciente;
 GO
@@ -247,3 +293,60 @@ BEGIN
     )
 END
 
+    -- Calcular porcentajes
+    IF @TotalTurnos > 0
+    BEGIN
+        SET @PorcentajeAusentes = (CONVERT(DECIMAL(5, 2), @Ausentes) / @TotalTurnos) * 100;
+        SET @PorcentajePresentes = (CONVERT(DECIMAL(5, 2), @Presentes) / @TotalTurnos) * 100;
+    END
+    ELSE
+    BEGIN
+        SET @PorcentajeAusentes = 0.00;
+        SET @PorcentajePresentes = 0.00;
+    END
+
+    -- Mostrar resultados
+    SELECT 
+        TotalTurnos = @TotalTurnos,
+        Ausentes = @Ausentes,
+        Presentes = @Presentes,
+        PorcentajeAusentes = @PorcentajeAusentes,
+        PorcentajePresentes = @PorcentajePresentes;
+END;
+
+CREATE PROCEDURE ObtenerTurnosPorEspecialidad(
+    @FechaInicio DATE,
+    @FechaFin DATE
+)
+AS
+BEGIN
+    SELECT 
+        E.NombreEspecialidad_Es,
+        COUNT(*) AS TotalTurnos
+    FROM Turnos T
+    INNER JOIN Especialidades E ON T.CodEspecialidad = E.NombreEspecialidad_Es
+    WHERE 
+        T.FechaTurno BETWEEN @FechaInicio AND @FechaFin
+        AND E.NombreEspecialidad_Es IN (
+            'Kinesiolog�a',
+            'Traumatolog�a',
+            'Cardiolog�a',
+            'Cl�nica M�dica',
+            'Pediatr�a',
+            'Dermatolog�a',
+            'Ginecolog�a',
+            'Neurolog�a',
+            'Urolog�a',
+            'Oncolog�a',
+            'Psiquiatr�a',
+            'Reumatolog�a',
+            'Endocrinolog�a',
+            'Infectolog�a',
+            'Neumonolog�a',
+            'Hematolog�a',
+            'Fonoaudiolog�a',
+            'Nutrici�n'
+        )
+    GROUP BY E.NombreEspecialidad_Es
+    ORDER BY TotalTurnos DESC;
+END;

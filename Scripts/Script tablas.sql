@@ -143,3 +143,7 @@ CREATE TABLE Turnos (
 	CONSTRAINT FK_Turno_Especialidad FOREIGN KEY (CodEspecialidad) REFERENCES Especialidades(CodEspecialidad_Es)
 );
 GO
+
+ALTER TABLE Turnos
+ADD EstadoAsistencia varchar(15) NOT NULL
+go
