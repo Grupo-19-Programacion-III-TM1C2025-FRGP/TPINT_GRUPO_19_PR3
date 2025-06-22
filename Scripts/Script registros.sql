@@ -216,8 +216,37 @@ BEGIN
         Email = @Email,
         Telefono = @Telefono
     WHERE DNI = @DNI
-END
+END;
 
+IF OBJECT_ID('dbo.spAgregarPaciente', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.spAgregarPaciente;
+GO
+
+CREATE PROCEDURE dbo.spAgregarPaciente
+    @DNI INT,
+    @Nombre VARCHAR(100),
+    @Apellido VARCHAR(100),
+    @Sexo CHAR(1),
+    @Nacionalidad VARCHAR(50),
+    @FechaNacimiento DATE,
+    @Direccion VARCHAR(200),
+    @IDLocalidad INT,
+    @CorreoElectronico VARCHAR(100),
+    @Telefono VARCHAR(20)
+AS
+BEGIN
+    INSERT INTO Pacientes (
+        DNI, Nombre, Apellido, Sexo, Nacionalidad,
+        FechaNacimiento, Direccion, IDLocalidad,
+        CorreoElectronico, Telefono
+    )
+    VALUES (
+        @DNI, @Nombre, @Apellido, @Sexo, @Nacionalidad,
+        @FechaNacimiento, @Direccion, @IDLocalidad,
+        @CorreoElectronico, @Telefono
+    )
+END;
+GO
 
 CREATE PROCEDURE CalcularPorcentajeEstado(
     @FechaInicio DATE,
@@ -263,56 +292,7 @@ BEGIN
         PorcentajeAusentes = @PorcentajeAusentes,
         PorcentajePresentes = @PorcentajePresentes;
 END;
-
-IF OBJECT_ID('dbo.spAgregarPaciente', 'P') IS NOT NULL
-    DROP PROCEDURE dbo.spAgregarPaciente;
-GO
-
-CREATE PROCEDURE dbo.spAgregarPaciente
-    @DNI INT,
-    @Nombre VARCHAR(100),
-    @Apellido VARCHAR(100),
-    @Sexo CHAR(1),
-    @Nacionalidad VARCHAR(50),
-    @FechaNacimiento DATE,
-    @Direccion VARCHAR(200),
-    @IDLocalidad INT,
-    @CorreoElectronico VARCHAR(100),
-    @Telefono VARCHAR(20)
-AS
-BEGIN
-    INSERT INTO Pacientes (
-        DNI, Nombre, Apellido, Sexo, Nacionalidad,
-        FechaNacimiento, Direccion, IDLocalidad,
-        CorreoElectronico, Telefono
-    )
-    VALUES (
-        @DNI, @Nombre, @Apellido, @Sexo, @Nacionalidad,
-        @FechaNacimiento, @Direccion, @IDLocalidad,
-        @CorreoElectronico, @Telefono
-    )
-END
-
-    -- Calcular porcentajes
-    IF @TotalTurnos > 0
-    BEGIN
-        SET @PorcentajeAusentes = (CONVERT(DECIMAL(5, 2), @Ausentes) / @TotalTurnos) * 100;
-        SET @PorcentajePresentes = (CONVERT(DECIMAL(5, 2), @Presentes) / @TotalTurnos) * 100;
-    END
-    ELSE
-    BEGIN
-        SET @PorcentajeAusentes = 0.00;
-        SET @PorcentajePresentes = 0.00;
-    END
-
-    -- Mostrar resultados
-    SELECT 
-        TotalTurnos = @TotalTurnos,
-        Ausentes = @Ausentes,
-        Presentes = @Presentes,
-        PorcentajeAusentes = @PorcentajeAusentes,
-        PorcentajePresentes = @PorcentajePresentes;
-END;
+GO 
 
 CREATE PROCEDURE ObtenerTurnosPorEspecialidad(
     @FechaInicio DATE,
@@ -350,3 +330,4 @@ BEGIN
     GROUP BY E.NombreEspecialidad_Es
     ORDER BY TotalTurnos DESC;
 END;
+GO

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,9 +16,29 @@ namespace Vistas
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
             AuxiliarVistas.ValidarSesionAdministrador();
             lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
-        }
 
-        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+            if (!IsPostBack)
+            {
+                CargarFechas();
+            }
+
+        }
+        private void CargarFechas()
+        {
+            NegocioTurno fecha = new NegocioTurno();
+            ddFechaFinalp.DataSource = fecha.getTabla_Fecha();
+            ddFechaFinalp.DataTextField = "FechaTurno";
+            ddFechaFinalp.DataValueField = "FechaTurno";
+            ddFechaFinalp.DataBind();
+            ddFechaFinalp.Items.Insert(0, new ListItem("Seleccione una fecha final", "0"));
+
+            ddFechaInicialP.DataSource = fecha.getTabla_Fecha();
+            ddFechaInicialP.DataTextField = "FechaTurno";
+            ddFechaInicialP.DataValueField = "FechaTurno";
+            ddFechaInicialP.DataBind();
+            ddFechaInicialP.Items.Insert(0, new ListItem("Seleccione una fecha Inicial", "0"));
+        }
+protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             AuxiliarVistas.CerrarSesion();
         }

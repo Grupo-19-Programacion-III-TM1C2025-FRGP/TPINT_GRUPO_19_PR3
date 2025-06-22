@@ -16,12 +16,6 @@ namespace Negocio
             DaoHorarios dao = new DaoHorarios();
             return dao.getTablaHorarios();
         }
-
-        public float SacarPorcentaje(Turno turno)
-        {
-            DaoHorarios dao = new DaoHorarios();
-            return dao.SacarPorcentajeAsistencia(turno);
-        }
     }
 
 }
