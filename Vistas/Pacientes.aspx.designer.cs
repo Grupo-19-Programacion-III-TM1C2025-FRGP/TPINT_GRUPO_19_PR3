@@ -141,31 +141,31 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvApellido;
 
         /// <summary>
-        /// Control ddlSexo.
+        /// Control txtSexo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSexo;
+        protected global::System.Web.UI.WebControls.TextBox txtSexo;
 
         /// <summary>
-        /// Control rfvEspecialidad.
+        /// Control rfvSexo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEspecialidad;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvSexo;
 
         /// <summary>
-        /// Control ddlNacionalidad.
+        /// Control txtNacionalidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlNacionalidad;
+        protected global::System.Web.UI.WebControls.TextBox txtNacionalidad;
 
         /// <summary>
         /// Control rfvNacionalidad.
@@ -247,24 +247,6 @@ namespace Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-
-        /// <summary>
-        /// Control txtLocalidad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLocalidad;
-
-        /// <summary>
-        /// Control rfvLocalidad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvLocalidad;
 
         /// <summary>
         /// Control txtEmail.
