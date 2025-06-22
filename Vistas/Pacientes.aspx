@@ -48,7 +48,7 @@
                     <table class="form-table">
                         <tr>
                             <td colspan="2">
-                                <h3>Formulario de Paciente</h3>
+                                <h3>Formulario para agregar un Paciente</h3>
                             </td>
                         </tr>
                         <tr>
@@ -77,27 +77,24 @@
                                     ForeColor="Red">*</asp:RequiredFieldValidator>
                             </td>
                         </tr>
-                        <tr>
-                            <td>Sexo:</td>
-                            <td>
-                                <asp:DropDownList ID="ddlSexo" runat="server" Width="200px">
-                                </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="rfvEspecialidad" runat="server"
-                                    ControlToValidate="ddlSexo" ErrorMessage="El sexo es obligatorio" ForeColor="Red">*
-                                </asp:RequiredFieldValidator>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Nacionalidad:</td>
-                            <td>
-                                <asp:DropDownList ID="ddlNacionalidad" runat="server" Width="200px">
-                                </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="rfvNacionalidad" runat="server"
-                                    ControlToValidate="ddlNacionalidad" ErrorMessage="La nacionalidad es obligatoria"
-                                    ForeColor="Red">*
-                                </asp:RequiredFieldValidator>
-                            </td>
-                        </tr>
+                       <tr>
+                        <td>Sexo:</td>
+                        <td>
+                            <asp:TextBox ID="txtSexo" runat="server" Width="200px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rfvSexo" runat="server"
+                                ControlToValidate="txtSexo" ErrorMessage="El apellido es obligatorio"
+                                ForeColor="Red">*</asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nacionalidad:</td>
+                        <td>
+                            <asp:TextBox ID="txtNacionalidad" runat="server" Width="200px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rfvNacionalidad" runat="server"
+                                ControlToValidate="txtNacionalidad" ErrorMessage="El apellido es obligatorio"
+                                ForeColor="Red">*</asp:RequiredFieldValidator>
+                        </td>
+</tr>
                         <tr>
                             <td>Fecha de Nacimiento:</td>
                             <td>
@@ -140,15 +137,7 @@
                                 </asp:RequiredFieldValidator>
                             </td>
                         </tr>
-                        <tr>
-                            <td>Localidad:</td>
-                            <td>
-                                <asp:TextBox ID="txtLocalidad" runat="server" Width="189px"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="rfvLocalidad" runat="server"
-                                    ControlToValidate="txtLocalidad" ErrorMessage="La localidad es obligatoria"
-                                    ForeColor="Red">*</asp:RequiredFieldValidator>
-                            </td>
-                        </tr>
+                       
                         <tr>
                             <td>Email:</td>
                             <td>
@@ -167,8 +156,8 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <asp:Button ID="btnAgregar" runat="server" Text="Agregar Paciente"
-                                    CssClass="btn btn-primary" />
+                                <asp:Button ID="btnAgregar" runat="server" Text="Agregar Paciente" OnClick="btnAgregar_Click" />
+
                                 <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar Formulario" />
                             </td>
                         </tr>

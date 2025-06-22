@@ -1,7 +1,13 @@
 ﻿using System;
-using System.Data;
+using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using Entidades;
+using System.Runtime.Remoting.Messaging;
 
 namespace Datos
 {
@@ -9,7 +15,7 @@ namespace Datos
     {
         // Propiedades
         readonly string consultaTabla = "SELECT * FROM Pacientes";
-
+        DataTable tabla;
         // Métodos
         public void ArmarParametrosPacienteAgregar(ref SqlCommand comando, Paciente pac)
         {
@@ -24,7 +30,7 @@ namespace Datos
             param = comando.Parameters.Add("@Apellido", SqlDbType.VarChar, 100);
             param.Value = pac.Apellido;
 
-            param = comando.Parameters.Add("@Sexo", SqlDbType.VarChar, 10);
+            param = comando.Parameters.Add("@Sexo", SqlDbType.Char, 1);
             param.Value = pac.Sexo;
 
             param = comando.Parameters.Add("@Nacionalidad", SqlDbType.VarChar, 50);
@@ -60,7 +66,7 @@ namespace Datos
             param = comando.Parameters.Add("@Apellido", SqlDbType.VarChar, 100);
             param.Value = pac.Apellido;
 
-            param = comando.Parameters.Add("@Sexo", SqlDbType.VarChar, 10);
+            param = comando.Parameters.Add("@Sexo", SqlDbType.Char, 1);
             param.Value = pac.Sexo;
 
             param = comando.Parameters.Add("@Nacionalidad", SqlDbType.VarChar, 50);
@@ -101,7 +107,7 @@ namespace Datos
 
         public DataTable traerTablaPacientes()
         {
-            DataTable tabla = _conexion.TraerTabla(consultaTabla, "Medicos");
+            tabla = _conexion.TraerTabla(consultaTabla, "Pacientes");
             return tabla;
         }
     }

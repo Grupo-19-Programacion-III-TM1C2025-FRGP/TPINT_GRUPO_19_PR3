@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Entidades;
 using Negocio;
 using Vistas.Clases;
 
@@ -47,6 +48,31 @@ namespace Vistas
             ddlLocalidad.DataValueField = "IDLocalidad";
             ddlLocalidad.DataBind();
             ddlLocalidad.Items.Insert(0, new ListItem("Seleccione una localidad", "0"));
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Paciente paciente = new Paciente(
+                int.Parse(txtDNI.Text),
+                txtNombre.Text,
+                txtApellido.Text,
+               Convert.ToChar(txtSexo.Text.ToUpper()),
+                txtNacionalidad.Text,
+                DateTime.Parse(txtFechaNacimiento.Text),
+                txtDireccion.Text,
+                int.Parse(ddlLocalidad.SelectedValue),
+                txtEmail.Text,
+                txtTelefono.Text);
+
+
+            // Llamar a la capa de negocio
+            NegocioPaciente negocio = new NegocioPaciente();
+            int resultado = negocio.agregarPaciente(paciente);
+
+            if (resultado > 0)
+                lblMensaje.Text = "Médico agregado con éxito.";
+            else
+                lblMensaje.Text = "Error al agregar médico.";
         }
 
     }

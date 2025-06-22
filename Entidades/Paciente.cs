@@ -7,7 +7,7 @@ namespace Entidades
         public int DNI { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
-        public string Sexo { get; set; }
+        public char Sexo { get; set; }
         public string Nacionalidad { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public string Direccion { get; set; }
@@ -18,8 +18,8 @@ namespace Entidades
       
         public Paciente() { }
 
-        // Constructor completo
-        public Paciente(int dni, string nombre, string apellido, string sexo, string nacionalidad,
+        
+        public Paciente(int dni, string nombre, string apellido, char sexo, string nacionalidad,
                         DateTime fechaNacimiento, string direccion, int localidad,
                         string correoElectronico, string telefono)
         {
