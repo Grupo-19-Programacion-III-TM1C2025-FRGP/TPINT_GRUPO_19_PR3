@@ -26,7 +26,7 @@
                 <td>
                     <asp:Label ID="lblPassword" runat="server" Text="Contraseña:" Font-Bold="True"></asp:Label></td>
                 <td>
-                    <asp:TextBox ID="txtPassword" runat="server" Width="200px"></asp:TextBox></td>
+                    <asp:TextBox ID="txtPassword" runat="server" Width="200px" TextMode="Password"></asp:TextBox></td>
             </tr>
             <tr>
                 <td colspan="2" style="text-align: center; padding-top: 10px;">

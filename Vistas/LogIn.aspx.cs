@@ -11,7 +11,7 @@ namespace Vistas
 {
     public partial class LogIn : System.Web.UI.Page
     {
-        private LoginService _loginService = new LoginService();
+        private NegocioLogin _negocioLogin = new NegocioLogin();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,7 +23,7 @@ namespace Vistas
             string usuario = txtUsuario.Text;
             string password = txtPassword.Text;
 
-            Dictionary<string, string> resultado = _loginService.ValidarCredenciales(usuario, password);
+            Dictionary<string, string> resultado = _negocioLogin.ValidarCredenciales(usuario, password);
 
             if (resultado["success"] == "false")
             {
