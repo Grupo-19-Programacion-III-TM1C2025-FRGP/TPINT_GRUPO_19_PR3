@@ -7,6 +7,11 @@
     <head runat="server">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Gestión de pacientes</title>
+        <style type="text/css">
+            .auto-style1 {
+                width: 216px;
+            }
+        </style>
     </head>
 
     <body>
@@ -53,7 +58,7 @@
                         </tr>
                         <tr>
                             <td>DNI:</td>
-                            <td>
+                            <td class="auto-style1">
                                 <asp:TextBox ID="txtDNI" runat="server" Width="200px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rfvDNI" runat="server" ControlToValidate="txtDNI"
                                     ErrorMessage="El DNI es obligatorio" ForeColor="Red">*</asp:RequiredFieldValidator>
@@ -61,7 +66,7 @@
                         </tr>
                         <tr>
                             <td>Nombre:</td>
-                            <td>
+                            <td class="auto-style1">
                                 <asp:TextBox ID="txtNombre" runat="server" Width="200px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ControlToValidate="txtNombre"
                                     ErrorMessage="El nombre es obligatorio" ForeColor="Red">*
@@ -70,7 +75,7 @@
                         </tr>
                         <tr>
                             <td>Apellido:</td>
-                            <td>
+                            <td class="auto-style1">
                                 <asp:TextBox ID="txtApellido" runat="server" Width="200px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rfvApellido" runat="server"
                                     ControlToValidate="txtApellido" ErrorMessage="El apellido es obligatorio"
@@ -79,7 +84,7 @@
                         </tr>
                        <tr>
                         <td>Sexo:</td>
-                        <td>
+                        <td class="auto-style1">
                             <asp:TextBox ID="txtSexo" runat="server" Width="200px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rfvSexo" runat="server"
                                 ControlToValidate="txtSexo" ErrorMessage="El apellido es obligatorio"
@@ -88,7 +93,7 @@
                     </tr>
                     <tr>
                         <td>Nacionalidad:</td>
-                        <td>
+                        <td class="auto-style1">
                             <asp:TextBox ID="txtNacionalidad" runat="server" Width="200px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rfvNacionalidad" runat="server"
                                 ControlToValidate="txtNacionalidad" ErrorMessage="El apellido es obligatorio"
@@ -97,7 +102,7 @@
 </tr>
                         <tr>
                             <td>Fecha de Nacimiento:</td>
-                            <td>
+                            <td class="auto-style1">
                                 <asp:TextBox ID="txtFechaNacimiento" runat="server" TextMode="Date" Width="189px">
                                 </asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rfvFechaNacimiento" runat="server"
@@ -108,7 +113,7 @@
                         </tr>
                         <tr>
                             <td>Dirección:</td>
-                            <td>
+                            <td class="auto-style1">
                                 <asp:TextBox ID="txtDireccion" runat="server" Width="189px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rfvDireccion" runat="server"
                                     ControlToValidate="txtDireccion" ErrorMessage="La dirección es obligatoria"
@@ -117,7 +122,7 @@
                         </tr>
                            <tr>
                             <td>Provincia:</td>
-                            <td>
+                            <td class="auto-style1">
                                 <asp:DropDownList ID="ddlProvincia" runat="server" Width="200px" AutoPostBack="true" OnSelectedIndexChanged="ddlProvincia_SelectedIndexChanged">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="rfvProvincia" runat="server"
@@ -128,7 +133,7 @@
                         </tr>
                         <tr>
                             <td>Localidad:</td>
-                            <td>
+                            <td class="auto-style1">
                                 <asp:DropDownList ID="ddlLocalidad" runat="server" Width="200px">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
@@ -140,7 +145,7 @@
                        
                         <tr>
                             <td>Email:</td>
-                            <td>
+                            <td class="auto-style1">
                                 <asp:TextBox ID="txtEmail" runat="server" Width="200px" TextMode="Email"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rfvMail" runat="server" ControlToValidate="txtEmail"
                                     ErrorMessage="La Email es obligatorio" ForeColor="Red">*
@@ -149,7 +154,7 @@
                         </tr>
                         <tr>
                             <td>Teléfono:</td>
-                            <td>
+                            <td class="auto-style1">
                                 <asp:TextBox ID="txtTelefono" runat="server" Width="200px" TextMode="Number">
                                 </asp:TextBox>
                             </td>

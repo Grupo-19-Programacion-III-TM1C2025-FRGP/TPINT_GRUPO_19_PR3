@@ -104,6 +104,14 @@ namespace Datos
             param.Value = med.Telefono;
         }
 
+        private void ArmarParametrosMedicoDarDeBaja(ref SqlCommand comando, int dni)
+        {
+            SqlParameter param;
+
+            param = comando.Parameters.Add("@DNI", SqlDbType.Int);
+            param.Value = dni;
+        }
+
         public int agregarMedico(Medico med)
         {
             Conexion con = new Conexion();
@@ -143,5 +151,14 @@ namespace Datos
             tabla = _conexion.TraerTabla(consultaTablaFiltrada, "Medico");
             return tabla;
         }
+
+        public int BajaMedico(int dni)
+        {
+            Conexion con = new Conexion();
+            SqlCommand comando = new SqlCommand();
+            ArmarParametrosMedicoDarDeBaja(ref comando, dni);
+            return con.EjecutarProcedimientoAlmacenado(comando, "spBajaMedico");
+        }
+
     }
 }
