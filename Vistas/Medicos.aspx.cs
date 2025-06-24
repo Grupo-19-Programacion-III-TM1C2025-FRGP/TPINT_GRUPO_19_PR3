@@ -12,8 +12,8 @@ namespace MiProyecto
 {
     public partial class Medicos : Page
     {
-        // Lista estática para simular una base de datos
-        private static List<Medico> listaMedicos = new List<Medico>();
+        NegocioMedico negocioMedico = new NegocioMedico();
+       
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -94,7 +94,12 @@ namespace MiProyecto
 
         protected void gvMedicos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            // Evento de eliminación del GridView
+
+            e.Cancel = true;
+
+            int dni = Convert.ToInt32(gvMedicos.DataKeys[e.RowIndex].Value);
+
+           negocioMedico.bajaMedico(dni);
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
@@ -124,51 +129,12 @@ namespace MiProyecto
                 lblMensaje.Text = "Error al agregar médico.";
         }
 
-        protected void btnModificar_Click(object sender, EventArgs e)
-        {
-            NegocioMedico negocio = new NegocioMedico();
-            int dni = int.Parse(txtDNI.Text);
-            int legajo = negocio.traerLegajoPorDNI(dni);
-
-            if (legajo == -1)
-            {
-                lblMensaje.Text = "No se encontró el médico con ese DNI.";
-                return;
-            }
-
-            Medico medico = new Medico(
-                legajo,
-                dni,
-                txtNombre.Text,
-                txtApellido.Text,
-                Convert.ToChar(txtSexo.Text.ToUpper()),
-                txtNacionalidad.Text,
-                DateTime.Parse(txtNacimiento.Text),
-                int.Parse(ddlLocalidad.SelectedValue),
-                int.Parse(ddlEspecialidad.SelectedValue),
-                int.Parse(ddlDiaAtencion.SelectedValue),
-                int.Parse(ddlHorarios.SelectedValue),
-                txtEmail.Text,
-                txtTelefono.Text
-            );
-
-            int resultado = negocio.modificarMedico(medico);
-
-            if (resultado > 0)
-                lblMensaje.Text = "Médico modificado correctamente.";
-            else
-                lblMensaje.Text = "Error al modificar médico.";
-        }
 
         protected void btnLimpiar_Click(object sender, EventArgs e)
         {
-            // Lógica para limpiar formulario
+            LimpiarFormulario();
         }
 
-        protected void rptMedicos_ItemCommand(object source, RepeaterCommandEventArgs e)
-        {
-            // Lógica para manejar comandos del repeater (editar/eliminar)
-        }
 
         private void CargarMedicos()
         {
@@ -177,7 +143,19 @@ namespace MiProyecto
 
         private void LimpiarFormulario()
         {
-            // Lógica para limpiar formulario
+            txtDNI.Text = string.Empty;
+            txtNombre.Text = string.Empty;
+            txtApellido.Text = string.Empty;
+            txtSexo.Text = string.Empty;
+            txtNacionalidad.Text = string.Empty;
+            txtNacimiento.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtTelefono.Text = string.Empty;
+            ddlDiaAtencion.SelectedIndex = 0;
+            ddlEspecialidad.SelectedIndex = 0;
+            ddlHorarios.SelectedIndex = 0;
+            ddlLocalidad.SelectedIndex = 0;
+            ddlProvincia.SelectedIndex = 0;
         }
 
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
