@@ -331,3 +331,37 @@ BEGIN
     ORDER BY TotalTurnos DESC;
 END;
 GO
+
+CREATE PROCEDURE Filtro_Ausentes(
+    @FechaInicio DATE,
+    @FechaFin DATE
+)
+AS
+BEGIN
+
+SELECT T.DNIPaciente, T.FechaTurno, HT.HoraTurno, (M.NombreMedico + ' ' + M.ApellidoMedico) AS Nombre_Apellido_Medico, ES.NombreEspecialidad_Es, T.EstadoAsistencia
+FROM Turnos AS T 
+INNER JOIN HorariosDeTurnos AS HT ON T.IDHorarioTurno = HT.IDHorarioTurno
+INNER JOIN Medico AS M ON T.LegajoMedico = M.LegajoMedico
+INNER JOIN Especialidades AS ES ON T.CodEspecialidad = ES.CodEspecialidad_Es
+WHERE T.EstadoAsistencia = 'Ausente' AND FechaNacimiento >= @FechaInicio AND FechaTurno <= @FechaFin
+
+END
+GO
+
+CREATE PROCEDURE Filtro_Presentes(
+
+    @FechaInicio DATE,
+    @FechaFin DATE
+)
+AS
+BEGIN
+
+SELECT T.DNIPaciente, T.FechaTurno, HT.HoraTurno, (M.NombreMedico + ' ' + M.ApellidoMedico) AS Nombre_Apellido_Medico, ES.NombreEspecialidad_Es, T.EstadoAsistencia
+FROM Turnos AS T 
+INNER JOIN HorariosDeTurnos AS HT ON T.IDHorarioTurno = HT.IDHorarioTurno
+INNER JOIN Medico AS M ON T.LegajoMedico = M.LegajoMedico
+INNER JOIN Especialidades AS ES ON T.CodEspecialidad = ES.CodEspecialidad_Es
+WHERE T.EstadoAsistencia = 'Presentes' AND FechaNacimiento >= @FechaInicio AND FechaTurno <= @FechaFin
+
+END
