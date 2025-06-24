@@ -23,6 +23,12 @@ namespace Negocio
             return dao.modificarPaciente(paciente);
         }
 
+        public int bajaPaciente(int dni)
+        {
+            DaoPaciente dao = new DaoPaciente();
+            return dao.BajaPaciente(dni);
+        }
+
         public DataTable getTabla()
         {
             DaoPaciente dao = new DaoPaciente();

@@ -89,6 +89,14 @@ namespace Datos
             param.Value = pac.Telefono;
         }
 
+        private void ArmarParametrosPacienteDarDeBaja(ref SqlCommand comando, int dni)
+        {
+            SqlParameter param;
+
+            param = comando.Parameters.Add("@DNI", SqlDbType.Int);
+            param.Value = dni;
+        }
+
         public int agregarPaciente(Paciente pac)
         {
             Conexion con = new Conexion();
@@ -104,11 +112,20 @@ namespace Datos
             ArmarParametrosPacienteModificar(ref comando, pac);
             return con.EjecutarProcedimientoAlmacenado(comando, "spModificarPaciente");
         }
+        public int BajaPaciente(int dni)
+        { 
+            Conexion con = new Conexion();
+            SqlCommand comando = new SqlCommand();
+            ArmarParametrosPacienteDarDeBaja(ref comando, dni);
+            return con.EjecutarProcedimientoAlmacenado(comando, "spBajaPaciente");
+        }
 
         public DataTable traerTablaPacientes()
         {
             tabla = _conexion.TraerTabla(consultaTabla, "Pacientes");
             return tabla;
         }
+
+
     }
 }
