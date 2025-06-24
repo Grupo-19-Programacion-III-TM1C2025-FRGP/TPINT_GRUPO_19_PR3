@@ -12,11 +12,12 @@ namespace Vistas
 {
     public partial class Pacientes : System.Web.UI.Page
     {
+        NegocioPaciente negocioP = new NegocioPaciente();
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            AuxiliarVistas.ValidarSesionAdministrador();
-            lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
+            //AuxiliarVistas.ValidarSesionAdministrador();
+            //lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
 
             if (!IsPostBack)
             {
@@ -75,5 +76,24 @@ namespace Vistas
                 lblMensaje.Text = "Error al agregar médico.";
         }
 
+        protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            
+        }
+
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
+            e.Cancel = true;
+
+            int dni = Convert.ToInt32(gvPacientes.DataKeys[e.RowIndex].Value);
+
+            negocioP.bajaPaciente(dni);
+        }
+
+        protected void gvPacientes_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+        }
     }
 }
