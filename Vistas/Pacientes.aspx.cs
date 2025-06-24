@@ -71,9 +71,9 @@ namespace Vistas
             int resultado = negocio.agregarPaciente(paciente);
 
             if (resultado > 0)
-                lblMensaje.Text = "Médico agregado con éxito.";
+                lblMensaje.Text = "Paciente agregado con éxito.";
             else
-                lblMensaje.Text = "Error al agregar médico.";
+                lblMensaje.Text = "Error al agregar paciente.";
         }
 
         protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)

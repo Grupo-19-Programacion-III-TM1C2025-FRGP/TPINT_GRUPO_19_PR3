@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Negocio;
 using Vistas.Clases;
 using Entidades;
+using Vistas;
 
 namespace MiProyecto
 {
@@ -18,8 +19,8 @@ namespace MiProyecto
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            AuxiliarVistas.ValidarSesionAdministrador();
-            lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
+           // AuxiliarVistas.ValidarSesionAdministrador();
+           //lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
 
             if (!IsPostBack)
             {
@@ -89,7 +90,27 @@ namespace MiProyecto
 
         protected void gvMedicos_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            // Evento de edición del GridView
+           // e.Cancel = true;
+
+            int legajo = Convert.ToInt32(gvMedicos.DataKeys[e.NewEditIndex].Value);
+
+            string nombre = gvMedicos.Rows[e.NewEditIndex].Cells[2].Text;
+            string apellido = gvMedicos.Rows[e.NewEditIndex].Cells[3].Text;
+            int DNI = int.Parse(gvMedicos.Rows[e.NewEditIndex].Cells[4].Text);
+
+            char sexo = Char.Parse(gvMedicos.Rows[e.NewEditIndex].Cells[5].Text);
+            string nacionalidad = gvMedicos.Rows[e.NewEditIndex].Cells[6].Text;
+            DateTime fechanacimiento = DateTime.Parse(gvMedicos.Rows[e.NewEditIndex].Cells[7].Text);
+            int localidad = int.Parse(gvMedicos.Rows[e.NewEditIndex].Cells[8].Text);
+            int especialidad = int.Parse(gvMedicos.Rows[e.NewEditIndex].Cells[9].Text);
+            int diasAtencion = int.Parse(gvMedicos.Rows[e.NewEditIndex].Cells[10].Text);
+            int horario = int.Parse(gvMedicos.Rows[e.NewEditIndex].Cells[11].Text);
+            string email = gvMedicos.Rows[e.NewEditIndex].Cells[12].Text;
+            string telefono = gvMedicos.Rows[e.NewEditIndex].Cells[13].Text;
+
+            Medico medico = new Medico(legajo, DNI, nombre, apellido, sexo, nacionalidad, fechanacimiento, localidad, especialidad, diasAtencion, horario, email, telefono);
+
+            negocioMedico.modificarMedico(medico);
         }
 
         protected void gvMedicos_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -97,9 +118,9 @@ namespace MiProyecto
 
             e.Cancel = true;
 
-            int dni = Convert.ToInt32(gvMedicos.DataKeys[e.RowIndex].Value);
+            int legajo = Convert.ToInt32(gvMedicos.DataKeys[e.RowIndex].Value);
 
-           negocioMedico.bajaMedico(dni);
+            negocioMedico.bajaMedico(legajo);
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
@@ -135,11 +156,6 @@ namespace MiProyecto
             LimpiarFormulario();
         }
 
-
-        private void CargarMedicos()
-        {
-            // Lógica para cargar lista de medicos
-        }
 
         private void LimpiarFormulario()
         {
