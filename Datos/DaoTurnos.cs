@@ -42,7 +42,23 @@ namespace Datos
             Conexion con = new Conexion();
             SqlCommand comando = new SqlCommand();
             ArmarParametrosFechas(ref comando, tur);
-            return con.EjecutarProcedimientoAlmacenado(comando, "spCalcularPorcentajeEstado");
+            return con.EjecutarProcedimientoAlmacenado(comando, "CalcularPorcentajeEstado");
+        }
+
+        public float FiltroPresentes(Turno tur)
+        {
+            Conexion con = new Conexion();
+            SqlCommand comando = new SqlCommand();
+            ArmarParametrosFechas(ref comando, tur);
+            return con.EjecutarProcedimientoAlmacenado(comando, "Filtro_Presentes");
+        }
+
+        public float FiltroAusentes(Turno tur)
+        {
+            Conexion con = new Conexion();
+            SqlCommand comando = new SqlCommand();
+            ArmarParametrosFechas(ref comando, tur);
+            return con.EjecutarProcedimientoAlmacenado(comando, "Filtro_Ausentes");
         }
     }
 }

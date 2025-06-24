@@ -47,5 +47,10 @@ namespace Vistas
         {
             AuxiliarVistas.CerrarSesion();
         }
+
+        protected void btnCalcularA_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
