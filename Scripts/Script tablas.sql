@@ -147,3 +147,4 @@ GO
 ALTER TABLE Turnos
 ADD EstadoAsistencia varchar(15) NOT NULL
 go
+

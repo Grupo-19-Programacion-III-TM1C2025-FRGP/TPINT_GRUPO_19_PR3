@@ -27,5 +27,17 @@ namespace Negocio
           DaoTurnos dao = new DaoTurnos();
           return dao.SacarPorcentajeAsistencia(turno);
       }
+
+        public float FiltrarPresentes(Turno turno)
+        {
+            DaoTurnos dao = new DaoTurnos();
+            return dao.FiltroPresentes(turno);
+        }
+
+        public float FiltrarAusentes(Turno turno)
+        {
+            DaoTurnos dao=new DaoTurnos();
+            return dao.FiltroAusentes(turno);
+        }
     }
 }
