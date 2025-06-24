@@ -61,7 +61,7 @@
                             <td class="auto-style1">
                                 <asp:TextBox ID="txtDNI" runat="server" Width="200px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rfvDNI" runat="server" ControlToValidate="txtDNI"
-                                    ErrorMessage="El DNI es obligatorio" ForeColor="Red">*</asp:RequiredFieldValidator>
+                                    ErrorMessage="El DNI es obligatorio" ForeColor="Red" ValidationGroup="1">*</asp:RequiredFieldValidator>
                             </td>
                         </tr>
                         <tr>
@@ -69,7 +69,7 @@
                             <td class="auto-style1">
                                 <asp:TextBox ID="txtNombre" runat="server" Width="200px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ControlToValidate="txtNombre"
-                                    ErrorMessage="El nombre es obligatorio" ForeColor="Red">*
+                                    ErrorMessage="El nombre es obligatorio" ForeColor="Red" ValidationGroup="1">*
                                 </asp:RequiredFieldValidator>
                             </td>
                         </tr>
@@ -79,7 +79,7 @@
                                 <asp:TextBox ID="txtApellido" runat="server" Width="200px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rfvApellido" runat="server"
                                     ControlToValidate="txtApellido" ErrorMessage="El apellido es obligatorio"
-                                    ForeColor="Red">*</asp:RequiredFieldValidator>
+                                    ForeColor="Red" ValidationGroup="1">*</asp:RequiredFieldValidator>
                             </td>
                         </tr>
                        <tr>
@@ -88,7 +88,7 @@
                             <asp:TextBox ID="txtSexo" runat="server" Width="200px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rfvSexo" runat="server"
                                 ControlToValidate="txtSexo" ErrorMessage="El apellido es obligatorio"
-                                ForeColor="Red">*</asp:RequiredFieldValidator>
+                                ForeColor="Red" ValidationGroup="1">*</asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
@@ -97,7 +97,7 @@
                             <asp:TextBox ID="txtNacionalidad" runat="server" Width="200px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rfvNacionalidad" runat="server"
                                 ControlToValidate="txtNacionalidad" ErrorMessage="El apellido es obligatorio"
-                                ForeColor="Red">*</asp:RequiredFieldValidator>
+                                ForeColor="Red" ValidationGroup="1">*</asp:RequiredFieldValidator>
                         </td>
 </tr>
                         <tr>
@@ -107,7 +107,7 @@
                                 </asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rfvFechaNacimiento" runat="server"
                                     ControlToValidate="txtFechaNacimiento"
-                                    ErrorMessage="La fecha de nacimiento es obligatoria" ForeColor="Red">*
+                                    ErrorMessage="La fecha de nacimiento es obligatoria" ForeColor="Red" ValidationGroup="1">*
                                 </asp:RequiredFieldValidator>
                             </td>
                         </tr>
@@ -117,7 +117,7 @@
                                 <asp:TextBox ID="txtDireccion" runat="server" Width="189px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rfvDireccion" runat="server"
                                     ControlToValidate="txtDireccion" ErrorMessage="La dirección es obligatoria"
-                                    ForeColor="Red">*</asp:RequiredFieldValidator>
+                                    ForeColor="Red" ValidationGroup="1">*</asp:RequiredFieldValidator>
                             </td>
                         </tr>
                            <tr>
@@ -127,7 +127,7 @@
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="rfvProvincia" runat="server"
                                     ControlToValidate="ddlProvincia" ErrorMessage="Los horarios son obligatorios"
-                                    ForeColor="Red">*
+                                    ForeColor="Red" ValidationGroup="1">*
                                 </asp:RequiredFieldValidator>
                             </td>
                         </tr>
@@ -138,7 +138,7 @@
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                                     ControlToValidate="ddlLocalidad" ErrorMessage="Los horarios son obligatorios"
-                                    ForeColor="Red">*
+                                    ForeColor="Red" ValidationGroup="1">*
                                 </asp:RequiredFieldValidator>
                             </td>
                         </tr>
@@ -148,7 +148,7 @@
                             <td class="auto-style1">
                                 <asp:TextBox ID="txtEmail" runat="server" Width="200px" TextMode="Email"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rfvMail" runat="server" ControlToValidate="txtEmail"
-                                    ErrorMessage="La Email es obligatorio" ForeColor="Red">*
+                                    ErrorMessage="La Email es obligatorio" ForeColor="Red" ValidationGroup="1">*
                                 </asp:RequiredFieldValidator>
                             </td>
                         </tr>
@@ -168,7 +168,7 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" />
+                                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" ValidationGroup="1" />
                             </td>
                         </tr>
                         <tr>
@@ -182,7 +182,7 @@
                     <br />
                     <h3>Listado de Pacientes</h3>
                     <p>
-                        <asp:GridView ID="gvPacientes" runat="server" AutoGenerateColumns="False" AutoGenerateDeleteButton="True" AutoGenerateEditButton="True" DataKeyNames="DNI" DataSourceID="SqlDataSource1" OnRowCommand="gvPacientes_RowCommand" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing">
+                        <asp:GridView ID="gvPacientes" runat="server" AutoGenerateColumns="False" AutoGenerateDeleteButton="True" AutoGenerateEditButton="True" DataKeyNames="DNI" DataSourceID="SqlDataSource1" OnRowCommand="gvPacientes_RowCommand" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" OnSelectedIndexChanged="gvPacientes_SelectedIndexChanged">
                             <Columns>
                                 <asp:BoundField DataField="DNI" HeaderText="DNI" ReadOnly="True" SortExpression="DNI" />
                                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />

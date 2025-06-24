@@ -78,7 +78,21 @@ namespace Vistas
 
         protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            
+            int dni = Convert.ToInt32(gvPacientes.DataKeys[e.NewEditIndex].Value);
+
+            string nombre = gvPacientes.Rows[e.NewEditIndex].Cells[2].Text;
+            string apellido = gvPacientes.Rows[e.NewEditIndex].Cells[3].Text;
+            Char sexo = Char.Parse(gvPacientes.Rows[e.NewEditIndex].Cells[4].Text);
+            string nacionalidad = gvPacientes.Rows[e.NewEditIndex].Cells[5].Text;
+            DateTime fecha = DateTime.Parse(gvPacientes.Rows[e.NewEditIndex].Cells[6].Text);
+            string direccion = gvPacientes.Rows[e.NewEditIndex].Cells[7].Text;
+            int idLocalidad = Convert.ToInt32(gvPacientes.Rows[e.NewEditIndex].Cells[8].Text);
+            string email = gvPacientes.Rows[e.NewEditIndex].Cells[9].Text;
+            string telefono = gvPacientes.Rows[e.NewEditIndex].Cells[10].Text;
+
+            Paciente paciente = new Paciente(dni, nombre, apellido, sexo, nacionalidad, fecha, direccion, idLocalidad, email, telefono);
+
+            negocioP.modificarPaciente(paciente);
         }
 
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -92,6 +106,11 @@ namespace Vistas
         }
 
         protected void gvPacientes_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+        }
+
+        protected void gvPacientes_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
