@@ -47,7 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DaoDiasAtencion.cs" />
     <Compile Include="DaoEspecialidades.cs" />
     <Compile Include="DaoHorarios.cs" />
     <Compile Include="DaoLocalidad.cs" />

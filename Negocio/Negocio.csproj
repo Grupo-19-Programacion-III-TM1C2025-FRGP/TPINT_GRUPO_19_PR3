@@ -48,7 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NegocioLogin.cs" />
-    <Compile Include="NegocioDiaAtencion.cs" />
     <Compile Include="NegocioEspecialidad.cs" />
     <Compile Include="NegocioHorario.cs" />
     <Compile Include="NegocioLocalidad.cs" />

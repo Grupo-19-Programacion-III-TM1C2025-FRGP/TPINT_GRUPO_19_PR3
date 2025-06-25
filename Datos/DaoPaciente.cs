@@ -21,32 +21,34 @@ namespace Datos
         {
             SqlParameter param;
 
-            param = comando.Parameters.Add("@DNI", SqlDbType.Int);
+            param = comando.Parameters.Add("@DNI", SqlDbType.Char, 8);
             param.Value = pac.DNI;
 
-            param = comando.Parameters.Add("@Nombre", SqlDbType.VarChar, 100);
+            param = comando.Parameters.Add("@NombrePaciente", SqlDbType.VarChar, 25);
             param.Value = pac.Nombre;
 
-            param = comando.Parameters.Add("@Apellido", SqlDbType.VarChar, 100);
+            param = comando.Parameters.Add("@ApellidoPaciente", SqlDbType.VarChar, 25);
             param.Value = pac.Apellido;
 
             param = comando.Parameters.Add("@Sexo", SqlDbType.Char, 1);
             param.Value = pac.Sexo;
 
-            param = comando.Parameters.Add("@Nacionalidad", SqlDbType.VarChar, 50);
+            param = comando.Parameters.Add("@Nacionalidad", SqlDbType.VarChar, 30);
             param.Value = pac.Nacionalidad;
 
             param = comando.Parameters.Add("@FechaNacimiento", SqlDbType.Date);
             param.Value = pac.FechaNacimiento;
 
-            param = comando.Parameters.Add("@Direccion", SqlDbType.VarChar, 200);
+            param = comando.Parameters.Add("@Direccion", SqlDbType.VarChar, 50);
             param.Value = pac.Direccion;
 
-            param = comando.Parameters.Add("@IDLocalidad", SqlDbType.Int);
-            param.Value = pac.IDLocalidad;
+            param = comando.Parameters.Add("@Provincia", SqlDbType.Int);
+            param.Value = pac.CodProvincia;
 
+            param = comando.Parameters.Add("@Localidad", SqlDbType.Int);
+            param.Value = pac.CodLocalidad;
 
-            param = comando.Parameters.Add("@CorreoElectronico", SqlDbType.VarChar, 100);
+            param = comando.Parameters.Add("@CorreoElectronico", SqlDbType.VarChar, 30);
             param.Value = pac.CorreoElectronico;
 
             param = comando.Parameters.Add("@Telefono", SqlDbType.VarChar, 20);
@@ -57,43 +59,48 @@ namespace Datos
         {
             SqlParameter param;
 
-            param = comando.Parameters.Add("@DNI", SqlDbType.Int);
+            param = comando.Parameters.Add("@DNI", SqlDbType.Char, 8);
             param.Value = pac.DNI;
 
-            param = comando.Parameters.Add("@Nombre", SqlDbType.VarChar, 100);
+            param = comando.Parameters.Add("@NombrePaciente", SqlDbType.VarChar, 20);
             param.Value = pac.Nombre;
 
-            param = comando.Parameters.Add("@Apellido", SqlDbType.VarChar, 100);
+            param = comando.Parameters.Add("@ApellidoPaciente", SqlDbType.VarChar, 20);
             param.Value = pac.Apellido;
 
             param = comando.Parameters.Add("@Sexo", SqlDbType.Char, 1);
             param.Value = pac.Sexo;
 
-            param = comando.Parameters.Add("@Nacionalidad", SqlDbType.VarChar, 50);
+            param = comando.Parameters.Add("@Nacionalidad", SqlDbType.VarChar, 30);
             param.Value = pac.Nacionalidad;
 
             param = comando.Parameters.Add("@FechaNacimiento", SqlDbType.Date);
             param.Value = pac.FechaNacimiento;
 
-            param = comando.Parameters.Add("@Direccion", SqlDbType.VarChar, 200);
+            param = comando.Parameters.Add("@Direccion", SqlDbType.VarChar, 50);
             param.Value = pac.Direccion;
 
-            param = comando.Parameters.Add("@IDLocalidad", SqlDbType.Int);
-            param.Value = pac.IDLocalidad;
+            param = comando.Parameters.Add("@Provincia", SqlDbType.Int);
+            param.Value = pac.CodProvincia;
 
+            param = comando.Parameters.Add("@Localidad", SqlDbType.Int);
+            param.Value = pac.CodLocalidad;
 
-            param = comando.Parameters.Add("@CorreoElectronico", SqlDbType.VarChar, 100);
+            param = comando.Parameters.Add("@Email", SqlDbType.VarChar, 30);
             param.Value = pac.CorreoElectronico;
 
             param = comando.Parameters.Add("@Telefono", SqlDbType.VarChar, 20);
             param.Value = pac.Telefono;
+
+            param = comando.Parameters.Add("@Estado", SqlDbType.Bit);
+            param.Value = pac.Estado;
         }
 
-        private void ArmarParametrosPacienteDarDeBaja(ref SqlCommand comando, int dni)
+        private void ArmarParametrosPacienteDarDeBaja(ref SqlCommand comando, string dni)
         {
             SqlParameter param;
 
-            param = comando.Parameters.Add("@DNI", SqlDbType.Int);
+            param = comando.Parameters.Add("@DNI", SqlDbType.Char, 8);
             param.Value = dni;
         }
 
@@ -112,7 +119,7 @@ namespace Datos
             ArmarParametrosPacienteModificar(ref comando, pac);
             return con.EjecutarProcedimientoAlmacenado(comando, "spModificarPaciente");
         }
-        public int BajaPaciente(int dni)
+        public int BajaPaciente(string dni)
         { 
             Conexion con = new Conexion();
             SqlCommand comando = new SqlCommand();
@@ -122,10 +129,9 @@ namespace Datos
 
         public DataTable traerTablaPacientes()
         {
-            tabla = _conexion.TraerTabla(consultaTabla, "Pacientes");
+            Conexion con = new Conexion();
+            DataTable tabla = con.EjecutarSP_Select("spTraerTablaPacientesCodificada");
             return tabla;
         }
-
-
     }
 }

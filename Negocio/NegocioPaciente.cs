@@ -23,7 +23,7 @@ namespace Negocio
             return dao.modificarPaciente(paciente);
         }
 
-        public int bajaPaciente(int dni)
+        public int bajaPaciente(string dni)
         {
             DaoPaciente dao = new DaoPaciente();
             return dao.BajaPaciente(dni);

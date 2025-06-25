@@ -56,5 +56,16 @@ namespace Datos
             return filasAfectadas;
         }
 
+        public DataTable EjecutarSP_Select(string nombreSP)
+        {
+            SqlConnection conexion = ObtenerConexion();
+            SqlCommand cmd = new SqlCommand(nombreSP, conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable tabla = new DataTable();
+            da.Fill(tabla);
+            return tabla;
+        }
     }
 }
