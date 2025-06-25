@@ -83,10 +83,9 @@ namespace Vistas
             else
                 lblMensaje.Text = "Error al agregar paciente.";
 
+            LimpiarFormulario();
             CargarGvPacientes();
-            
         }
-
         protected void gvPacientes_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             gvPacientes.EditIndex = -1;
@@ -133,6 +132,7 @@ namespace Vistas
             gvPacientes.DataBind();
 
             e.Cancel = true;
+
         }
 
         protected void gvPacientes_RowEditing(object sender, GridViewEditEventArgs e)
@@ -140,6 +140,20 @@ namespace Vistas
             gvPacientes.EditIndex = e.NewEditIndex;
             gvPacientes.DataSource = negocioP.getTabla();
             gvPacientes.DataBind();
+        }
+        private void LimpiarFormulario()
+        {
+            txtDNI.Text = string.Empty;
+            txtNombre.Text = string.Empty;
+            txtApellido.Text = string.Empty;
+            ddlSexo.SelectedIndex = 0;
+            txtNacionalidad.Text = string.Empty;
+            txtFechaNacimiento.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtTelefono.Text = string.Empty;
+            txtDireccion.Text = string.Empty;
+            ddlLocalidad.SelectedIndex = 0;
+            ddlProvincia.SelectedIndex = 0;
         }
     }
 }
