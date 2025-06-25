@@ -22,12 +22,10 @@ namespace Vistas
 
             if (!IsPostBack)
             {
-
                 CargarGvPacientes();
 
                 ddlSexo.Items.Insert(0, new ListItem("Seleccione Sexo", "0"));
                 CargarProvincias();
-              
             }
         }
         private void CargarGvPacientes()
@@ -63,27 +61,30 @@ namespace Vistas
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
-            //Paciente paciente = new Paciente(
-            //    int.Parse(txtDNI.Text),
-            //    txtNombre.Text,
-            //    txtApellido.Text,
-            //   Convert.ToChar(txtSexo.Text.ToUpper()),
-            //    txtNacionalidad.Text,
-            //    DateTime.Parse(txtFechaNacimiento.Text),
-            //    txtDireccion.Text,
-            //    int.Parse(ddlLocalidad.SelectedValue),
-            //    txtEmail.Text,
-            //    txtTelefono.Text);
+            string dni = txtDNI.Text;
+            string nombre = txtNombre.Text;
+            string apellido = txtApellido.Text;
+            Char sexo = Convert.ToChar(ddlSexo.SelectedValue);
+            string nacionalidad = txtNacionalidad.Text;
+            DateTime fechaNac = DateTime.Parse(txtFechaNacimiento.Text);
+            string direccion = txtDireccion.Text;
+            int provincia = int.Parse(ddlProvincia.SelectedValue);
+            int localidad = int.Parse(ddlLocalidad.SelectedValue);
+            string email = txtEmail.Text;
+            string telefono = txtTelefono.Text;
 
+            Paciente paciente = new Paciente(dni, nombre, apellido, sexo, nacionalidad, fechaNac, direccion, provincia, localidad, email, telefono, true);
 
-            //// Llamar a la capa de negocio
-            //NegocioPaciente negocio = new NegocioPaciente();
-            //int resultado = negocio.agregarPaciente(paciente);
+            // Llamar a la capa de negocio
+            int resultado = negocioP.AgregarPaciente(paciente);
 
-            //if (resultado > 0)
-            //    lblMensaje.Text = "Paciente agregado con éxito.";
-            //else
-            //    lblMensaje.Text = "Error al agregar paciente.";
+            if (resultado > 0)
+                lblMensaje.Text = "Paciente agregado con éxito.";
+            else
+                lblMensaje.Text = "Error al agregar paciente.";
+
+            CargarGvPacientes();
+            
         }
 
         protected void gvPacientes_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
@@ -140,47 +141,5 @@ namespace Vistas
             gvPacientes.DataSource = negocioP.getTabla();
             gvPacientes.DataBind();
         }
-
-        //protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
-        //{
-        //    int dni = Convert.ToInt32(gvPacientes.DataKeys[e.NewEditIndex].Value);
-
-        //    string nombre = gvPacientes.Rows[e.NewEditIndex].Cells[2].Text;
-        //    string apellido = gvPacientes.Rows[e.NewEditIndex].Cells[3].Text;
-        //    Char sexo = Char.Parse(gvPacientes.Rows[e.NewEditIndex].Cells[4].Text);
-        //    string nacionalidad = gvPacientes.Rows[e.NewEditIndex].Cells[5].Text;
-        //    DateTime fecha = DateTime.Parse(gvPacientes.Rows[e.NewEditIndex].Cells[6].Text);
-        //    string direccion = gvPacientes.Rows[e.NewEditIndex].Cells[7].Text;
-        //    int idLocalidad = Convert.ToInt32(gvPacientes.Rows[e.NewEditIndex].Cells[8].Text);
-        //    string email = gvPacientes.Rows[e.NewEditIndex].Cells[9].Text;
-        //    string telefono = gvPacientes.Rows[e.NewEditIndex].Cells[10].Text;
-
-        //    Paciente paciente = new Paciente(dni, nombre, apellido, sexo, nacionalidad, fecha, direccion, idLocalidad, email, telefono);
-
-        //    negocioP.modificarPaciente(paciente);
-        //}
-
-        //protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        //{
-
-        //    e.Cancel = true;
-
-        //    int dni = Convert.ToInt32(gvPacientes.DataKeys[e.RowIndex].Value);
-
-        //    // Falta mensaje de confirmación
-        //    negocioP.bajaPaciente(dni);
-
-        //    gvPacientes.DataBind();
-        //}
-
-        //protected void gvPacientes_RowCommand(object sender, GridViewCommandEventArgs e)
-        //{
-
-        //}
-
-        //protected void gvPacientes_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-
-        //}
     }
 }

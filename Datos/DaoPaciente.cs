@@ -24,10 +24,10 @@ namespace Datos
             param = comando.Parameters.Add("@DNI", SqlDbType.Char, 8);
             param.Value = pac.DNI;
 
-            param = comando.Parameters.Add("@NombrePaciente", SqlDbType.VarChar, 25);
+            param = comando.Parameters.Add("@Nombre", SqlDbType.VarChar, 25);
             param.Value = pac.Nombre;
 
-            param = comando.Parameters.Add("@ApellidoPaciente", SqlDbType.VarChar, 25);
+            param = comando.Parameters.Add("@Apellido", SqlDbType.VarChar, 25);
             param.Value = pac.Apellido;
 
             param = comando.Parameters.Add("@Sexo", SqlDbType.Char, 1);
@@ -104,12 +104,12 @@ namespace Datos
             param.Value = dni;
         }
 
-        public int agregarPaciente(Paciente pac)
+        public int AltaPaciente(Paciente pac)
         {
             Conexion con = new Conexion();
             SqlCommand comando = new SqlCommand();
             ArmarParametrosPacienteAgregar(ref comando, pac);
-            return con.EjecutarProcedimientoAlmacenado(comando, "spAgregarPaciente");
+            return con.EjecutarProcedimientoAlmacenado(comando, "spAltaPaciente");
         }
 
         public int modificarPaciente(Paciente pac)
