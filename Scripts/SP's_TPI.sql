@@ -21,7 +21,7 @@ AS
 BEGIN
     INSERT INTO Medicos (
 	DNI_Me, Nombre_Me, Apellido_Me, Sexo_Me, Nacionalidad_Me, FechaNacimiento_Me, CodProvincia_Pr_Me,
-        CodLocalidad_Lo_Me, CodEspecialidad_Es_Me, Email_Me, Telefono_Me, HorarioEntrada_Me, HorarioSalida_Me
+        CodLocalidad_Lo_Me, CodEspecialidad_Es_Me, Email_Me, Telefono_Me, HoraEntrada_Me, HoraSalida_Me
     )
     VALUES (
         @DNI, @NombreMedico, @ApellidoMedico, @Sexo, @Nacionalidad, @FechaNacimiento, @Provincia,
@@ -43,8 +43,8 @@ AS
 			M.FechaNacimiento_Me AS [Fecha de nacimiento],
 			M.Email_Me AS [Correo electronico],
 			M.Telefono_Me AS Telefono,
-			M.HorarioEntrada_Me AS [Horario de entrada],
-			M.HorarioSalida_Me AS [Horario de salida],
+			M.HoraEntrada_Me AS [Horario de entrada],
+			M.HoraSalida_Me AS [Horario de salida],
 
 			E.NombreEspecialidad_Es AS Especialidad,
 
@@ -80,8 +80,8 @@ AS
 			M.FechaNacimiento_Me AS [Fecha de nacimiento],
 			M.Email_Me AS [Correo electronico],
 			M.Telefono_Me AS Telefono,
-			M.HorarioEntrada_Me AS [Horario de entrada],
-			M.HorarioSalida_Me AS [Horario de salida],
+			M.HoraEntrada_Me AS [Horario de entrada],
+			M.HoraSalida_Me AS [Horario de salida],
 
 			M.CodEspecialidad_Es_Me AS Especialidad,
 
@@ -147,7 +147,7 @@ AS
 			FROM Pacientes AS PA
 
 				INNER JOIN Localidades AS L
-				ON L.CodLocalidad_Lo = PA.CodLocalidad_Pr_Pa
+				ON L.CodLocalidad_Lo = PA.CodLocalidad_Lo_Pa
 					INNER JOIN Provincias AS PR
 					ON PR.CodProvincia_Pr = L.CodProvincia_Pr_Lo
 

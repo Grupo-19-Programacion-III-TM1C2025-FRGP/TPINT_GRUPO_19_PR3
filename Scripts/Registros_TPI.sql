@@ -34,10 +34,10 @@ GO
 -- POBLAR MEDICOS
 INSERT INTO Medicos (
   DNI_Me, Nombre_Me, Apellido_Me, Sexo_Me, Nacionalidad_Me, FechaNacimiento_Me,
-  CodProvincia_Pr_Me, CodLocalidad_Lo_Me, CodEspecialidad_Es_Me, Email_Me, Telefono_Me
+  CodProvincia_Pr_Me, CodLocalidad_Lo_Me, CodEspecialidad_Es_Me, HoraEntrada_Me, HoraSalida_Me, Email_Me, Telefono_Me
 ) VALUES
-(30123456, 'Juan', 'Pérez', 'M', 'Argentina', '1980-05-10', 1, 1, 1, 'juan.perez@mail.com', '2211234567'),
-(34435562, 'Ana', 'Gómez', 'F', 'Argentina', '1985-08-22', 2, 3, 2, 'ana.gomez@mail.com', '3519876543');
+(30123456, 'Juan', 'Pérez', 'M', 'Argentina', '1980-05-10', 1, 1, 1, '10:00', '18:00', 'juan.perez@mail.com', '2211234567'),
+(34435562, 'Ana', 'Gómez', 'F', 'Argentina', '1985-08-22', 2, 3, 2, '08:00', '16:00', 'ana.gomez@mail.com', '3519876543');
 GO
 
 -- POBLAR PACIENTES
