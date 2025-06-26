@@ -121,12 +121,12 @@ namespace Datos
             param.Value = legajo;
         }
 
-        public int agregarMedico(Medico med)
+        public int AltaMedico(Medico med)
         {
             Conexion con = new Conexion();
             SqlCommand comando = new SqlCommand();
             ArmarParametrosMedicoAgregar(ref comando, med);
-            return con.EjecutarProcedimientoAlmacenado(comando, "spAgregarMedico");
+            return con.EjecutarProcedimientoAlmacenado(comando, "spAltaMedico");
         }
 
         public int modificarMedico(Medico med)

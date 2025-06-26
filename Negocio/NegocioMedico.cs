@@ -14,7 +14,7 @@ namespace Negocio
         public int agregarMedico(Medico medico)
         {
             DaoMedico dao = new DaoMedico();
-            return dao.agregarMedico(medico);
+            return dao.AltaMedico(medico);
         }
 
         public int modificarMedico(Medico medico)

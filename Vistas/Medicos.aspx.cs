@@ -87,67 +87,56 @@ namespace MiProyecto
         //}
         //}
 
-        //protected void gvMedicos_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        //{
-
-        //    e.Cancel = true;
-
-        //    string legajo = gvMedicos.DataKeys[e.RowIndex].Value.ToString();
-
-        //    //Falta mensaje de confirmación
-
-        //    negocioMedico.bajaMedico(legajo);
-
-        //    gvMedicos.DataBind();
-        //}
+        
 
         protected void btnAgregar_Click(object sender, EventArgs e)
-        {
-            //Medico medico = new Medico(
-            //    int.Parse(txtDNI.Text),
-            //    txtNombre.Text,
-            //    txtApellido.Text,
-            //    //Convert.ToChar(txtSexo.Text.ToUpper()),
-            //    txtNacionalidad.Text,
-            //    DateTime.Parse(txtNacimiento.Text),
-            //    int.Parse(ddlLocalidad.SelectedValue),
-            //    int.Parse(ddlEspecialidad.SelectedValue),
-            //    //int.Parse(ddlDiaAtencion.SelectedValue),
-            //    int.Parse(ddlHoraSalida.SelectedValue),
-            //    txtEmail.Text,
-            //    txtTelefono.Text
-            //);
+        { 
+            string dni = txtDNI.Text;
+            string nombre = txtNombre.Text;
+            string apellido = txtApellido.Text;
+            Char sexo = Convert.ToChar(ddlSexo.SelectedValue.ToUpper());
+            string nacionalidad = txtNacionalidad.Text;
+            DateTime fechaNacimiento = DateTime.Parse(txtNacimiento.Text);
+            int provincia = int.Parse(ddlProvincia.SelectedValue);
+            int localidad = int.Parse(ddlLocalidad.SelectedValue);
+            int especialidad = int.Parse(ddlEspecialidad.SelectedValue);
+            string horaEntrada = ddlHoraEntrada.SelectedValue;
+            string horaSalida = ddlHoraSalida.SelectedValue;
+            string email = txtEmail.Text;
+            string telefono = txtTelefono.Text;
 
-
+            // Instanciar objero médico
+            Medico medico = new Medico(dni, nombre, apellido, sexo, nacionalidad, fechaNacimiento, provincia, localidad, especialidad, email, telefono, horaEntrada, horaSalida, true);
+           
             // Llamar a la capa de negocio
-            NegocioMedico negocio = new NegocioMedico();
-            //int resultado = negocio.agregarMedico(medico);
+            int resultado = negocioMedico.agregarMedico(medico);
 
-            //if (resultado > 0)
-            //    lblMensaje.Text = "Médico agregado con éxito.";
-            //else
-            //    lblMensaje.Text = "Error al agregar médico.";
+            if (resultado > 0)
+                lblMensaje.Text = "Médico agregado con éxito.";
+            else
+                lblMensaje.Text = "Error al agregar médico.";
+
+            LimpiarFormulario();
+            CargarGvMedicos();
         }
-
 
         protected void btnLimpiar_Click(object sender, EventArgs e)
         {
             LimpiarFormulario();
         }
 
-
         private void LimpiarFormulario()
         {
             txtDNI.Text = string.Empty;
             txtNombre.Text = string.Empty;
             txtApellido.Text = string.Empty;
-            //txtSexo.Text = string.Empty;
+            ddlSexo.SelectedIndex = 0;
             txtNacionalidad.Text = string.Empty;
             txtNacimiento.Text = string.Empty;
             txtEmail.Text = string.Empty;
             txtTelefono.Text = string.Empty;
-            //ddlDiaAtencion.SelectedIndex = 0;
             ddlEspecialidad.SelectedIndex = 0;
+            ddlHoraEntrada.SelectedIndex = 0;
             ddlHoraSalida.SelectedIndex = 0;
             ddlLocalidad.SelectedIndex = 0;
             ddlProvincia.SelectedIndex = 0;
@@ -216,10 +205,6 @@ namespace MiProyecto
             e.Cancel = true;
         }
 
-        //    protected void gvMedicos_SelectedIndexChanged(object sender, EventArgs e)
-        //    {
-
-        //    }
 
     }
 
