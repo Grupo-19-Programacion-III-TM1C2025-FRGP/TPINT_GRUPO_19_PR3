@@ -141,13 +141,13 @@ namespace MiProyecto
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvApellido;
 
         /// <summary>
-        /// Control txtSexo.
+        /// Control ddlSexo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSexo;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSexo;
 
         /// <summary>
         /// Control rfvSexo.
@@ -249,31 +249,31 @@ namespace MiProyecto
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEspecialidad;
 
         /// <summary>
-        /// Control ddlDiaAtencion.
+        /// Control ddlHoraEntrada.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDiaAtencion;
+        protected global::System.Web.UI.WebControls.DropDownList ddlHoraEntrada;
 
         /// <summary>
-        /// Control rfvDiaAtencion.
+        /// Control rfvHorarios0.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDiaAtencion;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvHorarios0;
 
         /// <summary>
-        /// Control ddlHorarios.
+        /// Control ddlHoraSalida.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlHorarios;
+        protected global::System.Web.UI.WebControls.DropDownList ddlHoraSalida;
 
         /// <summary>
         /// Control rfvHorarios.
@@ -357,13 +357,13 @@ namespace MiProyecto
         protected global::System.Web.UI.WebControls.GridView gvMedicos;
 
         /// <summary>
-        /// Control SqlDataSource1.
+        /// Control lblBug.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.Label lblBug;
 
         /// <summary>
         /// Control lblMensajeExito.

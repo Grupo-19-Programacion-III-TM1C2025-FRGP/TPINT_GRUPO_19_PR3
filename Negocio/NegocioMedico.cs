@@ -23,10 +23,10 @@ namespace Negocio
             return dao.modificarMedico(medico);
         }
 
-        public int bajaMedico(int dni)
+        public int bajaMedico(string legajo)
         {
             DaoMedico dao = new DaoMedico();
-            return dao.BajaMedico(dni);
+            return dao.BajaMedico(legajo);
         }
 
         public int traerLegajoPorDNI(int dni)

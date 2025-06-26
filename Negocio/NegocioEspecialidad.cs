@@ -16,5 +16,4 @@ namespace Negocio
             return dao.getTablaEspecialdades();
         }
     }
-
 }

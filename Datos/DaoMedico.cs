@@ -24,92 +24,101 @@ namespace Datos
             SqlParameter param;
 
             param = comando.Parameters.Add("@DNI", SqlDbType.Int);
-            param.Value = med.DNI;
+            param.Value = med._DNI;
 
             param = comando.Parameters.Add("@NombreMedico", SqlDbType.VarChar, 100);
-            param.Value = med.NombreMedico;
+            param.Value = med._NombreMedico;
 
             param = comando.Parameters.Add("@ApellidoMedico", SqlDbType.VarChar, 100);
-            param.Value = med.ApellidoMedico;
+            param.Value = med._ApellidoMedico;
 
             param = comando.Parameters.Add("@Sexo", SqlDbType.Char, 1);
-            param.Value = med.Sexo;
+            param.Value = med._Sexo;
 
             param = comando.Parameters.Add("@Nacionalidad", SqlDbType.VarChar, 50);
-            param.Value = med.Nacionalidad;
+            param.Value = med._Nacionalidad;
 
             param = comando.Parameters.Add("@FechaNacimiento", SqlDbType.Date);
-            param.Value = med.FechaNacimiento;
+            param.Value = med._FechaNacimiento;
+
+            param = comando.Parameters.Add("@Provincia", SqlDbType.Int);
+            param.Value = med._Provincia;
 
             param = comando.Parameters.Add("@Localidad", SqlDbType.Int);
-            param.Value = med.Localidad;
+            param.Value = med._Localidad;
 
             param = comando.Parameters.Add("@Especialidad", SqlDbType.Int);
-            param.Value = med.Especialidad;
-
-            param = comando.Parameters.Add("@DiaAtencion", SqlDbType.Int);
-            param.Value = med.DiaAtencion;
-
-            param = comando.Parameters.Add("@Horario", SqlDbType.Int);
-            param.Value = med.Horario;
+            param.Value = med._Especialidad;
 
             param = comando.Parameters.Add("@Email", SqlDbType.VarChar, 100);
-            param.Value = med.Email;
+            param.Value = med._Email;
 
             param = comando.Parameters.Add("@Telefono", SqlDbType.VarChar, 20);
-            param.Value = med.Telefono;
+            param.Value = med._Telefono;
+
+            param = comando.Parameters.Add("@HoraEntrada", SqlDbType.Time);
+            param.Value = med._HoraEntrada;
+
+            param = comando.Parameters.Add("@HoraSalida", SqlDbType.Time);
+            param.Value = med._HoraSalida;
         }
 
         private void ArmarParametrosMedicoModificar(ref SqlCommand comando, Medico med)
         {
             SqlParameter param;
 
-            param = comando.Parameters.Add("@LegajoMedico", SqlDbType.Int);
-            param.Value = med.LegajoMedico;
+            param = comando.Parameters.Add("@LEGAJO", SqlDbType.Char);
+            param.Value = med._LegajoMedico;
 
-            param = comando.Parameters.Add("@DNI", SqlDbType.Int);
-            param.Value = med.DNI;
+            param = comando.Parameters.Add("@DNI", SqlDbType.Char);
+            param.Value = med._DNI;
 
-            param = comando.Parameters.Add("@NombreMedico", SqlDbType.VarChar, 100);
-            param.Value = med.NombreMedico;
+            param = comando.Parameters.Add("@NombreMedico", SqlDbType.VarChar, 20);
+            param.Value = med._NombreMedico;
 
-            param = comando.Parameters.Add("@ApellidoMedico", SqlDbType.VarChar, 100);
-            param.Value = med.ApellidoMedico;
+            param = comando.Parameters.Add("@ApellidoMedico", SqlDbType.VarChar, 20);
+            param.Value = med._ApellidoMedico;
 
             param = comando.Parameters.Add("@Sexo", SqlDbType.Char, 1);
-            param.Value = med.Sexo;
+            param.Value = med._Sexo;
 
-            param = comando.Parameters.Add("@Nacionalidad", SqlDbType.VarChar, 50);
-            param.Value = med.Nacionalidad;
+            param = comando.Parameters.Add("@Nacionalidad", SqlDbType.VarChar, 30);
+            param.Value = med._Nacionalidad;
 
             param = comando.Parameters.Add("@FechaNacimiento", SqlDbType.Date);
-            param.Value = med.FechaNacimiento;
+            param.Value = med._FechaNacimiento;
+
+            param = comando.Parameters.Add("@Provincia", SqlDbType.Int);
+            param.Value = med._Provincia;
 
             param = comando.Parameters.Add("@Localidad", SqlDbType.Int);
-            param.Value = med.Localidad;
+            param.Value = med._Localidad;
 
             param = comando.Parameters.Add("@Especialidad", SqlDbType.Int);
-            param.Value = med.Especialidad;
+            param.Value = med._Especialidad;
 
-            param = comando.Parameters.Add("@DiaAtencion", SqlDbType.Int);
-            param.Value = med.DiaAtencion;
-
-            param = comando.Parameters.Add("@Horario", SqlDbType.Int);
-            param.Value = med.Horario;
-
-            param = comando.Parameters.Add("@Email", SqlDbType.VarChar, 100);
-            param.Value = med.Email;
+            param = comando.Parameters.Add("@Email", SqlDbType.VarChar, 30);
+            param.Value = med._Email;
 
             param = comando.Parameters.Add("@Telefono", SqlDbType.VarChar, 20);
-            param.Value = med.Telefono;
+            param.Value = med._Telefono;
+
+            param = comando.Parameters.Add("@HoraEntrada", SqlDbType.Time);
+            param.Value = med._HoraEntrada;
+
+            param = comando.Parameters.Add("@HoraSalida", SqlDbType.Time);
+            param.Value = med._HoraSalida;
+
+            param = comando.Parameters.Add("@Estado", SqlDbType.Bit);
+            param.Value = med._Estado;
         }
 
-        private void ArmarParametrosMedicoDarDeBaja(ref SqlCommand comando, int dni)
+        private void ArmarParametrosMedicoDarDeBaja(ref SqlCommand comando, string legajo)
         {
             SqlParameter param;
 
-            param = comando.Parameters.Add("@DNI", SqlDbType.Int);
-            param.Value = dni;
+            param = comando.Parameters.Add("@LEGAJO", SqlDbType.Char);
+            param.Value = legajo;
         }
 
         public int agregarMedico(Medico med)
@@ -142,9 +151,11 @@ namespace Datos
 
         public DataTable traerTablaMedicos()
         {
-            tabla = _conexion.TraerTabla(consultaTabla, "Medico");
+            Conexion con = new Conexion();
+            DataTable tabla = con.EjecutarSP_Select("spTraerTablaMedicosCodificada");
             return tabla;
         }
+
         public DataTable FiltrarPorEspecialidad(string codEspecialidad)
         {
             consultaTablaFiltrada += codEspecialidad;
@@ -152,11 +163,11 @@ namespace Datos
             return tabla;
         }
 
-        public int BajaMedico(int dni)
+        public int BajaMedico(string legajo)
         {
             Conexion con = new Conexion();
             SqlCommand comando = new SqlCommand();
-            ArmarParametrosMedicoDarDeBaja(ref comando, dni);
+            ArmarParametrosMedicoDarDeBaja(ref comando, legajo);
             return con.EjecutarProcedimientoAlmacenado(comando, "spBajaMedico");
         }
 
