@@ -190,7 +190,7 @@ AS
 	END;
 GO
 
-CREATE PROCEDURE spBajaMedico @LEGAJO CHAR(5)
+CREATE PROCEDURE spBajaMedico @LEGAJO INT
 AS
 	BEGIN
 		UPDATE Medicos
@@ -201,7 +201,7 @@ GO
 
 CREATE PROCEDURE spModificarMedico
 (
-	@LEGAJO CHAR(5),
+	@LEGAJO INT,
     @DNI CHAR(8),
     @NombreMedico VARCHAR(20),
     @ApellidoMedico VARCHAR(20),

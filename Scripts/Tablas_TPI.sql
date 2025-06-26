@@ -76,7 +76,7 @@ GO
 -- TABLA PACIENTES
 CREATE TABLE Pacientes (
 	DNI_Pa INT NOT NULL,
-	Nombree_Pa VARCHAR(100) NOT NULL,
+	Nombre_Pa VARCHAR(100) NOT NULL,
 	Apellido_Pa VARCHAR(100) NOT NULL,
 	Sexo_Pa CHAR(1) CHECK (Sexo_Pa IN('M', 'F')),
 	Nacionalidad_Pa VARCHAR(50),
@@ -108,7 +108,7 @@ GO
 
 -- TABLA TURNOS
 CREATE TABLE Turnos (
-	Legajo_Me_Tu INT IDENTITY(1,1) NOT NULL,
+	Legajo_Me_Tu INT NOT NULL,
 	CodHorarioTurno_HT_Tu INT NOT NULL,
 	FechaTurno_Tu DATE NOT NULL,
 	DNI_Pa_Tu INT NOT NULL,
