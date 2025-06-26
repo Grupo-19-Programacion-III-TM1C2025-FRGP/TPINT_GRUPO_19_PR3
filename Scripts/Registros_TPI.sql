@@ -37,7 +37,7 @@ INSERT INTO Medicos (
 
 -- POBLAR PACIENTES
 INSERT INTO Pacientes (
-  DNI_Pa, Nombree_Pa, Apellido_Pa, Sexo_Pa, Nacionalidad_Pa, FechaNacimiento_Pa,
+  DNI_Pa, Nombre_Pa, Apellido_Pa, Sexo_Pa, Nacionalidad_Pa, FechaNacimiento_Pa,
   Direccion_Pa, CodProvincia_Pr_Pa, CodLocalidad_Pr_Pa, Email_Pa, Telefono_Pa
 ) VALUES
 (40123456, 'Carlos', 'Lopez', 'M', 'Argentina', '1990-12-15', 'Calle Falsa 123', 1, 2, 'carlos.lopez@mail.com', '2233445566'),

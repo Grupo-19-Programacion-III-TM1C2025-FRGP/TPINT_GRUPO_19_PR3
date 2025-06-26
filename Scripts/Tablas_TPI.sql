@@ -49,11 +49,11 @@ GO
 
 -- TABLA MÉDICOS
 CREATE TABLE Medicos (
-	Legajo_Me VARCHAR(10) NOT NULL,
+	Legajo_Me INT IDENTITY(1,1) NOT NULL,
 	DNI_Me INT UNIQUE NOT NULL,
 	Nombre_Me VARCHAR(100) NOT NULL,
 	Apellido_Me VARCHAR(100) NOT NULL,
-	Sexo_Me CHAR(1) CHECK (Sexo_Me IN('M', 'F', 'X')),
+	Sexo_Me CHAR(1) CHECK (Sexo_Me IN('M', 'F')),
 	Nacionalidad_Me VARCHAR(50),
 	FechaNacimiento_Me DATE,
 	CodProvincia_Pr_Me INT NOT NULL,
@@ -78,7 +78,7 @@ CREATE TABLE Pacientes (
 	DNI_Pa INT NOT NULL,
 	Nombree_Pa VARCHAR(100) NOT NULL,
 	Apellido_Pa VARCHAR(100) NOT NULL,
-	Sexo_Pa CHAR(1) CHECK (Sexo_Pa IN('M', 'F', 'X')),
+	Sexo_Pa CHAR(1) CHECK (Sexo_Pa IN('M', 'F')),
 	Nacionalidad_Pa VARCHAR(50),
 	FechaNacimiento_Pa DATE,
 	Direccion_Pa VARCHAR(200),
@@ -108,7 +108,7 @@ GO
 
 -- TABLA TURNOS
 CREATE TABLE Turnos (
-	Legajo_Me_Tu VARCHAR(10) NOT NULL,
+	Legajo_Me_Tu INT IDENTITY(1,1) NOT NULL,
 	CodHorarioTurno_HT_Tu INT NOT NULL,
 	FechaTurno_Tu DATE NOT NULL,
 	DNI_Pa_Tu INT NOT NULL,

@@ -12,7 +12,6 @@ CREATE PROCEDURE spAltaMedico
 	@Provincia INT,
     @Localidad INT,
     @Especialidad INT,
-    @DiaAtencion INT,
     @HoraEntrada TIME(0),
 	@HoraSalida TIME(0),
     @Email VARCHAR(30),
