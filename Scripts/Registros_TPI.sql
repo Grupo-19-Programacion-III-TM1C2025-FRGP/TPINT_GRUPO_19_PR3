@@ -43,7 +43,7 @@ GO
 -- POBLAR PACIENTES
 INSERT INTO Pacientes (
   DNI_Pa, Nombre_Pa, Apellido_Pa, Sexo_Pa, Nacionalidad_Pa, FechaNacimiento_Pa,
-  Direccion_Pa, CodProvincia_Pr_Pa, CodLocalidad_Pr_Pa, Email_Pa, Telefono_Pa
+  Direccion_Pa, CodProvincia_Pr_Pa, CodLocalidad_Lo_Pa, Email_Pa, Telefono_Pa
 ) VALUES
 (40123456, 'Carlos', 'Lopez', 'M', 'Argentina', '1990-12-15', 'Calle Falsa 123', 1, 2, 'carlos.lopez@mail.com', '2233445566'),
 (40234567, 'María', 'Fernandez', 'F', 'Argentina', '1995-07-30', 'Av Siempre Viva 456', 3, 4, 'maria.fernandez@mail.com', '3412233445');
@@ -67,3 +67,7 @@ INSERT INTO Turnos (
 (1, 2, '2025-07-01', 40234567),
 (2, 3, '2025-07-02', 40123456);
 GO
+
+UPDATE Turnos SET Asistencia_Tu = 'Pendiente' 
+
+

@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Entidades;
+using Negocio;
+using System;
+using System.Data.SqlClient;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Vistas.Clases;
-using Entidades;
-using System.EnterpriseServices;
-using Negocio;
 
 namespace Vistas
 {
     public partial class Informes_de_Ausentes : System.Web.UI.Page
     {
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
@@ -23,11 +20,12 @@ namespace Vistas
             if (!IsPostBack)
             {
                 CargarFechas();
+
             }
 
         }
 
-       private void CargarFechas()
+        private void CargarFechas()
         {
             NegocioTurno fecha = new NegocioTurno();
             ddFechaFinalA.DataSource = fecha.getTabla_Fecha();
@@ -50,7 +48,11 @@ namespace Vistas
 
         protected void btnCalcularA_Click(object sender, EventArgs e)
         {
+           NegocioTurno pacientes = new NegocioTurno();
+           Turno turno = new Turno();   
+           dvAusentes.DataSource = pacientes.FiltrarPresentes(turno);
 
+            
         }
-    }
+}
 }

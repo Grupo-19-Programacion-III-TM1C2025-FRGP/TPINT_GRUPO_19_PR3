@@ -231,8 +231,8 @@ AS
 				CodEspecialidad_Es_Me = @Especialidad,
 				Email_Me = @Email,
 				Telefono_Me = @Telefono,
-				HorarioEntrada_Me = @HoraEntrada,
-				HorarioSalida_Me = @HoraSalida,
+				HoraEntrada_Me = @HoraEntrada,
+				HoraSalida_Me = @HoraSalida,
 				Estado_Me = @Estado
 			WHERE Legajo_Me = @LEGAJO
 	END;
@@ -287,14 +287,14 @@ BEGIN
     -- Obtener el total de turnos dentro del rango de fechas
     SELECT @TotalTurnos = COUNT(*)
     FROM Turnos
-    WHERE FechaTurno BETWEEN @FechaInicio AND @FechaFin;
+    WHERE FechaTurno_Tu BETWEEN @FechaInicio AND @FechaFin;
 
     -- Contar ausentes y presentes
     SELECT 
-        @Ausentes = COUNT(CASE WHEN EstadoAsistencia = 'Ausente' THEN 1 END),
-        @Presentes = COUNT(CASE WHEN EstadoAsistencia = 'Presente' THEN 1 END)
+        @Ausentes = COUNT(CASE WHEN Asistencia_Tu = 'Ausente' THEN 1 END),
+        @Presentes = COUNT(CASE WHEN Asistencia_Tu = 'Presente' THEN 1 END)
     FROM Turnos
-    WHERE FechaTurno BETWEEN @FechaInicio AND @FechaFin;
+    WHERE FechaTurno_Tu BETWEEN @FechaInicio AND @FechaFin;
 
     -- Calcular porcentajes
     IF @TotalTurnos > 0
@@ -318,43 +318,7 @@ BEGIN
 END;
 GO 
 
-CREATE PROCEDURE ObtenerTurnosPorEspecialidad(
-    @FechaInicio DATE,
-    @FechaFin DATE
-)
-AS
-BEGIN
-    SELECT 
-        E.NombreEspecialidad_Es,
-        COUNT(*) AS TotalTurnos
-    FROM Turnos T
-    INNER JOIN Especialidades E ON T.CodEspecialidad = E.NombreEspecialidad_Es
-    WHERE 
-        T.FechaTurno BETWEEN @FechaInicio AND @FechaFin
-        AND E.NombreEspecialidad_Es IN (
-            'Kinesiolog�a',
-            'Traumatolog�a',
-            'Cardiolog�a',
-            'Cl�nica M�dica',
-            'Pediatr�a',
-            'Dermatolog�a',
-            'Ginecolog�a',
-            'Neurolog�a',
-            'Urolog�a',
-            'Oncolog�a',
-            'Psiquiatr�a',
-            'Reumatolog�a',
-            'Endocrinolog�a',
-            'Infectolog�a',
-            'Neumonolog�a',
-            'Hematolog�a',
-            'Fonoaudiolog�a',
-            'Nutrici�n'
-        )
-    GROUP BY E.NombreEspecialidad_Es
-    ORDER BY TotalTurnos DESC;
-END;
-GO
+
 
 CREATE PROCEDURE Filtro_Ausentes(
     @FechaInicio DATE,
@@ -363,29 +327,29 @@ CREATE PROCEDURE Filtro_Ausentes(
 AS
 BEGIN
 
-SELECT T.DNIPaciente, T.FechaTurno, HT.HoraTurno, (M.NombreMedico + ' ' + M.ApellidoMedico) AS Nombre_Apellido_Medico, ES.NombreEspecialidad_Es, T.EstadoAsistencia
+SELECT M.Apellido_Me + ' ' + M.Nombre_Me AS NombreMedico,Es.NombreEspecialidad_Es, HT.Horario_HT, T.FechaTurno_Tu, T.DNI_Pa_Tu, T.Asistencia_Tu 
 FROM Turnos AS T 
-INNER JOIN HorariosDeTurnos AS HT ON T.IDHorarioTurno = HT.IDHorarioTurno
-INNER JOIN Medico AS M ON T.LegajoMedico = M.LegajoMedico
-INNER JOIN Especialidades AS ES ON T.CodEspecialidad = ES.CodEspecialidad_Es
-WHERE T.EstadoAsistencia = 'Ausente' AND FechaNacimiento >= @FechaInicio AND FechaTurno <= @FechaFin
+INNER JOIN HorariosTurno AS HT ON T.CodHorarioTurno_HT_Tu = HT.CodHorarioTurno_HT
+INNER JOIN Medicos AS M ON T.Legajo_Me_Tu = M.Legajo_Me
+INNER JOIN Especialidades AS ES ON Es.CodEspecialidad_Es = M.CodEspecialidad_Es_Me
+WHERE T.Asistencia_Tu = 'Ausente' AND FechaTurno_Tu >= @FechaInicio AND FechaTurno_Tu <= @FechaFin
 
 END
 GO
 
 CREATE PROCEDURE Filtro_Presentes(
-
     @FechaInicio DATE,
     @FechaFin DATE
 )
 AS
 BEGIN
 
-SELECT T.DNIPaciente, T.FechaTurno, HT.HoraTurno, (M.NombreMedico + ' ' + M.ApellidoMedico) AS Nombre_Apellido_Medico, ES.NombreEspecialidad_Es, T.EstadoAsistencia
+SELECT M.Apellido_Me + ' ' + M.Nombre_Me AS NombreMedico,Es.NombreEspecialidad_Es, HT.Horario_HT, T.FechaTurno_Tu, T.DNI_Pa_Tu, T.Asistencia_Tu 
 FROM Turnos AS T 
-INNER JOIN HorariosDeTurnos AS HT ON T.IDHorarioTurno = HT.IDHorarioTurno
-INNER JOIN Medico AS M ON T.LegajoMedico = M.LegajoMedico
-INNER JOIN Especialidades AS ES ON T.CodEspecialidad = ES.CodEspecialidad_Es
-WHERE T.EstadoAsistencia = 'Presentes' AND FechaNacimiento >= @FechaInicio AND FechaTurno <= @FechaFin
+INNER JOIN HorariosTurno AS HT ON T.CodHorarioTurno_HT_Tu = HT.CodHorarioTurno_HT
+INNER JOIN Medicos AS M ON T.Legajo_Me_Tu = M.Legajo_Me
+INNER JOIN Especialidades AS ES ON Es.CodEspecialidad_Es = M.CodEspecialidad_Es_Me
+WHERE T.Asistencia_Tu = 'Presente' AND FechaTurno_Tu >= @FechaInicio AND FechaTurno_Tu <= @FechaFin
 
 END
+GO
