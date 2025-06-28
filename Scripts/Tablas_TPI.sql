@@ -124,3 +124,7 @@ CREATE TABLE Turnos (
 	CONSTRAINT UK_Turnos UNIQUE (CodHorarioTurno_HT_Tu, FechaTurno_Tu, DNI_Pa_Tu) -- Esto evita que un paciente tenga dos turnos superpuestos
 );
 GO
+
+ALTER TABLE Turnos
+ADD Asistencia_Tu VARCHAR (15) DEFAULT 'Pendiente'
+GO
