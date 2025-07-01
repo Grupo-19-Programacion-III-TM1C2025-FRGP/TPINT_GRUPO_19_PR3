@@ -1,7 +1,7 @@
 ﻿USE Clinica;
 GO
 
-CREATE PROCEDURE spAltaMedico
+CREATE OR ALTER PROCEDURE spAltaMedico
 (
     @DNI CHAR(8),
     @NombreMedico VARCHAR(20),
@@ -30,7 +30,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE spTraerTablaMedicos
+CREATE OR ALTER PROCEDURE spTraerTablaMedicos
 AS
 	BEGIN
 		SELECT
@@ -67,7 +67,7 @@ AS
 	END;
 GO
 
-CREATE PROCEDURE spTraerTablaMedicosCodificada
+CREATE OR ALTER PROCEDURE spTraerTablaMedicosCodificada
 AS
 	BEGIN
 		SELECT
@@ -97,7 +97,7 @@ AS
 	END;
 GO
 
-CREATE PROCEDURE dbo.spAltaPaciente
+CREATE OR ALTER PROCEDURE dbo.spAltaPaciente
     @DNI CHAR(8),
     @Nombre VARCHAR(20),
     @Apellido VARCHAR(20),
@@ -124,7 +124,7 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE spTraerTablaPacientes 
+CREATE OR ALTER PROCEDURE spTraerTablaPacientes 
 AS
 	BEGIN
 		SELECT 
@@ -155,7 +155,7 @@ AS
 	END;
 GO
 
-CREATE PROCEDURE spTraerTablaPacientesCodificada
+CREATE OR ALTER PROCEDURE spTraerTablaPacientesCodificada
 AS
 	BEGIN
 		SELECT
@@ -181,7 +181,7 @@ AS
 	END;
 GO
 
-CREATE PROCEDURE spBajaPaciente @DNI CHAR(8)
+CREATE OR ALTER PROCEDURE spBajaPaciente @DNI CHAR(8)
 AS
 	BEGIN
 		UPDATE Pacientes
@@ -190,7 +190,7 @@ AS
 	END;
 GO
 
-CREATE PROCEDURE spBajaMedico @LEGAJO INT
+CREATE OR ALTER PROCEDURE spBajaMedico @LEGAJO INT
 AS
 	BEGIN
 		UPDATE Medicos
@@ -199,7 +199,7 @@ AS
 	END;
 GO
 
-CREATE PROCEDURE spModificarMedico
+CREATE OR ALTER PROCEDURE spModificarMedico
 (
 	@LEGAJO INT,
     @DNI CHAR(8),
@@ -238,7 +238,7 @@ AS
 	END;
 GO
 
-CREATE PROCEDURE spModificarPaciente
+CREATE OR ALTER PROCEDURE spModificarPaciente
 (
     @DNI CHAR(8),
     @NombrePaciente VARCHAR(20),
@@ -271,8 +271,15 @@ AS
 	END;
 GO
 
--- Chequear
-CREATE PROCEDURE CalcularPorcentajeEstado(
+CREATE OR ALTER PROCEDURE spAsignarTurno @LegajoMedico INT, @CodigoHora INT, @Fecha DATE, @DNIPaciente CHAR(8)
+AS
+	BEGIN
+		INSERT INTO Turnos (Legajo_Me_Tu, CodHorarioTurno_HT_Tu, FechaTurno_Tu, DNI_Pa_Tu)
+		VALUES (@LegajoMedico, @CodigoHora, @Fecha, @DNIPaciente)
+	END;
+GO
+
+CREATE OR ALTER PROCEDURE CalcularPorcentajeEstado(
     @FechaInicio DATE,
     @FechaFin DATE
 )
@@ -318,9 +325,7 @@ BEGIN
 END;
 GO 
 
-
-
-CREATE PROCEDURE Filtro_Ausentes(
+CREATE OR ALTER PROCEDURE Filtro_Ausentes(
     @FechaInicio DATE,
     @FechaFin DATE
 )
@@ -337,7 +342,7 @@ WHERE T.Asistencia_Tu = 'Ausente' AND FechaTurno_Tu >= @FechaInicio AND FechaTur
 END
 GO
 
-CREATE PROCEDURE Filtro_Presentes(
+CREATE OR ALTER PROCEDURE Filtro_Presentes(
     @FechaInicio DATE,
     @FechaFin DATE
 )
