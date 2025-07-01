@@ -15,5 +15,12 @@ namespace Datos
             string consulta = $"SELECT * FROM Localidades WHERE CodProvincia_Pr_Lo = {idProvincia}";
             return con.TraerTabla(consulta, "Localidades");
         }
+
+        public DataTable getTablaLocalidad()
+        {
+            Conexion con = new Conexion();
+            string consulta = "SELECT CodLocalidad_Lo AS Codigo, NombreLocalidad_Lo AS Localidad FROM Localidades";
+            return con.TraerTabla(consulta, "Localidades");
+        }
     }
 }

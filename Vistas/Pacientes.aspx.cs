@@ -14,6 +14,9 @@ namespace Vistas
     public partial class Pacientes : System.Web.UI.Page
     {
         NegocioPaciente negocioP = new NegocioPaciente();
+        NegocioProvincia negocioProvincia = new NegocioProvincia();
+        NegocioLocalidad negocioLocalidad = new NegocioLocalidad();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
@@ -23,6 +26,8 @@ namespace Vistas
             if (!IsPostBack)
             {
                 CargarGvPacientes();
+                CargarGvLocalidades();
+                CargarGvProvincia();
 
                 ddlSexo.Items.Insert(0, new ListItem("Seleccione Sexo", "0"));
                 CargarProvincias();
@@ -32,6 +37,18 @@ namespace Vistas
         {
             gvPacientes.DataSource = negocioP.getTabla(); // retorna DataTable
             gvPacientes.DataBind();
+        }
+
+        private void CargarGvProvincia()
+        {
+            gvProvincia.DataSource = negocioProvincia.getTabla(); // retorna DataTable
+            gvProvincia.DataBind();
+        }
+
+        private void CargarGvLocalidades()
+        {
+            gvLocalidad.DataSource = negocioLocalidad.getTabla(); // retorna DataTable
+            gvLocalidad.DataBind();
         }
 
         private void CargarProvincias()

@@ -93,7 +93,7 @@ CREATE TABLE Pacientes (
 	CONSTRAINT PK_Pacientes PRIMARY KEY (DNI_Pa),
 
 	CONSTRAINT FK_Pacientes_Provincias FOREIGN KEY (CodProvincia_Pr_Pa) REFERENCES Localidades(CodLocalidad_Lo),
-	CONSTRAINT FK_Pacientes_Localidad FOREIGN KEY (CodLocalidad_Pr_Pa) REFERENCES Localidades(CodLocalidad_Lo),
+	CONSTRAINT FK_Pacientes_Localidad FOREIGN KEY (CodLocalidad_Lo_Pa) REFERENCES Localidades(CodLocalidad_Lo),
 
 	CONSTRAINT UQ_Pacientes UNIQUE (DNI_Pa)
 );
