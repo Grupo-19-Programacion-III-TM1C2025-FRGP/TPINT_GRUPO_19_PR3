@@ -31,8 +31,8 @@ namespace Negocio
                 if (tabla.Rows.Count > 0)
                 {
                     resultado["success"] = "true";
-                    resultado["usuario"] = tabla.Rows[0]["NombreUsuario_Usu"].ToString();
-                    resultado["rol"] = tabla.Rows[0]["TipoUsuario_Usu"].ToString() == "True" ? "Administrador" : "Medico"; // 1 = Administrador, 0 = Medico
+                    resultado["usuario"] = tabla.Rows[0]["Nombre_Usu"].ToString();
+                    resultado["rol"] = tabla.Rows[0]["Tipo_Usu"].ToString() == "True" ? "Administrador" : "Medico"; // 1 = Administrador, 0 = Medico
 
                 }
                 else

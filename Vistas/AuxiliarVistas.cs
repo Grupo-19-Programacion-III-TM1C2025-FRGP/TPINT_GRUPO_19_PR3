@@ -9,7 +9,7 @@ namespace Vistas.Clases
     {
         public static void ManejarRedireccionPorCookies()
         {
-            if (HttpContext.Current.Request.Cookies["Usuario"] != null)
+            if (HttpContext.Current.Request.Cookies["Usuario"] != null && HttpContext.Current.Request.Cookies["Rol"] != null)
             {
                 // Si ya hay un usuario logueado, redirigir a la página correspondiente
                 string rol = HttpContext.Current.Request.Cookies["Rol"].Value;

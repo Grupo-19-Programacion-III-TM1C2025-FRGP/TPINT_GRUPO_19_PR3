@@ -14,7 +14,7 @@ namespace Datos
         {
             try
             {
-                string consulta = $"SELECT NombreUsuario_Usu, TipoUsuario_Usu FROM dbo.Usuarios WHERE NombreUsuario_Usu = '{usuario}' AND Contraseña_Usu = '{contraseña}'";
+                string consulta = $"SELECT Nombre_Usu, Tipo_Usu FROM dbo.Usuarios WHERE Nombre_Usu = '{usuario}' AND Contrasenia_Usu = '{contraseña}'";
                 DataTable tabla = _conexion.TraerTabla(consulta, "Usuario");
 
                 return tabla;

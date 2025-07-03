@@ -10,13 +10,13 @@ namespace Datos
 {
     public class DaoHorarios : GenericDao
     {
-        readonly string consultaTabla = "SELECT * FROM HorariosAtencion";
+        readonly string consultaTabla = "SELECT * FROM HorariosTurno";
 
         public DaoHorarios() { }
 
         public DataTable getTablaHorarios()
         {
-            DataTable tabla = _conexion.TraerTabla(consultaTabla, "HorariosAtencion");
+            DataTable tabla = _conexion.TraerTabla(consultaTabla, "HorariosTurno");
             return tabla;
         }
     }

@@ -37,8 +37,8 @@ namespace Vistas
                 // ddl horarios
                 table = horario.getTabla();
                 ddlHorario.DataSource = table;
-                ddlHorario.DataTextField = "HoraInicio_HA";
-                ddlHorario.DataValueField = "CodHorarioAtencion_HA";
+                ddlHorario.DataTextField = "Horario_HT";
+                ddlHorario.DataValueField = "CodHorarioTurno_HT";
                 ddlHorario.DataBind();
             }
         }
