@@ -48,11 +48,16 @@ namespace Vistas
 
         protected void btnCalcularA_Click(object sender, EventArgs e)
         {
-           NegocioTurno pacientes = new NegocioTurno();
+           NegocioTurno Datos = new NegocioTurno();
            Turno turno = new Turno();   
-           dvAusentes.DataSource = pacientes.FiltrarPresentes(turno);
+           SqlCommand comando = new SqlCommand();   
+           dvAusentes.DataSource = Datos.FiltrarPresentes(turno);
+           dvAusentes.DataBind();
 
-            
+          
+           turno.FechaTurno_Tur = DateTime.Today;
+           float porcentaje = Datos.SacarPorcentaje(turno);
+           lblAusentes.Text = porcentaje.ToString("F2") + "%";
         }
 }
 }
