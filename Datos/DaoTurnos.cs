@@ -25,6 +25,22 @@ namespace Datos
             DataTable tabla = _conexion.TraerTabla(consultaFecha, "Turnos");
             return tabla;
         }
+        public void ArmarParametrosAsignarTurno(ref SqlCommand comando, Turno tur)
+        {
+            SqlParameter ParamF;
+
+            ParamF = comando.Parameters.Add("@LegajoMedico", SqlDbType.Int);
+            ParamF.Value = tur.LegajoMedico_Tur;
+
+            ParamF = comando.Parameters.Add("@CodigoHora", SqlDbType.Int);
+            ParamF.Value = tur.CodHorarioTurno_Tur;
+
+            ParamF = comando.Parameters.Add("@Fecha", SqlDbType.Date);
+            ParamF.Value = tur.FechaTurno_Tur;
+
+            ParamF = comando.Parameters.Add("@DNIPaciente", SqlDbType.Char, 8);
+            ParamF.Value = tur.DNIPaciente_Tur;
+        }
         public void ArmarParametrosFechas(ref SqlCommand comando, Turno tur)
         {
             SqlParameter ParamF;
@@ -36,7 +52,6 @@ namespace Datos
             ParamF.Value = tur.FechaTurno_Tur;
 
         }
-
         public float SacarPorcentajeAsistencia(Turno tur)
         {
             Conexion con = new Conexion();
@@ -59,6 +74,13 @@ namespace Datos
             SqlCommand comando = new SqlCommand();
             ArmarParametrosFechas(ref comando, tur);
             return con.EjecutarProcedimientoAlmacenado(comando, "Filtro_Ausentes");
+        }
+        public int AltaTurno(Turno turno)
+        {
+            Conexion con = new Conexion();
+            SqlCommand comando = new SqlCommand();
+            ArmarParametrosAsignarTurno(ref comando, turno);
+            return con.EjecutarProcedimientoAlmacenado(comando, "spAsignarTurno");
         }
     }
 }

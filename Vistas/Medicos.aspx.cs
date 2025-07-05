@@ -12,12 +12,10 @@ using System.Data;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace MiProyecto
-{
+{   
     public partial class Medicos : Page
     {
         NegocioMedico negocioMedico = new NegocioMedico();
-       
-
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
@@ -36,13 +34,11 @@ namespace MiProyecto
                 CargarEspecialidades();
             }
         }
-
         private void CargarGvMedicos()
         {
             gvMedicos.DataSource = negocioMedico.getTabla(); // retorna DataTable
             gvMedicos.DataBind();
         }
-
         private void CargarProvincias()
         {
             NegocioProvincia negocio = new NegocioProvincia();
@@ -52,7 +48,6 @@ namespace MiProyecto
             ddlProvincia.DataBind();
             ddlProvincia.Items.Insert(0, new ListItem("Seleccione una provincia", "0"));
         }
-
         protected void ddlProvincia_SelectedIndexChanged(object sender, EventArgs e)
         {
             int idProvincia = int.Parse(ddlProvincia.SelectedValue);
@@ -63,7 +58,6 @@ namespace MiProyecto
             ddlLocalidad.DataBind();
             ddlLocalidad.Items.Insert(0, new ListItem("Seleccione una localidad", "0"));
         }
-
         private void CargarEspecialidades()
         {
             NegocioEspecialidad negocio = new NegocioEspecialidad();
@@ -72,25 +66,9 @@ namespace MiProyecto
             ddlEspecialidad.DataValueField = "CodEspecialidad_Es";
             ddlEspecialidad.DataBind();
             ddlEspecialidad.Items.Insert(0, new ListItem("Seleccione una especialidad", "0"));
-        }
-
-        
-
-        //private void CargarHorarios()
-        //{
-        //    NegocioHorario negocio = new NegocioHorario();
-        //    ddlHoraSalida.DataSource = negocio.getTabla();
-        //    ddlHoraSalida.DataTextField = "Horario_HT";
-        //    ddlHoraSalida.DataValueField = "CodHorarioTurno_HT";
-        //    ddlHoraSalida.DataBind();
-        //    ddlHoraSalida.Items.Insert(0, new ListItem("Seleccione un horario", "0"));
-        //}
-        //}
-
-        
-
+        }       
         protected void btnAgregar_Click(object sender, EventArgs e)
-        { 
+        {
             string dni = txtDNI.Text;
             string nombre = txtNombre.Text;
             string apellido = txtApellido.Text;
@@ -107,7 +85,7 @@ namespace MiProyecto
 
             // Instanciar objero médico
             Medico medico = new Medico(dni, nombre, apellido, sexo, nacionalidad, fechaNacimiento, provincia, localidad, especialidad, email, telefono, horaEntrada, horaSalida, true);
-           
+
             // Llamar a la capa de negocio
             int resultado = negocioMedico.agregarMedico(medico);
 
@@ -119,12 +97,10 @@ namespace MiProyecto
             LimpiarFormulario();
             CargarGvMedicos();
         }
-
         protected void btnLimpiar_Click(object sender, EventArgs e)
         {
             LimpiarFormulario();
         }
-
         private void LimpiarFormulario()
         {
             txtDNI.Text = string.Empty;
@@ -141,12 +117,10 @@ namespace MiProyecto
             ddlLocalidad.SelectedIndex = 0;
             ddlProvincia.SelectedIndex = 0;
         }
-
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             AuxiliarVistas.CerrarSesion();
         }
-
         protected void gvMedicos_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             string legajo = gvMedicos.DataKeys[e.RowIndex].Value.ToString();
@@ -178,21 +152,18 @@ namespace MiProyecto
 
             e.Cancel = true;
         }
-
         protected void gvMedicos_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gvMedicos.EditIndex = e.NewEditIndex;
             gvMedicos.DataSource = negocioMedico.getTabla();
             gvMedicos.DataBind();
         }
-
         protected void gvMedicos_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             gvMedicos.EditIndex = -1;
             gvMedicos.DataSource = negocioMedico.getTabla();
             gvMedicos.DataBind();
         }
-
         protected void gvMedicos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             string legajo = gvMedicos.DataKeys[e.RowIndex].Value.ToString();
@@ -204,19 +175,5 @@ namespace MiProyecto
 
             e.Cancel = true;
         }
-
-
     }
-
-    // Clase para representar un medico
-    /*public class Medico
-    {
-        public string Legajo { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string Especialidad { get; set; }
-        public string Horarios { get; set; }
-        public string Email { get; set; }
-        public string Telefono { get; set; }
-    }*/
 }

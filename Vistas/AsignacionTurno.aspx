@@ -134,7 +134,7 @@
                                 <asp:DropDownList ID="ddlEspecialidad" runat="server" Height="19px" Width="190px" AutoPostBack="True" OnSelectedIndexChanged="ddlEspecialidad_SelectedIndexChanged">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="rfvEspecialidad" runat="server"
-                                    ControlToValidate="ddlEspecialidad" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                    ControlToValidate="ddlEspecialidad" ErrorMessage="Se debe elegir una especialidad" ForeColor="Red" InitialValue="0" ValidationGroup="1">*</asp:RequiredFieldValidator>
                             </td>
                             <td class="auto-style16">
                                 <asp:Label ID="Label5" runat="server" Text="Horario:"></asp:Label>
@@ -145,7 +145,7 @@
                             </td>
                             <td class="auto-style26">
                                 <asp:RequiredFieldValidator ID="rfvHorario" runat="server"
-                                    ControlToValidate="ddlHorario" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                    ControlToValidate="ddlHorario" ErrorMessage="Se debe seleccionar un horario" ForeColor="Red" InitialValue="0" ValidationGroup="1">*</asp:RequiredFieldValidator>
                             </td>
                             <td class="auto-style17">&nbsp;</td>
                         </tr>
@@ -165,19 +165,20 @@
                                 <asp:DropDownList ID="ddlMedico" runat="server" Height="19px" Width="190px">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="rfvMedico" runat="server" ControlToValidate="ddlMedico"
-                                    ErrorMessage="*"></asp:RequiredFieldValidator>
+                                    ErrorMessage="Se debe elegir un médico" ForeColor="Red" InitialValue="0" ValidationGroup="1">*</asp:RequiredFieldValidator>
                             </td>
                             <td class="auto-style22">
-                                <asp:Label ID="Label6" runat="server" Text="Paciente:"></asp:Label>
+                                <asp:Label ID="Label6" runat="server" Text="DNI Paciente:"></asp:Label>
                             </td>
                             <td class="auto-style23">
                                 <asp:TextBox ID="txtDNIPaciente" runat="server" TextMode="Number" Width="175px"></asp:TextBox>
                             </td>
                             <td class="auto-style27">
                                 <asp:RequiredFieldValidator ID="rfvPaciente" runat="server"
-                                    ControlToValidate="txtDNIPaciente" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                    ControlToValidate="txtDNIPaciente" ErrorMessage="Se debe seleccionar un paciente" ForeColor="Red" ValidationGroup="1">*</asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="revTxtDNIPaciente" runat="server" ControlToValidate="txtDNIPaciente" ErrorMessage="Ingrese un DNI válido" ForeColor="Red" ValidationExpression="^\d{8}" ValidationGroup="1">*</asp:RegularExpressionValidator>
                             </td>
-                            <td class="auto-style23"></td>
+                            <td class="auto-style23">&nbsp;</td>
                         </tr>
                         <tr>
                             <td class="auto-style14">&nbsp;</td>
@@ -194,11 +195,11 @@
                             <td class="auto-style15">
                                 <asp:TextBox ID="txtFecha" runat="server" TextMode="Date" Width="179px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rfvFecha" runat="server" ControlToValidate="txtFecha"
-                                    ErrorMessage="*"></asp:RequiredFieldValidator>
+                                    ErrorMessage="Se debe seleccionar una fecha" ForeColor="Red" ValidationGroup="1">*</asp:RequiredFieldValidator>
                             </td>
                             <td class="auto-style16">&nbsp;</td>
                             <td class="auto-style17">
-                                <asp:Button ID="btnGuardar" runat="server" Text="Guardar Turno" />
+                                <asp:Button ID="btnGuardar" runat="server" Text="Guardar Turno" OnClick="btnGuardar_Click" ValidationGroup="1" />
                             </td>
                             <td class="auto-style26">&nbsp;</td>
                             <td class="auto-style17">&nbsp;</td>
@@ -207,15 +208,21 @@
                             <td class="auto-style14"></td>
                             <td class="auto-style15">&nbsp;</td>
                             <td class="auto-style16"></td>
-                            <td class="auto-style17"></td>
+                            <td class="auto-style17">
+                                <asp:Button ID="txtLimpiar" runat="server" OnClick="txtLimpiar_Click" Text="Limpiar formulario" Width="162px" />
+                            </td>
                             <td class="auto-style26"></td>
                             <td class="auto-style17"></td>
                         </tr>
                         <tr>
                             <td class="auto-style20"></td>
-                            <td class="auto-style21">&nbsp;</td>
+                            <td class="auto-style21">
+                                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" ValidationGroup="1" />
+                            </td>
                             <td class="auto-style22"></td>
-                            <td class="auto-style23"></td>
+                            <td class="auto-style23">
+                                <asp:Label ID="lblMensaje" runat="server" ForeColor="#00CC00"></asp:Label>
+                            </td>
                             <td class="auto-style27"></td>
                             <td class="auto-style23"></td>
                         </tr>
