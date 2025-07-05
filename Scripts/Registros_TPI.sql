@@ -24,21 +24,26 @@ INSERT INTO Especialidades (NombreEspecialidad_Es) VALUES
 ('Neurología');
 GO
 
--- POBLAR USUARIOS (medicos y admins)
-INSERT INTO Usuarios (Nombre_Usu, Contrasenia_Usu, Tipo_Usu) VALUES
-('admin1', 'adminpass123', 1),
-('medico1', 'medpass123', 0),
-('medico2', 'medpass456', 0);
-GO
-
--- POBLAR MEDICOS
+-- POBLAR MÉDICOS
 INSERT INTO Medicos (
   DNI_Me, Nombre_Me, Apellido_Me, Sexo_Me, Nacionalidad_Me, FechaNacimiento_Me,
   CodProvincia_Pr_Me, CodLocalidad_Lo_Me, CodEspecialidad_Es_Me, HoraEntrada_Me, HoraSalida_Me, Email_Me, Telefono_Me
 ) VALUES
-(30123456, 'Juan', 'Pérez', 'M', 'Argentina', '1980-05-10', 1, 1, 1, '10:00', '18:00', 'juan.perez@mail.com', '2211234567'),
+(30123456, 'Juan', 'Pérez', 'M', 'Argentina', '1980-05-10', 1, 1, 1, '10:00', '18:00', 'juan.perez@mail.com', '2211234567');
+DECLARE @LegajoJuan INT = SCOPE_IDENTITY();
+
+INSERT INTO Medicos (
+  DNI_Me, Nombre_Me, Apellido_Me, Sexo_Me, Nacionalidad_Me, FechaNacimiento_Me,
+  CodProvincia_Pr_Me, CodLocalidad_Lo_Me, CodEspecialidad_Es_Me, HoraEntrada_Me, HoraSalida_Me, Email_Me, Telefono_Me
+) VALUES
 (34435562, 'Ana', 'Gómez', 'F', 'Argentina', '1985-08-22', 2, 3, 2, '08:00', '16:00', 'ana.gomez@mail.com', '3519876543');
-GO
+DECLARE @LegajoAna INT = SCOPE_IDENTITY();
+
+-- POBLAR USUARIOS (admins y médicos)
+INSERT INTO Usuarios (Nombre_Usu, Contrasenia_Usu, Tipo_Usu, Legajo_Me_Usu) VALUES
+('admin1', 'adminpass123', 1, NULL),
+('juan.perez@mail.com', 'medpass123', 0, @LegajoJuan),
+('ana.gomez@mail.com', 'medpass456', 0, @LegajoAna);
 
 -- POBLAR PACIENTES
 INSERT INTO Pacientes (

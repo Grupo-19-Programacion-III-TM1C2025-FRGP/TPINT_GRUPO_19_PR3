@@ -31,11 +31,16 @@ namespace Vistas
                 return;
             }
 
+            string legajo = resultado["legajo"];
             string rol = resultado["rol"];
 
             Response.Cookies["Usuario"].Value = resultado["usuario"];
             Response.Cookies["Usuario"].Expires = DateTime.Now.AddHours(2); // Cookie expira en 2 horas
             Response.Cookies["Rol"].Value = rol;
+            Response.Cookies["Rol"].Expires = DateTime.Now.AddHours(2); // Cookie expira en 2 horas
+            Response.Cookies["Legajo"].Value = legajo;
+            Response.Cookies["Legajo"].Expires = DateTime.Now.AddHours(2); // Cookie expira en 2 horas
+            
 
             AuxiliarVistas.RedirigirPorRol(rol);
         }

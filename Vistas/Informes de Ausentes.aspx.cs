@@ -46,18 +46,18 @@ namespace Vistas
             AuxiliarVistas.CerrarSesion();
         }
 
-        protected void btnCalcularA_Click(object sender, EventArgs e)
-        {
-           NegocioTurno Datos = new NegocioTurno();
-           Turno turno = new Turno();   
-           SqlCommand comando = new SqlCommand();   
-           dvAusentes.DataSource = Datos.FiltrarPresentes(turno);
-           dvAusentes.DataBind();
+        //protected void btnCalcularA_Click(object sender, EventArgs e)
+        //{
+        //   NegocioTurno Datos = new NegocioTurno();
+        //   Turno turno = new Turno();   
+        //   SqlCommand comando = new SqlCommand();   
+        //   dvAusentes.DataSource = Datos.FiltrarPresentes(turno);
+        //   dvAusentes.DataBind();
 
           
-           turno.FechaTurno_Tur = DateTime.Today;
-           float porcentaje = Datos.SacarPorcentaje(turno);
-           lblAusentes.Text = porcentaje.ToString("F2") + "%";
-        }
+        //   turno.FechaTurno_Tur = DateTime.Today;
+        //   float porcentaje = Datos.SacarPorcentaje(turno);
+        //   lblAusentes.Text = porcentaje.ToString("F2") + "%";
+        //}
 }
 }

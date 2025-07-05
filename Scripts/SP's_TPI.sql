@@ -14,8 +14,9 @@ CREATE PROCEDURE spAltaMedico
     @Especialidad INT,
     @HoraEntrada TIME(0),
 	@HoraSalida TIME(0),
-    @Email VARCHAR(30),
-    @Telefono VARCHAR(20)
+    @Email VARCHAR(100),
+    @Telefono VARCHAR(20),
+	@Contrasenia VARCHAR(100)
 )
 AS
 BEGIN
@@ -27,6 +28,18 @@ BEGIN
         @DNI, @NombreMedico, @ApellidoMedico, @Sexo, @Nacionalidad, @FechaNacimiento, @Provincia,
         @Localidad, @Especialidad, @Email, @Telefono, @HoraEntrada, @HoraSalida
     )
+	
+	 -- Obtener el Legajo del médico recién insertado
+    DECLARE @LegajoMedico INT;
+    SET @LegajoMedico = SCOPE_IDENTITY(); -- Trae el Ultimo valor IDENTITY generado en la consulta
+
+    -- Insertar en Usuarios
+    INSERT INTO Usuarios (
+        Nombre_Usu, Contrasenia_Usu, Tipo_Usu, Legajo_Me_Usu
+    )
+    VALUES (
+        @Email, @Contrasenia, 0, @LegajoMedico
+    );
 END
 GO
 
