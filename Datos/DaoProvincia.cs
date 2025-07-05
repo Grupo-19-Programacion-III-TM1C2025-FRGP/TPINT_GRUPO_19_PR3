@@ -9,12 +9,11 @@ namespace Datos
 {
     public class DaoProvincia
     {
+        readonly string consulta = "SELECT * FROM Provincias";
         public DataTable getTablaProvincia()
         {
             Conexion con = new Conexion();
-            string consulta = "SELECT * FROM Provincias";
             return con.TraerTabla(consulta, "Provincias");
         }
     }
-
 }

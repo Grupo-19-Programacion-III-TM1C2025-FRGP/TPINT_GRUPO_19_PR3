@@ -14,8 +14,7 @@ namespace Datos
     public class DaoMedico : GenericDao
     {
         // Propiedades
-        readonly string consultaTabla = "SELECT * FROM Medicos";
-        string consultaTablaFiltrada = "select M.NombreMedico, M.LegajoMedico, M.Especialidad from Medico AS M inner join Especialidades AS E on M.Especialidad = E.CodEspecialidad_Es where M.Especialidad = ";
+        string consultaTablaFiltrada = "select M.Apellido_Me, M.Legajo_Me, M.CodEspecialidad_Es_Me from Medicos AS M inner join Especialidades AS E on M.CodEspecialidad_Es_Me = E.CodEspecialidad_Es where M.CodEspecialidad_Es_Me = ";
         DataTable tabla;
 
         // Métodos
@@ -140,11 +139,11 @@ namespace Datos
         public int traerLegajoPorDNI(int dni)
         {
             Conexion ds = new Conexion();
-            string consulta = "SELECT LegajoMedico FROM Medico WHERE DNI = " + dni;
-            tabla = ds.TraerTabla(consulta, "Medico");
+            string consulta = "SELECT LegajoMedico FROM Medicos WHERE DNI = " + dni;
+            tabla = ds.TraerTabla(consulta, "Medicos");
 
             if (tabla.Rows.Count > 0)
-                return Convert.ToInt32(tabla.Rows[0]["LegajoMedico"]);
+                return Convert.ToInt32(tabla.Rows[0]["Legajo_Me"]);
 
             return -1; // O algún valor que indique que no se encontró
         }
@@ -159,7 +158,7 @@ namespace Datos
         public DataTable FiltrarPorEspecialidad(string codEspecialidad)
         {
             consultaTablaFiltrada += codEspecialidad;
-            tabla = _conexion.TraerTabla(consultaTablaFiltrada, "Medico");
+            tabla = _conexion.TraerTabla(consultaTablaFiltrada, "Medicos");
             return tabla;
         }
 

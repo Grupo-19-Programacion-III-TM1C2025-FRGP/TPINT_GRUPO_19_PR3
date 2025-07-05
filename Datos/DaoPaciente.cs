@@ -14,7 +14,6 @@ namespace Datos
     public class DaoPaciente : GenericDao
     {
         // Propiedades
-        readonly string consultaTabla = "SELECT * FROM Pacientes";
         DataTable tabla;
         // Métodos
         public void ArmarParametrosPacienteAgregar(ref SqlCommand comando, Paciente pac)

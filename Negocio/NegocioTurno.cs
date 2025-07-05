@@ -11,22 +11,29 @@ namespace Negocio
 {
     public class NegocioTurno
     {
-      public DataTable getTabla_Turno()
-      {
-          DaoTurnos dao = new DaoTurnos();
-          return dao.getTablaTurno();
-      }
+        public NegocioTurno() { }
+        public DataTable getTabla_Turno()
+        {
+            DaoTurnos dao = new DaoTurnos();
+            return dao.getTablaTurno();
+        }
         public DataTable getTabla_Fecha()
         {
             DaoTurnos dao = new DaoTurnos();
             return dao.getTablaFecha();
         }
 
+        public int AgregarTurno(Turno turno)
+        {
+            DaoTurnos dao = new DaoTurnos();
+            return dao.AltaTurno(turno);
+        }
+
         public float SacarPorcentaje(Turno turno)
-      {
-          DaoTurnos dao = new DaoTurnos();
-          return dao.SacarPorcentajeAsistencia(turno);
-      }
+        {
+            DaoTurnos dao = new DaoTurnos();
+            return dao.SacarPorcentajeAsistencia(turno);
+        }
 
         public float FiltrarPresentes(Turno turno)
         {
@@ -36,7 +43,7 @@ namespace Negocio
 
         public float FiltrarAusentes(Turno turno)
         {
-            DaoTurnos dao=new DaoTurnos();
+            DaoTurnos dao = new DaoTurnos();
             return dao.FiltroAusentes(turno);
         }
     }
