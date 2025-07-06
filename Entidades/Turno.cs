@@ -20,6 +20,11 @@ namespace Entidades
             DNIPaciente_Tur = dniPaciente;
         }
 
+        public Turno(DateTime fechaTurno)
+        {
+            FechaTurno_Tur = fechaTurno;
+        }
+
         public Turno() { }
 
     }

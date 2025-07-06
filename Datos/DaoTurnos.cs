@@ -13,6 +13,8 @@ namespace Datos
     {
         readonly string consultaTabla = "SELECT * FROM Turnos";
         readonly string consultaFecha = "SELECT FechaTurno_TU FROM Turnos";
+        //readonly string consultaAusentes = "SELECT COUNT (*) FROM Turnos WHERE Asistencia_Tu = 'Ausente' AND FechaTurno >= ";
+
         public DaoTurnos() { }
 
         public DataTable getTablaTurno()
@@ -25,6 +27,20 @@ namespace Datos
             DataTable tabla = _conexion.TraerTabla(consultaFecha, "Turnos");
             return tabla;
         }
+
+        public int Cantidad() //CANTIDAD DE TURNOS
+        {
+            Conexion conexion = new Conexion();
+            int resultado = conexion.ejecutarConsulta(consultaTabla);
+            return resultado;
+        }
+
+        public void PorcentajeAusente()
+        {
+
+        }
+
+
         public void ArmarParametrosAsignarTurno(ref SqlCommand comando, Turno tur)
         {
             SqlParameter ParamF;
@@ -52,6 +68,14 @@ namespace Datos
             ParamF.Value = tur.FechaTurno_Tur;
 
         }
+
+        public void ArmarParametrosAsistencia(ref SqlCommand comando, Turno tur)
+        {
+            SqlParameter ParamF;
+            ParamF = comando.Parameters.Add("@Fecha", SqlDbType.Date);
+            ParamF.Value = tur.FechaTurno_Tur;
+        }
+
         public float SacarPorcentajeAsistencia(Turno tur)
         {
             Conexion con = new Conexion();
@@ -60,11 +84,17 @@ namespace Datos
             return con.EjecutarProcedimientoAlmacenado(comando, "CalcularPorcentajeEstado");
         }
 
-        public float FiltroPresentes(Turno tur)
+        public int FiltroPresentes(Turno turno, DateTime Inicio, DateTime Final)
         {
             Conexion con = new Conexion();
             SqlCommand comando = new SqlCommand();
-            ArmarParametrosFechas(ref comando, tur);
+            SqlParameter ParamF;
+            string NuevoInicio = Inicio.ToString("yyyy-MM-dd");
+            comando.Parameters.Add("@FechaInicio", SqlDbType.Date).Value = NuevoInicio;
+            //ParamF.Value = Inicio;
+            string NuevoFinal = Final.ToString("yyyy-MM-dd");
+            comando.Parameters.Add("@FechaFin", SqlDbType.Date).Value = NuevoFinal;
+            //ParamF.Value = Final;
             return con.EjecutarProcedimientoAlmacenado(comando, "Filtro_Presentes");
         }
 

@@ -1,6 +1,9 @@
-﻿using Negocio;
+﻿using Entidades;
+using Negocio;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -38,9 +41,27 @@ namespace Vistas
             ddFechaInicialP.DataBind();
             ddFechaInicialP.Items.Insert(0, new ListItem("Seleccione una fecha Inicial", "0"));
         }
-protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             AuxiliarVistas.CerrarSesion();
+        }
+
+        protected void btnCalcularP_Click(object sender, EventArgs e)
+        {
+            NegocioTurno Datos = new NegocioTurno();
+            string fechaDDL = ddFechaInicialP.Text;
+            DateTime Inicio = DateTime.Parse(fechaDDL);
+            string fechaDDL2 = ddFechaFinalp.Text;
+            DateTime Final = DateTime.Parse(fechaDDL2);
+            Turno turno = new Turno();
+            SqlCommand comando = new SqlCommand();
+            //gvPresentes.DataSource = Datos.FiltrarPresentes(turno, Inicio, Final);
+            //gvPresentes.DataBind();
+            int Presentes = Datos.FiltrarPresentes(turno, Inicio, Final);
+            int Cantidad = Datos.Cantidad();
+            float Resultado = Presentes / Cantidad * 100;
+            lblPresentes.Text = Resultado + "%";
+
         }
     }
 }
