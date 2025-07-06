@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Informes de Presentes.aspx.cs"
-    Inherits="Vistas.Informes_de_Ausentes" %>
+    Inherits="Vistas.Informes_de_Presentes" %>
 
     <!DOCTYPE html>
 
