@@ -12,6 +12,7 @@ namespace Datos
     public class DaoTurnos : GenericDao
     {
         readonly string consultaTabla = "SELECT * FROM Turnos";
+        readonly string consultaContarTabla = "SELECT COUNT(*) FROM Turnos";
         readonly string consultaFecha = "SELECT FechaTurno_TU FROM Turnos";
         //readonly string consultaAusentes = "SELECT COUNT (*) FROM Turnos WHERE Asistencia_Tu = 'Ausente' AND FechaTurno >= ";
 
@@ -31,7 +32,7 @@ namespace Datos
         public int Cantidad() //CANTIDAD DE TURNOS
         {
             Conexion conexion = new Conexion();
-            int resultado = conexion.ejecutarConsulta(consultaTabla);
+            int resultado = conexion.ejecutarConsultaConResultado(consultaContarTabla);
             return resultado;
         }
 
@@ -81,7 +82,7 @@ namespace Datos
             Conexion con = new Conexion();
             SqlCommand comando = new SqlCommand();
             ArmarParametrosFechas(ref comando, tur);
-            return con.EjecutarProcedimientoAlmacenado(comando, "CalcularPorcentajeEstado");
+            return con.EjecutarProcedimientoAlmacenadoConResultado(comando, "CalcularPorcentajeEstado");
         }
 
         public int FiltroPresentes(Turno turno, DateTime Inicio, DateTime Final)
@@ -95,7 +96,7 @@ namespace Datos
             string NuevoFinal = Final.ToString("yyyy-MM-dd");
             comando.Parameters.Add("@FechaFin", SqlDbType.Date).Value = NuevoFinal;
             //ParamF.Value = Final;
-            return con.EjecutarProcedimientoAlmacenado(comando, "Filtro_Presentes");
+            return con.EjecutarProcedimientoAlmacenadoConResultado(comando, "Filtro_Presentes");
         }
 
         public float FiltroAusentes(Turno tur)
@@ -110,7 +111,7 @@ namespace Datos
             Conexion con = new Conexion();
             SqlCommand comando = new SqlCommand();
             ArmarParametrosAsignarTurno(ref comando, turno);
-            return con.EjecutarProcedimientoAlmacenado(comando, "spAsignarTurno");
+            return con.EjecutarProcedimientoAlmacenadoConResultado(comando, "spAsignarTurno");
         }
     }
 }

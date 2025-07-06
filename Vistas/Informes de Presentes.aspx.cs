@@ -59,7 +59,7 @@ namespace Vistas
             //gvPresentes.DataBind();
             int Presentes = Datos.FiltrarPresentes(turno, Inicio, Final);
             int Cantidad = Datos.Cantidad();
-            float Resultado = Presentes / Cantidad * 100;
+            float Resultado = Presentes * 100f / Cantidad;
             lblPresentes.Text = Resultado + "%";
 
         }

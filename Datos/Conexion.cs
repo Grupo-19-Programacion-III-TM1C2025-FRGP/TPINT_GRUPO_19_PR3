@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace Datos
@@ -35,11 +36,23 @@ namespace Datos
             _sqlConnection.Open();
 
             SqlCommand sqlCommand = new SqlCommand(consultaSQL, _sqlConnection);
-            int filasAfectadas = sqlCommand.ExecuteNonQuery();
+            var filasAfectadas = sqlCommand.ExecuteNonQuery();
 
             _sqlConnection.Close();
 
             return filasAfectadas;
+        }
+
+        public int ejecutarConsultaConResultado(string consultaSQL)
+        {
+            _sqlConnection.Open();
+
+            SqlCommand sqlCommand = new SqlCommand(consultaSQL, _sqlConnection);
+            var filasAfectadas = sqlCommand.ExecuteScalar();
+
+            _sqlConnection.Close();
+
+            return Convert.ToInt32(filasAfectadas);
         }
 
         public int EjecutarProcedimientoAlmacenado(SqlCommand comando, string nombreSP)
@@ -50,10 +63,24 @@ namespace Datos
             comando.CommandText = nombreSP;
 
             conexion.Open();
-            int filasAfectadas = comando.ExecuteNonQuery();
+            var filasAfectadas = comando.ExecuteNonQuery();
             conexion.Close();
 
             return filasAfectadas;
+        }
+
+        public int EjecutarProcedimientoAlmacenadoConResultado(SqlCommand comando, string nombreSP)
+        {
+            SqlConnection conexion = ObtenerConexion();
+            comando.Connection = conexion;
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.CommandText = nombreSP;
+
+            conexion.Open();
+            var filasAfectadas = comando.ExecuteScalar();
+            conexion.Close();
+
+            return Convert.ToInt32(filasAfectadas);
         }
 
         public DataTable EjecutarSP_Select(string nombreSP)
