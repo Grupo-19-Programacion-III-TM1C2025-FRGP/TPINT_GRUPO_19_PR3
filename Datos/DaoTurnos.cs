@@ -11,8 +11,8 @@ namespace Datos
 {
     public class DaoTurnos : GenericDao
     {
-        readonly string consultaTabla = "SELECT * FROM Turno";
-        readonly string consultaFecha = "SELECT FechaTurno FROM Turno";
+        readonly string consultaTabla = "SELECT * FROM Turnos";
+        readonly string consultaFecha = "SELECT FechaTurno_TU FROM Turnos";
         public DaoTurnos() { }
 
         public DataTable getTablaTurno()
