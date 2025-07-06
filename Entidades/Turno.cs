@@ -19,5 +19,8 @@ namespace Entidades
             CodHorarioTurno_Tur = codHorario;
             DNIPaciente_Tur = dniPaciente;
         }
+
+        public Turno() { }
+
     }
 }
