@@ -78,6 +78,14 @@ CREATE TABLE Usuarios (
 );
 GO
 
+ALTER TABLE Usuarios
+ALTER COLUMN Legajo_Me_Usu INT NULL;
+GO
+
+ALTER TABLE Usuarios
+ADD CONSTRAINT FK_Usuarios_Me FOREIGN KEY (Legajo_Me_Usu) REFERENCES Medicos (Legajo_Me);
+GO
+
 
 -- TABLA PACIENTES
 CREATE TABLE Pacientes (
@@ -118,6 +126,7 @@ CREATE TABLE Turnos (
 	CodHorarioTurno_HT_Tu INT NOT NULL,
 	FechaTurno_Tu DATE NOT NULL,
 	DNI_Pa_Tu INT NOT NULL,
+	Asistencia_Tu VARCHAR(15) DEFAULT 'Pendiente'
 
 	CONSTRAINT PK_Turnos PRIMARY KEY (Legajo_Me_Tu, CodHorarioTurno_HT_Tu, FechaTurno_Tu), -- Esto evita que un m dico tenga dos turnos superpuestos
 
@@ -127,8 +136,4 @@ CREATE TABLE Turnos (
 
 	CONSTRAINT UK_Turnos UNIQUE (CodHorarioTurno_HT_Tu, FechaTurno_Tu, DNI_Pa_Tu) -- Esto evita que un paciente tenga dos turnos superpuestos
 );
-GO
-
-ALTER TABLE Turnos
-ADD Asistencia_Tu VARCHAR (15) DEFAULT 'Pendiente'
 GO

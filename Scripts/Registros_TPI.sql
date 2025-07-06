@@ -29,21 +29,26 @@ INSERT INTO Medicos (
   DNI_Me, Nombre_Me, Apellido_Me, Sexo_Me, Nacionalidad_Me, FechaNacimiento_Me,
   CodProvincia_Pr_Me, CodLocalidad_Lo_Me, CodEspecialidad_Es_Me, HoraEntrada_Me, HoraSalida_Me, Email_Me, Telefono_Me
 ) VALUES
-(30123456, 'Juan', 'Pérez', 'M', 'Argentina', '1980-05-10', 1, 1, 1, '10:00', '18:00', 'juan.perez@mail.com', '2211234567');
+(32230989, 'Juan', 'Pérez', 'M', 'Argentina', '1980-05-10', 1, 1, 1, '10:00', '18:00', 'juan.perez@mail.com', '2211234567');
 DECLARE @LegajoJuan INT = SCOPE_IDENTITY();
+INSERT INTO Usuarios (Nombre_Usu, Contrasenia_Usu, Tipo_Usu, Legajo_Me_Usu) VALUES
+('juan.perez@mail.com', 'medpass123', 0, @LegajoJuan);
+GO
 
 INSERT INTO Medicos (
   DNI_Me, Nombre_Me, Apellido_Me, Sexo_Me, Nacionalidad_Me, FechaNacimiento_Me,
   CodProvincia_Pr_Me, CodLocalidad_Lo_Me, CodEspecialidad_Es_Me, HoraEntrada_Me, HoraSalida_Me, Email_Me, Telefono_Me
 ) VALUES
-(34435562, 'Ana', 'Gómez', 'F', 'Argentina', '1985-08-22', 2, 3, 2, '08:00', '16:00', 'ana.gomez@mail.com', '3519876543');
+(34547665, 'Ana', 'Gómez', 'F', 'Argentina', '1985-08-22', 2, 3, 2, '08:00', '16:00', 'ana.gomez@mail.com', '3519876543');
 DECLARE @LegajoAna INT = SCOPE_IDENTITY();
+INSERT INTO Usuarios (Nombre_Usu, Contrasenia_Usu, Tipo_Usu, Legajo_Me_Usu) VALUES
+('ana.gomez@mail.com', 'medpass456', 0, @LegajoAna);
+GO
 
 -- POBLAR USUARIOS (admins y médicos)
 INSERT INTO Usuarios (Nombre_Usu, Contrasenia_Usu, Tipo_Usu, Legajo_Me_Usu) VALUES
-('admin1', 'adminpass123', 1, NULL),
-('juan.perez@mail.com', 'medpass123', 0, @LegajoJuan),
-('ana.gomez@mail.com', 'medpass456', 0, @LegajoAna);
+('admin1', 'adminpass123', 1, NULL);
+GO
 
 -- POBLAR PACIENTES
 INSERT INTO Pacientes (
@@ -68,11 +73,7 @@ GO
 INSERT INTO Turnos (
   Legajo_Me_Tu, CodHorarioTurno_HT_Tu, FechaTurno_Tu, DNI_Pa_Tu
 ) VALUES
-(1, 1, '2025-07-01', 40123456),
-(1, 2, '2025-07-01', 40234567),
-(2, 3, '2025-07-02', 40123456);
+(14, 1, '2025-07-01', 40123456),
+(14, 2, '2025-07-01', 40123456),
+(14, 3, '2025-07-02', 40123456);
 GO
-
-UPDATE Turnos SET Asistencia_Tu = 'Pendiente' 
-
-

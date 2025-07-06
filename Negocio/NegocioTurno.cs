@@ -46,5 +46,11 @@ namespace Negocio
             DaoTurnos dao = new DaoTurnos();
             return dao.FiltroAusentes(turno);
         }
+
+        public DataTable ListarTurnos(int legajoMedico)
+        {
+            DaoTurnos dao = new DaoTurnos();
+            return dao.TraerTablaTurnos(legajoMedico);
+        }
     }
 }

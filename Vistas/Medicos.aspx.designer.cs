@@ -357,15 +357,6 @@ namespace MiProyecto
         protected global::System.Web.UI.WebControls.GridView gvMedicos;
 
         /// <summary>
-        /// Control lblBug.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBug;
-
-        /// <summary>
         /// Control lblMensajeExito.
         /// </summary>
         /// <remarks>
