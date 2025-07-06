@@ -16,6 +16,7 @@ CREATE PROCEDURE spAltaMedico
 	@HoraSalida TIME(0),
     @Email VARCHAR(100),
     @Telefono VARCHAR(20),
+	@Usuario VARCHAR(100),
 	@Contrasenia VARCHAR(100)
 )
 AS
@@ -38,7 +39,7 @@ BEGIN
         Nombre_Usu, Contrasenia_Usu, Tipo_Usu, Legajo_Me_Usu
     )
     VALUES (
-        @Email, @Contrasenia, 0, @LegajoMedico
+        @Usuario, @Contrasenia, 0, @LegajoMedico
     );
 END
 GO

@@ -83,9 +83,9 @@
                                     <asp:ListItem Value="M">Masculino</asp:ListItem>
                                     <asp:ListItem Value="F">Femenino</asp:ListItem>
                                 </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="rfvSexo" runat="server"
-                                    ControlToValidate="ddlSexo" ErrorMessage="El sexo es obligatorio"
-                                    ForeColor="Red" ValidationGroup="1">*</asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="rfvSexo" runat="server" ControlToValidate="ddlSexo"
+                                    ErrorMessage="El sexo es obligatorio" ForeColor="Red" ValidationGroup="1">*
+                                </asp:RequiredFieldValidator>
                             </td>
                         </tr>
                         <tr>
@@ -100,7 +100,8 @@
                         <tr>
                             <td>Provincia:</td>
                             <td>
-                                <asp:DropDownList ID="ddlProvincia" runat="server" Width="200px" AutoPostBack="true" OnSelectedIndexChanged="ddlProvincia_SelectedIndexChanged">
+                                <asp:DropDownList ID="ddlProvincia" runat="server" Width="200px" AutoPostBack="true"
+                                    OnSelectedIndexChanged="ddlProvincia_SelectedIndexChanged">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="rfvProvincia" runat="server"
                                     ControlToValidate="ddlProvincia" ErrorMessage="Los horarios son obligatorios"
@@ -122,7 +123,8 @@
                         <tr>
                             <td>Nacimiento:</td>
                             <td>
-                                <asp:TextBox ID="txtNacimiento" runat="server" Width="200px" TextMode="Date"></asp:TextBox>
+                                <asp:TextBox ID="txtNacimiento" runat="server" Width="200px" TextMode="Date">
+                                </asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rfvNacimiento" runat="server"
                                     ControlToValidate="txtNacimiento" ErrorMessage="El apellido es obligatorio"
                                     ForeColor="Red" ValidationGroup="1">*</asp:RequiredFieldValidator>
@@ -192,7 +194,8 @@
                                 <asp:TextBox ID="txtEmail" runat="server" Width="200px" TextMode="Email"></asp:TextBox>
                                 <asp:RegularExpressionValidator ID="revEmail" runat="server"
                                     ControlToValidate="txtEmail" ErrorMessage="Formato de email inválido"
-                                    ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ForeColor="Red" ValidationGroup="1">
+                                    ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ForeColor="Red"
+                                    ValidationGroup="1">
                                     *
                                 </asp:RegularExpressionValidator>
                             </td>
@@ -200,7 +203,44 @@
                         <tr>
                             <td>Telefono:</td>
                             <td>
-                                <asp:TextBox ID="txtTelefono" runat="server" Width="200px" TextMode="Number"></asp:TextBox>
+                                <asp:TextBox ID="txtTelefono" runat="server" Width="200px" TextMode="Number">
+                                </asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Usuario:</td>
+                            <td>
+                                <asp:TextBox ID="txtUsuario" runat="server" Width="200px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="rfvUsuario" runat="server"
+                                    ControlToValidate="txtUsuario" ErrorMessage="El usuario es obligatorio"
+                                    ForeColor="Red" ValidationGroup="1">*
+                                </asp:RequiredFieldValidator>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Contrasena:</td>
+                            <td>
+                                <asp:TextBox ID="txtContrasenia" runat="server" Width="200px" TextMode="Password">
+                                </asp:TextBox>
+                                <asp:RequiredFieldValidator ID="rfvContrasenia" runat="server"
+                                    ControlToValidate="txtContrasenia" ErrorMessage="La contrasea es obligatoria"
+                                    ForeColor="Red" ValidationGroup="1">*
+                                </asp:RequiredFieldValidator>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Repetir Contrasena:</td>
+                            <td>
+                                <asp:TextBox ID="txtRepetirContrasenia" runat="server" Width="200px"
+                                    TextMode="Password"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="rfvRepetirContrasenia" runat="server"
+                                    ControlToValidate="txtRepetirContrasenia" ErrorMessage="Debe repetir la contrasena"
+                                    ForeColor="Red" ValidationGroup="1">*
+                                </asp:RequiredFieldValidator>
+                                <asp:CompareValidator ID="cvContrasenias" runat="server"
+                                    ControlToCompare="txtContrasenia" ControlToValidate="txtRepetirContrasenia"
+                                    ErrorMessage="Las contraseas no coinciden" ForeColor="Red" ValidationGroup="1">*
+                                </asp:CompareValidator>
                             </td>
                         </tr>
                         <tr>
@@ -213,7 +253,8 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" ValidationGroup="1" />
+                                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red"
+                                    ValidationGroup="1" />
                             </td>
                         </tr>
                         <tr>
@@ -227,7 +268,10 @@
                     <br />
                     <h3>Listado de Medicos</h3>
                     <p>
-                        <asp:GridView ID="gvMedicos" runat="server" AutoGenerateDeleteButton="True" AutoGenerateEditButton="True" DataKeyNames="Legajo" OnRowCancelingEdit="gvMedicos_RowCancelingEdit" OnRowDeleting="gvMedicos_RowDeleting" OnRowEditing="gvMedicos_RowEditing" OnRowUpdating="gvMedicos_RowUpdating">
+                        <asp:GridView ID="gvMedicos" runat="server" AutoGenerateDeleteButton="True"
+                            AutoGenerateEditButton="True" DataKeyNames="Legajo"
+                            OnRowCancelingEdit="gvMedicos_RowCancelingEdit" OnRowDeleting="gvMedicos_RowDeleting"
+                            OnRowEditing="gvMedicos_RowEditing" OnRowUpdating="gvMedicos_RowUpdating">
                         </asp:GridView>
                     </p>
 

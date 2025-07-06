@@ -18,7 +18,7 @@ namespace Datos
         DataTable tabla;
 
         // Métodos
-        public void ArmarParametrosMedicoAgregar(ref SqlCommand comando, Medico med)
+        public void ArmarParametrosMedicoAgregar(ref SqlCommand comando, Medico med, string usuario, string contrasenia)
         {
             SqlParameter param;
 
@@ -60,6 +60,12 @@ namespace Datos
 
             param = comando.Parameters.Add("@HoraSalida", SqlDbType.Time);
             param.Value = med._HoraSalida;
+
+            // Agregar usuario y contraseña
+            param = comando.Parameters.Add("@Usuario", SqlDbType.VarChar, 100);
+            param.Value = usuario;
+            param = comando.Parameters.Add("@Contrasenia", SqlDbType.VarChar, 100);
+            param.Value = contrasenia;
         }
 
         private void ArmarParametrosMedicoModificar(ref SqlCommand comando, Medico med)
@@ -120,11 +126,11 @@ namespace Datos
             param.Value = legajo;
         }
 
-        public int AltaMedico(Medico med)
+        public int AltaMedico(Medico med, string usuario, string contrasenia)
         {
             Conexion con = new Conexion();
             SqlCommand comando = new SqlCommand();
-            ArmarParametrosMedicoAgregar(ref comando, med);
+            ArmarParametrosMedicoAgregar(ref comando, med, usuario, contrasenia);
             return con.EjecutarProcedimientoAlmacenado(comando, "spAltaMedico");
         }
 

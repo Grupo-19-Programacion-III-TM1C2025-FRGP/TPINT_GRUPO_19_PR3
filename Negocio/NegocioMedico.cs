@@ -11,10 +11,10 @@ namespace Negocio
 {
     public class NegocioMedico
     {
-        public int agregarMedico(Medico medico)
+        public int agregarMedico(Medico medico, string usuario, string contrasenia)
         {
             DaoMedico dao = new DaoMedico();
-            return dao.AltaMedico(medico);
+            return dao.AltaMedico(medico, usuario, contrasenia);
         }
 
         public int modificarMedico(Medico medico)

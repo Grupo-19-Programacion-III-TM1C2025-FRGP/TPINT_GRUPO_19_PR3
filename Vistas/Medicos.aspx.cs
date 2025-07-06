@@ -12,15 +12,15 @@ using System.Data;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace MiProyecto
-{   
+{
     public partial class Medicos : Page
     {
         NegocioMedico negocioMedico = new NegocioMedico();
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-           // AuxiliarVistas.ValidarSesionAdministrador();
-           //lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
+            // AuxiliarVistas.ValidarSesionAdministrador();
+            //lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
 
             if (!IsPostBack)
             {
@@ -66,7 +66,7 @@ namespace MiProyecto
             ddlEspecialidad.DataValueField = "CodEspecialidad_Es";
             ddlEspecialidad.DataBind();
             ddlEspecialidad.Items.Insert(0, new ListItem("Seleccione una especialidad", "0"));
-        }       
+        }
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
             string dni = txtDNI.Text;
@@ -82,12 +82,14 @@ namespace MiProyecto
             string horaSalida = ddlHoraSalida.SelectedValue;
             string email = txtEmail.Text;
             string telefono = txtTelefono.Text;
+            string usuario = txtUsuario.Text;
+            string contrasenia = txtContrasenia.Text;
 
-            // Instanciar objero médico
+            // Instanciar objeto médico
             Medico medico = new Medico(dni, nombre, apellido, sexo, nacionalidad, fechaNacimiento, provincia, localidad, especialidad, email, telefono, horaEntrada, horaSalida, true);
 
-            // Llamar a la capa de negocio
-            int resultado = negocioMedico.agregarMedico(medico);
+            // Llamar a la capa de negocio con los nuevos parámetros
+            int resultado = negocioMedico.agregarMedico(medico, usuario, contrasenia);
 
             if (resultado > 0)
                 lblMensaje.Text = "Médico agregado con éxito.";
@@ -174,6 +176,11 @@ namespace MiProyecto
             gvMedicos.DataBind();
 
             e.Cancel = true;
+        }
+
+        protected void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
