@@ -78,15 +78,6 @@ CREATE TABLE Usuarios (
 );
 GO
 
-ALTER TABLE Usuarios
-ALTER COLUMN Legajo_Me_Usu INT NULL;
-GO
-
-ALTER TABLE Usuarios
-ADD CONSTRAINT FK_Usuarios_Me FOREIGN KEY (Legajo_Me_Usu) REFERENCES Medicos (Legajo_Me);
-GO
-
-
 -- TABLA PACIENTES
 CREATE TABLE Pacientes (
 	DNI_Pa INT NOT NULL,
@@ -126,7 +117,8 @@ CREATE TABLE Turnos (
 	CodHorarioTurno_HT_Tu INT NOT NULL,
 	FechaTurno_Tu DATE NOT NULL,
 	DNI_Pa_Tu INT NOT NULL,
-	Asistencia_Tu VARCHAR(15) DEFAULT 'Pendiente'
+	Asistencia_Tu VARCHAR(15) DEFAULT 'Pendiente',
+	Comentario_Tu TEXT
 
 	CONSTRAINT PK_Turnos PRIMARY KEY (Legajo_Me_Tu, CodHorarioTurno_HT_Tu, FechaTurno_Tu), -- Esto evita que un m dico tenga dos turnos superpuestos
 

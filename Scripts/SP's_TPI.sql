@@ -332,7 +332,14 @@ BEGIN
 END;
 GO 
 
-
+CREATE OR ALTER PROCEDURE spModificacionUsuario @Codigo INT, @Nombre VARCHAR(100), @Contrasenia VARCHAR(100)
+	AS
+	 BEGIN
+		UPDATE Usuarios
+			SET Nombre_Usu = @Nombre, Contrasenia_Usu = @Contrasenia
+		WHERE CodUsuario_Usu = @Codigo
+	 END;
+GO
 
 CREATE PROCEDURE Filtro_Ausentes(
     @FechaInicio DATE,

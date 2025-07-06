@@ -5,15 +5,122 @@ GO
 INSERT INTO Provincias (NombreProvincia_Pr) VALUES
 ('Buenos Aires'),
 ('Córdoba'),
-('Santa Fe');
+('Santa Fe'),
+('Catamarca'),
+('Chaco'),
+('Chubut'),
+('Corrientes'),
+('Entre Ríos'),
+('Formosa'),
+('Jujuy'),
+('La Pampa'),
+('La Rioja'),
+('Mendoza'),
+('Misiones'),
+('Neuquén'),
+('Rio Negro'),
+('Salta'),
+('San Juan'),
+('San Luis'),
+('Santa Cruz'),
+('Santiago del Estero'),
+('Tierra del Fuego'),
+('Tucumán');
 GO
 
 -- POBLAR LOCALIDADES
 INSERT INTO Localidades (NombreLocalidad_Lo, CodProvincia_Pr_Lo) VALUES
 ('La Plata', 1),
 ('Mar del Plata', 1),
+('Buenos Aires', 1),
+
 ('Córdoba Capital', 2),
-('Rosario', 3);
+('Potrerillos', 2),
+('Villa Allende', 2),
+
+('Colón', 3),
+('Rafaela', 3),
+('Rosario', 3),
+
+('San Fernando del Valle de Catamarca', 7),
+('Belén', 7),
+('Andalgalá', 7),
+
+('Resistencia', 8),
+('Presidencia Roque Sáenz Peña', 8),
+('Villa Ángela', 8),
+
+('Rawson', 9),
+('Comodoro Rivadavia', 9),
+('Puerto Madryn', 9),
+
+('Corrientes', 10),
+('Goya', 10),
+('Paso de los Libres', 10),
+
+('Paraná', 11),
+('Concordia', 11),
+('Gualeguaychú', 11),
+
+('Formosa', 12),
+('Clorinda', 12),
+('Pirané', 12),
+
+('San Salvador de Jujuy', 13),
+('Palpalá', 13),
+('Perico', 13),
+
+('Santa Rosa', 14),
+('General Pico', 14),
+('Toay', 14),
+
+('La Rioja', 15),
+('Chilecito', 15),
+('Aimogasta', 15),
+
+('Mendoza', 16),
+('San Rafael', 16),
+('Godoy Cruz', 16),
+
+('Posadas', 17),
+('Eldorado', 17),
+('Oberá', 17),
+
+('Neuquén', 18),
+('Cutral Có', 18),
+('San Martín de los Andes', 18),
+
+('Viedma', 19),
+('Bariloche', 19),
+('General Roca', 19),
+
+('Salta', 20),
+('San Ramón de la Nueva Orán', 20),
+('Tartagal', 20),
+
+('San Juan', 21),
+('Rawson', 21),
+('Chimbas', 21),
+
+('San Luis', 22),
+('Villa Mercedes', 22),
+('Merlo', 22),
+
+('Río Gallegos', 23),
+('Caleta Olivia', 23),
+('Puerto Deseado', 23),
+
+('Santiago del Estero', 24),
+('La Banda', 24),
+('Termas de Río Hondo', 24),
+
+('Ushuaia', 25),
+('Río Grande', 25),
+('Tolhuin', 25),
+
+('San Miguel de Tucumán', 26),
+('Tafí Viejo', 26),
+('Concepción', 26);
 GO
 
 -- POBLAR ESPECIALIDADES
@@ -21,7 +128,18 @@ INSERT INTO Especialidades (NombreEspecialidad_Es) VALUES
 ('Cardiología'),
 ('Dermatología'),
 ('Pediatría'),
-('Neurología');
+('Neurología'),
+('Gastroenterología'),
+('Traumatología'),
+('Oncología'),
+('Oftalmología'),
+('Urología'),
+('Endocrinología'),
+('Ginecología'),
+('Proctología'),
+('Kinesiología'),
+('Psicología'),
+('Otorrinolaringología');
 GO
 
 -- POBLAR MÉDICOS
@@ -65,8 +183,16 @@ INSERT INTO HorariosTurno (Horario_HT) VALUES
 ('09:00'),
 ('10:00'),
 ('11:00'),
+('12:00'),
+('13:00'),
 ('14:00'),
-('15:00');
+('15:00'),
+('16:00'),
+('17:00'),
+('18:00'),
+('19:00'),
+('20:00'),
+('21:00');
 GO
 
 -- POBLAR TURNOS
