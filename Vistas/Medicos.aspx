@@ -246,7 +246,7 @@
                         <tr>
                             <td colspan="2">
                                 <asp:Button ID="btnAgregar" runat="server" Text="Agregar Medico"
-                                    OnClick="btnAgregar_Click" CssClass="btn btn-primary" />
+                                    OnClick="btnAgregar_Click" CssClass="btn btn-primary" ValidationGroup="1" />
                                 <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar Formulario"
                                     OnClick="btnLimpiar_Click" CssClass="btn btn-secondary" />
                             </td>
