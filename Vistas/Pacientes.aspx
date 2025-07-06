@@ -190,7 +190,7 @@
                             <td colspan="2">
                                 <asp:Button ID="btnAgregar" runat="server" Text="Agregar Paciente" OnClick="btnAgregar_Click" />
 
-                                <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar Formulario" />
+                                <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar Formulario" OnClick="btnLimpiar_Click" />
                             </td>
                         </tr>
                         <tr>

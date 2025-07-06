@@ -14,6 +14,7 @@ namespace Datos
         readonly string consultaTabla = "SELECT * FROM Turno";
         readonly string consultaFecha = "SELECT FechaTurno FROM Turno";
         string consultaTurnos = "SELECT T.FechaTurno_Tu as Fecha, H.Horario_HT AS Hora, P.Apellido_Pa + ', ' + P.Nombre_Pa AS Paciente, P.DNI_Pa AS DNI, T.Asistencia_Tu AS Asistencia FROM Turnos AS T INNER JOIN HorariosTurno AS H ON H.CodHorarioTurno_HT = T.CodHorarioTurno_HT_Tu INNER JOIN Pacientes AS P ON P.DNI_Pa = T.DNI_Pa_Tu WHERE T.Legajo_Me_Tu = ";
+
         public DaoTurnos() { }
 
         public DataTable getTablaTurno()

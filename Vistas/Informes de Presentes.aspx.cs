@@ -14,8 +14,8 @@ namespace Vistas
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            AuxiliarVistas.ValidarSesionAdministrador();
-            lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
+            //AuxiliarVistas.ValidarSesionAdministrador();
+            //lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
 
             if (!IsPostBack)
             {
@@ -27,14 +27,14 @@ namespace Vistas
         {
             NegocioTurno fecha = new NegocioTurno();
             ddFechaFinalp.DataSource = fecha.getTabla_Fecha();
-            ddFechaFinalp.DataTextField = "FechaTurno";
-            ddFechaFinalp.DataValueField = "FechaTurno";
+            ddFechaFinalp.DataTextField = "FechaTurno_TU";
+            ddFechaFinalp.DataValueField = "FechaTurno_TU";
             ddFechaFinalp.DataBind();
             ddFechaFinalp.Items.Insert(0, new ListItem("Seleccione una fecha final", "0"));
 
             ddFechaInicialP.DataSource = fecha.getTabla_Fecha();
-            ddFechaInicialP.DataTextField = "FechaTurno";
-            ddFechaInicialP.DataValueField = "FechaTurno";
+            ddFechaInicialP.DataTextField = "FechaTurno_TU";
+            ddFechaInicialP.DataValueField = "FechaTurno_TU";
             ddFechaInicialP.DataBind();
             ddFechaInicialP.Items.Insert(0, new ListItem("Seleccione una fecha Inicial", "0"));
         }
