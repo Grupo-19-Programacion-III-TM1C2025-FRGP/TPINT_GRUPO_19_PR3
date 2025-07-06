@@ -4,19 +4,6 @@ GO
 USE Clinica;
 GO
 
--- TABLA USUARIOS
-CREATE TABLE Usuarios (
-	CodUsuario_Usu INT IDENTITY(1,1) NOT NULL,
-	Nombre_Usu VARCHAR(100) NOT NULL,
-	Contrasenia_Usu VARCHAR(100) NOT NULL,
-	Tipo_Usu BIT NOT NULL, -- 0 = medico, 1 = admin
-
-	CONSTRAINT PK_Usuarios PRIMARY KEY (codUsuario_Usu),
-
-	CONSTRAINT UK_Usuarios UNIQUE (Nombre_Usu)
-);
-GO
-
 -- TABLA ESPECIALIDADES
 CREATE TABLE Especialidades (
 	CodEspecialidad_Es INT IDENTITY(1,1) NOT NULL,
@@ -47,7 +34,7 @@ CREATE TABLE Localidades (
 );
 GO
 
--- TABLA MÉDICOS
+-- TABLA MEDICOS
 CREATE TABLE Medicos (
 	Legajo_Me INT IDENTITY(1,1) NOT NULL,
 	DNI_Me INT UNIQUE NOT NULL,
@@ -74,6 +61,31 @@ CREATE TABLE Medicos (
 	CONSTRAINT UQ_Medicos UNIQUE (DNI_Me)
 );
 GO
+
+-- TABLA USUARIOS
+CREATE TABLE Usuarios (
+	CodUsuario_Usu INT IDENTITY(1,1) NOT NULL,
+	Nombre_Usu VARCHAR(100) NOT NULL,
+	Contrasenia_Usu VARCHAR(100) NOT NULL,
+	Tipo_Usu BIT NOT NULL, -- 0 = medico, 1 = admin
+	Legajo_Me_Usu INT NULL,
+
+	CONSTRAINT PK_Usuarios PRIMARY KEY (codUsuario_Usu),
+
+	CONSTRAINT UK_Usuarios UNIQUE (Nombre_Usu),
+
+	CONSTRAINT FK_Usuarios_Medicos FOREIGN KEY (Legajo_Me_Usu) REFERENCES Medicos(Legajo_Me)
+);
+GO
+
+ALTER TABLE Usuarios
+ALTER COLUMN Legajo_Me_Usu INT NULL;
+GO
+
+ALTER TABLE Usuarios
+ADD CONSTRAINT FK_Usuarios_Me FOREIGN KEY (Legajo_Me_Usu) REFERENCES Medicos (Legajo_Me);
+GO
+
 
 -- TABLA PACIENTES
 CREATE TABLE Pacientes (
@@ -114,8 +126,9 @@ CREATE TABLE Turnos (
 	CodHorarioTurno_HT_Tu INT NOT NULL,
 	FechaTurno_Tu DATE NOT NULL,
 	DNI_Pa_Tu INT NOT NULL,
+	Asistencia_Tu VARCHAR(15) DEFAULT 'Pendiente'
 
-	CONSTRAINT PK_Turnos PRIMARY KEY (Legajo_Me_Tu, CodHorarioTurno_HT_Tu, FechaTurno_Tu), -- Esto evita que un médico tenga dos turnos superpuestos
+	CONSTRAINT PK_Turnos PRIMARY KEY (Legajo_Me_Tu, CodHorarioTurno_HT_Tu, FechaTurno_Tu), -- Esto evita que un m dico tenga dos turnos superpuestos
 
 	CONSTRAINT FK_Turnos_Medicos FOREIGN KEY (Legajo_Me_Tu) REFERENCES Medicos(Legajo_Me),
 	CONSTRAINT FK_Turnos_HorariosTurnos FOREIGN KEY (CodHorarioTurno_HT_Tu) REFERENCES HorariosTurno(CodHorarioTurno_HT),
@@ -123,8 +136,4 @@ CREATE TABLE Turnos (
 
 	CONSTRAINT UK_Turnos UNIQUE (CodHorarioTurno_HT_Tu, FechaTurno_Tu, DNI_Pa_Tu) -- Esto evita que un paciente tenga dos turnos superpuestos
 );
-GO
-
-ALTER TABLE Turnos
-ADD Asistencia_Tu VARCHAR (15) DEFAULT 'Pendiente'
 GO

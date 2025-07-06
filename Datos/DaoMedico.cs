@@ -154,14 +154,12 @@ namespace Datos
             DataTable tabla = con.EjecutarSP_Select("spTraerTablaMedicosCodificada");
             return tabla;
         }
-
         public DataTable FiltrarPorEspecialidad(string codEspecialidad)
         {
             consultaTablaFiltrada += codEspecialidad;
             tabla = _conexion.TraerTabla(consultaTablaFiltrada, "Medicos");
             return tabla;
         }
-
         public int BajaMedico(string legajo)
         {
             Conexion con = new Conexion();
@@ -169,6 +167,5 @@ namespace Datos
             ArmarParametrosMedicoDarDeBaja(ref comando, legajo);
             return con.EjecutarProcedimientoAlmacenado(comando, "spBajaMedico");
         }
-
     }
 }

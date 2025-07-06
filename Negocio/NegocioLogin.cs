@@ -33,6 +33,7 @@ namespace Negocio
                     resultado["success"] = "true";
                     resultado["usuario"] = tabla.Rows[0]["Nombre_Usu"].ToString();
                     resultado["rol"] = tabla.Rows[0]["Tipo_Usu"].ToString() == "True" ? "Administrador" : "Medico"; // 1 = Administrador, 0 = Medico
+                    resultado["legajo"] = tabla.Rows[0]["Legajo_Me_Usu"].ToString();
 
                 }
                 else

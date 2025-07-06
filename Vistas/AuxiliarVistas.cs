@@ -86,15 +86,26 @@ namespace Vistas.Clases
             return HttpContext.Current.Request.Cookies["Usuario"].Value;
         }
 
-        //public static string ObtenerRol()
-        //{
-        //    if (HttpContext.Current.Request.Cookies["Rol"] == null)
-        //    {
-        //        HttpContext.Current.Response.Redirect("LogIn.aspx");
-        //        return null;
-        //    }
-        //    return HttpContext.Current.Request.Cookies["Rol"].Value;
-        //}
+        public static string ObtenerLegajo()
+        {
+            if (HttpContext.Current.Request.Cookies["Legajo"] == null)
+            {
+                HttpContext.Current.Response.Redirect("LogIn.aspx");
+                return null;
+            }
+
+            return HttpContext.Current.Request.Cookies["Legajo"].Value;
+        }
+
+        public static string ObtenerRol()
+        {
+            if (HttpContext.Current.Request.Cookies["Rol"] == null)
+            {
+                HttpContext.Current.Response.Redirect("LogIn.aspx");
+                return null;
+            }
+            return HttpContext.Current.Request.Cookies["Rol"].Value;
+        }
 
     }
 }
