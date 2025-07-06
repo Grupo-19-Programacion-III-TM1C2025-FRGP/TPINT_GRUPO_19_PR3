@@ -9,7 +9,7 @@ namespace Datos
 {
     public class DaoProvincia
     {
-        readonly string consulta = "SELECT * FROM Provincias";
+        readonly string consulta = "SELECT CodProvincia_Pr AS Codigo, NombreProvincia_Pr AS Provincia FROM Provincias";
         public DataTable getTablaProvincia()
         {
             Conexion con = new Conexion();

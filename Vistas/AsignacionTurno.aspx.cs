@@ -31,8 +31,8 @@ namespace Vistas
                 // ddl especialidades
                 table = especialidades.getTabla();
                 ddlEspecialidad.DataSource = table;
-                ddlEspecialidad.DataTextField = "NombreEspecialidad_Es";
-                ddlEspecialidad.DataValueField = "CodEspecialidad_Es";
+                ddlEspecialidad.DataTextField = "Especialidad";
+                ddlEspecialidad.DataValueField = "Codigo";
                 ddlEspecialidad.DataBind();
                 ddlEspecialidad.Items.Insert(0, new ListItem("Seleccione especialidad", "0"));
 
@@ -42,7 +42,7 @@ namespace Vistas
                 ddlHorario.DataTextField = "Horario_HT";
                 ddlHorario.DataValueField = "CodHorarioTurno_HT";
                 ddlHorario.DataBind();
-                ddlHorario.Items.Insert(0, new ListItem("Seleccione horaio", "0"));
+                ddlHorario.Items.Insert(0, new ListItem("Seleccione horario", "0"));
             }
         }
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
