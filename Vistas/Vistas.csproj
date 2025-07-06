@@ -75,7 +75,6 @@
     <Content Include="LogIn.aspx" />
     <Content Include="Medicos.aspx" />
     <Content Include="Pacientes.aspx" />
-    <Content Include="VisualizarTurnos.aspx" />
     <Content Include="Web.config" />
     <Content Include="VistaTurnos.aspx" />
   </ItemGroup>
@@ -144,13 +143,6 @@
     </Compile>
     <Compile Include="VistaTurnos.aspx.designer.cs">
       <DependentUpon>VistaTurnos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="VisualizarTurnos.aspx.cs">
-      <DependentUpon>VisualizarTurnos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="VisualizarTurnos.aspx.designer.cs">
-      <DependentUpon>VisualizarTurnos.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
