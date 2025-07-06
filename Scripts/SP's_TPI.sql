@@ -1,6 +1,25 @@
 ﻿USE Clinica;
 GO
 
+CREATE OR ALTER PROCEDURE spAsignarTurno
+    @LegajoMedico INT,
+    @CodigoHora INT,
+    @Fecha DATE,
+    @DNIPaciente CHAR(8)
+AS
+BEGIN
+    BEGIN TRY
+        INSERT INTO Turnos (Legajo_Me_Tu, CodHorarioTurno_HT_Tu, FechaTurno_Tu, DNI_Pa_Tu)
+        VALUES (@LegajoMedico, @CodigoHora, @Fecha, @DNIPaciente)
+
+        RETURN 1  -- OK
+    END TRY
+    BEGIN CATCH
+        RETURN 0  -- Error
+    END CATCH
+END;
+GO
+
 CREATE PROCEDURE spAltaMedico
 (
     @DNI CHAR(8),
