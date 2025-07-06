@@ -172,5 +172,10 @@ namespace Vistas
             ddlLocalidad.SelectedIndex = 0;
             ddlProvincia.SelectedIndex = 0;
         }
+
+        protected void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            LimpiarFormulario(); 
+        }
     }
 }
