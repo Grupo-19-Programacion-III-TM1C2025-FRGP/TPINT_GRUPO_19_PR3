@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -72,5 +73,36 @@ namespace Negocio
             DaoTurnos dao = new DaoTurnos();
             return dao.GVAusente(Inicio, Final);
         }
+        public DataTable Filtrar_DNI(int DNI, int legajo)
+        {
+            DaoTurnos dao = new DaoTurnos();
+            return dao.FiltrarDNI(DNI, legajo);
+        }
+        public DataTable FiltrarPresente(int legajo)
+        {
+            DaoTurnos dao = new DaoTurnos();
+            return dao.FiltrarPresente(legajo);
+        }
+        public DataTable FiltrarPendiente(int legajo)
+        {
+            DaoTurnos dao = new DaoTurnos();
+            return dao.FiltrarPendiente(legajo);
+        }
+        public DataTable FiltrarAusente(int legajo)
+        {
+            DaoTurnos dao = new DaoTurnos();
+            return dao.FiltrarAusente(legajo);
+        }
+        public DataTable FiltrarNombre(string nombre, int legajo)
+        {
+            DaoTurnos dao = new DaoTurnos();
+            return dao.FiltrarNombre(nombre, legajo);
+        }
+        public int ModificarAsistencia(Turno turno)
+        {
+            DaoTurnos dao = new DaoTurnos();
+            return dao.modificarAsistencia(turno);
+        }
+
     }
 }
