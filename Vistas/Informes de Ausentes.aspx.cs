@@ -24,7 +24,6 @@ namespace Vistas
             }
 
         }
-
         private void CargarFechas()
         {
             NegocioTurno fecha = new NegocioTurno();
@@ -56,13 +55,14 @@ namespace Vistas
             DateTime Final = DateTime.Parse(fechaDDL2);
             Turno turno = new Turno();
             SqlCommand comando = new SqlCommand();
-            dvAusentes.DataSource = Datos.FiltrarPresentes(turno, Inicio, Final);
-            dvAusentes.DataBind();
 
+            int Ausentes = Datos.FiltrarAusentes(turno, Inicio, Final);
+            int Cantidad = Datos.Cantidad(Inicio, Final);
+            float Resultado = Ausentes * 100f / Cantidad;
+            lblAusentes.Text = Resultado + "%";
 
-            turno.FechaTurno_Tur = DateTime.Today;
-            float porcentaje = Datos.SacarPorcentaje(turno);
-            lblAusentes.Text = porcentaje.ToString("F2") + "%";
+            gvAusentes.DataSource = Datos.GVAusentes(Inicio, Final);
+            gvAusentes.DataBind();
         }
     }
 }

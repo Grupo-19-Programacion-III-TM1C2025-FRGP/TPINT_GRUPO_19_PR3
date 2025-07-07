@@ -55,13 +55,14 @@ namespace Vistas
             DateTime Final = DateTime.Parse(fechaDDL2);
             Turno turno = new Turno();
             SqlCommand comando = new SqlCommand();
-            //gvPresentes.DataSource = Datos.FiltrarPresentes(turno, Inicio, Final);
-            //gvPresentes.DataBind();
+
             int Presentes = Datos.FiltrarPresentes(turno, Inicio, Final);
-            int Cantidad = Datos.Cantidad();
+            int Cantidad = Datos.Cantidad(Inicio, Final);
             float Resultado = Presentes * 100f / Cantidad;
             lblPresentes.Text = Resultado + "%";
 
+            gvPresentes.DataSource = Datos.GVPresentes(Inicio, Final);
+            gvPresentes.DataBind();
         }
     }
 }
