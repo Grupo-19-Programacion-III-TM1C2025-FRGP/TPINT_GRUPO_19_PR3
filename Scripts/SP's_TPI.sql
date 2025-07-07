@@ -81,6 +81,42 @@ AS
 	END;
 GO
 
+CREATE PROCEDURE spTraerTablaMedicosConUsuarios
+AS
+	BEGIN
+		SELECT
+			M.Legajo_Me AS Legajo,
+			M.DNI_Me AS DNI,
+			M.Apellido_Me AS Nombre,
+			M.Nombre_Me AS Apellido,
+			M.Sexo_Me AS Sexo,
+			M.Nacionalidad_Me AS Nacionalidad,
+			M.FechaNacimiento_Me AS [Fecha de nacimiento],
+			M.Email_Me AS [Correo electronico],
+			M.Telefono_Me AS Telefono,
+			M.HoraEntrada_Me AS [Horario de entrada],
+			M.HoraSalida_Me AS [Horario de salida],
+
+			M.CodEspecialidad_Es_Me AS Especialidad,
+
+			M.CodProvincia_Pr_Me AS Provincia,
+
+			M.CodLocalidad_Lo_Me AS Localidad,
+
+			U.Nombre_Usu,
+			U.Contrasenia_Usu,
+
+			M.Estado_Me AS Estado
+
+			FROM Medicos AS M
+
+				INNER JOIN Usuarios AS U
+				ON U.Legajo_Me_Usu = M.Legajo_Me
+
+			ORDER BY Estado DESC
+	END;
+GO
+
 CREATE PROCEDURE spTraerTablaMedicosCodificada
 AS
 	BEGIN
@@ -282,6 +318,21 @@ AS
 				Telefono_Pa = @Telefono,
 				Estado_Pa = @Estado
 			WHERE DNI_Pa = @DNI
+	END;
+GO
+
+CREATE PROCEDURE spModificarUsuario
+(
+	@Legajo INT,
+    @Nombre VARCHAR(100),
+	@Contrasenia VARCHAR(100)
+)
+AS
+	BEGIN
+		UPDATE Usuarios
+			SET Nombre_Usu = @Nombre,
+			Contrasenia_Usu = @Contrasenia
+			WHERE Legajo_Me_Usu = @Legajo
 	END;
 GO
 

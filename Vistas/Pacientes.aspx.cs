@@ -20,8 +20,8 @@ namespace Vistas
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            //AuxiliarVistas.ValidarSesionAdministrador();
-            //lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
+            AuxiliarVistas.ValidarSesionAdministrador();
+            lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
 
             if (!IsPostBack)
             {

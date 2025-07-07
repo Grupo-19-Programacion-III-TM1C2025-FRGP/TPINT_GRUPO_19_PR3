@@ -16,11 +16,12 @@ namespace MiProyecto
     public partial class Medicos : Page
     {
         NegocioMedico negocioMedico = new NegocioMedico();
+        NegocioUsuario negocioUsuario = new NegocioUsuario();
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            // AuxiliarVistas.ValidarSesionAdministrador();
-            //lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
+             AuxiliarVistas.ValidarSesionAdministrador();
+            lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
 
             if (!IsPostBack)
             {
@@ -36,7 +37,7 @@ namespace MiProyecto
         }
         private void CargarGvMedicos()
         {
-            gvMedicos.DataSource = negocioMedico.getTabla(); // retorna DataTable
+            gvMedicos.DataSource = negocioMedico.getTablaConUsuarios(); // retorna DataTable
             gvMedicos.DataBind();
         }
         private void CargarProvincias()
@@ -142,14 +143,21 @@ namespace MiProyecto
             int especialidad = int.Parse(((TextBox)fila.Cells[12].Controls[0]).Text);
             int provincia = int.Parse(((TextBox)fila.Cells[13].Controls[0]).Text);
             int localidad = int.Parse(((TextBox)fila.Cells[14].Controls[0]).Text);
-            bool estado = ((CheckBox)fila.Cells[15].Controls[0]).Checked;
+
+            //datos del usuario
+            string usuario = ((TextBox)fila.Cells[15].Controls[0]).Text;
+            string contrasenia = ((TextBox)fila.Cells[16].Controls[0]).Text;
+
+            bool estado = ((CheckBox)fila.Cells[17].Controls[0]).Checked;
 
             Medico medico = new Medico(legajo, dni, nombre, apellido, sexo, nacionalidad, fechaNac, provincia, localidad, especialidad, email, telefono, horaEntrada, horaSalida, estado);
 
             negocioMedico.modificarMedico(medico);
 
+            negocioUsuario.ModificarUsuario(legajo, usuario, contrasenia);
+
             gvMedicos.EditIndex = -1;
-            gvMedicos.DataSource = negocioMedico.getTabla();
+            gvMedicos.DataSource = negocioMedico.getTablaConUsuarios();
             gvMedicos.DataBind();
 
             e.Cancel = true;
@@ -157,13 +165,13 @@ namespace MiProyecto
         protected void gvMedicos_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gvMedicos.EditIndex = e.NewEditIndex;
-            gvMedicos.DataSource = negocioMedico.getTabla();
+            gvMedicos.DataSource = negocioMedico.getTablaConUsuarios();
             gvMedicos.DataBind();
         }
         protected void gvMedicos_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             gvMedicos.EditIndex = -1;
-            gvMedicos.DataSource = negocioMedico.getTabla();
+            gvMedicos.DataSource = negocioMedico.getTablaConUsuarios();
             gvMedicos.DataBind();
         }
         protected void gvMedicos_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -172,7 +180,7 @@ namespace MiProyecto
 
             negocioMedico.bajaMedico(legajo); // esto llama al SP desde Datos
 
-            gvMedicos.DataSource = negocioMedico.getTabla();
+            gvMedicos.DataSource = negocioMedico.getTablaConUsuarios();
             gvMedicos.DataBind();
 
             e.Cancel = true;

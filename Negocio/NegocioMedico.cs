@@ -44,5 +44,11 @@ namespace Negocio
             DaoMedico dao = new DaoMedico();
             return dao.FiltrarPorEspecialidad(codEspecialidad);
         }
+
+        public DataTable getTablaConUsuarios()
+        {
+            DaoMedico dao = new DaoMedico();
+            return dao.TraerTablaMedicosConUsuarios();
+        }
     }
 }

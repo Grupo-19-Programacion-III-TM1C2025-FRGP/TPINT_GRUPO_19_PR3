@@ -173,5 +173,12 @@ namespace Datos
             ArmarParametrosMedicoDarDeBaja(ref comando, legajo);
             return con.EjecutarProcedimientoAlmacenado(comando, "spBajaMedico");
         }
+
+        public DataTable TraerTablaMedicosConUsuarios()
+        {
+            Conexion con = new Conexion();
+            DataTable tabla = con.EjecutarSP_Select("spTraerTablaMedicosConUsuarios");
+            return tabla;
+        }
     }
 }
