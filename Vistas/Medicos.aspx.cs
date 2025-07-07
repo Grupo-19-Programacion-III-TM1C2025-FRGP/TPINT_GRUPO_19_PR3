@@ -16,7 +16,10 @@ namespace MiProyecto
     public partial class Medicos : Page
     {
         NegocioMedico negocioMedico = new NegocioMedico();
-        NegocioUsuario negocioUsuario = new NegocioUsuario();
+        NegocioProvincia negocioProvincia = new NegocioProvincia();
+        NegocioLocalidad negocioLocalidad = new NegocioLocalidad();
+        NegocioEspecialidad negocioEspecialidad = new NegocioEspecialidad();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
@@ -26,6 +29,9 @@ namespace MiProyecto
             if (!IsPostBack)
             {
                 CargarGvMedicos();
+                CargarGvLocalidades();
+                CargarGvProvincia();
+                CargarGvEspecialidades();
 
                 ddlSexo.Items.Insert(0, new ListItem("Seleccione Sexo", "0"));
                 ddlHoraEntrada.Items.Insert(0, new ListItem("Seleccione hora de entrada", "0"));
@@ -44,8 +50,8 @@ namespace MiProyecto
         {
             NegocioProvincia negocio = new NegocioProvincia();
             ddlProvincia.DataSource = negocio.getTabla();
-            ddlProvincia.DataTextField = "NombreProvincia_Pr";
-            ddlProvincia.DataValueField = "CodProvincia_Pr";
+            ddlProvincia.DataTextField = "Provincia";
+            ddlProvincia.DataValueField = "Codigo";
             ddlProvincia.DataBind();
             ddlProvincia.Items.Insert(0, new ListItem("Seleccione una provincia", "0"));
         }
@@ -63,8 +69,8 @@ namespace MiProyecto
         {
             NegocioEspecialidad negocio = new NegocioEspecialidad();
             ddlEspecialidad.DataSource = negocio.getTabla();
-            ddlEspecialidad.DataTextField = "NombreEspecialidad_Es";
-            ddlEspecialidad.DataValueField = "CodEspecialidad_Es";
+            ddlEspecialidad.DataTextField = "Especialidad";
+            ddlEspecialidad.DataValueField = "Codigo";
             ddlEspecialidad.DataBind();
             ddlEspecialidad.Items.Insert(0, new ListItem("Seleccione una especialidad", "0"));
         }
@@ -189,6 +195,46 @@ namespace MiProyecto
         protected void txtUsuario_TextChanged(object sender, EventArgs e)
         {
 
+        }
+        private void CargarGvProvincia()
+        {
+            gvProvincia.DataSource = negocioProvincia.getTabla(); // retorna DataTable
+            gvProvincia.DataBind();
+        }
+
+        private void CargarGvLocalidades()
+        {
+            gvLocalidad.DataSource = negocioLocalidad.getTabla(); // retorna DataTable
+            gvLocalidad.DataBind();
+        }
+        private void CargarGvEspecialidades()
+        {
+            gvEspecialidad.DataSource = negocioEspecialidad.getTabla(); // retorna DataTable
+            gvEspecialidad.DataBind();
+        }
+
+        protected void gvMedicos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvMedicos.PageIndex = e.NewPageIndex;
+            CargarGvMedicos();
+        }
+
+        protected void gvProvincia_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvProvincia.PageIndex = e.NewPageIndex;
+            CargarGvProvincia();
+        }
+
+        protected void gvLocalidad_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvLocalidad.PageIndex = e.NewPageIndex;
+            CargarGvLocalidades();
+        }
+
+        protected void gvEspecialidad_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvEspecialidad.PageIndex = e.NewPageIndex;
+            CargarGvEspecialidades();
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using MiProyecto;
 using Negocio;
 using Vistas.Clases;
 
@@ -61,6 +62,12 @@ namespace Vistas
         protected void gvTurnos_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
 
+        }
+
+        protected void gvTurnos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvTurnos.PageIndex = e.NewPageIndex;
+            CargarGvTurnos();
         }
     }
 }
