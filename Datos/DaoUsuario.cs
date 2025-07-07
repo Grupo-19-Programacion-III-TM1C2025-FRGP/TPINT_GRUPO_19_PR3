@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,29 @@ namespace Datos
             {
                 return null;
             }
+        }
+
+        private void ArmarParametrosModificarUsuario(ref SqlCommand comando, string legajo, string usuario, string contrasenia)
+        {
+            SqlParameter param;
+            param = comando.Parameters.Add("@Legajo", SqlDbType.Int);
+            param.Value = legajo;
+            param = comando.Parameters.Add("@Nombre", SqlDbType.VarChar, 50);
+            param.Value = usuario;
+            param = comando.Parameters.Add("@Contrasenia", SqlDbType.VarChar, 50);
+            param.Value = contrasenia;
+        }
+
+        public int ModificarUsuario(string legajo, string usuario, string contrasenia)
+        {
+
+            Conexion _conexion = new Conexion();
+            SqlCommand comando = new SqlCommand();
+            ArmarParametrosModificarUsuario(ref comando, legajo, usuario, contrasenia);
+            int filasAfectadas = _conexion.EjecutarProcedimientoAlmacenado(comando, "spModificarUsuario");
+
+            return filasAfectadas;
+
         }
     }
 }
