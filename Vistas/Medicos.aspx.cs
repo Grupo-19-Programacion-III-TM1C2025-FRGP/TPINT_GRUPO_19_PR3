@@ -19,6 +19,7 @@ namespace MiProyecto
         NegocioProvincia negocioProvincia = new NegocioProvincia();
         NegocioLocalidad negocioLocalidad = new NegocioLocalidad();
         NegocioEspecialidad negocioEspecialidad = new NegocioEspecialidad();
+        NegocioUsuario negocioUsuario = new NegocioUsuario();
 
         protected void Page_Load(object sender, EventArgs e)
         {

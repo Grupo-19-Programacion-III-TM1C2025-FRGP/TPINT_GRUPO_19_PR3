@@ -203,8 +203,7 @@
                         <tr>
                             <td>Telefono:</td>
                             <td>
-                                <asp:TextBox ID="txtTelefono" runat="server" Width="200px" TextMode="Number">
-                                </asp:TextBox>
+                                <asp:TextBox ID="txtTelefono" runat="server" Width="200px" TextMode="Number"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rfvTelefono" runat="server"
                                     ControlToValidate="txtTelefono" ErrorMessage="El teléfono es obligatorio"
                                     ForeColor="Red" ValidationGroup="1">*

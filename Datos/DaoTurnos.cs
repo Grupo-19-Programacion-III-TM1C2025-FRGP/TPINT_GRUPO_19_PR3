@@ -113,7 +113,7 @@ namespace Datos
             Conexion con = new Conexion();
             SqlCommand comando = new SqlCommand();
             ArmarParametrosAsignarTurno(ref comando, turno);
-            return con.EjecutarProcedimientoAlmacenadoConResultado(comando, "spAsignarTurno");
+            return con.EjecutarProcedimientoAlmacenado(comando, "spAsignarTurno");
         }
         public DataTable TraerTablaTurnos(int legajoMedico)
         {
