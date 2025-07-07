@@ -41,30 +41,36 @@ namespace Negocio
             DaoTurnos dao = new DaoTurnos();
             return dao.SacarPorcentajeAsistencia(turno);
         }
-
         public int FiltrarPresentes(Turno turno, DateTime Inicio, DateTime Final)
         {
             DaoTurnos dao = new DaoTurnos();
             return dao.FiltroPresentes(turno, Inicio, Final);
         }
-
-        public int Cantidad()
+        public int FiltrarAusentes(Turno turno, DateTime Inicio, DateTime Final)
         {
             DaoTurnos dao = new DaoTurnos();
-            return dao.Cantidad();
+            return dao.FiltroAusentes(turno, Inicio, Final);
         }
 
-        public float FiltrarAusentes(Turno turno)
+        public int Cantidad(DateTime Inicio, DateTime Final)
         {
             DaoTurnos dao = new DaoTurnos();
-            return dao.FiltroAusentes(turno);
+            return dao.Cantidad(Inicio, Final);
         }
-
         public DataTable ListarTurnos(int legajoMedico)
         {
             DaoTurnos dao = new DaoTurnos();
             return dao.TraerTablaTurnos(legajoMedico);
         }
-
+        public DataTable GVPresentes(DateTime Inicio, DateTime Final)
+        {
+            DaoTurnos dao = new DaoTurnos();
+            return dao.GVPresente(Inicio, Final);
+        }
+        public DataTable GVAusentes(DateTime Inicio, DateTime Final)
+        {
+            DaoTurnos dao = new DaoTurnos();
+            return dao.GVAusente(Inicio, Final);
+        }
     }
 }

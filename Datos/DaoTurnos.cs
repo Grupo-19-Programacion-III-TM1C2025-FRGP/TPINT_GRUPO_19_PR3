@@ -30,20 +30,14 @@ namespace Datos
             DataTable tabla = _conexion.TraerTabla(consultaFecha, "Turnos");
             return tabla;
         }
-
-        public int Cantidad() //CANTIDAD DE TURNOS
+        public int Cantidad(DateTime Inicio, DateTime Final) //CANTIDAD DE TURNOS
         {
-            Conexion conexion = new Conexion();
-            int resultado = conexion.ejecutarConsultaConResultado(consultaContarTabla);
+            string fechaInicio = Inicio.ToString("yyyy-MM-dd");
+            string fechaFinal = Final.ToString("yyyy-MM-dd");
+            string CantConsulta = $"SELECT COUNT(*) FROM Turnos WHERE FechaTurno_Tu >= '{fechaInicio}' AND FechaTurno_Tu <= '{fechaFinal}'";
+            int resultado = _conexion.ejecutarConsultaConResultado(CantConsulta);
             return resultado;
         }
-
-        public void PorcentajeAusente()
-        {
-
-        }
-
-
         public void ArmarParametrosAsignarTurno(ref SqlCommand comando, Turno tur)
         {
             SqlParameter ParamF;
@@ -100,13 +94,18 @@ namespace Datos
             //ParamF.Value = Final;
             return con.EjecutarProcedimientoAlmacenadoConResultado(comando, "Filtro_Presentes");
         }
-
-        public float FiltroAusentes(Turno tur)
+        public int FiltroAusentes(Turno turno, DateTime Inicio, DateTime Final)
         {
             Conexion con = new Conexion();
             SqlCommand comando = new SqlCommand();
-            ArmarParametrosFechas(ref comando, tur);
-            return con.EjecutarProcedimientoAlmacenado(comando, "Filtro_Ausentes");
+            SqlParameter ParamF;
+            string NuevoInicio = Inicio.ToString("yyyy-MM-dd");
+            comando.Parameters.Add("@FechaInicio", SqlDbType.Date).Value = NuevoInicio;
+            //ParamF.Value = Inicio;
+            string NuevoFinal = Final.ToString("yyyy-MM-dd");
+            comando.Parameters.Add("@FechaFin", SqlDbType.Date).Value = NuevoFinal;
+            //ParamF.Value = Final;
+            return con.EjecutarProcedimientoAlmacenadoConResultado(comando, "Filtro_Ausentes");
         }
         public int AltaTurno(Turno turno)
         {
@@ -119,6 +118,26 @@ namespace Datos
         {
             consultaTurnos += legajoMedico;
             DataTable tabla = _conexion.TraerTabla(consultaTurnos, "Medicos");
+            return tabla;
+        }
+        public DataTable GVPresente(DateTime Inicio, DateTime Final)
+        {
+            Conexion con = new Conexion();
+            string fechaInicio = Inicio.ToString("yyyy-MM-dd");
+            string fechaFinal = Final.ToString("yyyy-MM-dd");
+            string GVconsulta = $"SELECT * FROM Turnos WHERE Asistencia_Tu = 'Presente' AND FechaTurno_Tu >= '{fechaInicio}' AND FechaTurno_Tu <= '{fechaFinal}'"; ;
+
+            DataTable tabla = con.TraerTabla(GVconsulta, "Turnos");
+            return tabla;
+        }
+        public DataTable GVAusente(DateTime Inicio, DateTime Final)
+        {
+            Conexion con = new Conexion();
+            string fechaInicio = Inicio.ToString("yyyy-MM-dd");
+            string fechaFinal = Final.ToString("yyyy-MM-dd");
+            string GVconsulta = $"SELECT * FROM Turnos WHERE Asistencia_Tu = 'Ausente' AND FechaTurno_Tu >= '{fechaInicio}' AND FechaTurno_Tu <= '{fechaFinal}'"; ;
+
+            DataTable tabla = con.TraerTabla(GVconsulta, "Turnos");
             return tabla;
         }
     }
