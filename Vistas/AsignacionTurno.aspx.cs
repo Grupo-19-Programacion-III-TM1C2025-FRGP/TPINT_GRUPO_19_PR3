@@ -78,11 +78,13 @@ namespace Vistas
 
             if(filasAfectadas == 1)
             {
+                lblMensaje.ForeColor = System.Drawing.Color.Green;
                 lblMensaje.Text = "Turno asignado correctamente";
             }
             else
             {
-                lblMensaje.Text = "Ocurrió un error al asignar el turno"; // No está andando
+                lblMensaje.ForeColor = System.Drawing.Color.Red;
+                lblMensaje.Text = "Ocurrió un error al asignar el turno, intente verificar los datos ingresados"; // No está andando
             }
             limpiarFormulario();
         }

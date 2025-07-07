@@ -221,7 +221,7 @@
                             </td>
                             <td class="auto-style22"></td>
                             <td class="auto-style23">
-                                <asp:Label ID="lblMensaje" runat="server" ForeColor="#00CC00"></asp:Label>
+                                <asp:Label ID="lblMensaje" runat="server" ForeColor="Black"></asp:Label>
                             </td>
                             <td class="auto-style27"></td>
                             <td class="auto-style23"></td>
