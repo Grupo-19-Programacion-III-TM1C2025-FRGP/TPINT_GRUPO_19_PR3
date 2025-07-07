@@ -75,7 +75,11 @@
                             <td class="auto-style7">
                                 &nbsp;</td>
                             <td class="auto-style4">&nbsp;</td>
-                            <td class="auto-style4">&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td class="auto-style4">
+                                <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Informes de Presentes.aspx">Informe Presente</asp:HyperLink>
+                            </td>
                         </tr>
                         <tr>
                             <td class="auto-style3">&nbsp;</td>
@@ -94,7 +98,7 @@
                             </td>
                             <td class="auto-style7">
                                 <asp:RequiredFieldValidator ID="rfvInicioA" runat="server"
-                                    ControlToValidate="ddFechaInicialA" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                    ControlToValidate="ddFechaInicialA" InitialValue="Seleccione una fecha Inicial" ValidationGroup="1">*</asp:RequiredFieldValidator>
                             </td>
                             <td class="auto-style4">Fecha final:</td>
                             <td class="auto-style4">
@@ -103,10 +107,10 @@
                             </td>
                             <td class="auto-style6">
                                 <asp:RequiredFieldValidator ID="rfvFinalA" runat="server"
-                                    ControlToValidate="ddFechaFinalA" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                    ControlToValidate="ddFechaFinalA" InitialValue="Seleccione una fecha final" ValidationGroup="1">*</asp:RequiredFieldValidator>
                             </td>
                             <td>
-                                <asp:Button ID="btnCalcularA" runat="server" Text="Calcular" OnClick="btnCalcularA_Click" />
+                                <asp:Button ID="btnCalcularA" runat="server" Text="Calcular" OnClick="btnCalcularA_Click" ValidationGroup="1" />
                             </td>
                         </tr>
                         <tr>
@@ -133,7 +137,7 @@
                         <tr>
                             <td class="auto-style3">&nbsp;</td>
                             <td class="auto-style7">
-                                <asp:GridView ID="dvAusentes" runat="server">
+                                <asp:GridView ID="gvAusentes" runat="server">
                                 </asp:GridView>
                             </td>
                             <td class="auto-style7">

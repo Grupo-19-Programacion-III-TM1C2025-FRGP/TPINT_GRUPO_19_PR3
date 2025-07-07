@@ -96,6 +96,15 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Label lbl_Informe_Ausentes;
 
         /// <summary>
+        /// Control HyperLink6.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink6;
+
+        /// <summary>
         /// Control ddFechaInicialA.
         /// </summary>
         /// <remarks>
@@ -150,12 +159,12 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Label lblAusentes;
 
         /// <summary>
-        /// Control dvAusentes.
+        /// Control gvAusentes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dvAusentes;
+        protected global::System.Web.UI.WebControls.GridView gvAusentes;
     }
 }

@@ -19,11 +19,12 @@ namespace MiProyecto
         NegocioProvincia negocioProvincia = new NegocioProvincia();
         NegocioLocalidad negocioLocalidad = new NegocioLocalidad();
         NegocioEspecialidad negocioEspecialidad = new NegocioEspecialidad();
+        NegocioUsuario negocioUsuario = new NegocioUsuario();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-             AuxiliarVistas.ValidarSesionAdministrador();
+            AuxiliarVistas.ValidarSesionAdministrador();
             lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
 
             if (!IsPostBack)

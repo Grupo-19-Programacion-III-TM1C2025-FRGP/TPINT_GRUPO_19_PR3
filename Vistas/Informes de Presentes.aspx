@@ -28,6 +28,12 @@
             .auto-style6 {
                 width: 145px;
             }
+            .auto-style7 {
+                width: 92px;
+            }
+            .auto-style8 {
+                width: 103px;
+            }
         </style>
     </head>
 
@@ -72,17 +78,22 @@
                                 <asp:Label ID="lbl_Informe_Presentes" runat="server" Font-Bold="True" Font-Size="16pt"
                                     Text="Informe presentes"></asp:Label>
                             </td>
-                            <td class="auto-style5">
+                            <td class="auto-style7">
                                 &nbsp;</td>
-                            <td class="auto-style4">&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td class="auto-style8"></td>
+                            <td class="auto-style4">
+                                <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Informes de Ausentes.aspx">Informe Ausente</asp:HyperLink>
+                            </td>
                         </tr>
                         <tr>
                             <td class="auto-style3">&nbsp;</td>
                             <td class="auto-style5">&nbsp;</td>
-                            <td class="auto-style5">&nbsp;</td>
+                            <td class="auto-style7">&nbsp;</td>
                             <td class="auto-style4">&nbsp;</td>
                             <td class="auto-style6">&nbsp;</td>
-                            <td class="auto-style6">&nbsp;</td>
+                            <td class="auto-style8">&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
@@ -91,30 +102,30 @@
                                 <asp:DropDownList ID="ddFechaInicialP" runat="server">
                                 </asp:DropDownList>
                             </td>
-                            <td class="auto-style5">
+                            <td class="auto-style7">
                                 <asp:RequiredFieldValidator ID="rfvInicioP" runat="server"
-                                    ControlToValidate="ddFechaInicialP" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                    ControlToValidate="ddFechaInicialP" InitialValue="Seleccione una fecha Inicial" ValidationGroup="1">*</asp:RequiredFieldValidator>
                             </td>
                             <td class="auto-style4">Fecha final:</td>
                             <td class="auto-style6">
                                 <asp:DropDownList ID="ddFechaFinalp" runat="server">
                                 </asp:DropDownList>
                             </td>
-                            <td class="auto-style6">
+                            <td class="auto-style8">
                                 <asp:RequiredFieldValidator ID="rfvFinal" runat="server"
-                                    ControlToValidate="ddFechaFinalp" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                    ControlToValidate="ddFechaFinalp" InitialValue="Seleccione una fecha final" ValidationGroup="1">*</asp:RequiredFieldValidator>
                             </td>
                             <td>
-                                <asp:Button ID="btnCalcularP" runat="server" Text="Calcular" OnClick="btnCalcularP_Click" />
+                                <asp:Button ID="btnCalcularP" runat="server" Text="Calcular" OnClick="btnCalcularP_Click" ValidationGroup="1"/>
                             </td>
                         </tr>
                         <tr>
                             <td class="auto-style3">&nbsp;</td>
                             <td class="auto-style5">&nbsp;</td>
-                            <td class="auto-style5">&nbsp;</td>
+                            <td class="auto-style7">&nbsp;</td>
                             <td class="auto-style4">&nbsp;</td>
                             <td class="auto-style6">&nbsp;</td>
-                            <td class="auto-style6">&nbsp;</td>
+                            <td class="auto-style8">&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
@@ -122,11 +133,11 @@
                             <td class="auto-style5">
                                 <asp:Label ID="lblPresentes" runat="server"></asp:Label>
                             </td>
-                            <td class="auto-style5">
+                            <td class="auto-style7">
                                 &nbsp;</td>
                             <td class="auto-style4">&nbsp;</td>
                             <td class="auto-style6">&nbsp;</td>
-                            <td class="auto-style6">&nbsp;</td>
+                            <td class="auto-style8">&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
@@ -135,11 +146,11 @@
                                 <asp:GridView ID="gvPresentes" runat="server">
                                 </asp:GridView>
                             </td>
-                            <td class="auto-style5">
+                            <td class="auto-style7">
                                 &nbsp;</td>
                             <td class="auto-style4">&nbsp;</td>
                             <td class="auto-style6">&nbsp;</td>
-                            <td class="auto-style6">&nbsp;</td>
+                            <td class="auto-style8">&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr>
                     </table>
