@@ -14,8 +14,8 @@ namespace Vistas
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            //AuxiliarVistas.ValidarSesionAdministrador();
-            //lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
+            AuxiliarVistas.ValidarSesionAdministrador();
+            lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
 
             if (!IsPostBack)
             {
@@ -46,18 +46,23 @@ namespace Vistas
             AuxiliarVistas.CerrarSesion();
         }
 
-        //protected void btnCalcularA_Click(object sender, EventArgs e)
-        //{
-        //   NegocioTurno Datos = new NegocioTurno();
-        //   Turno turno = new Turno();   
-        //   SqlCommand comando = new SqlCommand();   
-        //   dvAusentes.DataSource = Datos.FiltrarPresentes(turno);
-        //   dvAusentes.DataBind();
 
-          
-        //   turno.FechaTurno_Tur = DateTime.Today;
-        //   float porcentaje = Datos.SacarPorcentaje(turno);
-        //   lblAusentes.Text = porcentaje.ToString("F2") + "%";
-        //}
-}
+        protected void btnCalcularA_Click(object sender, EventArgs e)
+        {
+            NegocioTurno Datos = new NegocioTurno();
+            string fechaDDL = ddFechaInicialA.Text;
+            DateTime Inicio = DateTime.Parse(fechaDDL);
+            string fechaDDL2 = ddFechaFinalA.Text;
+            DateTime Final = DateTime.Parse(fechaDDL2);
+            Turno turno = new Turno();
+            SqlCommand comando = new SqlCommand();
+            dvAusentes.DataSource = Datos.FiltrarPresentes(turno, Inicio, Final);
+            dvAusentes.DataBind();
+
+
+            turno.FechaTurno_Tur = DateTime.Today;
+            float porcentaje = Datos.SacarPorcentaje(turno);
+            lblAusentes.Text = porcentaje.ToString("F2") + "%";
+        }
+    }
 }

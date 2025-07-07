@@ -11,9 +11,12 @@ namespace Datos
 {
     public class DaoTurnos : GenericDao
     {
-        readonly string consultaTabla = "SELECT * FROM Turno";
-        readonly string consultaFecha = "SELECT FechaTurno FROM Turno";
+
+        readonly string consultaTabla = "SELECT * FROM Turnos";
+        readonly string consultaContarTabla = "SELECT COUNT(*) FROM Turnos";
+        readonly string consultaFecha = "SELECT FechaTurno_TU FROM Turnos";
         string consultaTurnos = "SELECT T.FechaTurno_Tu as Fecha, H.Horario_HT AS Hora, P.Apellido_Pa + ', ' + P.Nombre_Pa AS Paciente, P.DNI_Pa AS DNI, T.Asistencia_Tu AS Asistencia FROM Turnos AS T INNER JOIN HorariosTurno AS H ON H.CodHorarioTurno_HT = T.CodHorarioTurno_HT_Tu INNER JOIN Pacientes AS P ON P.DNI_Pa = T.DNI_Pa_Tu WHERE T.Legajo_Me_Tu = ";
+
 
         public DaoTurnos() { }
 
@@ -27,6 +30,20 @@ namespace Datos
             DataTable tabla = _conexion.TraerTabla(consultaFecha, "Turnos");
             return tabla;
         }
+
+        public int Cantidad() //CANTIDAD DE TURNOS
+        {
+            Conexion conexion = new Conexion();
+            int resultado = conexion.ejecutarConsultaConResultado(consultaContarTabla);
+            return resultado;
+        }
+
+        public void PorcentajeAusente()
+        {
+
+        }
+
+
         public void ArmarParametrosAsignarTurno(ref SqlCommand comando, Turno tur)
         {
             SqlParameter ParamF;
@@ -54,20 +71,34 @@ namespace Datos
             ParamF.Value = tur.FechaTurno_Tur;
 
         }
+
+        public void ArmarParametrosAsistencia(ref SqlCommand comando, Turno tur)
+        {
+            SqlParameter ParamF;
+            ParamF = comando.Parameters.Add("@Fecha", SqlDbType.Date);
+            ParamF.Value = tur.FechaTurno_Tur;
+        }
+
         public float SacarPorcentajeAsistencia(Turno tur)
         {
             Conexion con = new Conexion();
             SqlCommand comando = new SqlCommand();
             ArmarParametrosFechas(ref comando, tur);
-            return con.EjecutarProcedimientoAlmacenado(comando, "CalcularPorcentajeEstado");
+            return con.EjecutarProcedimientoAlmacenadoConResultado(comando, "CalcularPorcentajeEstado");
         }
 
-        public float FiltroPresentes(Turno tur)
+        public int FiltroPresentes(Turno turno, DateTime Inicio, DateTime Final)
         {
             Conexion con = new Conexion();
             SqlCommand comando = new SqlCommand();
-            ArmarParametrosFechas(ref comando, tur);
-            return con.EjecutarProcedimientoAlmacenado(comando, "Filtro_Presentes");
+            SqlParameter ParamF;
+            string NuevoInicio = Inicio.ToString("yyyy-MM-dd");
+            comando.Parameters.Add("@FechaInicio", SqlDbType.Date).Value = NuevoInicio;
+            //ParamF.Value = Inicio;
+            string NuevoFinal = Final.ToString("yyyy-MM-dd");
+            comando.Parameters.Add("@FechaFin", SqlDbType.Date).Value = NuevoFinal;
+            //ParamF.Value = Final;
+            return con.EjecutarProcedimientoAlmacenadoConResultado(comando, "Filtro_Presentes");
         }
 
         public float FiltroAusentes(Turno tur)
@@ -82,7 +113,7 @@ namespace Datos
             Conexion con = new Conexion();
             SqlCommand comando = new SqlCommand();
             ArmarParametrosAsignarTurno(ref comando, turno);
-            return con.EjecutarProcedimientoAlmacenado(comando, "spAsignarTurno");
+            return con.EjecutarProcedimientoAlmacenadoConResultado(comando, "spAsignarTurno");
         }
         public DataTable TraerTablaTurnos(int legajoMedico)
         {

@@ -105,7 +105,7 @@
                                     ControlToValidate="ddFechaFinalp" ErrorMessage="*"></asp:RequiredFieldValidator>
                             </td>
                             <td>
-                                <asp:Button ID="btnCalcularP" runat="server" Text="Calcular" />
+                                <asp:Button ID="btnCalcularP" runat="server" Text="Calcular" OnClick="btnCalcularP_Click" />
                             </td>
                         </tr>
                         <tr>
