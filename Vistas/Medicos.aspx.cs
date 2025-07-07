@@ -121,6 +121,9 @@ namespace MiProyecto
             txtNacimiento.Text = string.Empty;
             txtEmail.Text = string.Empty;
             txtTelefono.Text = string.Empty;
+            txtUsuario.Text = string.Empty;
+            txtContrasenia.Text = string.Empty;
+            txtRepetirContrasenia.Text = string.Empty;
             ddlEspecialidad.SelectedIndex = 0;
             ddlHoraEntrada.SelectedIndex = 0;
             ddlHoraSalida.SelectedIndex = 0;
