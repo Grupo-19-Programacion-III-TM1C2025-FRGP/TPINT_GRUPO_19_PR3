@@ -174,70 +174,11 @@
                             <td class="auto-style8"></td>
                         </tr>
                         <tr>
-                            <td class="auto-style14">&nbsp;</td>
+                            <td class="auto-style14">
+                                <asp:Label ID="lblError" runat="server"></asp:Label>
+                            </td>
                             <td class="auto-style2">
-                                <asp:GridView ID="gvPacientes" runat="server" AutoGenerateColumns="False"
-                                    AutoGenerateEditButton="True" AutoGenerateSelectButton="True" Height="66px"
-                                    OnSelectedIndexChanged="gvPacientes_SelectedIndexChanged" Width="696px">
-                                    <Columns>
-                                        <asp:TemplateField HeaderText="Dni">
-                                            <EditItemTemplate>
-                                                <asp:TextBox ID="txt_eit_Dni" runat="server"></asp:TextBox>
-                                            </EditItemTemplate>
-                                            <ItemTemplate>
-                                                <asp:Label ID="lbl_Dni" runat="server"></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Nombre">
-                                            <EditItemTemplate>
-                                                <asp:TextBox ID="txt_eit_Nombre" runat="server"></asp:TextBox>
-                                            </EditItemTemplate>
-                                            <ItemTemplate>
-                                                <asp:Label ID="lbl_Nombre" runat="server"></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Apellido">
-                                            <EditItemTemplate>
-                                                <asp:TextBox ID="txt_eit_Apellido" runat="server"></asp:TextBox>
-                                            </EditItemTemplate>
-                                            <ItemTemplate>
-                                                <asp:Label ID="lbl_Apellido" runat="server"></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Sexo">
-                                            <EditItemTemplate>
-                                                <asp:TextBox ID="txt_eit_Sexo" runat="server"></asp:TextBox>
-                                            </EditItemTemplate>
-                                            <ItemTemplate>
-                                                <asp:Label ID="lbl_Sexo" runat="server"></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Fecha">
-                                            <EditItemTemplate>
-                                                <asp:TextBox ID="txt_eit_Fecha" runat="server"></asp:TextBox>
-                                            </EditItemTemplate>
-                                            <ItemTemplate>
-                                                <asp:Label ID="lbl_Fecha" runat="server"></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Medico">
-                                            <EditItemTemplate>
-                                                <asp:TextBox ID="txt_eit_Medico" runat="server"></asp:TextBox>
-                                            </EditItemTemplate>
-                                            <ItemTemplate>
-                                                <asp:Label ID="lbl_Medico" runat="server"></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Especialidad">
-                                            <EditItemTemplate>
-                                                <asp:TextBox ID="txt_eit_Especialidad" runat="server"></asp:TextBox>
-                                            </EditItemTemplate>
-                                            <ItemTemplate>
-                                                <asp:Label ID="lbl_Especialidad" runat="server"></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Presente / Ausente"></asp:TemplateField>
-                                    </Columns>
+                                <asp:GridView ID="gvTurnos" runat="server" AutoGenerateDeleteButton="True" AutoGenerateEditButton="True" AutoGenerateSelectButton="True" OnRowCancelingEdit="gvTurnos_RowCancelingEdit" OnRowDeleting="gvTurnos_RowDeleting" OnRowEditing="gvTurnos_RowEditing" OnRowUpdating="gvTurnos_RowUpdating" AllowPaging="True" OnPageIndexChanging="gvTurnos_PageIndexChanging">
                                 </asp:GridView>
                             </td>
                             <td class="auto-style2">

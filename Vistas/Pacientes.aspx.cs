@@ -20,8 +20,8 @@ namespace Vistas
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            //AuxiliarVistas.ValidarSesionAdministrador();
-            //lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
+            AuxiliarVistas.ValidarSesionAdministrador();
+            lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
 
             if (!IsPostBack)
             {
@@ -55,8 +55,8 @@ namespace Vistas
         {
             NegocioProvincia negocio = new NegocioProvincia();
             ddlProvincia.DataSource = negocio.getTabla();
-            ddlProvincia.DataTextField = "NombreProvincia_Pr";
-            ddlProvincia.DataValueField = "CodProvincia_Pr";
+            ddlProvincia.DataTextField = "Provincia";
+            ddlProvincia.DataValueField = "Codigo";
             ddlProvincia.DataBind();
             ddlProvincia.Items.Insert(0, new ListItem("Seleccione una provincia", "0"));
         }
@@ -176,6 +176,24 @@ namespace Vistas
         protected void btnLimpiar_Click(object sender, EventArgs e)
         {
             LimpiarFormulario(); 
+        }
+
+        protected void gvPacientes_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvPacientes.PageIndex = e.NewPageIndex;
+            CargarGvPacientes();
+        }
+
+        protected void gvProvincia_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvProvincia.PageIndex = e.NewPageIndex;
+            CargarGvProvincia();
+        }
+
+        protected void gvLocalidad_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvLocalidad.PageIndex = e.NewPageIndex;
+            CargarGvLocalidades();
         }
     }
 }

@@ -23,16 +23,16 @@ namespace Vistas
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            //AuxiliarVistas.ValidarSesionAdministrador();
-            //lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
+            AuxiliarVistas.ValidarSesionAdministrador();
+            lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
 
             if (!IsPostBack)
             {
                 // ddl especialidades
                 table = especialidades.getTabla();
                 ddlEspecialidad.DataSource = table;
-                ddlEspecialidad.DataTextField = "NombreEspecialidad_Es";
-                ddlEspecialidad.DataValueField = "CodEspecialidad_Es";
+                ddlEspecialidad.DataTextField = "Especialidad";
+                ddlEspecialidad.DataValueField = "Codigo";
                 ddlEspecialidad.DataBind();
                 ddlEspecialidad.Items.Insert(0, new ListItem("Seleccione especialidad", "0"));
 
@@ -42,7 +42,7 @@ namespace Vistas
                 ddlHorario.DataTextField = "Horario_HT";
                 ddlHorario.DataValueField = "CodHorarioTurno_HT";
                 ddlHorario.DataBind();
-                ddlHorario.Items.Insert(0, new ListItem("Seleccione horaio", "0"));
+                ddlHorario.Items.Insert(0, new ListItem("Seleccione horario", "0"));
             }
         }
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -78,11 +78,13 @@ namespace Vistas
 
             if(filasAfectadas == 1)
             {
+                lblMensaje.ForeColor = System.Drawing.Color.Green;
                 lblMensaje.Text = "Turno asignado correctamente";
             }
             else
             {
-                lblMensaje.Text = "Ocurrió un error al asignar el turno"; // No está andando
+                lblMensaje.ForeColor = System.Drawing.Color.Red;
+                lblMensaje.Text = "Ocurrió un error al asignar el turno, intente verificar los datos ingresados"; // No está andando
             }
             limpiarFormulario();
         }

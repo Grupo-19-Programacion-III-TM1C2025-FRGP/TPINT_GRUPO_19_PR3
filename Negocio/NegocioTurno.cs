@@ -60,10 +60,11 @@ namespace Negocio
             return dao.FiltroAusentes(turno);
         }
 
-        //public int CantidadAusentes(DateTime Inicio, DateTime Final)
-        //{
-        //    DaoTurnos dao = new DaoTurnos();
-        //    return dao.CantidadAusentes(Inicio, Final);
-        //}
+        public DataTable ListarTurnos(int legajoMedico)
+        {
+            DaoTurnos dao = new DaoTurnos();
+            return dao.TraerTablaTurnos(legajoMedico);
+        }
+
     }
 }

@@ -1,10 +1,10 @@
 //------------------------------------------------------------------------------
-// <generado autom谩ticamente>
-//     Este c贸digo fue generado por una herramienta.
+// <generado autom醫icamente>
+//     Este c骴igo fue generado por una herramienta.
 //
-//     Los cambios en este archivo podr铆an causar un comportamiento incorrecto y se perder谩n si
-//     se vuelve a generar el c贸digo. 
-// </generado autom谩ticamente>
+//     Los cambios en este archivo podr韆n causar un comportamiento incorrecto y se perder醤 si
+//     se vuelve a generar el c骴igo. 
+// </generado autom醫icamente>
 //------------------------------------------------------------------------------
 
 namespace MiProyecto
@@ -18,8 +18,8 @@ namespace MiProyecto
         /// Control form1.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
@@ -27,8 +27,8 @@ namespace MiProyecto
         /// Control HyperLink1.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
 
@@ -36,8 +36,8 @@ namespace MiProyecto
         /// Control HyperLink2.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
 
@@ -45,8 +45,8 @@ namespace MiProyecto
         /// Control HyperLink3.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink3;
 
@@ -54,8 +54,8 @@ namespace MiProyecto
         /// Control HyperLink5.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink5;
 
@@ -63,8 +63,8 @@ namespace MiProyecto
         /// Control HyperLink4.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink4;
 
@@ -72,8 +72,8 @@ namespace MiProyecto
         /// Control lblUsuario.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblUsuario;
 
@@ -81,8 +81,8 @@ namespace MiProyecto
         /// Control btnCerrarSesion.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCerrarSesion;
 
@@ -90,8 +90,8 @@ namespace MiProyecto
         /// Control txtDNI.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDNI;
 
@@ -99,8 +99,8 @@ namespace MiProyecto
         /// Control rfvDNI.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDNI;
 
@@ -108,8 +108,8 @@ namespace MiProyecto
         /// Control txtNombre.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
 
@@ -117,8 +117,8 @@ namespace MiProyecto
         /// Control rfvNombre.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombre;
 
@@ -126,8 +126,8 @@ namespace MiProyecto
         /// Control txtApellido.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtApellido;
 
@@ -135,8 +135,8 @@ namespace MiProyecto
         /// Control rfvApellido.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvApellido;
 
@@ -144,8 +144,8 @@ namespace MiProyecto
         /// Control ddlSexo.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlSexo;
 
@@ -153,8 +153,8 @@ namespace MiProyecto
         /// Control rfvSexo.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvSexo;
 
@@ -162,8 +162,8 @@ namespace MiProyecto
         /// Control txtNacionalidad.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNacionalidad;
 
@@ -171,8 +171,8 @@ namespace MiProyecto
         /// Control rfvNacionalidad.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNacionalidad;
 
@@ -180,8 +180,8 @@ namespace MiProyecto
         /// Control ddlProvincia.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlProvincia;
 
@@ -189,8 +189,8 @@ namespace MiProyecto
         /// Control rfvProvincia.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvProvincia;
 
@@ -198,8 +198,8 @@ namespace MiProyecto
         /// Control ddlLocalidad.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlLocalidad;
 
@@ -207,8 +207,8 @@ namespace MiProyecto
         /// Control rfvLocalidad.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvLocalidad;
 
@@ -216,8 +216,8 @@ namespace MiProyecto
         /// Control txtNacimiento.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNacimiento;
 
@@ -225,8 +225,8 @@ namespace MiProyecto
         /// Control rfvNacimiento.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNacimiento;
 
@@ -234,8 +234,8 @@ namespace MiProyecto
         /// Control ddlEspecialidad.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlEspecialidad;
 
@@ -243,8 +243,8 @@ namespace MiProyecto
         /// Control rfvEspecialidad.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEspecialidad;
 
@@ -252,8 +252,8 @@ namespace MiProyecto
         /// Control ddlHoraEntrada.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlHoraEntrada;
 
@@ -261,8 +261,8 @@ namespace MiProyecto
         /// Control rfvHorarios0.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvHorarios0;
 
@@ -270,8 +270,8 @@ namespace MiProyecto
         /// Control ddlHoraSalida.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlHoraSalida;
 
@@ -279,8 +279,8 @@ namespace MiProyecto
         /// Control rfvHorarios.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvHorarios;
 
@@ -288,8 +288,8 @@ namespace MiProyecto
         /// Control txtEmail.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
@@ -297,8 +297,8 @@ namespace MiProyecto
         /// Control revEmail.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revEmail;
 
@@ -306,17 +306,89 @@ namespace MiProyecto
         /// Control txtTelefono.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTelefono;
+
+        /// <summary>
+        /// Control rfvTelefono.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTelefono;
+
+        /// <summary>
+        /// Control txtUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtUsuario;
+
+        /// <summary>
+        /// Control rfvUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvUsuario;
+
+        /// <summary>
+        /// Control txtContrasenia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtContrasenia;
+
+        /// <summary>
+        /// Control rfvContrasenia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvContrasenia;
+
+        /// <summary>
+        /// Control txtRepetirContrasenia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRepetirContrasenia;
+
+        /// <summary>
+        /// Control rfvRepetirContrasenia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvRepetirContrasenia;
+
+        /// <summary>
+        /// Control cvContrasenias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator cvContrasenias;
 
         /// <summary>
         /// Control btnAgregar.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAgregar;
 
@@ -324,8 +396,8 @@ namespace MiProyecto
         /// Control btnLimpiar.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnLimpiar;
 
@@ -333,8 +405,8 @@ namespace MiProyecto
         /// Control ValidationSummary1.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
 
@@ -342,8 +414,8 @@ namespace MiProyecto
         /// Control lblMensaje.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMensaje;
 
@@ -351,27 +423,54 @@ namespace MiProyecto
         /// Control gvMedicos.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvMedicos;
-
-        /// <summary>
-        /// Control lblBug.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBug;
 
         /// <summary>
         /// Control lblMensajeExito.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom谩ticamente.
-        /// Para modificarlo, mueva la declaraci贸n del campo del archivo del dise帽ador al archivo de c贸digo subyacente.
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMensajeExito;
+
+        /// <summary>
+        /// Control Label1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+
+        /// <summary>
+        /// Control gvProvincia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvProvincia;
+
+        /// <summary>
+        /// Control gvLocalidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvLocalidad;
+
+        /// <summary>
+        /// Control gvEspecialidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado autom醫icamente.
+        /// Para modificarlo, mueva la declaraci髇 del campo del archivo del dise馻dor al archivo de c骴igo subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvEspecialidad;
     }
 }

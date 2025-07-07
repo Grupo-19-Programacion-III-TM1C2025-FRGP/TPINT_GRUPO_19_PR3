@@ -14,8 +14,8 @@ namespace Vistas
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            //AuxiliarVistas.ValidarSesionAdministrador();
-            //lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
+            AuxiliarVistas.ValidarSesionAdministrador();
+            lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
 
             if (!IsPostBack)
             {
@@ -45,6 +45,7 @@ namespace Vistas
         {
             AuxiliarVistas.CerrarSesion();
         }
+
 
         protected void btnCalcularA_Click(object sender, EventArgs e)
         {

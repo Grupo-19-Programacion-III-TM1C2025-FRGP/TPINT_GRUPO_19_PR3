@@ -9,7 +9,7 @@ namespace Datos
 {
     public class DaoEspecialidades : GenericDao
     {
-        readonly string consultaTabla = "SELECT * FROM Especialidades";
+        readonly string consultaTabla = "SELECT CodEspecialidad_Es AS Codigo, NombreEspecialidad_Es AS Especialidad FROM Especialidades";
 
         public DaoEspecialidades() { }
 

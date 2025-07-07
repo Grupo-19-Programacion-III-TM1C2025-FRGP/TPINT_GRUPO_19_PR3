@@ -1,6 +1,25 @@
 ﻿USE Clinica;
 GO
 
+CREATE OR ALTER PROCEDURE spAsignarTurno
+    @LegajoMedico INT,
+    @CodigoHora INT,
+    @Fecha DATE,
+    @DNIPaciente CHAR(8)
+AS
+BEGIN
+    BEGIN TRY
+        INSERT INTO Turnos (Legajo_Me_Tu, CodHorarioTurno_HT_Tu, FechaTurno_Tu, DNI_Pa_Tu)
+        VALUES (@LegajoMedico, @CodigoHora, @Fecha, @DNIPaciente)
+
+        RETURN 1  -- OK
+    END TRY
+    BEGIN CATCH
+        RETURN 0  -- Error
+    END CATCH
+END;
+GO
+
 CREATE PROCEDURE spAltaMedico
 (
     @DNI CHAR(8),
@@ -14,8 +33,10 @@ CREATE PROCEDURE spAltaMedico
     @Especialidad INT,
     @HoraEntrada TIME(0),
 	@HoraSalida TIME(0),
-    @Email VARCHAR(30),
-    @Telefono VARCHAR(20)
+    @Email VARCHAR(100),
+    @Telefono VARCHAR(20),
+	@Usuario VARCHAR(100),
+	@Contrasenia VARCHAR(100)
 )
 AS
 BEGIN
@@ -27,6 +48,18 @@ BEGIN
         @DNI, @NombreMedico, @ApellidoMedico, @Sexo, @Nacionalidad, @FechaNacimiento, @Provincia,
         @Localidad, @Especialidad, @Email, @Telefono, @HoraEntrada, @HoraSalida
     )
+	
+	 -- Obtener el Legajo del médico recién insertado
+    DECLARE @LegajoMedico INT;
+    SET @LegajoMedico = SCOPE_IDENTITY(); -- Trae el Ultimo valor IDENTITY generado en la consulta
+
+    -- Insertar en Usuarios
+    INSERT INTO Usuarios (
+        Nombre_Usu, Contrasenia_Usu, Tipo_Usu, Legajo_Me_Usu
+    )
+    VALUES (
+        @Usuario, @Contrasenia, 0, @LegajoMedico
+    );
 END
 GO
 
@@ -62,6 +95,42 @@ AS
 					ON L.CodLocalidad_Lo = M.CodLocalidad_Lo_Me
 						INNER JOIN Provincias AS P
 						ON P.CodProvincia_Pr = L.CodProvincia_Pr_Lo
+
+			ORDER BY Estado DESC
+	END;
+GO
+
+CREATE PROCEDURE spTraerTablaMedicosConUsuarios
+AS
+	BEGIN
+		SELECT
+			M.Legajo_Me AS Legajo,
+			M.DNI_Me AS DNI,
+			M.Apellido_Me AS Nombre,
+			M.Nombre_Me AS Apellido,
+			M.Sexo_Me AS Sexo,
+			M.Nacionalidad_Me AS Nacionalidad,
+			M.FechaNacimiento_Me AS [Fecha de nacimiento],
+			M.Email_Me AS [Correo electronico],
+			M.Telefono_Me AS Telefono,
+			M.HoraEntrada_Me AS [Horario de entrada],
+			M.HoraSalida_Me AS [Horario de salida],
+
+			M.CodEspecialidad_Es_Me AS Especialidad,
+
+			M.CodProvincia_Pr_Me AS Provincia,
+
+			M.CodLocalidad_Lo_Me AS Localidad,
+
+			U.Nombre_Usu,
+			U.Contrasenia_Usu,
+
+			M.Estado_Me AS Estado
+
+			FROM Medicos AS M
+
+				INNER JOIN Usuarios AS U
+				ON U.Legajo_Me_Usu = M.Legajo_Me
 
 			ORDER BY Estado DESC
 	END;
@@ -271,6 +340,21 @@ AS
 	END;
 GO
 
+CREATE PROCEDURE spModificarUsuario
+(
+	@Legajo INT,
+    @Nombre VARCHAR(100),
+	@Contrasenia VARCHAR(100)
+)
+AS
+	BEGIN
+		UPDATE Usuarios
+			SET Nombre_Usu = @Nombre,
+			Contrasenia_Usu = @Contrasenia
+			WHERE Legajo_Me_Usu = @Legajo
+	END;
+GO
+
 -- Chequear
 CREATE PROCEDURE CalcularPorcentajeEstado(
     @FechaInicio DATE,
@@ -318,7 +402,14 @@ BEGIN
 END;
 GO 
 
-
+CREATE OR ALTER PROCEDURE spModificacionUsuario @Codigo INT, @Nombre VARCHAR(100), @Contrasenia VARCHAR(100)
+	AS
+	 BEGIN
+		UPDATE Usuarios
+			SET Nombre_Usu = @Nombre, Contrasenia_Usu = @Contrasenia
+		WHERE CodUsuario_Usu = @Codigo
+	 END;
+GO
 
 CREATE PROCEDURE Filtro_Ausentes(
     @FechaInicio DATE,
