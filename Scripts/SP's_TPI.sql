@@ -20,7 +20,7 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE spAltaMedico
+CREATE OR ALTER PROCEDURE spAltaMedico
 (
     @DNI CHAR(8),
     @NombreMedico VARCHAR(20),
@@ -63,7 +63,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE spTraerTablaMedicos
+CREATE OR ALTER PROCEDURE spTraerTablaMedicos
 AS
 	BEGIN
 		SELECT
@@ -100,7 +100,7 @@ AS
 	END;
 GO
 
-CREATE PROCEDURE spTraerTablaMedicosConUsuarios
+CREATE OR ALTER PROCEDURE spTraerTablaMedicosConUsuarios
 AS
 	BEGIN
 		SELECT
@@ -136,7 +136,7 @@ AS
 	END;
 GO
 
-CREATE PROCEDURE spTraerTablaMedicosCodificada
+CREATE OR ALTER PROCEDURE spTraerTablaMedicosCodificada
 AS
 	BEGIN
 		SELECT
@@ -166,7 +166,7 @@ AS
 	END;
 GO
 
-CREATE PROCEDURE dbo.spAltaPaciente
+CREATE OR ALTER PROCEDURE dbo.spAltaPaciente
     @DNI CHAR(8),
     @Nombre VARCHAR(20),
     @Apellido VARCHAR(20),
@@ -193,7 +193,7 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE spTraerTablaPacientes 
+CREATE OR ALTER PROCEDURE spTraerTablaPacientes 
 AS
 	BEGIN
 		SELECT 
@@ -224,7 +224,7 @@ AS
 	END;
 GO
 
-CREATE PROCEDURE spTraerTablaPacientesCodificada
+CREATE OR ALTER PROCEDURE spTraerTablaPacientesCodificada
 AS
 	BEGIN
 		SELECT
@@ -250,7 +250,7 @@ AS
 	END;
 GO
 
-CREATE PROCEDURE spBajaPaciente @DNI CHAR(8)
+CREATE OR ALTER PROCEDURE spBajaPaciente @DNI CHAR(8)
 AS
 	BEGIN
 		UPDATE Pacientes
@@ -259,7 +259,7 @@ AS
 	END;
 GO
 
-CREATE PROCEDURE spBajaMedico @LEGAJO INT
+CREATE OR ALTER PROCEDURE spBajaMedico @LEGAJO INT
 AS
 	BEGIN
 		UPDATE Medicos
@@ -268,7 +268,7 @@ AS
 	END;
 GO
 
-CREATE PROCEDURE spModificarMedico
+CREATE OR ALTER PROCEDURE spModificarMedico
 (
 	@LEGAJO INT,
     @DNI CHAR(8),
@@ -307,7 +307,7 @@ AS
 	END;
 GO
 
-CREATE PROCEDURE spModificarPaciente
+CREATE OR ALTER PROCEDURE spModificarPaciente
 (
     @DNI CHAR(8),
     @NombrePaciente VARCHAR(20),
@@ -337,6 +337,25 @@ AS
 				Telefono_Pa = @Telefono,
 				Estado_Pa = @Estado
 			WHERE DNI_Pa = @DNI
+	END;
+GO
+
+CREATE OR ALTER PROCEDURE spVerificarNombreUsuario
+	@LegajoMedico INT,
+	@NuevoNombre VARCHAR(100)
+AS
+	BEGIN
+		-- Encontrar el codUsuario a editar
+		DECLARE @CodUsuarioActual INT
+			SELECT @CodUsuarioActual = CodUsuario_Usu
+				FROM Medicos M
+					INNER JOIN Usuarios U ON M.Legajo_Me = U.Legajo_Me_Usu
+						WHERE M.Legajo_Me = @LegajoMedico
+			-- Ver que no haya un nombre de usuario igual 
+			SELECT COUNT(*)
+				FROM Usuarios
+					WHERE Nombre_Usu = @NuevoNombre
+					AND CodUsuario_Usu <> @CodUsuarioActual
 	END;
 GO
 

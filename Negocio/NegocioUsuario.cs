@@ -29,5 +29,17 @@ namespace Negocio
 
             }
         }
+        public int VerificarUsuario(string legajo, string nuevoNombre)
+        {
+            try
+            {
+                int resultado = dao.VerificarNombreUsuario(legajo, nuevoNombre);
+                return resultado;
+            }
+            catch
+            {
+                return -1;
+            }
+        }
     }
 }

@@ -37,7 +37,16 @@ namespace Datos
             param = comando.Parameters.Add("@Contrasenia", SqlDbType.VarChar, 50);
             param.Value = contrasenia;
         }
+        private void ArmarParametrosVerificarNombreUsuario(ref SqlCommand comando, string legajo, string nuevoNombre)
+        {
+            SqlParameter param;
 
+            param = comando.Parameters.Add("@Legajo", SqlDbType.Int);
+            param.Value = legajo;
+
+            param = comando.Parameters.Add("@NuevoNombre", SqlDbType.VarChar, 100);
+            param.Value = nuevoNombre;
+        }
         public int ModificarUsuario(string legajo, string usuario, string contrasenia)
         {
 
@@ -48,6 +57,15 @@ namespace Datos
 
             return filasAfectadas;
 
+        }
+        public int VerificarNombreUsuario(string legajo, string nuevoNombre)
+        {
+            Conexion _conexion = new Conexion();
+            SqlCommand comando = new SqlCommand();
+            ArmarParametrosVerificarNombreUsuario(ref comando, legajo, nuevoNombre);
+            int resultado = _conexion.EjecutarProcedimientoAlmacenado(comando, "spVerificarNombreUsuario");
+            // Devuelvo la cantidad de nombres en la bdd
+            return resultado;
         }
     }
 }

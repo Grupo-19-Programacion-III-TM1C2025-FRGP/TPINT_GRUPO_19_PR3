@@ -164,11 +164,23 @@ namespace MiProyecto
 
             negocioMedico.modificarMedico(medico);
 
-            negocioUsuario.ModificarUsuario(legajo, usuario, contrasenia);
+            // Verificar si el nombre de usuario está disponible
+            if(negocioUsuario.VerificarUsuario(legajo, usuario) > 0)
+            {
+                negocioUsuario.ModificarUsuario(legajo, usuario, contrasenia);
+            }
+            else
+            {
+                labelUsername.Text = "Nombre de usuario no disponible"; // No se muestra
+            }
+
+
 
             gvMedicos.EditIndex = -1;
             gvMedicos.DataSource = negocioMedico.getTablaConUsuarios();
             gvMedicos.DataBind();
+
+            lblMensajeExito.Text = "Médico actualizado con éxito";  // No se muestra
 
             e.Cancel = true;
         }
