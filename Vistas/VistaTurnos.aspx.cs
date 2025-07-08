@@ -15,12 +15,12 @@ namespace Vistas
 {
     public partial class VistaTurnos : System.Web.UI.Page
     {
-        NegocioTurno negocioTurno = new NegocioTurno();
+        NegocioTurno negocioTurno;
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            //AuxiliarVistas.ValidarSesionMedico();
-            //lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
+            AuxiliarVistas.ValidarSesionMedico();
+            lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
 
             CargarGvTurnos();
         }
@@ -32,8 +32,8 @@ namespace Vistas
 
         protected void CargarGvTurnos()
         {
-            //int legajo = int.Parse(AuxiliarVistas.ObtenerLegajo());
-            int legajo = 1;
+            int legajo = int.Parse(AuxiliarVistas.ObtenerLegajo());
+            //int legajo = 1;
 
             DataTable tabla = negocioTurno.ListarTurnos(legajo);
 
@@ -60,18 +60,18 @@ namespace Vistas
 
         protected void gvTurnos_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            //int codTurno = Convert.ToInt32(gvTurnos.DataKeys[e.RowIndex].Value);
-            //GridViewRow fila = gvTurnos.Rows[e.RowIndex];
-            //string nuevaAsistencia = ((TextBox)fila.Cells[6].Controls[0]).Text;
+            int codTurno = Convert.ToInt32(gvTurnos.DataKeys[e.RowIndex].Value);
+            GridViewRow fila = gvTurnos.Rows[e.RowIndex];
+            string nuevaAsistencia = ((TextBox)fila.Cells[6].Controls[0]).Text;
 
-            //Turno turno = new Turno(codTurno, nuevaAsistencia);
-            ////turno.CodTurno_Tur = codTurno;
-            ////turno.Asistencia_Tur = nuevaAsistencia;
+            Turno turno = new Turno(codTurno, nuevaAsistencia);
+            turno.CodTurno_Tur = codTurno;
+            turno.Asistencia_Tur = nuevaAsistencia;
 
-            //negocioTurno.ModificarAsistencia(turno);
+            negocioTurno.ModificarAsistencia(turno);
 
-            //gvTurnos.EditIndex = -1;
-            //CargarGvTurnos();
+            gvTurnos.EditIndex = -1;
+            CargarGvTurnos();
         }
 
 
@@ -164,9 +164,9 @@ namespace Vistas
 
         protected void gvTurnos_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
-            //int index = e.NewSelectedIndex;
-            //int codTurno = Convert.ToInt32(gvTurnos.DataKeys[index].Value);
-            //HiddenField1.Value = codTurno.ToString();
+            int index = e.NewSelectedIndex;
+            int codTurno = Convert.ToInt32(gvTurnos.DataKeys[index].Value);
+            HiddenField1.Value = codTurno.ToString();
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
