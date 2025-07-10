@@ -199,139 +199,138 @@ namespace Vistas
 
         protected void BsAs_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.BuenosAires();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(1);
             gvPacientes.DataBind();
         }
 
         protected void Cordoba_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.Cordoba();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(2);
             gvPacientes.DataBind();
         }
 
         protected void SantaFe_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.SantaFe();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(3);
             gvPacientes.DataBind();
         }
 
         protected void Catamarca_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.Catamarca();
-            gvPacientes.DataBind();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(4);
         }
 
         protected void Chaco_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.Chaco();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(5);
             gvPacientes.DataBind();
         }
 
         protected void Chubut_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.Chubut();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(6);
             gvPacientes.DataBind();
         }
 
         protected void Corrientes_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.Corrientes();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(7);
             gvPacientes.DataBind();
         }
 
         protected void EntreRios_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.EntreRios();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(8);
             gvPacientes.DataBind();
         }
 
         protected void Formosa_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.Formosa();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(9);
             gvPacientes.DataBind();
         }
 
         protected void Jujuy_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.Jujuy();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(10);
             gvPacientes.DataBind();
         }
 
         protected void LaPampa_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.LaPampa();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(11);
             gvPacientes.DataBind();
         }
 
         protected void LaRioja_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.LaRioja();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(12);
             gvPacientes.DataBind();
         }
 
         protected void Mendoza_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.Mendoza();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(13);
             gvPacientes.DataBind();
         }
 
         protected void Misiones_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.Misiones();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(14);
             gvPacientes.DataBind();
         }
 
         protected void Neuquen_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.Neuquen();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(15);
             gvPacientes.DataBind();
         }
 
         protected void RioNegro_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.RioNegro();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(6);
             gvPacientes.DataBind();
         }
 
         protected void Salta_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.Salta();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(17);
             gvPacientes.DataBind();
         }
 
         protected void SanJuan_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.SanJuan();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(18);
             gvPacientes.DataBind();
         }
 
         protected void SanLuis_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.SanLuis();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(19);
             gvPacientes.DataBind();
         }
 
         protected void SantaCruz_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.SantaCruz();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(20);
             gvPacientes.DataBind();
         }
 
         protected void SantiagoEstero_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.SantiagoEstero();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(21);
             gvPacientes.DataBind();
         }
 
         protected void TierraDelFuego_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.TierraDelFuego();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(22);
             gvPacientes.DataBind();
         }
 
         protected void Tucuman_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.Tucuman();
+            gvPacientes.DataSource = negocioP.FiltroProvincia(23);
             gvPacientes.DataBind();
         }
 
