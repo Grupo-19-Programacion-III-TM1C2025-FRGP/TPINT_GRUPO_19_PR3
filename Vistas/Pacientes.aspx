@@ -9,7 +9,7 @@
         <title>Gestión de pacientes</title>
         <style type="text/css">
             .auto-style1 {
-                width: 216px;
+                width: 226px;
             }
             .auto-style2 {
                 height: 26px;
@@ -39,7 +39,7 @@
                 width: 175px;
             }
             .auto-style11 {
-                width: 172px;
+                width: 81px;
             }
             .auto-style12 {
                 width: 299px;
@@ -54,7 +54,7 @@
                 width: 111px;
             }
             .auto-style20 {
-                width: 128px;
+                width: 32px;
             }
         </style>
     </head>
@@ -239,12 +239,14 @@
                         <tr>
                             <td class="auto-style10">Buscar por DNI:</td>
                             <td class="auto-style12">
-                                <asp:TextBox ID="txtDNI2" runat="server" Width="259px"></asp:TextBox>
+                                <asp:TextBox ID="txtDNI2" runat="server" Width="259px" ValidationGroup="2"></asp:TextBox>
                             </td>
                             <td class="auto-style20">
-                                <asp:Button ID="BuscarDNI" runat="server" OnClick="BuscarDNI_Click" Text="Buscar" />
+                                <asp:RequiredFieldValidator ID="rfvDNI2" runat="server" ControlToValidate="txtDNI2" ForeColor="Red" ValidationGroup="2">*</asp:RequiredFieldValidator>
                             </td>
-                            <td class="auto-style11">&nbsp;</td>
+                            <td class="auto-style11">
+                                <asp:Button ID="BuscarDNI" runat="server" OnClick="BuscarDNI_Click" Text="Buscar" ValidationGroup="2" />
+                            </td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
@@ -254,12 +256,14 @@
                         <tr>
                             <td class="auto-style10">Buscar por nombre:</td>
                             <td class="auto-style12">
-                                <asp:TextBox ID="txtNombre2" runat="server" Width="259px"></asp:TextBox>
+                                <asp:TextBox ID="txtNombre2" runat="server" Width="259px" ValidationGroup="3"></asp:TextBox>
                             </td>
                             <td class="auto-style20">
-                                <asp:Button ID="BuscarNombre" runat="server" OnClick="BuscarNombre_Click" Text="Buscar" />
+                                <asp:RequiredFieldValidator ID="rfvNombre2" runat="server" ControlToValidate="txtNombre2" ForeColor="Red" ValidationGroup="3">*</asp:RequiredFieldValidator>
                             </td>
-                            <td class="auto-style11">&nbsp;</td>
+                            <td class="auto-style11">
+                                <asp:Button ID="BuscarNombre" runat="server" OnClick="BuscarNombre_Click" Text="Buscar" ValidationGroup="3" />
+                            </td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
