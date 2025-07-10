@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Entidades;
+using MiProyecto;
+using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Entidades;
-using MiProyecto;
-using Negocio;
 using Vistas.Clases;
 
 namespace Vistas
@@ -20,8 +21,8 @@ namespace Vistas
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            AuxiliarVistas.ValidarSesionAdministrador();
-            lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
+            //AuxiliarVistas.ValidarSesionAdministrador();
+            //lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
 
             if (!IsPostBack)
             {
@@ -194,6 +195,164 @@ namespace Vistas
         {
             gvLocalidad.PageIndex = e.NewPageIndex;
             CargarGvLocalidades();
+        }
+
+        protected void BsAs_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.BuenosAires();
+            gvPacientes.DataBind();
+        }
+
+        protected void Cordoba_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.Cordoba();
+            gvPacientes.DataBind();
+        }
+
+        protected void SantaFe_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.SantaFe();
+            gvPacientes.DataBind();
+        }
+
+        protected void Catamarca_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.Catamarca();
+            gvPacientes.DataBind();
+        }
+
+        protected void Chaco_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.Chaco();
+            gvPacientes.DataBind();
+        }
+
+        protected void Chubut_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.Chubut();
+            gvPacientes.DataBind();
+        }
+
+        protected void Corrientes_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.Corrientes();
+            gvPacientes.DataBind();
+        }
+
+        protected void EntreRios_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.EntreRios();
+            gvPacientes.DataBind();
+        }
+
+        protected void Formosa_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.Formosa();
+            gvPacientes.DataBind();
+        }
+
+        protected void Jujuy_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.Jujuy();
+            gvPacientes.DataBind();
+        }
+
+        protected void LaPampa_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.LaPampa();
+            gvPacientes.DataBind();
+        }
+
+        protected void LaRioja_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.LaRioja();
+            gvPacientes.DataBind();
+        }
+
+        protected void Mendoza_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.Mendoza();
+            gvPacientes.DataBind();
+        }
+
+        protected void Misiones_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.Misiones();
+            gvPacientes.DataBind();
+        }
+
+        protected void Neuquen_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.Neuquen();
+            gvPacientes.DataBind();
+        }
+
+        protected void RioNegro_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.RioNegro();
+            gvPacientes.DataBind();
+        }
+
+        protected void Salta_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.Salta();
+            gvPacientes.DataBind();
+        }
+
+        protected void SanJuan_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.SanJuan();
+            gvPacientes.DataBind();
+        }
+
+        protected void SanLuis_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.SanLuis();
+            gvPacientes.DataBind();
+        }
+
+        protected void SantaCruz_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.SantaCruz();
+            gvPacientes.DataBind();
+        }
+
+        protected void SantiagoEstero_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.SantiagoEstero();
+            gvPacientes.DataBind();
+        }
+
+        protected void TierraDelFuego_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.TierraDelFuego();
+            gvPacientes.DataBind();
+        }
+
+        protected void Tucuman_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.Tucuman();
+            gvPacientes.DataBind();
+        }
+
+        protected void Todo_Click(object sender, EventArgs e)
+        {
+            CargarGvPacientes();
+        }
+
+        protected void BuscarDNI_Click(object sender, EventArgs e)
+        {
+            int dni = Convert.ToInt32(txtDNI2.Text);
+            gvPacientes.DataSource = negocioP.BuscarDNI(dni);
+            gvPacientes.DataBind();
+            txtDNI2.Text = "";
+        }
+
+        protected void BuscarNombre_Click(object sender, EventArgs e)
+        {
+            gvPacientes.DataSource = negocioP.BuscarNombre(txtNombre2.Text);
+            gvPacientes.DataBind();
+            txtNombre2.Text = "";
         }
     }
 }

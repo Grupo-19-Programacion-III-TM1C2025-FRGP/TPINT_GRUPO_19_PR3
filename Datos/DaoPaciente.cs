@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
-
-using Entidades;
-using System.Runtime.Remoting.Messaging;
 
 namespace Datos
 {
@@ -15,6 +15,10 @@ namespace Datos
     {
         // Propiedades
         DataTable tabla;
+        string consultaProvincia = "SELECT PA.DNI_Pa AS DNI, PA.Apellido_Pa AS Nombre, PA.Nombre_Pa AS Apellido, PA.Sexo_Pa AS Sexo, PA.Nacionalidad_Pa AS Nacionalidad, PA.FechaNacimiento_Pa AS [Fecha de nacimiento], PA.Direccion_Pa AS Direccion, PA.Email_Pa AS [Correo electronico], PA.Telefono_Pa AS Telefono, PA.CodProvincia_Pr_Pa AS Provincia, PA.CodLocalidad_Lo_Pa AS Localidad, PA.Estado_Pa AS Estado FROM Pacientes AS PA WHERE CodProvincia_Pr_Pa = ";
+        string consultaDNI = "SELECT PA.DNI_Pa AS DNI, PA.Apellido_Pa AS Nombre, PA.Nombre_Pa AS Apellido, PA.Sexo_Pa AS Sexo, PA.Nacionalidad_Pa AS Nacionalidad, PA.FechaNacimiento_Pa AS [Fecha de nacimiento], PA.Direccion_Pa AS Direccion, PA.Email_Pa AS [Correo electronico], PA.Telefono_Pa AS Telefono, PA.CodProvincia_Pr_Pa AS Provincia, PA.CodLocalidad_Lo_Pa AS Localidad, PA.Estado_Pa AS Estado FROM Pacientes AS PA WHERE PA.DNI_Pa LIKE ";
+        string consultaNombre = "SELECT PA.DNI_Pa AS DNI, PA.Apellido_Pa AS Nombre, PA.Nombre_Pa AS Apellido, PA.Sexo_Pa AS Sexo, PA.Nacionalidad_Pa AS Nacionalidad, PA.FechaNacimiento_Pa AS [Fecha de nacimiento], PA.Direccion_Pa AS Direccion, PA.Email_Pa AS [Correo electronico], PA.Telefono_Pa AS Telefono, PA.CodProvincia_Pr_Pa AS Provincia, PA.CodLocalidad_Lo_Pa AS Localidad, PA.Estado_Pa AS Estado FROM Pacientes AS PA WHERE (PA.Apellido_Pa + ', ' + PA.Nombre_Pa) LIKE  ";
+
         // Métodos
         public void ArmarParametrosPacienteAgregar(ref SqlCommand comando, Paciente pac)
         {
@@ -130,6 +134,156 @@ namespace Datos
         {
             Conexion con = new Conexion();
             DataTable tabla = con.EjecutarSP_Select("spTraerTablaPacientesCodificada");
+            return tabla;
+        }
+        public DataTable BuenosAires()
+        {
+            consultaProvincia += "1 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable Cordoba()
+        {
+            consultaProvincia += "2 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable SantaFe()
+        {
+            consultaProvincia += "3 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable Catamarca()
+        {
+            consultaProvincia += "4 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable Chaco()
+        {
+            consultaProvincia += "5 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable Chubut()
+        {
+            consultaProvincia += "6 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable Corrientes()
+        {
+            consultaProvincia += "7 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable EntreRios()
+        {
+            consultaProvincia += "8 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable Formosa()
+        {
+            consultaProvincia += "9 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable Jujuy()
+        {
+            consultaProvincia += "10 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable LaPampa()
+        {
+            consultaProvincia += "11 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable LaRioja()
+        {
+            consultaProvincia += "12 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable Mendoza()
+        {
+            consultaProvincia += "13 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable Misiones()
+        {
+            consultaProvincia += "14 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable Neuquen()
+        {
+            consultaProvincia += "15 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable RioNegro()
+        {
+            consultaProvincia += "16 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable Salta()
+        {
+            consultaProvincia += "17 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable SanJuan()
+        {
+            consultaProvincia += "18 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable SanLuis()
+        {
+            consultaProvincia += "19 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable SantaCruz()
+        {
+            consultaProvincia += "20 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable SantiagoEstero()
+        {
+            consultaProvincia += "21 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable TierraDelFuego()
+        {
+            consultaProvincia += "22 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable Tucuman()
+        {
+            consultaProvincia += "23 ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable BuscarDNI(int dni)
+        {
+            consultaDNI += $"'{dni}%'";
+            tabla = _conexion.TraerTabla(consultaDNI, "Pacientes");
+            return tabla;
+        }
+        public DataTable BuscarNombre(string nombre)
+        {
+            consultaNombre += $"'%{nombre}%'";
+            tabla = _conexion.TraerTabla(consultaNombre, "Pacientes");
             return tabla;
         }
     }
