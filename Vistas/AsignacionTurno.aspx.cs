@@ -18,6 +18,7 @@ namespace Vistas
         NegocioHorario horario = new NegocioHorario();
         NegocioMedico medico = new NegocioMedico();
         NegocioTurno negocioTurno = new NegocioTurno();
+        NegocioPaciente negocioPaciente = new NegocioPaciente();
 
         DataTable table;
         protected void Page_Load(object sender, EventArgs e)
@@ -67,10 +68,41 @@ namespace Vistas
         }
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
+            //! pasar las validaciones al negocio
+
+            // Verificar existencia de paciente
+
             string DNIPaciente = txtDNIPaciente.Text;
+
+            if (negocioPaciente.ContarPacientes(DNIPaciente) == 0)
+            {
+                lblMensaje.ForeColor = System.Drawing.Color.Red;
+                lblMensaje.Text = "No se econtró Paciente registrado con el DNI ingresado. Por favor verificar o dar de alta";
+                return;
+            }
+
+            // Chequear disponibilidad (paciente)
+
             DateTime fechaTurno = DateTime.Parse(txtFecha.Text);
             int codHorario = int.Parse(ddlHorario.SelectedValue.ToString());
+
+            if (negocioPaciente.ContarTurnos(DNIPaciente, codHorario, fechaTurno) > 0)
+            {
+                lblMensaje.ForeColor = System.Drawing.Color.Red;
+                lblMensaje.Text = "El paciente ya tiene asignado un turno esta fecha y horario";
+                return;
+            }
+
+            // Chequear disponibilidad (médico)
+
             string legajoMedico = ddlMedico.SelectedValue.ToString();
+
+            if(medico.ContarTurnos(legajoMedico, codHorario, fechaTurno) > 0)
+            {
+                lblMensaje.ForeColor = System.Drawing.Color.Red;
+                lblMensaje.Text = "El médico ya tiene asignado un turno esta fecha y horario";
+                return;
+            }
 
             Turno turno = new Turno(legajoMedico, fechaTurno, codHorario, DNIPaciente);
 
@@ -84,7 +116,7 @@ namespace Vistas
             else
             {
                 lblMensaje.ForeColor = System.Drawing.Color.Red;
-                lblMensaje.Text = "Ocurrió un error al asignar el turno, intente verificar los datos ingresados"; // No está andando
+                lblMensaje.Text = "Ocurrió un error al asignar el turno, intente verificar los datos ingresados";
             }
             limpiarFormulario();
         }

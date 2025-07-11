@@ -9,15 +9,21 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
+using Entidades;
+using System.Runtime.Remoting.Messaging;
+using System.Net;
+
 namespace Datos
 {
     public class DaoPaciente : GenericDao
     {
         // Propiedades
         DataTable tabla;
+
         string consultaProvincia = "SELECT PA.DNI_Pa AS DNI, PA.Apellido_Pa AS Nombre, PA.Nombre_Pa AS Apellido, PA.Sexo_Pa AS Sexo, PA.Nacionalidad_Pa AS Nacionalidad, PA.FechaNacimiento_Pa AS [Fecha de nacimiento], PA.Direccion_Pa AS Direccion, PA.Email_Pa AS [Correo electronico], PA.Telefono_Pa AS Telefono, PA.CodProvincia_Pr_Pa AS Provincia, PA.CodLocalidad_Lo_Pa AS Localidad, PA.Estado_Pa AS Estado FROM Pacientes AS PA WHERE CodProvincia_Pr_Pa = ";
         string consultaDNI = "SELECT PA.DNI_Pa AS DNI, PA.Apellido_Pa AS Nombre, PA.Nombre_Pa AS Apellido, PA.Sexo_Pa AS Sexo, PA.Nacionalidad_Pa AS Nacionalidad, PA.FechaNacimiento_Pa AS [Fecha de nacimiento], PA.Direccion_Pa AS Direccion, PA.Email_Pa AS [Correo electronico], PA.Telefono_Pa AS Telefono, PA.CodProvincia_Pr_Pa AS Provincia, PA.CodLocalidad_Lo_Pa AS Localidad, PA.Estado_Pa AS Estado FROM Pacientes AS PA WHERE PA.DNI_Pa LIKE ";
         string consultaNombre = "SELECT PA.DNI_Pa AS DNI, PA.Apellido_Pa AS Nombre, PA.Nombre_Pa AS Apellido, PA.Sexo_Pa AS Sexo, PA.Nacionalidad_Pa AS Nacionalidad, PA.FechaNacimiento_Pa AS [Fecha de nacimiento], PA.Direccion_Pa AS Direccion, PA.Email_Pa AS [Correo electronico], PA.Telefono_Pa AS Telefono, PA.CodProvincia_Pr_Pa AS Provincia, PA.CodLocalidad_Lo_Pa AS Localidad, PA.Estado_Pa AS Estado FROM Pacientes AS PA WHERE (PA.Apellido_Pa + ', ' + PA.Nombre_Pa) LIKE  ";
+
 
         // Métodos
         public void ArmarParametrosPacienteAgregar(ref SqlCommand comando, Paciente pac)
@@ -57,7 +63,6 @@ namespace Datos
             param = comando.Parameters.Add("@Telefono", SqlDbType.VarChar, 20);
             param.Value = pac.Telefono;
         }
-
         private void ArmarParametrosPacienteModificar(ref SqlCommand comando, Paciente pac)
         {
             SqlParameter param;
@@ -98,13 +103,32 @@ namespace Datos
             param = comando.Parameters.Add("@Estado", SqlDbType.Bit);
             param.Value = pac.Estado;
         }
-
         private void ArmarParametrosPacienteDarDeBaja(ref SqlCommand comando, string dni)
         {
             SqlParameter param;
 
             param = comando.Parameters.Add("@DNI", SqlDbType.Char, 8);
             param.Value = dni;
+        }
+        private void ArmarParametrosPacienteVerificarExistencia(ref SqlCommand comando, string dni)
+        {
+            SqlParameter param;
+
+            param = comando.Parameters.Add("@DNIPaciente", SqlDbType.Char, 8);
+            param.Value = dni;
+        }
+        private void ArmarParametrosPacienteVerificarDisponibilidad(ref SqlCommand comando, string dni, int codHorario, DateTime fecha)
+        {
+            SqlParameter param;
+
+            param = comando.Parameters.Add("@DNIPaciente", SqlDbType.Char, 8);
+            param.Value = dni;
+
+            param = comando.Parameters.Add("@CodHorario", SqlDbType.Int);
+            param.Value = codHorario;
+
+            param = comando.Parameters.Add("@Fecha", SqlDbType.Date);
+            param.Value = fecha;
         }
 
         public int AltaPaciente(Paciente pac)
@@ -114,7 +138,6 @@ namespace Datos
             ArmarParametrosPacienteAgregar(ref comando, pac);
             return con.EjecutarProcedimientoAlmacenado(comando, "spAltaPaciente");
         }
-
         public int modificarPaciente(Paciente pac)
         {
             Conexion con = new Conexion();
@@ -129,12 +152,32 @@ namespace Datos
             ArmarParametrosPacienteDarDeBaja(ref comando, dni);
             return con.EjecutarProcedimientoAlmacenado(comando, "spBajaPaciente");
         }
-
         public DataTable traerTablaPacientes()
         {
             Conexion con = new Conexion();
             DataTable tabla = con.EjecutarSP_Select("spTraerTablaPacientesCodificada");
             return tabla;
+        }
+
+        public int VerificarExistenciaPaciente(string DNIPaciente)
+        {
+            Conexion con = new Conexion();
+            SqlCommand comando = new SqlCommand();
+
+            ArmarParametrosPacienteVerificarExistencia(ref comando, DNIPaciente);
+
+            // Ejecuta el SP y devuelve el COUNT directamente
+            return con.EjecutarEscalar(comando, "spVerificarExistenciaPaciente");
+        }
+        public int VerificarDisponibilidadPaciente(string DNIPaciente, int codHorario, DateTime fecha)
+        {
+            Conexion con = new Conexion();
+            SqlCommand comando = new SqlCommand();
+
+            ArmarParametrosPacienteVerificarDisponibilidad(ref comando, DNIPaciente, codHorario, fecha);
+
+            // Ejecuta el SP y devuelve el COUNT directamente
+            return con.EjecutarEscalar(comando, "spVerificarDisponibilidadPaciente");
         }
         public DataTable FiltroProvincia(int prov)
         {
