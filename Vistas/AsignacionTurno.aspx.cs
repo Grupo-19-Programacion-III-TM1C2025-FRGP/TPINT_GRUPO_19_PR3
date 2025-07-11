@@ -29,6 +29,9 @@ namespace Vistas
 
             if (!IsPostBack)
             {
+                // Deshabilitar fechas pasadas
+                txtFecha.Attributes["min"] = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
+
                 // ddl especialidades
                 table = especialidades.getTabla();
                 ddlEspecialidad.DataSource = table;
@@ -38,6 +41,13 @@ namespace Vistas
                 ddlEspecialidad.Items.Insert(0, new ListItem("Seleccione especialidad", "0"));
 
                 // ddl horarios
+                    // Traer el horario de entrada
+                    // Traer el horario de salida
+                    // iterar y cargar el ddl (entrada hasta salida -1)
+
+                string consultaHorario = "SELECT Co";
+
+
                 table = horario.getTabla();
                 ddlHorario.DataSource = table;
                 ddlHorario.DataTextField = "Horario_HT";
@@ -103,6 +113,8 @@ namespace Vistas
                 lblMensaje.Text = "El médico ya tiene asignado un turno esta fecha y horario";
                 return;
             }
+
+            // Asignar turno
 
             Turno turno = new Turno(legajoMedico, fechaTurno, codHorario, DNIPaciente);
 

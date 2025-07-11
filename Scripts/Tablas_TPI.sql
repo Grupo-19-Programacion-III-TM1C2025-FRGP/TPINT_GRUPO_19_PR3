@@ -46,8 +46,8 @@ CREATE TABLE Medicos (
 	CodProvincia_Pr_Me INT NOT NULL,
 	CodLocalidad_Lo_Me INT NOT NULL,
 	CodEspecialidad_Es_Me INT NOT NULL,
-	HoraEntrada_Me TIME(0) NOT NULL,
-	HoraSalida_Me TIME(0) NOT NULL,
+	CodHoraEntrada_HT_Me INT NOT NULL,
+	CodHoraSalida_HT_Me INT NOT NULL,
 	Email_Me VARCHAR(100),
 	Telefono_Me VARCHAR(20),
 	Estado_Me BIT DEFAULT(1),
@@ -57,6 +57,8 @@ CREATE TABLE Medicos (
 	CONSTRAINT FK_Medicos_Provincias FOREIGN KEY (CodProvincia_Pr_Me) REFERENCES Provincias(CodProvincia_Pr),
 	CONSTRAINT FK_Medicos_Localidades FOREIGN KEY (CodLocalidad_Lo_Me) REFERENCES Localidades(CodLocalidad_Lo),
 	CONSTRAINT FK_Medicos_Especialidades FOREIGN KEY (CodEspecialidad_Es_Me) REFERENCES Especialidades(CodEspecialidad_Es),
+	CONSTRAINT FK_Medicos_HorariosTurno_E FOREIGN KEY (CodHoraEntrada_HT_Me) REFERENCES HorariosTurno(CodHorarioTurno_HT),
+	CONSTRAINT FK_Medicos_HorariosTurno_S FOREIGN KEY (CodHoraSalida_HT_Me) REFERENCES HorariosTurno(CodHorarioTurno_HT),
 
 	CONSTRAINT UQ_Medicos UNIQUE (DNI_Me)
 );

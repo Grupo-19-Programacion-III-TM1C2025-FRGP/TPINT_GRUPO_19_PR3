@@ -55,10 +55,10 @@ namespace Datos
             param = comando.Parameters.Add("@Telefono", SqlDbType.VarChar, 20);
             param.Value = med._Telefono;
 
-            param = comando.Parameters.Add("@HoraEntrada", SqlDbType.Time);
+            param = comando.Parameters.Add("@CodHoraEntrada", SqlDbType.Int);
             param.Value = med._HoraEntrada;
 
-            param = comando.Parameters.Add("@HoraSalida", SqlDbType.Time);
+            param = comando.Parameters.Add("@CodHoraSalida", SqlDbType.Int);
             param.Value = med._HoraSalida;
 
             // Agregar usuario y contraseña
@@ -108,10 +108,10 @@ namespace Datos
             param = comando.Parameters.Add("@Telefono", SqlDbType.VarChar, 20);
             param.Value = med._Telefono;
 
-            param = comando.Parameters.Add("@HoraEntrada", SqlDbType.Time);
+            param = comando.Parameters.Add("@CodHoraEntrada", SqlDbType.Int);
             param.Value = med._HoraEntrada;
 
-            param = comando.Parameters.Add("@HoraSalida", SqlDbType.Time);
+            param = comando.Parameters.Add("@CodHoraSalida", SqlDbType.Int);
             param.Value = med._HoraSalida;
 
             param = comando.Parameters.Add("@Estado", SqlDbType.Bit);
@@ -138,7 +138,6 @@ namespace Datos
             param = comando.Parameters.Add("@Fecha", SqlDbType.Date);
             param.Value = fecha;
         }
-
         public int AltaMedico(Medico med, string usuario, string contrasenia)
         {
             Conexion con = new Conexion();
@@ -203,5 +202,6 @@ namespace Datos
             // Ejecuta el SP y devuelve el COUNT directamente
             return con.EjecutarEscalar(comando, "spVerificarDisponibilidadMedico");
         }
+       
     }
 }
