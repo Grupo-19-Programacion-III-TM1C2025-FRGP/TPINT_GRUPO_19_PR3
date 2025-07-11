@@ -34,5 +34,15 @@ namespace Negocio
             DaoPaciente dao = new DaoPaciente();
             return dao.traerTablaPacientes();
         }
+        public int ContarPacientes(string DNIPaciente)
+        {
+            DaoPaciente dao = new DaoPaciente();
+            return dao.VerificarExistenciaPaciente(DNIPaciente);    // Devuelve la cantidad de paciente con el DNI pasado (0 ó 1)
+        }
+        public int ContarTurnos(string DNIPaciente, int codHorario, DateTime fecha)
+        {
+            DaoPaciente dao = new DaoPaciente();
+            return dao.VerificarDisponibilidadPaciente(DNIPaciente, codHorario, fecha);
+        }
     }
 }

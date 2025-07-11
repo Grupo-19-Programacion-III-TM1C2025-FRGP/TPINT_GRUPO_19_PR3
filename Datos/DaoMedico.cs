@@ -125,6 +125,19 @@ namespace Datos
             param = comando.Parameters.Add("@LEGAJO", SqlDbType.Char);
             param.Value = legajo;
         }
+        private void ArmarParametrosPacienteVerificarDisponibilidad(ref SqlCommand comando, string legajoMedico, int codHorario, DateTime fecha)
+        {
+            SqlParameter param;
+
+            param = comando.Parameters.Add("@LegajoMedico", SqlDbType.Int);
+            param.Value = legajoMedico;
+
+            param = comando.Parameters.Add("@CodHorario", SqlDbType.Int);
+            param.Value = codHorario;
+
+            param = comando.Parameters.Add("@Fecha", SqlDbType.Date);
+            param.Value = fecha;
+        }
 
         public int AltaMedico(Medico med, string usuario, string contrasenia)
         {
@@ -179,6 +192,16 @@ namespace Datos
             Conexion con = new Conexion();
             DataTable tabla = con.EjecutarSP_Select("spTraerTablaMedicosConUsuarios");
             return tabla;
+        }
+        public int VerificarDisponibilidadMedico(string legajoMedico, int codHorario, DateTime fecha)
+        {
+            Conexion con = new Conexion();
+            SqlCommand comando = new SqlCommand();
+
+            ArmarParametrosPacienteVerificarDisponibilidad(ref comando, legajoMedico, codHorario, fecha);
+
+            // Ejecuta el SP y devuelve el COUNT directamente
+            return con.EjecutarEscalar(comando, "spVerificarDisponibilidadMedico");
         }
     }
 }

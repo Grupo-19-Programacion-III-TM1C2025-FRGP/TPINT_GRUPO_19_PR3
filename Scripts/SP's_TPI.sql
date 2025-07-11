@@ -1,6 +1,36 @@
 ﻿USE Clinica;
 GO
 
+CREATE OR ALTER PROCEDURE spVerificarExistenciaPaciente
+    @DNIPaciente CHAR(8)
+AS
+BEGIN
+    SELECT COUNT(DNI_Pa) AS Cantidad
+    FROM Pacientes
+    WHERE DNI_Pa = @DNIPaciente
+END;
+GO
+
+CREATE OR ALTER PROCEDURE spVerificarDisponibilidadPaciente @DNIPaciente CHAR(8), @CodHorario INT, @Fecha DATE
+	AS
+		BEGIN
+			SELECT COUNT(*) FROM Turnos
+				WHERE DNI_Pa_Tu = @DNIPaciente
+				AND CodHorarioTurno_HT_Tu = @CodHorario
+				AND FechaTurno_Tu = @Fecha
+		END;
+GO
+
+CREATE OR ALTER PROCEDURE spVerificarDisponibilidadMedico @LegajoMedico INT, @CodHorario INT, @Fecha Date
+AS
+	BEGIN
+		SELECT COUNT(*) FROM Turnos
+			WHERE Legajo_Me_Tu = @LegajoMedico
+			AND CodHorarioTurno_HT_Tu = @CodHorario
+			AND FechaTurno_Tu = @Fecha
+	END;
+GO
+
 CREATE OR ALTER PROCEDURE spAsignarTurno
     @LegajoMedico INT,
     @CodigoHora INT,

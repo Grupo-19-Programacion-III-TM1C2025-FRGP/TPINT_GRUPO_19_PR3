@@ -50,5 +50,10 @@ namespace Negocio
             DaoMedico dao = new DaoMedico();
             return dao.TraerTablaMedicosConUsuarios();
         }
+        public int ContarTurnos(string legajoMedico, int codHorario, DateTime fecha)
+        {
+            DaoMedico dao = new DaoMedico();
+            return dao.VerificarDisponibilidadMedico(legajoMedico, codHorario, fecha);
+        }
     }
 }

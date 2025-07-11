@@ -166,7 +166,7 @@ namespace Vistas
         {
             int index = e.NewSelectedIndex;
             int codTurno = Convert.ToInt32(gvTurnos.DataKeys[index].Value);
-            HiddenField1.Value = codTurno.ToString();
+            //HiddenField1.Value = codTurno.ToString();
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
