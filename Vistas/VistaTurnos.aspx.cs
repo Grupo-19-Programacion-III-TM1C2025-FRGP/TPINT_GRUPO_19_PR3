@@ -15,7 +15,7 @@ namespace Vistas
 {
     public partial class VistaTurnos : System.Web.UI.Page
     {
-        NegocioTurno negocioTurno;
+        NegocioTurno negocioTurno = new NegocioTurno();
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;

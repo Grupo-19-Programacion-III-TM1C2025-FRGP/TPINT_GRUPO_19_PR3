@@ -16,6 +16,11 @@ namespace Negocio
             DaoHorarios dao = new DaoHorarios();
             return dao.getTablaHorarios();
         }
+        public DataTable GetTablaSalida(int codHorarioEntrada)
+        {
+            DaoHorarios dao = new DaoHorarios();
+            return dao.GetTablaHorarioSalida(codHorarioEntrada);
+        }
     }
 
 }

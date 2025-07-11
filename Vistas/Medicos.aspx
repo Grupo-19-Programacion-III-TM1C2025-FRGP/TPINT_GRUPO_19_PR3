@@ -143,20 +143,7 @@
                         <tr>
                             <td>Hora Entrada:</td>
                             <td>
-                                <asp:DropDownList ID="ddlHoraEntrada" runat="server" Width="200px">
-                                    <asp:ListItem>08:00</asp:ListItem>
-                                    <asp:ListItem>09:00</asp:ListItem>
-                                    <asp:ListItem>10:00</asp:ListItem>
-                                    <asp:ListItem>11:00</asp:ListItem>
-                                    <asp:ListItem>12:00</asp:ListItem>
-                                    <asp:ListItem>13:00</asp:ListItem>
-                                    <asp:ListItem>14:00</asp:ListItem>
-                                    <asp:ListItem>15:00</asp:ListItem>
-                                    <asp:ListItem>16:00</asp:ListItem>
-                                    <asp:ListItem>17:00</asp:ListItem>
-                                    <asp:ListItem>18:00</asp:ListItem>
-                                    <asp:ListItem>19:00</asp:ListItem>
-                                    <asp:ListItem>20:00</asp:ListItem>
+                                <asp:DropDownList ID="ddlHoraEntrada" runat="server" Width="200px" OnSelectedIndexChanged="ddlHoraEntrada_SelectedIndexChanged" AutoPostBack="True">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="rfvHorarios0" runat="server"
                                     ControlToValidate="ddlHoraEntrada" ErrorMessage="La hora de entrada es obligatoria"
@@ -168,19 +155,6 @@
                             <td>Hora Salida:</td>
                             <td>
                                 <asp:DropDownList ID="ddlHoraSalida" runat="server" Width="200px">
-                                    <asp:ListItem>09:00</asp:ListItem>
-                                    <asp:ListItem>10:00</asp:ListItem>
-                                    <asp:ListItem>11:00</asp:ListItem>
-                                    <asp:ListItem>12:00</asp:ListItem>
-                                    <asp:ListItem>13:00</asp:ListItem>
-                                    <asp:ListItem>14:00</asp:ListItem>
-                                    <asp:ListItem>15:00</asp:ListItem>
-                                    <asp:ListItem>16:00</asp:ListItem>
-                                    <asp:ListItem>17:00</asp:ListItem>
-                                    <asp:ListItem>18:00</asp:ListItem>
-                                    <asp:ListItem>19:00</asp:ListItem>
-                                    <asp:ListItem>20:00</asp:ListItem>
-                                    <asp:ListItem>21:00</asp:ListItem>
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="rfvHorarios" runat="server"
                                     ControlToValidate="ddlHoraSalida" ErrorMessage="La hora de salida es obligatoria"

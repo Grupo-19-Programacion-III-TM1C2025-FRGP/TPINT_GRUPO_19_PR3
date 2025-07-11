@@ -19,6 +19,12 @@ namespace Datos
             DataTable tabla = _conexion.TraerTabla(consultaTabla, "HorariosTurno");
             return tabla;
         }
+        public DataTable GetTablaHorarioSalida(int CodHoraEntrada)
+        {
+            string consulta = $"SELECT * FROM HorariosTurno WHERE CodHorarioTurno_HT > {CodHoraEntrada}";
+            DataTable tabla = _conexion.TraerTabla(consulta, "HorariosTurnoSalida");
+            return tabla;
+        }
     }
     
 }
