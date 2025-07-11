@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,6 +19,11 @@ namespace Datos
     {
         // Propiedades
         DataTable tabla;
+
+        string consultaProvincia = "SELECT PA.DNI_Pa AS DNI, PA.Apellido_Pa AS Nombre, PA.Nombre_Pa AS Apellido, PA.Sexo_Pa AS Sexo, PA.Nacionalidad_Pa AS Nacionalidad, PA.FechaNacimiento_Pa AS [Fecha de nacimiento], PA.Direccion_Pa AS Direccion, PA.Email_Pa AS [Correo electronico], PA.Telefono_Pa AS Telefono, PA.CodProvincia_Pr_Pa AS Provincia, PA.CodLocalidad_Lo_Pa AS Localidad, PA.Estado_Pa AS Estado FROM Pacientes AS PA WHERE CodProvincia_Pr_Pa = ";
+        string consultaDNI = "SELECT PA.DNI_Pa AS DNI, PA.Apellido_Pa AS Nombre, PA.Nombre_Pa AS Apellido, PA.Sexo_Pa AS Sexo, PA.Nacionalidad_Pa AS Nacionalidad, PA.FechaNacimiento_Pa AS [Fecha de nacimiento], PA.Direccion_Pa AS Direccion, PA.Email_Pa AS [Correo electronico], PA.Telefono_Pa AS Telefono, PA.CodProvincia_Pr_Pa AS Provincia, PA.CodLocalidad_Lo_Pa AS Localidad, PA.Estado_Pa AS Estado FROM Pacientes AS PA WHERE PA.DNI_Pa LIKE ";
+        string consultaNombre = "SELECT PA.DNI_Pa AS DNI, PA.Apellido_Pa AS Nombre, PA.Nombre_Pa AS Apellido, PA.Sexo_Pa AS Sexo, PA.Nacionalidad_Pa AS Nacionalidad, PA.FechaNacimiento_Pa AS [Fecha de nacimiento], PA.Direccion_Pa AS Direccion, PA.Email_Pa AS [Correo electronico], PA.Telefono_Pa AS Telefono, PA.CodProvincia_Pr_Pa AS Provincia, PA.CodLocalidad_Lo_Pa AS Localidad, PA.Estado_Pa AS Estado FROM Pacientes AS PA WHERE (PA.Apellido_Pa + ', ' + PA.Nombre_Pa) LIKE  ";
+
 
         // Métodos
         public void ArmarParametrosPacienteAgregar(ref SqlCommand comando, Paciente pac)
@@ -150,6 +158,7 @@ namespace Datos
             DataTable tabla = con.EjecutarSP_Select("spTraerTablaPacientesCodificada");
             return tabla;
         }
+
         public int VerificarExistenciaPaciente(string DNIPaciente)
         {
             Conexion con = new Conexion();
@@ -169,6 +178,24 @@ namespace Datos
 
             // Ejecuta el SP y devuelve el COUNT directamente
             return con.EjecutarEscalar(comando, "spVerificarDisponibilidadPaciente");
+        }
+        public DataTable FiltroProvincia(int prov)
+        {
+            consultaProvincia += $"{prov} ORDER BY Estado DESC";
+            tabla = _conexion.TraerTabla(consultaProvincia, "Pacientes");
+            return tabla;
+        }
+        public DataTable BuscarDNI(int dni)
+        {
+            consultaDNI += $"'{dni}%'";
+            tabla = _conexion.TraerTabla(consultaDNI, "Pacientes");
+            return tabla;
+        }
+        public DataTable BuscarNombre(string nombre)
+        {
+            consultaNombre += $"'%{nombre}%'";
+            tabla = _conexion.TraerTabla(consultaNombre, "Pacientes");
+            return tabla;
         }
     }
 }
