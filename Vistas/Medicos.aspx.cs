@@ -20,6 +20,7 @@ namespace MiProyecto
         NegocioLocalidad negocioLocalidad = new NegocioLocalidad();
         NegocioEspecialidad negocioEspecialidad = new NegocioEspecialidad();
         NegocioUsuario negocioUsuario = new NegocioUsuario();
+        NegocioHorario negocioHorario = new NegocioHorario();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,11 +36,10 @@ namespace MiProyecto
                 CargarGvEspecialidades();
 
                 ddlSexo.Items.Insert(0, new ListItem("Seleccione Sexo", "0"));
-                ddlHoraEntrada.Items.Insert(0, new ListItem("Seleccione hora de entrada", "0"));
-                ddlHoraSalida.Items.Insert(0, new ListItem("Seleccione hora de salida", "0"));
 
                 CargarProvincias();
                 CargarEspecialidades();
+                CargarHorariosEntrada();
             }
         }
         private void CargarGvMedicos()
@@ -49,27 +49,23 @@ namespace MiProyecto
         }
         private void CargarProvincias()
         {
-            NegocioProvincia negocio = new NegocioProvincia();
-            ddlProvincia.DataSource = negocio.getTabla();
+            ddlProvincia.DataSource = negocioProvincia.getTabla();
             ddlProvincia.DataTextField = "Provincia";
             ddlProvincia.DataValueField = "Codigo";
             ddlProvincia.DataBind();
             ddlProvincia.Items.Insert(0, new ListItem("Seleccione una provincia", "0"));
         }
-        protected void ddlProvincia_SelectedIndexChanged(object sender, EventArgs e)
+        private void CargarHorariosEntrada()
         {
-            int idProvincia = int.Parse(ddlProvincia.SelectedValue);
-            NegocioLocalidad negocio = new NegocioLocalidad();
-            ddlLocalidad.DataSource = negocio.getLocalidadesPorProvincia(idProvincia);
-            ddlLocalidad.DataTextField = "NombreLocalidad_Lo";
-            ddlLocalidad.DataValueField = "CodLocalidad_Lo";
-            ddlLocalidad.DataBind();
-            ddlLocalidad.Items.Insert(0, new ListItem("Seleccione una localidad", "0"));
+            ddlHoraEntrada.DataSource = negocioHorario.getTabla();
+            ddlHoraEntrada.DataTextField = "Horario_HT";
+            ddlHoraEntrada.DataValueField = "CodHorarioTurno_HT";
+            ddlHoraEntrada.DataBind();
+            ddlHoraEntrada.Items.Insert(0, new ListItem("Seleccione hora de entrada", "0"));
         }
         private void CargarEspecialidades()
         {
-            NegocioEspecialidad negocio = new NegocioEspecialidad();
-            ddlEspecialidad.DataSource = negocio.getTabla();
+            ddlEspecialidad.DataSource = negocioEspecialidad.getTabla();
             ddlEspecialidad.DataTextField = "Especialidad";
             ddlEspecialidad.DataValueField = "Codigo";
             ddlEspecialidad.DataBind();
@@ -86,8 +82,8 @@ namespace MiProyecto
             int provincia = int.Parse(ddlProvincia.SelectedValue);
             int localidad = int.Parse(ddlLocalidad.SelectedValue);
             int especialidad = int.Parse(ddlEspecialidad.SelectedValue);
-            string horaEntrada = ddlHoraEntrada.SelectedValue;
-            string horaSalida = ddlHoraSalida.SelectedValue;
+            int horaEntrada = int.Parse(ddlHoraEntrada.SelectedValue);
+            int horaSalida = int.Parse(ddlHoraSalida.SelectedValue);
             string email = txtEmail.Text;
             string telefono = txtTelefono.Text;
             string usuario = txtUsuario.Text;
@@ -136,9 +132,24 @@ namespace MiProyecto
         }
         protected void gvMedicos_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            GridViewRow fila = gvMedicos.Rows[e.RowIndex];
+
             string legajo = gvMedicos.DataKeys[e.RowIndex].Value.ToString();
 
-            GridViewRow fila = gvMedicos.Rows[e.RowIndex];
+            // Verificar si el nombre de usuario está disponible
+
+            //datos del usuario
+            string usuario = ((TextBox)fila.Cells[15].Controls[0]).Text;
+            string contrasenia = ((TextBox)fila.Cells[16].Controls[0]).Text;
+
+            if (negocioUsuario.VerificarUsuario(legajo, usuario) == 0)
+            {
+                negocioUsuario.ModificarUsuario(legajo, usuario, contrasenia);
+            }
+            else
+            {
+                labelUsername.Text = "Nombre de usuario no disponible";
+            }
 
             string dni = ((TextBox)fila.Cells[2].Controls[0]).Text;
             string nombre = ((TextBox)fila.Cells[3].Controls[0]).Text;
@@ -148,40 +159,31 @@ namespace MiProyecto
             DateTime fechaNac = DateTime.Parse(((TextBox)fila.Cells[7].Controls[0]).Text);
             string email = ((TextBox)fila.Cells[8].Controls[0]).Text;
             string telefono = ((TextBox)fila.Cells[9].Controls[0]).Text;
-            string horaEntrada = ((TextBox)fila.Cells[10].Controls[0]).Text;
-            string horaSalida = ((TextBox)fila.Cells[11].Controls[0]).Text;
+            int horaEntrada = int.Parse(((TextBox)fila.Cells[10].Controls[0]).Text);
+            int horaSalida = int.Parse(((TextBox)fila.Cells[11].Controls[0]).Text);
             int especialidad = int.Parse(((TextBox)fila.Cells[12].Controls[0]).Text);
             int provincia = int.Parse(((TextBox)fila.Cells[13].Controls[0]).Text);
             int localidad = int.Parse(((TextBox)fila.Cells[14].Controls[0]).Text);
-
-            //datos del usuario
-            string usuario = ((TextBox)fila.Cells[15].Controls[0]).Text;
-            string contrasenia = ((TextBox)fila.Cells[16].Controls[0]).Text;
 
             bool estado = ((CheckBox)fila.Cells[17].Controls[0]).Checked;
 
             Medico medico = new Medico(legajo, dni, nombre, apellido, sexo, nacionalidad, fechaNac, provincia, localidad, especialidad, email, telefono, horaEntrada, horaSalida, estado);
 
-            negocioMedico.modificarMedico(medico);
-
-            // Verificar si el nombre de usuario está disponible
-            if(negocioUsuario.VerificarUsuario(legajo, usuario) > 0)
-            {
-                negocioUsuario.ModificarUsuario(legajo, usuario, contrasenia);
-            }
-            else
-            {
-                labelUsername.Text = "Nombre de usuario no disponible"; // No se muestra
-            }
-
-
+            int filasAfectadas = negocioMedico.modificarMedico(medico);
 
             gvMedicos.EditIndex = -1;
             gvMedicos.DataSource = negocioMedico.getTablaConUsuarios();
             gvMedicos.DataBind();
 
-            lblMensajeExito.Text = "Médico actualizado con éxito";  // No se muestra
-
+            if (filasAfectadas == 1)
+            {
+                lblMensajeExito.Text = "Médico actualizado con éxito";
+            }
+            else
+            {
+                lblMensaje.ForeColor = System.Drawing.Color.Red;
+                lblMensajeExito.Text = "Error al actualizar los datos del médico";
+            }
             e.Cancel = true;
         }
         protected void gvMedicos_RowEditing(object sender, GridViewEditEventArgs e)
@@ -251,6 +253,32 @@ namespace MiProyecto
         {
             gvEspecialidad.PageIndex = e.NewPageIndex;
             CargarGvEspecialidades();
+        }
+        protected void ddlProvincia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int idProvincia = int.Parse(ddlProvincia.SelectedValue);
+
+            ddlLocalidad.DataSource = negocioLocalidad.getLocalidadesPorProvincia(idProvincia);
+            ddlLocalidad.DataTextField = "NombreLocalidad_Lo";
+            ddlLocalidad.DataValueField = "CodLocalidad_Lo";
+            ddlLocalidad.DataBind();
+            ddlLocalidad.Items.Insert(0, new ListItem("Seleccione una localidad", "0"));
+        }
+
+        // Por ahora solo se actualiza al cambiar el index de la provincia 
+        protected void ddlHoraEntrada_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int idHoraEntrada = int.Parse(ddlHoraEntrada.SelectedValue);
+            CargarDdlHorariosSalida(idHoraEntrada);
+            
+        }
+        protected void CargarDdlHorariosSalida(int codHoraEntrada)
+        {
+            ddlHoraSalida.DataSource = negocioHorario.GetTablaSalida(codHoraEntrada);
+            ddlHoraSalida.DataTextField = "Horario_HT";
+            ddlHoraSalida.DataValueField = "CodHorarioTurno_HT";
+            ddlHoraSalida.DataBind();
+            ddlHoraSalida.Items.Insert(0, new ListItem("Seleccione hora de salida", "0"));
         }
     }
 }

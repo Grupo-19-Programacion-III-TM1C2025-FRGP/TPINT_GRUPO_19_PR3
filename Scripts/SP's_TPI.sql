@@ -61,8 +61,8 @@ CREATE OR ALTER PROCEDURE spAltaMedico
 	@Provincia INT,
     @Localidad INT,
     @Especialidad INT,
-    @HoraEntrada TIME(0),
-	@HoraSalida TIME(0),
+    @CodHoraEntrada INT,
+	@CodHoraSalida INT,
     @Email VARCHAR(100),
     @Telefono VARCHAR(20),
 	@Usuario VARCHAR(100),
@@ -72,11 +72,11 @@ AS
 BEGIN
     INSERT INTO Medicos (
 	DNI_Me, Nombre_Me, Apellido_Me, Sexo_Me, Nacionalidad_Me, FechaNacimiento_Me, CodProvincia_Pr_Me,
-        CodLocalidad_Lo_Me, CodEspecialidad_Es_Me, Email_Me, Telefono_Me, HoraEntrada_Me, HoraSalida_Me
+        CodLocalidad_Lo_Me, CodEspecialidad_Es_Me, Email_Me, Telefono_Me, CodHoraEntrada_HT_Me, CodHoraSalida_HT_Me
     )
     VALUES (
         @DNI, @NombreMedico, @ApellidoMedico, @Sexo, @Nacionalidad, @FechaNacimiento, @Provincia,
-        @Localidad, @Especialidad, @Email, @Telefono, @HoraEntrada, @HoraSalida
+        @Localidad, @Especialidad, @Email, @Telefono, @CodHoraEntrada, @CodHoraSalida
     )
 	
 	 -- Obtener el Legajo del médico recién insertado
@@ -106,8 +106,8 @@ AS
 			M.FechaNacimiento_Me AS [Fecha de nacimiento],
 			M.Email_Me AS [Correo electronico],
 			M.Telefono_Me AS Telefono,
-			M.HoraEntrada_Me AS [Horario de entrada],
-			M.HoraSalida_Me AS [Horario de salida],
+			M.CodHoraEntrada_HT_Me AS [Horario de entrada],
+			M.CodHoraSalida_HT_Me AS [Horario de salida],
 
 			E.NombreEspecialidad_Es AS Especialidad,
 
@@ -143,8 +143,8 @@ AS
 			M.FechaNacimiento_Me AS [Fecha de nacimiento],
 			M.Email_Me AS [Correo electronico],
 			M.Telefono_Me AS Telefono,
-			M.HoraEntrada_Me AS [Horario de entrada],
-			M.HoraSalida_Me AS [Horario de salida],
+			M.CodHoraEntrada_HT_Me AS [Horario de entrada],
+			M.CodHoraSalida_HT_Me AS [Horario de salida],
 
 			M.CodEspecialidad_Es_Me AS Especialidad,
 
@@ -179,8 +179,8 @@ AS
 			M.FechaNacimiento_Me AS [Fecha de nacimiento],
 			M.Email_Me AS [Correo electronico],
 			M.Telefono_Me AS Telefono,
-			M.HoraEntrada_Me AS [Horario de entrada],
-			M.HoraSalida_Me AS [Horario de salida],
+			M.CodHoraEntrada_HT_Me AS [Horario de entrada],
+			M.CodHoraSalida_HT_Me AS [Horario de salida],
 
 			M.CodEspecialidad_Es_Me AS Especialidad,
 
@@ -312,8 +312,8 @@ CREATE OR ALTER PROCEDURE spModificarMedico
     @Especialidad INT,
     @Email VARCHAR(30),
     @Telefono VARCHAR(20),
-    @HoraEntrada TIME,
-	@HoraSalida TIME,
+    @CodHoraEntrada INT,
+	@CodHoraSalida INT,
 	@Estado BIT
 )
 AS
@@ -330,8 +330,8 @@ AS
 				CodEspecialidad_Es_Me = @Especialidad,
 				Email_Me = @Email,
 				Telefono_Me = @Telefono,
-				HoraEntrada_Me = @HoraEntrada,
-				HoraSalida_Me = @HoraSalida,
+				CodHoraEntrada_HT_Me = @CodHoraEntrada,
+				CodHoraSalida_HT_Me = @CodHoraSalida,
 				Estado_Me = @Estado
 			WHERE Legajo_Me = @LEGAJO
 	END;

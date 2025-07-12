@@ -17,6 +17,7 @@ namespace Vistas
     public partial class VistaTurnos : System.Web.UI.Page
     {
         NegocioTurno negocioTurno = new NegocioTurno();
+
         int legajoMedico;
         private string nuevoEstado;
 

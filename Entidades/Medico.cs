@@ -16,8 +16,8 @@ namespace Entidades
         public int _Especialidad { get; set; }
         public string _Email { get; set; }
         public string _Telefono { get; set; }
-        public string _HoraEntrada { get; set; }
-        public string _HoraSalida { get; set; }
+        public int _HoraEntrada { get; set; }
+        public int _HoraSalida { get; set; }
         public bool _Estado { get; set; }
 
         // Constructor vacío
@@ -25,7 +25,7 @@ namespace Entidades
 
         // Constructor lleno 
         public Medico(string legajo, string dni, string nombre, string apellido, char sexo, string nacionalidad,
-                  DateTime fechaNacimiento, int provincia, int localidad, int especialidad, string email, string telefono, string horaEntrada, string horaSalida, bool estado)
+                  DateTime fechaNacimiento, int provincia, int localidad, int especialidad, string email, string telefono, int horaEntrada, int horaSalida, bool estado)
         {
             _LegajoMedico = legajo;
             _DNI = dni;
@@ -46,7 +46,7 @@ namespace Entidades
 
         // Constructor SIN Legajo
         public Medico(string dni, string nombre, string apellido, char sexo, string nacionalidad,
-                    DateTime fechaNacimiento, int provincia, int localidad, int especialidad, string email, string telefono, string horaEntrada, string horaSalida, bool estado)
+                    DateTime fechaNacimiento, int provincia, int localidad, int especialidad, string email, string telefono, int horaEntrada, int horaSalida, bool estado)
         {
             _DNI = dni;
             _NombreMedico = nombre;

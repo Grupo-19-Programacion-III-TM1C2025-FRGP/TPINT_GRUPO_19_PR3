@@ -41,7 +41,7 @@ namespace Datos
         {
             SqlParameter param;
 
-            param = comando.Parameters.Add("@Legajo", SqlDbType.Int);
+            param = comando.Parameters.Add("@LegajoMedico", SqlDbType.Int);
             param.Value = legajo;
 
             param = comando.Parameters.Add("@NuevoNombre", SqlDbType.VarChar, 100);
@@ -63,8 +63,8 @@ namespace Datos
             Conexion _conexion = new Conexion();
             SqlCommand comando = new SqlCommand();
             ArmarParametrosVerificarNombreUsuario(ref comando, legajo, nuevoNombre);
-            int resultado = _conexion.EjecutarProcedimientoAlmacenado(comando, "spVerificarNombreUsuario");
-            // Devuelvo la cantidad de nombres en la bdd
+            int resultado = _conexion.EjecutarEscalar(comando, "spVerificarNombreUsuario");
+            // Devuelvo la cantidad de nombres en la bdd (sin contar al actualmente editando)
             return resultado;
         }
     }
