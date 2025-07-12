@@ -490,7 +490,7 @@ CREATE OR ALTER PROCEDURE Filtro_Ausentes(
 AS
 BEGIN
 
-SELECT M.Apellido_Me + ' ' + M.Nombre_Me AS NombreMedico,Es.NombreEspecialidad_Es, HT.Horario_HT, T.FechaTurno_Tu, T.DNI_Pa_Tu, T.Asistencia_Tu 
+SELECT COUNT (*)
 FROM Turnos AS T 
 INNER JOIN HorariosTurno AS HT ON T.CodHorarioTurno_HT_Tu = HT.CodHorarioTurno_HT
 INNER JOIN Medicos AS M ON T.Legajo_Me_Tu = M.Legajo_Me
@@ -507,7 +507,7 @@ CREATE OR ALTER PROCEDURE Filtro_Presentes(
 AS
 BEGIN
 
-SELECT M.Apellido_Me + ' ' + M.Nombre_Me AS NombreMedico,Es.NombreEspecialidad_Es, HT.Horario_HT, T.FechaTurno_Tu, T.DNI_Pa_Tu, T.Asistencia_Tu 
+SELECT COUNT (*) 
 FROM Turnos AS T 
 INNER JOIN HorariosTurno AS HT ON T.CodHorarioTurno_HT_Tu = HT.CodHorarioTurno_HT
 INNER JOIN Medicos AS M ON T.Legajo_Me_Tu = M.Legajo_Me
