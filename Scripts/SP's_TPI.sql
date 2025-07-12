@@ -337,6 +337,29 @@ AS
 	END;
 GO
 
+CREATE OR ALTER PROCEDURE spModificarAsistencia
+(
+    @DNI INT,
+	@Fecha DATE,
+    @TextoHorario VARCHAR(100),
+    --@CodHorario INT,
+    @Legajo INT,
+    @Asistencia_Tur VARCHAR(15),
+    @Comentario_Tur VARCHAR(100)
+)
+AS
+BEGIN
+    UPDATE Turnos
+    SET Asistencia_Tu = @Asistencia_Tur,
+        Comentario_Tu = @Comentario_Tur
+    WHERE DNI_Pa_Tu= @DNI
+      AND FechaTurno_Tu = @Fecha
+      AND CodHorarioTurno_HT_Tu = (SELECT CodHorarioTurno_HT FROM HorariosTurno WHERE Horario_HT = @TextoHorario)
+      AND Legajo_Me_Tu = @Legajo;
+END;
+GO
+
+
 CREATE OR ALTER PROCEDURE spModificarPaciente
 (
     @DNI CHAR(8),
@@ -405,7 +428,7 @@ AS
 GO
 
 -- Chequear
-CREATE PROCEDURE CalcularPorcentajeEstado(
+CREATE OR ALTER PROCEDURE CalcularPorcentajeEstado(
     @FechaInicio DATE,
     @FechaFin DATE
 )
@@ -460,7 +483,7 @@ CREATE OR ALTER PROCEDURE spModificacionUsuario @Codigo INT, @Nombre VARCHAR(100
 	 END;
 GO
 
-CREATE PROCEDURE Filtro_Ausentes(
+CREATE OR ALTER PROCEDURE Filtro_Ausentes(
     @FechaInicio DATE,
     @FechaFin DATE
 )
@@ -477,7 +500,7 @@ WHERE T.Asistencia_Tu = 'Ausente' AND FechaTurno_Tu >= @FechaInicio AND FechaTur
 END
 GO
 
-CREATE PROCEDURE Filtro_Presentes(
+CREATE OR ALTER PROCEDURE Filtro_Presentes(
     @FechaInicio DATE,
     @FechaFin DATE
 )
