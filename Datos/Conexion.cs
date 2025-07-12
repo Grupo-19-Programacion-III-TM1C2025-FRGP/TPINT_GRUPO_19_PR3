@@ -63,10 +63,23 @@ namespace Datos
             comando.CommandText = nombreSP;
 
             conexion.Open();
-            var filasAfectadas = comando.ExecuteNonQuery();
+            int filasAfectadas = comando.ExecuteNonQuery();
             conexion.Close();
 
             return filasAfectadas;
+        }
+        public int EjecutarEscalar(SqlCommand comando, string nombreSP)
+        {
+            SqlConnection conexion = ObtenerConexion();
+            comando.Connection = conexion;
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.CommandText = nombreSP;
+
+            conexion.Open();
+            int resultado = Convert.ToInt32(comando.ExecuteScalar());
+            conexion.Close();
+
+            return resultado;
         }
 
         public int EjecutarProcedimientoAlmacenadoConResultado(SqlCommand comando, string nombreSP)
