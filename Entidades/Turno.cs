@@ -10,8 +10,9 @@ namespace Entidades
         public int CodHorarioTurno_Tur { get; set; }
         public string LegajoMedico_Tur { get; set; }
         public int CodEspecialidad_Tur { get; set; }
-
         public string Asistencia_Tur { get; set; }
+        public string Comentario_Tur { get; set; }
+
 
         // Constructor
         public Turno(string legajoMedico, DateTime fechaTurno, int codHorario, string dniPaciente)
@@ -28,10 +29,11 @@ namespace Entidades
             FechaTurno_Tur = fechaTurno;
         }
 
-        public Turno(int codigo, string asistencia)
+        public Turno(int codigo, string asistencia, string comentario = null)
         {
             CodTurno_Tur = codigo;
             Asistencia_Tur = asistencia;
+            Comentario_Tur = comentario;
         }
 
 

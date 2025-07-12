@@ -16,7 +16,7 @@ namespace Datos
         readonly string consultaTabla = "SELECT * FROM Turnos";
         readonly string consultaContarTabla = "SELECT COUNT(*) FROM Turnos";
         readonly string consultaFecha = "SELECT FechaTurno_TU FROM Turnos";
-        string consultaTurnos = "SELECT T.FechaTurno_Tu as Fecha, H.Horario_HT AS Hora, P.Apellido_Pa + ', ' + P.Nombre_Pa AS Paciente, P.DNI_Pa AS DNI, T.Asistencia_Tu AS Asistencia FROM Turnos AS T INNER JOIN HorariosTurno AS H ON H.CodHorarioTurno_HT = T.CodHorarioTurno_HT_Tu INNER JOIN Pacientes AS P ON P.DNI_Pa = T.DNI_Pa_Tu WHERE T.Legajo_Me_Tu = ";
+        string consultaTurnos = "SELECT T.FechaTurno_Tu as Fecha, H.Horario_HT AS Hora, P.Apellido_Pa + ', ' + P.Nombre_Pa AS Paciente, P.DNI_Pa AS DNI, T.Asistencia_Tu AS Asistencia, T.Comentario_Tu AS Comentario FROM Turnos AS T INNER JOIN HorariosTurno AS H ON H.CodHorarioTurno_HT = T.CodHorarioTurno_HT_Tu INNER JOIN Pacientes AS P ON P.DNI_Pa = T.DNI_Pa_Tu WHERE T.Legajo_Me_Tu = ";
 
         public DaoTurnos() { }
 
@@ -73,7 +73,7 @@ namespace Datos
             ParamF.Value = tur.FechaTurno_Tur;
         }
 
-        private void ArmarParametrosAsistenciaModificar(ref SqlCommand comando, Turno turno)
+        private void ArmarParametrosAsistenciaModificar(ref SqlCommand comando, Turno turno, string textoHorario)
         {
             SqlParameter param;
 
@@ -83,23 +83,29 @@ namespace Datos
             param = comando.Parameters.Add("@Fecha", SqlDbType.Date);
             param.Value = turno.FechaTurno_Tur;
 
-            param = comando.Parameters.Add("@CodHorario", SqlDbType.Int);
-            param.Value = turno.CodHorarioTurno_Tur;
+            //param = comando.Parameters.Add("@CodHorario", SqlDbType.Int);
+            //param.Value = turno.CodHorarioTurno_Tur;
 
             param = comando.Parameters.Add("@Legajo", SqlDbType.Int);
             param.Value = int.Parse(turno.LegajoMedico_Tur);
 
             param = comando.Parameters.Add("@Asistencia_Tur", SqlDbType.VarChar, 15);
             param.Value = turno.Asistencia_Tur;
+
+            param = comando.Parameters.Add("@Comentario_Tur", SqlDbType.VarChar, 100);
+            param.Value = turno.Comentario_Tur;
+
+            param = comando.Parameters.Add("@TextoHorario", SqlDbType.VarChar, 100);
+            param.Value = textoHorario;
         }
 
 
 
-        public int modificarAsistencia(Turno turno)
+        public int modificarAsistencia(Turno turno, string textoHorario)
         {
             Conexion con = new Conexion();
             SqlCommand comando = new SqlCommand();
-            ArmarParametrosAsistenciaModificar(ref comando, turno);
+            ArmarParametrosAsistenciaModificar(ref comando, turno, textoHorario);
             return con.EjecutarProcedimientoAlmacenado(comando, "spModificarAsistencia");
         }
 
@@ -172,31 +178,31 @@ namespace Datos
         }
         public DataTable FiltrarDNI(int DNI, int legajo)
         {
-            string consultaTurnos = $"SELECT T.FechaTurno_Tu as Fecha, H.Horario_HT AS Hora, P.Apellido_Pa + ', ' + P.Nombre_Pa AS Paciente, P.DNI_Pa AS DNI, T.Asistencia_Tu AS Asistencia FROM Turnos AS T INNER JOIN HorariosTurno AS H ON H.CodHorarioTurno_HT = T.CodHorarioTurno_HT_Tu INNER JOIN Pacientes AS P ON P.DNI_Pa = T.DNI_Pa_Tu WHERE T.Legajo_Me_Tu = '{legajo}' AND T.DNI_Pa_Tu LIKE '{DNI}%'";
+            string consultaTurnos = $"SELECT T.FechaTurno_Tu as Fecha, H.Horario_HT AS Hora, P.Apellido_Pa + ', ' + P.Nombre_Pa AS Paciente, P.DNI_Pa AS DNI, T.Asistencia_Tu AS Asistencia, T.Comentario_Tu AS Comentario FROM Turnos AS T INNER JOIN HorariosTurno AS H ON H.CodHorarioTurno_HT = T.CodHorarioTurno_HT_Tu INNER JOIN Pacientes AS P ON P.DNI_Pa = T.DNI_Pa_Tu WHERE T.Legajo_Me_Tu = '{legajo}' AND T.DNI_Pa_Tu LIKE '{DNI}%'";
             DataTable tabla = _conexion.TraerTabla(consultaTurnos, "Turnos");
             return tabla;
         }
         public DataTable FiltrarNombre(string nombre, int legajo)
         {
-            string consultaTurnos = $"SELECT T.FechaTurno_Tu as Fecha, H.Horario_HT AS Hora, P.Apellido_Pa + ', ' + P.Nombre_Pa AS Paciente, P.DNI_Pa AS DNI, T.Asistencia_Tu AS Asistencia FROM Turnos AS T INNER JOIN HorariosTurno AS H ON H.CodHorarioTurno_HT = T.CodHorarioTurno_HT_Tu INNER JOIN Pacientes AS P ON P.DNI_Pa = T.DNI_Pa_Tu WHERE T.Legajo_Me_Tu = '{legajo}' AND (P.Apellido_Pa + ', ' + P.Nombre_Pa) LIKE '%{nombre}%'";
+            string consultaTurnos = $"SELECT T.FechaTurno_Tu as Fecha, H.Horario_HT AS Hora, P.Apellido_Pa + ', ' + P.Nombre_Pa AS Paciente, P.DNI_Pa AS DNI, T.Asistencia_Tu AS Asistencia, T.Comentario_Tu AS Comentario FROM Turnos AS T INNER JOIN HorariosTurno AS H ON H.CodHorarioTurno_HT = T.CodHorarioTurno_HT_Tu INNER JOIN Pacientes AS P ON P.DNI_Pa = T.DNI_Pa_Tu WHERE T.Legajo_Me_Tu = '{legajo}' AND (P.Apellido_Pa + ', ' + P.Nombre_Pa) LIKE '%{nombre}%'";
             DataTable tabla = _conexion.TraerTabla(consultaTurnos, "Turnos");
             return tabla;
         }
         public DataTable FiltrarPresente(int legajo)
         {
-            string consultaTurnos = $"SELECT T.FechaTurno_Tu as Fecha, H.Horario_HT AS Hora, P.Apellido_Pa + ', ' + P.Nombre_Pa AS Paciente, P.DNI_Pa AS DNI, T.Asistencia_Tu AS Asistencia FROM Turnos AS T INNER JOIN HorariosTurno AS H ON H.CodHorarioTurno_HT = T.CodHorarioTurno_HT_Tu INNER JOIN Pacientes AS P ON P.DNI_Pa = T.DNI_Pa_Tu WHERE T.Legajo_Me_Tu = '{legajo}' AND T.Asistencia_Tu = 'Presente'";
+            string consultaTurnos = $"SELECT T.FechaTurno_Tu as Fecha, H.Horario_HT AS Hora, P.Apellido_Pa + ', ' + P.Nombre_Pa AS Paciente, P.DNI_Pa AS DNI, T.Asistencia_Tu AS Asistencia, T.Comentario_Tu AS Comentario FROM Turnos AS T INNER JOIN HorariosTurno AS H ON H.CodHorarioTurno_HT = T.CodHorarioTurno_HT_Tu INNER JOIN Pacientes AS P ON P.DNI_Pa = T.DNI_Pa_Tu WHERE T.Legajo_Me_Tu = '{legajo}' AND T.Asistencia_Tu = 'Presente'";
             DataTable tabla = _conexion.TraerTabla(consultaTurnos, "Turnos");
             return tabla;
         }
         public DataTable FiltrarAusente(int legajo)
         {
-            string consultaTurnos = $"SELECT T.FechaTurno_Tu as Fecha, H.Horario_HT AS Hora, P.Apellido_Pa + ', ' + P.Nombre_Pa AS Paciente, P.DNI_Pa AS DNI, T.Asistencia_Tu AS Asistencia FROM Turnos AS T INNER JOIN HorariosTurno AS H ON H.CodHorarioTurno_HT = T.CodHorarioTurno_HT_Tu INNER JOIN Pacientes AS P ON P.DNI_Pa = T.DNI_Pa_Tu WHERE T.Legajo_Me_Tu = '{legajo}' AND T.Asistencia_Tu = 'Ausente'";
+            string consultaTurnos = $"SELECT T.FechaTurno_Tu as Fecha, H.Horario_HT AS Hora, P.Apellido_Pa + ', ' + P.Nombre_Pa AS Paciente, P.DNI_Pa AS DNI, T.Asistencia_Tu AS Asistencia, T.Comentario_Tu AS Comentario FROM Turnos AS T INNER JOIN HorariosTurno AS H ON H.CodHorarioTurno_HT = T.CodHorarioTurno_HT_Tu INNER JOIN Pacientes AS P ON P.DNI_Pa = T.DNI_Pa_Tu WHERE T.Legajo_Me_Tu = '{legajo}' AND T.Asistencia_Tu = 'Ausente'";
             DataTable tabla = _conexion.TraerTabla(consultaTurnos, "Turnos");
             return tabla;
         }
         public DataTable FiltrarPendiente(int legajo)
         {
-            string consultaTurnos = $"SELECT T.FechaTurno_Tu as Fecha, H.Horario_HT AS Hora, P.Apellido_Pa + ', ' + P.Nombre_Pa AS Paciente, P.DNI_Pa AS DNI, T.Asistencia_Tu AS Asistencia FROM Turnos AS T INNER JOIN HorariosTurno AS H ON H.CodHorarioTurno_HT = T.CodHorarioTurno_HT_Tu INNER JOIN Pacientes AS P ON P.DNI_Pa = T.DNI_Pa_Tu WHERE T.Legajo_Me_Tu = '{legajo}' AND T.Asistencia_Tu = 'Pendiente'";
+            string consultaTurnos = $"SELECT T.FechaTurno_Tu as Fecha, H.Horario_HT AS Hora, P.Apellido_Pa + ', ' + P.Nombre_Pa AS Paciente, P.DNI_Pa AS DNI, T.Asistencia_Tu AS Asistencia, T.Comentario_Tu AS Comentario FROM Turnos AS T INNER JOIN HorariosTurno AS H ON H.CodHorarioTurno_HT = T.CodHorarioTurno_HT_Tu INNER JOIN Pacientes AS P ON P.DNI_Pa = T.DNI_Pa_Tu WHERE T.Legajo_Me_Tu = '{legajo}' AND T.Asistencia_Tu = 'Pendiente'";
             DataTable tabla = _conexion.TraerTabla(consultaTurnos, "Turnos");
             return tabla;
         }

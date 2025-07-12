@@ -98,10 +98,10 @@ namespace Negocio
             DaoTurnos dao = new DaoTurnos();
             return dao.FiltrarNombre(nombre, legajo);
         }
-        public int ModificarAsistencia(Turno turno)
+        public int ModificarAsistencia(Turno turno, string textoHorario)
         {
             DaoTurnos dao = new DaoTurnos();
-            return dao.modificarAsistencia(turno);
+            return dao.modificarAsistencia(turno, textoHorario);
         }
 
     }
