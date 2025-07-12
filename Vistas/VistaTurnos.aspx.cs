@@ -32,7 +32,6 @@ namespace Vistas
             if (!IsPostBack)
             {
                 CargarGvTurnos();
-
             }
 
         }
@@ -225,6 +224,7 @@ namespace Vistas
                 gvTurnos.DataBind();
             }
             ViewState["TurnosFiltrados"] = tabla;
+            txtDNI.Text = string.Empty;
         }
 
         protected void btnBuscarNombre_Click(object sender, EventArgs e)
@@ -245,6 +245,7 @@ namespace Vistas
                 gvTurnos.DataBind();
             }
             ViewState["TurnosFiltrados"] = tabla;
+            txtNombre.Text = string.Empty;
         }
 
         protected void btnTodo_Click(object sender, EventArgs e)
