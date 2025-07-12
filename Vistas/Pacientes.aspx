@@ -282,91 +282,69 @@
                             </tr>
                             <tr>
                                 <td class="auto-style17">
-                                    <asp:Button ID="BsAs" runat="server" OnClick="BsAs_Click" Text="Buenos Aires" Width="134px" />
-                                </td>
+                                    &nbsp;</td>
                                 <td class="auto-style19">
-                                    <asp:Button ID="Formosa" runat="server" OnClick="Formosa_Click" Text="Formosa" />
-                                </td>
+                                    &nbsp;</td>
                                 <td class="auto-style18">
-                                    <asp:Button ID="Salta" runat="server" OnClick="Salta_Click" Text="Salta" />
-                                </td>
+                                    &nbsp;</td>
                             </tr>
                             <tr>
                                 <td class="auto-style17">
-                                    <asp:Button ID="Cordoba" runat="server" OnClick="Cordoba_Click" Text="Cordoba" />
-                                </td>
+                                    &nbsp;</td>
                                 <td class="auto-style19">
-                                    <asp:Button ID="Jujuy" runat="server" OnClick="Jujuy_Click" Text="Jujuy" />
+                                    <asp:DropDownList ID="ddlProvinciasFiltro" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlProvinciasFiltro_SelectedIndexChanged">
+                                    </asp:DropDownList>
                                 </td>
                                 <td class="auto-style18">
-                                    <asp:Button ID="SanJuan" runat="server" OnClick="SanJuan_Click" Text="San Juan" />
-                                </td>
+                                    &nbsp;</td>
                             </tr>
                             <tr>
                                 <td class="auto-style17">
-                                    <asp:Button ID="SantaFe" runat="server" OnClick="SantaFe_Click" Text="Santa Fe" />
-                                </td>
+                                    &nbsp;</td>
                                 <td class="auto-style19">
-                                    <asp:Button ID="LaPampa" runat="server" OnClick="LaPampa_Click" Text="La Pampa" />
-                                </td>
+                                    &nbsp;</td>
                                 <td class="auto-style18">
-                                    <asp:Button ID="SanLuis" runat="server" OnClick="SanLuis_Click" Text="San Luis" />
-                                </td>
+                                    &nbsp;</td>
                             </tr>
                             <tr>
                                 <td class="auto-style17">
-                                    <asp:Button ID="Catamarca" runat="server" OnClick="Catamarca_Click" Text="Catamarca" />
-                                </td>
+                                    &nbsp;</td>
                                 <td class="auto-style19">
-                                    <asp:Button ID="LaRioja" runat="server" OnClick="LaRioja_Click" Text="La Rioja" />
-                                </td>
+                                    &nbsp;</td>
                                 <td class="auto-style18">
-                                    <asp:Button ID="SantaCruz" runat="server" OnClick="SantaCruz_Click" Text="Santa Cruz" />
-                                </td>
+                                    &nbsp;</td>
                             </tr>
                             <tr>
                                 <td class="auto-style17">
-                                    <asp:Button ID="Chaco" runat="server" OnClick="Chaco_Click" Text="Chaco" />
-                                </td>
+                                    &nbsp;</td>
                                 <td class="auto-style19">
-                                    <asp:Button ID="Mendoza" runat="server" OnClick="Mendoza_Click" Text="Mendoza" />
-                                </td>
+                                    &nbsp;</td>
                                 <td class="auto-style18">
-                                    <asp:Button ID="SantiagoEstero" runat="server" OnClick="SantiagoEstero_Click" Text="Santiago del E." Width="136px" />
-                                </td>
+                                    &nbsp;</td>
                             </tr>
                             <tr>
                                 <td class="auto-style17">
-                                    <asp:Button ID="Chubut" runat="server" OnClick="Chubut_Click" Text="Chubut" />
-                                </td>
+                                    &nbsp;</td>
                                 <td class="auto-style19">
-                                    <asp:Button ID="Misiones" runat="server" OnClick="Misiones_Click" Text="Misiones" />
-                                </td>
+                                    &nbsp;</td>
                                 <td class="auto-style18">
-                                    <asp:Button ID="TierraDelFuego" runat="server" OnClick="TierraDelFuego_Click" Text="Tierra del Fuego" Width="140px" />
-                                </td>
+                                    &nbsp;</td>
                             </tr>
                             <tr>
                                 <td class="auto-style17">
-                                    <asp:Button ID="Corrientes" runat="server" OnClick="Corrientes_Click" Text="Corrientes" />
-                                </td>
+                                    &nbsp;</td>
                                 <td class="auto-style19">
-                                    <asp:Button ID="Neuquen" runat="server" OnClick="Neuquen_Click" Text="Neuquen" />
-                                </td>
+                                    &nbsp;</td>
                                 <td class="auto-style18">
-                                    <asp:Button ID="Tucuman" runat="server" OnClick="Tucuman_Click" Text="Tucuman" />
-                                </td>
+                                    &nbsp;</td>
                             </tr>
                             <tr>
                                 <td class="auto-style17">
-                                    <asp:Button ID="EntreRios" runat="server" OnClick="EntreRios_Click" Text="Entre Rios" />
-                                </td>
+                                    &nbsp;</td>
                                 <td class="auto-style19">
-                                    <asp:Button ID="RioNegro" runat="server" OnClick="RioNegro_Click" Text="Rio Negro" />
-                                </td>
+                                    &nbsp;</td>
                                 <td class="auto-style18">
-                                    <asp:Button ID="Todo" runat="server" OnClick="Todo_Click" Text="Todos" />
-                                </td>
+                                    &nbsp;</td>
                             </tr>
                         </table>
                     </p>
