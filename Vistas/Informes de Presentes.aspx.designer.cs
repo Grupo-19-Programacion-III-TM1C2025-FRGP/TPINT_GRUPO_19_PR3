@@ -105,40 +105,22 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.HyperLink HyperLink6;
 
         /// <summary>
-        /// Control ddFechaInicialP.
+        /// Control txtPresentesIni.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddFechaInicialP;
+        protected global::System.Web.UI.WebControls.TextBox txtPresentesIni;
 
         /// <summary>
-        /// Control rfvInicioP.
+        /// Control txtPresentesFin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvInicioP;
-
-        /// <summary>
-        /// Control ddFechaFinalp.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddFechaFinalp;
-
-        /// <summary>
-        /// Control rfvFinal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFinal;
+        protected global::System.Web.UI.WebControls.TextBox txtPresentesFin;
 
         /// <summary>
         /// Control btnCalcularP.

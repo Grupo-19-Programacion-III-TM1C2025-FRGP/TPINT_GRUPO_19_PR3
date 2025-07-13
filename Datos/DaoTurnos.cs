@@ -128,7 +128,7 @@ namespace Datos
             string NuevoFinal = Final.ToString("yyyy-MM-dd");
             comando.Parameters.Add("@FechaFin", SqlDbType.Date).Value = NuevoFinal;
             //ParamF.Value = Final;
-            return con.EjecutarProcedimientoAlmacenadoConResultado(comando, "Filtro_Presentes");
+            return con.EjecutarProcedimientoAlmacenadoConResultado(comando, "Filtro_Presente");
         }
         public int FiltroAusentes(Turno turno, DateTime Inicio, DateTime Final)
         {

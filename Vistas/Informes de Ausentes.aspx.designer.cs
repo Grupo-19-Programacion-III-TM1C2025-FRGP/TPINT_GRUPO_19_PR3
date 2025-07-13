@@ -105,40 +105,22 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.HyperLink HyperLink6;
 
         /// <summary>
-        /// Control ddFechaInicialA.
+        /// Control txtAusentesIni.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddFechaInicialA;
+        protected global::System.Web.UI.WebControls.TextBox txtAusentesIni;
 
         /// <summary>
-        /// Control rfvInicioA.
+        /// Control txtAusentesFin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvInicioA;
-
-        /// <summary>
-        /// Control ddFechaFinalA.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddFechaFinalA;
-
-        /// <summary>
-        /// Control rfvFinalA.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFinalA;
+        protected global::System.Web.UI.WebControls.TextBox txtAusentesFin;
 
         /// <summary>
         /// Control btnCalcularA.
