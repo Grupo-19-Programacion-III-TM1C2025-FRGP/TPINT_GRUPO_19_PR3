@@ -38,7 +38,21 @@ namespace Negocio
             DaoMedico dao = new DaoMedico();
             return dao.FiltrarPorEspecialidad(codEspecialidad);
         }
-
+        public DataTable BuscarDNI(int dni)
+        {
+            DaoMedico dao = new DaoMedico();
+            return dao.BuscarDNI(dni);
+        }
+        public DataTable BuscarNombre(string nombre)
+        {
+            DaoMedico dao = new DaoMedico();
+            return dao.BuscarNombre(nombre);
+        }
+        public DataTable FiltroProvincia(int prov)
+        {
+            DaoMedico dao = new DaoMedico();
+            return dao.FiltroProvincia(prov);
+        }
         public DataTable getTablaConUsuarios()
         {
             DaoMedico dao = new DaoMedico();

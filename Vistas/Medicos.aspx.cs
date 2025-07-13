@@ -1,14 +1,15 @@
+using Entidades;
+using Negocio;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Negocio;
-using Vistas.Clases;
-using Entidades;
 using Vistas;
-using System.Data;
+using Vistas.Clases;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace MiProyecto
@@ -54,6 +55,12 @@ namespace MiProyecto
             ddlProvincia.DataValueField = "Codigo";
             ddlProvincia.DataBind();
             ddlProvincia.Items.Insert(0, new ListItem("Seleccione una provincia", "0"));
+
+            ddlProvinciasFiltro.DataSource = negocioProvincia.getTabla();
+            ddlProvinciasFiltro.DataTextField = "Provincia";
+            ddlProvinciasFiltro.DataValueField = "Codigo";
+            ddlProvinciasFiltro.DataBind();
+            ddlProvinciasFiltro.Items.Insert(0, new ListItem("Todas las provincias", "0"));
         }
         private void CargarHorariosEntrada()
         {
@@ -292,6 +299,27 @@ namespace MiProyecto
             int codEspecialidad = int.Parse(ddlEspecialidadesFiltrar.SelectedValue);
             gvMedicos.DataSource = negocioMedico.getTablaFiltrada(codEspecialidad);
             gvMedicos.DataBind();
+        }
+        protected void ddlProvinciasFiltro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int codProvincia = int.Parse(ddlProvinciasFiltro.SelectedValue);
+            gvMedicos.DataSource = negocioMedico.FiltroProvincia(codProvincia);
+            gvMedicos.DataBind();
+        }
+
+        protected void btnDNI_Click(object sender, EventArgs e)
+        {
+            int dni = Convert.ToInt32(txtDNI2.Text);
+            gvMedicos.DataSource = negocioMedico.BuscarDNI(dni);
+            gvMedicos.DataBind();
+            txtDNI2.Text = "";
+        }
+
+        protected void btnNombre_Click(object sender, EventArgs e)
+        {
+            gvMedicos.DataSource = negocioMedico.BuscarNombre(txtNombre2.Text);
+            gvMedicos.DataBind();
+            txtNombre2.Text = "";
         }
     }
 }
