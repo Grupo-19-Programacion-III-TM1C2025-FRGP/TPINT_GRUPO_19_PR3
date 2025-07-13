@@ -60,7 +60,7 @@ namespace Vistas
 
             if (e.Row.RowType == DataControlRowType.Header || e.Row.RowType == DataControlRowType.DataRow)
             {
-                // Oculta la columna auto-generada de "Asistencia" (por ejemplo, en la posición 5)
+                // Oculta la columna auto-generada de "Asistencia"
                 e.Row.Cells[6].Visible = false;
                 
             }

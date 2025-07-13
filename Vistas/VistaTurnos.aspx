@@ -210,7 +210,7 @@
                         </td>
                         <td class="auto-style2" colspan="3" rowspan="5">
                             <asp:GridView ID="gvTurnos" runat="server" DataKeyNames="DNI, Fecha, Hora, Paciente" AutoGenerateEditButton="True" AutoGenerateSelectButton="True" OnRowCancelingEdit="gvTurnos_RowCancelingEdit" OnRowEditing="gvTurnos_RowEditing" OnRowUpdating="gvTurnos_RowUpdating" AllowPaging="True" OnPageIndexChanging="gvTurnos_PageIndexChanging"
-                              OnRowCreated="gvTurnos_RowCreated"                          OnSelectedIndexChanging="gvTurnos_SelectedIndexChanging"
+                                OnRowCreated="gvTurnos_RowCreated" OnSelectedIndexChanging="gvTurnos_SelectedIndexChanging"
                                 OnRowDataBound="gvTurnos_RowDataBound">
                                 <Columns>
                                     <asp:TemplateField HeaderText="Asistencia">

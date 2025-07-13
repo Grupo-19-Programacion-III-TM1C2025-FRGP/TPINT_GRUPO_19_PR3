@@ -67,8 +67,8 @@ namespace Vistas
 
             table = medico.getTablaFiltrada(codEspecialidad);
             ddlMedico.DataSource = table;
-            ddlMedico.DataTextField = "Apellido_Me";
-            ddlMedico.DataValueField = "Legajo_Me";
+            ddlMedico.DataTextField = "Apellido";
+            ddlMedico.DataValueField = "Legajo";
             ddlMedico.DataBind();
             ddlMedico.Items.Insert(0, new ListItem("Seleccione médico", "0"));
         }
