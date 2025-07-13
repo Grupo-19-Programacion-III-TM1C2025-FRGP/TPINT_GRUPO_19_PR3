@@ -14,7 +14,7 @@ namespace Datos
     public class DaoMedico : GenericDao
     {
         // Propiedades
-        string consultaTablaFiltrada = "select M.Apellido_Me, M.Legajo_Me, M.CodEspecialidad_Es_Me from Medicos AS M inner join Especialidades AS E on M.CodEspecialidad_Es_Me = E.CodEspecialidad_Es ";
+        string consultaTablaFiltrada = "SELECT M.Legajo_Me AS Legajo, M.DNI_Me AS DNI, M.Apellido_Me AS Apellido, M.Nombre_Me AS Nombre, M.Sexo_Me AS Sexo, M.Email_Me AS Email, M.Telefono_Me AS Telefono, M.CodProvincia_Pr_Me AS Provincia, M.CodLocalidad_Lo_Me AS Localidad, M.CodEspecialidad_Es_Me, M.CodHoraEntrada_HT_Me AS Hora_Entrada, M.CodHoraSalida_HT_Me AS Hora_Salida, M.Estado_Me AS Estado FROM Medicos M ";
         DataTable tabla;
 
         // Métodos
@@ -152,18 +152,6 @@ namespace Datos
             SqlCommand comando = new SqlCommand();
             ArmarParametrosMedicoModificar(ref comando, med);
             return con.EjecutarProcedimientoAlmacenado(comando, "spModificarMedico");
-        }
-
-        public int traerLegajoPorDNI(int dni)
-        {
-            Conexion ds = new Conexion();
-            string consulta = "SELECT LegajoMedico FROM Medicos WHERE DNI = " + dni;
-            tabla = ds.TraerTabla(consulta, "Medicos");
-
-            if (tabla.Rows.Count > 0)
-                return Convert.ToInt32(tabla.Rows[0]["Legajo_Me"]);
-
-            return -1; // O algún valor que indique que no se encontró
         }
 
         public DataTable traerTablaMedicos()
