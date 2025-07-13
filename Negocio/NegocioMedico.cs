@@ -28,12 +28,6 @@ namespace Negocio
             DaoMedico dao = new DaoMedico();
             return dao.BajaMedico(legajo);
         }
-
-        public int traerLegajoPorDNI(int dni)
-        {
-            DaoMedico dao = new DaoMedico();
-            return dao.traerLegajoPorDNI(dni);
-        }
         public DataTable getTabla()
         {
             DaoMedico dao = new DaoMedico();
