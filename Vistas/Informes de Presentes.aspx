@@ -99,22 +99,16 @@
                         <tr>
                             <td class="auto-style3">Fecha de inicio:</td>
                             <td class="auto-style5">
-                                <asp:DropDownList ID="ddFechaInicialP" runat="server">
-                                </asp:DropDownList>
+                                <asp:TextBox ID="txtPresentesIni" runat="server" TextMode="Date"></asp:TextBox>
                             </td>
                             <td class="auto-style7">
-                                <asp:RequiredFieldValidator ID="rfvInicioP" runat="server"
-                                    ControlToValidate="ddFechaInicialP" InitialValue="Seleccione una fecha Inicial" ValidationGroup="1">*</asp:RequiredFieldValidator>
-                            </td>
+                                &nbsp;</td>
                             <td class="auto-style4">Fecha final:</td>
                             <td class="auto-style6">
-                                <asp:DropDownList ID="ddFechaFinalp" runat="server">
-                                </asp:DropDownList>
+                                <asp:TextBox ID="txtPresentesFin" runat="server" TextMode="Date"></asp:TextBox>
                             </td>
                             <td class="auto-style8">
-                                <asp:RequiredFieldValidator ID="rfvFinal" runat="server"
-                                    ControlToValidate="ddFechaFinalp" InitialValue="Seleccione una fecha final" ValidationGroup="1">*</asp:RequiredFieldValidator>
-                            </td>
+                                &nbsp;</td>
                             <td>
                                 <asp:Button ID="btnCalcularP" runat="server" Text="Calcular" OnClick="btnCalcularP_Click" ValidationGroup="1"/>
                             </td>

@@ -17,30 +17,30 @@ namespace Vistas
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            AuxiliarVistas.ValidarSesionAdministrador();
-            lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
+            //AuxiliarVistas.ValidarSesionAdministrador();
+            //lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
 
             if (!IsPostBack)
             {
-                CargarFechas();
+                //CargarFechas();
             }
 
         }
-        private void CargarFechas()
-        {
-            NegocioTurno fecha = new NegocioTurno();
-            ddFechaFinalp.DataSource = fecha.getTabla_Fecha();
-            ddFechaFinalp.DataTextField = "FechaTurno_TU";
-            ddFechaFinalp.DataValueField = "FechaTurno_TU";
-            ddFechaFinalp.DataBind();
-            ddFechaFinalp.Items.Insert(0, new ListItem("Seleccione una fecha final", "0"));
+        //private void CargarFechas()
+        //{
+        //    NegocioTurno fecha = new NegocioTurno();
+        //    ddFechaFinalp.DataSource = fecha.getTabla_Fecha();
+        //    ddFechaFinalp.DataTextField = "FechaTurno_TU";
+        //    ddFechaFinalp.DataValueField = "FechaTurno_TU";
+        //    ddFechaFinalp.DataBind();
+        //    ddFechaFinalp.Items.Insert(0, new ListItem("Seleccione una fecha final", "0"));
 
-            ddFechaInicialP.DataSource = fecha.getTabla_Fecha();
-            ddFechaInicialP.DataTextField = "FechaTurno_TU";
-            ddFechaInicialP.DataValueField = "FechaTurno_TU";
-            ddFechaInicialP.DataBind();
-            ddFechaInicialP.Items.Insert(0, new ListItem("Seleccione una fecha Inicial", "0"));
-        }
+        //    ddFechaInicialP.DataSource = fecha.getTabla_Fecha();
+        //    ddFechaInicialP.DataTextField = "FechaTurno_TU";
+        //    ddFechaInicialP.DataValueField = "FechaTurno_TU";
+        //    ddFechaInicialP.DataBind();
+        //    ddFechaInicialP.Items.Insert(0, new ListItem("Seleccione una fecha Inicial", "0"));
+        //}
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             AuxiliarVistas.CerrarSesion();
@@ -49,17 +49,24 @@ namespace Vistas
         protected void btnCalcularP_Click(object sender, EventArgs e)
         {
             NegocioTurno Datos = new NegocioTurno();
-            string fechaDDL = ddFechaInicialP.Text;
-            DateTime Inicio = DateTime.Parse(fechaDDL);
-            string fechaDDL2 = ddFechaFinalp.Text;
-            DateTime Final = DateTime.Parse(fechaDDL2);
+            string fechatxt = txtPresentesIni.Text;
+            DateTime Inicio = DateTime.Parse(fechatxt);
+            string fechatxt2 = txtPresentesFin.Text;
+            DateTime Final = DateTime.Parse(fechatxt2);
             Turno turno = new Turno();
             SqlCommand comando = new SqlCommand();
 
             int Presentes = Datos.FiltrarPresentes(turno, Inicio, Final);
             int Cantidad = Datos.Cantidad(Inicio, Final);
             float Resultado = Presentes * 100f / Cantidad;
-            lblPresentes.Text = Resultado + "%";
+            if (float.IsNaN(Resultado))
+            {
+                lblPresentes.Text = "No hay turnos en ese rango de fechas";
+            }
+            else
+            {
+                lblPresentes.Text = Resultado + "%";
+            }
 
             gvPresentes.DataSource = Datos.GVPresentes(Inicio, Final);
             gvPresentes.DataBind();
