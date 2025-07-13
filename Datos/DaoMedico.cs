@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
-
-using Entidades;
-using System.Runtime.Remoting.Messaging;
 
 namespace Datos
 {
@@ -173,6 +173,31 @@ namespace Datos
             tabla = _conexion.TraerTabla(consultaTablaFiltrada, "Medicos");
             return tabla;
          
+        }
+        public DataTable FiltroProvincia(int prov)
+        {
+            if (prov == 0)
+            {
+                consultaTablaFiltrada += "ORDER BY M.Estado_Me DESC";
+            }
+            else
+            {
+                consultaTablaFiltrada += $"WHERE M.CodProvincia_Pr_Me = {prov} ORDER BY M.Estado_Me DESC";
+            }
+            tabla = _conexion.TraerTabla(consultaTablaFiltrada, "Medicos");
+            return tabla;
+        }
+        public DataTable BuscarDNI(int dni)
+        {
+            consultaTablaFiltrada += $"WHERE M.DNI_Me LIKE '{dni}%'";
+            tabla = _conexion.TraerTabla(consultaTablaFiltrada, "Medicos");
+            return tabla;
+        }
+        public DataTable BuscarNombre(string nombre)
+        {
+            consultaTablaFiltrada += $"WHERE (M.Apellido_Me + ', ' + M.Nombre_Me) LIKE '%{nombre}%'";
+            tabla = _conexion.TraerTabla(consultaTablaFiltrada, "Medicos");
+            return tabla;
         }
         public int BajaMedico(string legajo)
         {
