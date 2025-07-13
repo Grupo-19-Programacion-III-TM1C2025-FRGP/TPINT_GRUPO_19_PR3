@@ -63,7 +63,7 @@ namespace Vistas
         // ddl médicos
         protected void ActualizarDdlMedicos()
         {
-            string codEspecialidad = ddlEspecialidad.SelectedValue.ToString();
+            int codEspecialidad = int.Parse(ddlEspecialidad.SelectedValue);
 
             table = medico.getTablaFiltrada(codEspecialidad);
             ddlMedico.DataSource = table;
