@@ -39,7 +39,7 @@ namespace Negocio
             DaoMedico dao = new DaoMedico();
             return dao.traerTablaMedicos();
         }
-        public DataTable getTablaFiltrada(string codEspecialidad)
+        public DataTable getTablaFiltrada(int codEspecialidad)
         {
             DaoMedico dao = new DaoMedico();
             return dao.FiltrarPorEspecialidad(codEspecialidad);

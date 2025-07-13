@@ -14,7 +14,7 @@ namespace Datos
     public class DaoMedico : GenericDao
     {
         // Propiedades
-        string consultaTablaFiltrada = "select M.Apellido_Me, M.Legajo_Me, M.CodEspecialidad_Es_Me from Medicos AS M inner join Especialidades AS E on M.CodEspecialidad_Es_Me = E.CodEspecialidad_Es where M.CodEspecialidad_Es_Me = ";
+        string consultaTablaFiltrada = "select M.Apellido_Me, M.Legajo_Me, M.CodEspecialidad_Es_Me from Medicos AS M inner join Especialidades AS E on M.CodEspecialidad_Es_Me = E.CodEspecialidad_Es ";
         DataTable tabla;
 
         // Métodos
@@ -172,11 +172,19 @@ namespace Datos
             DataTable tabla = con.EjecutarSP_Select("spTraerTablaMedicosCodificada");
             return tabla;
         }
-        public DataTable FiltrarPorEspecialidad(string codEspecialidad)
+        public DataTable FiltrarPorEspecialidad(int codEspecialidad)
         {
-            consultaTablaFiltrada += codEspecialidad;
+            if (codEspecialidad == 0)
+            {
+                consultaTablaFiltrada += "ORDER BY Estado_Me DESC";
+            }
+            else
+            {
+                consultaTablaFiltrada += $"WHERE M.CodEspecialidad_Es_Me = {codEspecialidad} ORDER BY Estado_Me DESC";
+            }
             tabla = _conexion.TraerTabla(consultaTablaFiltrada, "Medicos");
             return tabla;
+         
         }
         public int BajaMedico(string legajo)
         {

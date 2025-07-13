@@ -25,8 +25,8 @@ namespace MiProyecto
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            AuxiliarVistas.ValidarSesionAdministrador();
-            lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();
+           /* AuxiliarVistas.ValidarSesionAdministrador();
+            lblUsuario.Text = AuxiliarVistas.ObtenerUsuario();*/
 
             if (!IsPostBack)
             {
@@ -64,12 +64,18 @@ namespace MiProyecto
             ddlHoraEntrada.Items.Insert(0, new ListItem("Seleccione hora de entrada", "0"));
         }
         private void CargarEspecialidades()
-        {
+        {   //alta medico
             ddlEspecialidad.DataSource = negocioEspecialidad.getTabla();
             ddlEspecialidad.DataTextField = "Especialidad";
             ddlEspecialidad.DataValueField = "Codigo";
             ddlEspecialidad.DataBind();
             ddlEspecialidad.Items.Insert(0, new ListItem("Seleccione una especialidad", "0"));
+            //filtrar por especialidad
+            ddlEspecialidadesFiltrar.DataSource = negocioEspecialidad.getTabla();
+            ddlEspecialidadesFiltrar.DataTextField = "Especialidad";
+            ddlEspecialidadesFiltrar.DataValueField = "Codigo";
+            ddlEspecialidadesFiltrar.DataBind();
+            ddlEspecialidadesFiltrar.Items.Insert(0, new ListItem("Todas las especialidades", "0"));
         }
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -279,6 +285,13 @@ namespace MiProyecto
             ddlHoraSalida.DataValueField = "CodHorarioTurno_HT";
             ddlHoraSalida.DataBind();
             ddlHoraSalida.Items.Insert(0, new ListItem("Seleccione hora de salida", "0"));
+        }
+
+        protected void ddlEspecialidadesFiltrar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int codEspecialidad = int.Parse(ddlEspecialidadesFiltrar.SelectedValue);
+            gvMedicos.DataSource = negocioMedico.getTablaFiltrada(codEspecialidad);
+            gvMedicos.DataBind();
         }
     }
 }
