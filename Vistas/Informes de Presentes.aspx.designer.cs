@@ -114,6 +114,15 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.TextBox txtPresentesIni;
 
         /// <summary>
+        /// Control rfvInicio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvInicio;
+
+        /// <summary>
         /// Control txtPresentesFin.
         /// </summary>
         /// <remarks>
@@ -121,6 +130,15 @@ namespace Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPresentesFin;
+
+        /// <summary>
+        /// Control rfvFinal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFinal;
 
         /// <summary>
         /// Control btnCalcularP.

@@ -102,13 +102,15 @@
                                 <asp:TextBox ID="txtPresentesIni" runat="server" TextMode="Date"></asp:TextBox>
                             </td>
                             <td class="auto-style7">
-                                &nbsp;</td>
+                                <asp:RequiredFieldValidator ID="rfvInicio" runat="server" ControlToValidate="txtPresentesIni" ForeColor="Red" ValidationGroup="1">*</asp:RequiredFieldValidator>
+                            </td>
                             <td class="auto-style4">Fecha final:</td>
                             <td class="auto-style6">
                                 <asp:TextBox ID="txtPresentesFin" runat="server" TextMode="Date"></asp:TextBox>
                             </td>
                             <td class="auto-style8">
-                                &nbsp;</td>
+                                <asp:RequiredFieldValidator ID="rfvFinal" runat="server" ControlToValidate="txtPresentesFin" ForeColor="Red" ValidationGroup="1">*</asp:RequiredFieldValidator>
+                            </td>
                             <td>
                                 <asp:Button ID="btnCalcularP" runat="server" Text="Calcular" OnClick="btnCalcularP_Click" ValidationGroup="1"/>
                             </td>
