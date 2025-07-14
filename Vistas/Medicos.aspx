@@ -271,8 +271,7 @@
                                 <asp:TextBox ID="txtDNI2" runat="server" ValidationGroup="2" Width="232px"></asp:TextBox>
                             </td>
                             <td class="auto-style4">
-                                <asp:RequiredFieldValidator ID="rfvDNI2" runat="server" ControlToValidate="txtDNI2" ForeColor="Red" ValidationGroup="2">*</asp:RequiredFieldValidator>
-                            </td>
+                                &nbsp;</td>
                             <td class="auto-style5">
                                 <asp:Button ID="btnDNI" runat="server" OnClick="btnDNI_Click" Text="Buscar" ValidationGroup="2" />
                             </td>
@@ -284,8 +283,7 @@
                                 <asp:TextBox ID="txtNombre2" runat="server" ValidationGroup="3" Width="232px"></asp:TextBox>
                             </td>
                             <td class="auto-style4">
-                                <asp:RequiredFieldValidator ID="rfvNombre2" runat="server" ControlToValidate="txtNombre2" ForeColor="Red" ValidationGroup="3">*</asp:RequiredFieldValidator>
-                            </td>
+                                &nbsp;</td>
                             <td class="auto-style5">
                                 <asp:Button ID="btnNombre" runat="server" OnClick="btnNombre_Click" Text="Buscar" ValidationGroup="3" />
                             </td>

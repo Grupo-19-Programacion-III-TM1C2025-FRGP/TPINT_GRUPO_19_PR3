@@ -213,17 +213,32 @@ namespace Vistas
 
         protected void BuscarDNI_Click(object sender, EventArgs e)
         {
-            int dni = Convert.ToInt32(txtDNI2.Text);
-            gvPacientes.DataSource = negocioP.BuscarDNI(dni);
-            gvPacientes.DataBind();
-            txtDNI2.Text = "";
+            if(txtDNI2.Text == "")
+            {
+                CargarGvPacientes();
+            }
+            else 
+            {
+                int dni = Convert.ToInt32(txtDNI2.Text);
+                gvPacientes.DataSource = negocioP.BuscarDNI(dni);
+                gvPacientes.DataBind();
+                txtDNI2.Text = "";
+            }
+            
         }
 
         protected void BuscarNombre_Click(object sender, EventArgs e)
         {
-            gvPacientes.DataSource = negocioP.BuscarNombre(txtNombre2.Text);
-            gvPacientes.DataBind();
-            txtNombre2.Text = "";
+            if(txtNombre2.Text == "")
+            {
+                CargarGvPacientes();
+            }
+            else
+            {
+                gvPacientes.DataSource = negocioP.BuscarNombre(txtNombre2.Text);
+                gvPacientes.DataBind();
+                txtNombre2.Text = "";
+            }
         }
 
     }

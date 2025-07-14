@@ -309,17 +309,32 @@ namespace MiProyecto
 
         protected void btnDNI_Click(object sender, EventArgs e)
         {
-            int dni = Convert.ToInt32(txtDNI2.Text);
-            gvMedicos.DataSource = negocioMedico.BuscarDNI(dni);
-            gvMedicos.DataBind();
-            txtDNI2.Text = "";
+            if(txtDNI2.Text == "")
+            {
+                CargarGvMedicos();
+            }
+            else
+            {
+                int dni = Convert.ToInt32(txtDNI2.Text);
+                gvMedicos.DataSource = negocioMedico.BuscarDNI(dni);
+                gvMedicos.DataBind();
+                txtDNI2.Text = "";
+            }
         }
 
         protected void btnNombre_Click(object sender, EventArgs e)
         {
-            gvMedicos.DataSource = negocioMedico.BuscarNombre(txtNombre2.Text);
-            gvMedicos.DataBind();
-            txtNombre2.Text = "";
+            if(txtNombre2.Text == "")
+            {
+                CargarGvMedicos();
+            }
+            else
+            {
+                gvMedicos.DataSource = negocioMedico.BuscarNombre(txtNombre2.Text);
+                gvMedicos.DataBind();
+                txtNombre2.Text = "";
+            }
+            
         }
     }
 }

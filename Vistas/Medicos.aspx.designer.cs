@@ -438,15 +438,6 @@ namespace MiProyecto
         protected global::System.Web.UI.WebControls.TextBox txtDNI2;
 
         /// <summary>
-        /// Control rfvDNI2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDNI2;
-
-        /// <summary>
         /// Control btnDNI.
         /// </summary>
         /// <remarks>
@@ -463,15 +454,6 @@ namespace MiProyecto
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNombre2;
-
-        /// <summary>
-        /// Control rfvNombre2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombre2;
 
         /// <summary>
         /// Control btnNombre.
